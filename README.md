@@ -1,8 +1,12 @@
-# PersonalWebsite
+# Karl Marx Roxas - A Personal Website Project
+This is a code repository of the website, not the build files. Visit karlroxas21.github.io to visit my website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+Angular Universal (SSR) was used to deploy to GitHub Pages.
 
-## Development server
+## License
+This project is open source and under license of [GPL-3.0 license](https://github.com/Karlroxas21/personal-website/blob/main/LICENSE.txt)
+
+<!-- ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
@@ -24,4 +28,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page. -->
