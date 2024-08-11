@@ -7,6 +7,7 @@ import { NotesComponent } from './notes/notes.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { ResumeComponent } from './resume/resume.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +18,7 @@ export const routes: Routes = [
             { path: 'articles', component: ArticlesComponent},
             { path: 'projects', component: ProjectsComponent},
             { path: 'about-me', component: AboutMeComponent},
+            { path: 'resume', component: ResumeComponent}
         ]
     }
 ];
