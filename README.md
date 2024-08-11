@@ -1,7 +1,7 @@
 # Karl Marx Roxas - A Personal Website Project
 This is a code repository of the website, not the build files. Visit karlroxas21.github.io to visit my website
 
-Angular Universal (SSR) was used to deploy to GitHub Pages.
+Angular Universal (SSG) was used to deploy to GitHub Pages.
 
 ## License
 This project is open source and under license of [GPL-3.0 license](https://github.com/Karlroxas21/personal-website/blob/main/LICENSE.txt)
