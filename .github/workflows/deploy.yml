@@ -24,11 +24,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Build the Angular application
+      # Step 4: Install Angular CLI
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      # Step 5: Build the Angular application
       - name: Build project
         run: ng build --configuration production
 
-      # Step 5: Deploy to the gh-pages branch
+      # Step 6: Deploy to the gh-pages branch
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
