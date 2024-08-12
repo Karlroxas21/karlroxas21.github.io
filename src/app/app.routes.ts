@@ -13,12 +13,12 @@ export const routes: Routes = [
     {
         path: '', component: NavigationBarComponent,
         children: [
-            { path: '', component: HomeComponent},
-            { path: 'notes', component: NotesComponent},
-            { path: 'articles', component: ArticlesComponent},
-            { path: 'projects', component: ProjectsComponent},
-            { path: 'about-me', component: AboutMeComponent},
-            { path: 'resume', component: ResumeComponent}
+            { path: '', component: HomeComponent, title: 'Hello, I\'m Karl\!'},
+            { path: 'notes', component: NotesComponent, title: 'My Notes'},
+            { path: 'articles', component: ArticlesComponent, title: 'My Articles'},
+            { path: 'projects', component: ProjectsComponent, title: 'My Projects'},
+            { path: 'about-me', component: AboutMeComponent, title: 'About me'},
+            { path: 'resume', component: ResumeComponent, title: 'Hire me\!'}
         ]
     }
 ];
