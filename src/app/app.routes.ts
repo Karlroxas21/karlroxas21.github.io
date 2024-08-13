@@ -8,6 +8,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ResumeComponent } from './resume/resume.component';
+import { ArticleViewerComponent } from './articles/article-viewer/article-viewer/article-viewer.component';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,8 @@ export const routes: Routes = [
             { path: 'articles', component: ArticlesComponent, title: 'My Articles'},
             { path: 'projects', component: ProjectsComponent, title: 'My Projects'},
             { path: 'about-me', component: AboutMeComponent, title: 'About me'},
-            { path: 'resume', component: ResumeComponent, title: 'Hire me\!'}
+            { path: 'resume', component: ResumeComponent, title: 'Hire me\!'},
+            { path: 'article/:file', component: ArticleViewerComponent},
         ]
     }
 ];
