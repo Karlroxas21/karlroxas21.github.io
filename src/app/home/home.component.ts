@@ -12,7 +12,7 @@ import Typed from 'typed.js';
 export class HomeComponent implements OnInit {
     ngOnInit(): void {
         const options = {
-            strings: ['front-end development', 'back-end development', 'web design', 'code in Javascript', 'code in Typescript', 'know Angular 15+', 'specialized in Web Development'],
+            strings: ['currently looking for a job', 'do back-end development', 'do front-end development', 'specialized in Web Development'],
             typeSpeed: 50,
             backSpeed: 50,
             loop: true
