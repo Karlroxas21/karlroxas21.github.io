@@ -1,27 +1,30 @@
-<footer class="bg-custom-gray  flex justify-center items-center border-t border-gray-400 ">
+<footer class="bg-custom-gray lg:flex justify-center items-center border-t border-gray-400 ">
     
-    <div class="text-sm flex gap-2 text-white p-5">
-       <div>
+    <div class="text-sm grid grid-rows-4 md:grid-cols-3 md:grid-rows-2 lg:flex gap-3 text-white p-5 items-center justify-center">
+       <div class="row-span-1 md:col-span-1">
             <div class="border font-medium border-gray-400 rounded-2xl py-1 px-5 bg-gray-400-5 flex items-center space-x-2">
                 <a href=""> <img src="/logo/icons8-angular-50.png" class="h-8" alt=""> </a>
                 <a href="" >Angular</a>
             </div>
        </div>
-       <div>
+       <div  class="row-span-1 md:col-span-1">
             <div class="border font-medium border-gray-400 rounded-2xl py-1 px-5 bg-gray-400-5 flex items-center space-x-2">
                 <a href=""> <img src="/logo/icons8-github-50.png" class="h-8" alt=""> </a> 
                 <a href="">GitHub Pages</a>
             </div>
        </div>
-        <div>
+        <div  class="row-span-1 md:col-span-1">
             <div routerLink="resume" class="border font-medium cursor-pointer border-gray-400 rounded-2xl py-1 px-5 bg-gray-400-5 flex items-center space-x-2">
                 <a> <img src="/logo/icons8-resume-30.png" class="h-8" alt=""> </a>
                 <a>Resume</a>
             </div>
         </div>
+        
+        <div class="text-white row-span-1 flex justify-center items-center md:col-span-3">
+            <p>&copy;Karl Marx Roxas</p>
+        </div>
     </div>
 
-    <div class="text-white">Karl Marx Roxas</div>
 
 </footer>
 
