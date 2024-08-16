@@ -1,4 +1,4 @@
-<div class="bg-custom-gray h-screen pt-20 px-96 mx-32 text-gray-400">
+<div class="bg-custom-gray h-screen pt-20 2xl:px-96 2xl:mx-32 lg:mx-40 px-5 text-gray-400">
     <div class="text-3xl font-medium">   
         <p class="text-white">Notes</p>
     </div>
@@ -7,27 +7,9 @@
             <div id="note-1">
                 <div class="border-b border-gray-400 grid grid-cols-4 font-medium pb-2">
                     <div id="title" class="col-span-2 text-lg">
-                        <a [routerLink]="['/note', 'ecotopia-note']" target="_blank" class="hover:underline decoration-wavy hover:text-custom-red transition">Design Patterns1</a>
+                        <a [routerLink]="['/note', 'ecotopia-note']" target="_blank" class="hover:underline decoration-wavy hover:text-custom-red transition">Design Patterns</a>
                     </div>
-                    <div id="tag" class="flex gap-2 col-span-2 justify-end text-xs">
-                        <div class="border border-gray-400 rounded-2xl flex items-center px-4">
-                            <a href="">Software Engineering</a>
-                        </div>
-                        <div class="border border-gray-400 rounded-2xl flex items-center px-4">
-                            <a href="">Informative</a>
-                        </div>
-                        <div class="border border-gray-400 rounded-2xl flex items-center px-4 text-custom-red">
-                            <a href="">August 2024</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="note-2" class="pt-2">
-                <div class="border-b border-gray-400 grid grid-cols-4 font-medium pb-2">
-                    <div id="title" class="col-span-2 text-lg">
-                        <a [routerLink]="['/article', 'ecotopia']" class="hover:underline decoration-wavy hover:text-custom-red transition">Design Patterns</a>
-                    </div>
-                    <div id="tag" class="flex gap-2 col-span-2 justify-end text-xs">
+                    <div id="tag" class="hidden md:flex gap-2 col-span-2 justify-end text-xs">
                         <div class="border border-gray-400 rounded-2xl flex items-center px-4">
                             <a href="">Software Engineering</a>
                         </div>
