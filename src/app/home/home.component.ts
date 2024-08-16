@@ -2,11 +2,12 @@ import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { FooterComponent } from "../footer/footer.component";
 import Typed from 'typed.js';
 import { isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [FooterComponent],
+    imports: [FooterComponent, RouterModule],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css'
 })
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
             const options = {
-                strings: ['currently looking for a job', 'do back-end development', 'do front-end development', 'specialized in Web Development'],
+                strings: ['am currently looking for a job', 'do back-end development', 'do front-end development', 'am batman'],
                 typeSpeed: 50,
                 backSpeed: 50,
                 loop: true
