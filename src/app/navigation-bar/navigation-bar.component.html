@@ -20,19 +20,19 @@
             </svg>
         </button>
 
-        <div #navbarDefault id="navbar-default-1" class="hidden w-full lg:flex lg:items-center lg:w-auto">
+        <div #navbarDefault id="navbar-default-1" class="hidden w-full lg:flex lg:items-center lg:w-auto mt-5">
             <ul class="flex flex-col gap-5 md:p-0 font-medium border border-gray-400 p-4 rounded-lg bg-transparent md:flex-row md:border-0">
                 <li class="hover:text-custom-red transition cursor-pointer" routerLinkActive="bg-gray-400-5 rounded-lg text-white">
-                    <a routerLink="notes" class="block py-2 px-3 rounded-md hover:bg-gray-400-5">Notes</a>
+                    <a routerLink="notes" class="block py-2 px-3 rounded-md hover:bg-gray-400-5" #navLink>Notes</a>
                 </li>
                 <li class="hover:text-custom-red transition cursor-pointer" routerLinkActive="bg-gray-400-5 rounded-lg text-white">
-                    <a routerLink="articles" class="block py-2 px-3 rounded-md hover:bg-gray-400-5">Articles</a>
+                    <a routerLink="articles" class="block py-2 px-3 rounded-md hover:bg-gray-400-5" #navLink>Articles</a>
                 </li>
                 <li class="hover:text-custom-red transition cursor-pointer" routerLinkActive="bg-gray-400-5 rounded-lg text-white">
-                    <a routerLink="projects" class="block py-2 px-3 rounded-md hover:bg-gray-400-5">Projects</a>
+                    <a routerLink="projects" class="block py-2 px-3 rounded-md hover:bg-gray-400-5" #navLink>Projects</a>
                 </li>
                 <li class="hover:text-custom-red transition cursor-pointer" routerLinkActive="bg-gray-400-5 rounded-lg text-white">
-                    <a routerLink="about-me" class="block py-2 px-3 rounded-md hover:bg-gray-400-5">About Me</a>
+                    <a routerLink="about-me" class="block py-2 px-3 rounded-md hover:bg-gray-400-5" #navLink>About Me</a>
                 </li>
             </ul>
         </div>
