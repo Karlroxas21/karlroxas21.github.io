@@ -1,24 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
-        fontFamily: {
-            roboto: ['Roboto', 'sans-serif'],
-        },
-        backgroundColor: {
-            'gray-400-5': 'rgba(156, 163, 175, 0.05)', 
-            'custom-gray': '#181818'
-        },
-        textColor: {
-            'custom-red': '#E84545',
-        },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
+      backgroundColor: {
+        "gray-400-5": "rgba(156, 163, 175, 0.05)",
+        "custom-gray": "#181818",
+      },
+      textColor: {
+        "custom-red": "#E84545",
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography')
-  ],
-}
-
+  plugins: [require("@tailwindcss/typography")],
+};

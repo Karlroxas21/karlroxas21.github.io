@@ -8,9 +8,8 @@ describe('NoteViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoteViewerComponent]
-    })
-    .compileComponents();
+      imports: [NoteViewerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NoteViewerComponent);
     component = fixture.componentInstance;

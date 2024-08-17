@@ -10,34 +10,37 @@ import { Title } from '@angular/platform-browser';
   imports: [MarkdownModule, HttpClientModule],
   providers: [MarkdownService],
   templateUrl: './article-viewer.component.html',
-  styleUrl: './article-viewer.component.css'
+  styleUrl: './article-viewer.component.css',
 })
 export class ArticleViewerComponent implements OnInit {
+  markDownContent!: string;
 
-    markDownContent!: string;
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private titleService: Title,
+  ) {}
 
-    constructor(private route: ActivatedRoute, private http: HttpClient, private titleService: Title) {}
-
-    ngOnInit(): void {
-        const fileName = this.route.snapshot.paramMap.get('file');
-        if(fileName){
-            this.loadMarkDownFile(fileName);
-        }
+  ngOnInit(): void {
+    const fileName = this.route.snapshot.paramMap.get('file');
+    if (fileName) {
+      this.loadMarkDownFile(fileName);
     }
+  }
 
-    loadMarkDownFile(fileName: string){
-        this.http.get(`/articles-dir/${fileName}.md`, { responseType: 'text'}).subscribe(
-            content => {
-                this.markDownContent = content;
-                this.setTitleFromMarkdown(content);
-            }
-        );
-    }
+  loadMarkDownFile(fileName: string) {
+    this.http
+      .get(`/articles-dir/${fileName}.md`, { responseType: 'text' })
+      .subscribe((content) => {
+        this.markDownContent = content;
+        this.setTitleFromMarkdown(content);
+      });
+  }
 
-    // Get the first # Header in Mardown as title of the web page
-    setTitleFromMarkdown(content: string): void{
-        const titleMatch = content.match(/^#\s*(.+)/);
-        const title = titleMatch ? titleMatch[1]: 'Default Title';
-        this.titleService.setTitle(title);
-    }
+  // Get the first # Header in Mardown as title of the web page
+  setTitleFromMarkdown(content: string): void {
+    const titleMatch = content.match(/^#\s*(.+)/);
+    const title = titleMatch ? titleMatch[1] : 'Default Title';
+    this.titleService.setTitle(title);
+  }
 }

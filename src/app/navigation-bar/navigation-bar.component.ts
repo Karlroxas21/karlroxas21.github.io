@@ -1,4 +1,11 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,26 +16,26 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navigation-bar.component.css',
 })
 export class NavigationBarComponent implements AfterViewInit {
-    @ViewChild('navbarToggleButton') navbarToggleButton!: ElementRef;
-    @ViewChild('navbarDefault') navbarDefault!: ElementRef;
-    @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
-    
-    ngAfterViewInit(): void {
-        const button = this.navbarToggleButton.nativeElement;
-        const navbar = this.navbarDefault.nativeElement;
+  @ViewChild('navbarToggleButton') navbarToggleButton!: ElementRef;
+  @ViewChild('navbarDefault') navbarDefault!: ElementRef;
+  @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
 
-        const toggleNavbar = () => {
-            if (navbar.classList.contains('hidden')) {
-              navbar.classList.remove('hidden');
-            } else {
-              navbar.classList.add('hidden');
-            }
-        };
+  ngAfterViewInit(): void {
+    const button = this.navbarToggleButton.nativeElement;
+    const navbar = this.navbarDefault.nativeElement;
 
-        button.addEventListener('click', toggleNavbar);
+    const toggleNavbar = () => {
+      if (navbar.classList.contains('hidden')) {
+        navbar.classList.remove('hidden');
+      } else {
+        navbar.classList.add('hidden');
+      }
+    };
 
-        this.navLinks.forEach(link => {
-            link.nativeElement.addEventListener('click', toggleNavbar);
-        });
-    }
+    button.addEventListener('click', toggleNavbar);
+
+    this.navLinks.forEach((link) => {
+      link.nativeElement.addEventListener('click', toggleNavbar);
+    });
+  }
 }

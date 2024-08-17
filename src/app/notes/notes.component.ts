@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from "../footer/footer.component";
+import { FooterComponent } from '../footer/footer.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [FooterComponent, RouterModule],
   templateUrl: './notes.component.html',
-  styleUrl: './notes.component.css'
+  styleUrl: './notes.component.css',
 })
-export class NotesComponent {
-
-}
+export class NotesComponent {}

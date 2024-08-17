@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs"
+    "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs",
+    "clean": "npx prettier --write \"**/*.{js,ts,jsx,tsx,html}\""
   },
   "private": true,
   "dependencies": {
@@ -46,6 +47,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.8",
     "typescript": "~5.5.2"
   }
