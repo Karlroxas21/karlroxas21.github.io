@@ -24,18 +24,19 @@ export class NavigationBarComponent implements AfterViewInit {
     const button = this.navbarToggleButton.nativeElement;
     const navbar = this.navbarDefault.nativeElement;
 
-    const toggleNavbar = () => {
-      if (navbar.classList.contains('hidden')) {
-        navbar.classList.remove('hidden');
-      } else {
-        navbar.classList.add('hidden');
-      }
-    };
-
-    button.addEventListener('click', toggleNavbar);
+    button.addEventListener('click', this.toggleNavbar.bind(this));
 
     this.navLinks.forEach((link) => {
-      link.nativeElement.addEventListener('click', toggleNavbar);
+      link.nativeElement.addEventListener('click', this.toggleNavbar.bind(this));
     });
+  }
+
+  toggleNavbar(): void {
+    const navbar = this.navbarDefault.nativeElement;
+    if (navbar.classList.contains('hidden')) {
+      navbar.classList.remove('hidden');
+    } else {
+      navbar.classList.add('hidden');
+    }
   }
 }
