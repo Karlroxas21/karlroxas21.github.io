@@ -8,7 +8,7 @@ module.exports = {
       },
       backgroundColor: {
         "gray-400-5": "rgba(156, 163, 175, 0.05)",
-        "custom-gray": "#181818",
+        "custom-gray": "#202124",
       },
       textColor: {
         "custom-red": "#E84545",
