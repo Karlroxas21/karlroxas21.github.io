@@ -1,5 +1,5 @@
 <div
-  class="h-screen bg-custom-gray px-5 mt-32 text-gray-400 lg:mx-40 2xl:mx-32 2xl:px-96"
+  class="mt-32 h-screen bg-custom-gray px-5 text-gray-400 lg:mx-40 2xl:mx-32 2xl:px-96"
 >
   <div class="text-3xl font-medium">
     <p class="text-white">Notes</p>
@@ -39,7 +39,9 @@
         </div>
       </div>
       <div id="note-2">
-        <div class="grid grid-cols-4 border-b border-gray-400 pb-2 font-medium pt-5">
+        <div
+          class="grid grid-cols-4 border-b border-gray-400 pb-2 pt-5 font-medium"
+        >
           <div id="title" class="col-span-2 text-lg">
             <a
               [routerLink]="['/note', 'semver']"
