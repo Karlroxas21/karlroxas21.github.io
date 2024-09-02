@@ -26,7 +26,6 @@ export class NavigationBarComponent
 {
   private typed: Typed | undefined;
 
-  @ViewChild('navbarToggleButton') navbarToggleButton!: ElementRef;
   @ViewChild('navbarDefault') navbarDefault!: ElementRef;
   @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
 
@@ -82,19 +81,11 @@ export class NavigationBarComponent
   }
 
   ngAfterViewInit(): void {
-    const button = this.navbarToggleButton.nativeElement;
     const navbar = this.navbarDefault.nativeElement;
 
     this.isRootPage = this.router.url === '/#' || this.router.url === '/';
     this.updateNavbarVisibility();
-    button.addEventListener('click', this.toggleNavbar.bind(this));
 
-    this.navLinks.forEach((link) => {
-      link.nativeElement.addEventListener(
-        'click',
-        this.toggleNavbar.bind(this),
-      );
-    });
 
     if (isPlatformBrowser(this.platformId)) {
       window.addEventListener('scroll', this.onWindowScroll.bind(this));
@@ -147,12 +138,5 @@ export class NavigationBarComponent
     }
   }
 
-  toggleNavbar(): void {
-    const navbar = this.navbarDefault.nativeElement;
-    if (navbar.classList.contains('hidden')) {
-      navbar.classList.remove('hidden');
-    } else {
-      navbar.classList.add('hidden');
-    }
-  }
+  
 }
