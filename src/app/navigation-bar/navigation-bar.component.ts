@@ -48,7 +48,6 @@ export class NavigationBarComponent
         this.updateNavbarVisibility();
       }
 
-      console.log('ROOTPAGE?????' + this.isRootPage);
     });
 
     if (isPlatformBrowser(this.platformId)) {
@@ -56,7 +55,7 @@ export class NavigationBarComponent
       this.onWindowScroll(); // Check scroll position on load
       const options = {
         strings: [
-          'am currently looking for a job',
+          'am open for new opportunities',
           'do back-end development',
           'do front-end development',
         ],
