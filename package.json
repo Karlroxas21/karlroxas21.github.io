@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs",
     "clean": "npx prettier --write \"**/*.{js,ts,jsx,tsx,html}\"",
-    "lint": "npx eslint . "
+    "lint": "npx eslint . --fix"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +53,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-promise": "^6.6.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
