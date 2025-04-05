@@ -6,10 +6,10 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withHashLocation()),
-    provideClientHydration(),
-    provideMarkdown(),
-  ],
+    providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(routes, withHashLocation()),
+        provideClientHydration(),
+        provideMarkdown(),
+    ],
 };
