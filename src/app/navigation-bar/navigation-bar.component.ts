@@ -5,7 +5,6 @@ import {
     ViewChild,
     QueryList,
     ViewChildren,
-    HostListener,
     OnInit,
     PLATFORM_ID,
     Inject,
@@ -15,14 +14,23 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import Typed from 'typed.js';
+import { LucideAngularModule, Github, Linkedin, Sun, Moon } from 'lucide-angular';
+
 @Component({
     selector: 'app-navigation-bar',
     standalone: true,
-    imports: [RouterModule, CommonModule],
+    imports: [RouterModule, CommonModule, LucideAngularModule],
     templateUrl: './navigation-bar.component.html',
 })
 export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy {
     private typed: Typed | undefined;
+
+    isDarkTheme: boolean = false;
+
+    readonly Github = Github;
+    readonly Linkedin = Linkedin;
+    readonly Sun = Sun;
+    readonly Moon = Moon;
 
     @ViewChild('navbarDefault') navbarDefault!: ElementRef;
     @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
@@ -36,19 +44,22 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
     constructor(
         @Inject(PLATFORM_ID) private platformId: object,
         private router: Router,
-    ) {}
+    ) {
+        if (isPlatformBrowser(this.platformId)) {
+            const savedTheme = localStorage.getItem('theme');
+            this.isDarkTheme = savedTheme === 'dark';
+            this.applyTheme();
+        }
+    }
 
     ngOnInit(): void {
         this.routerSubscription = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 this.isRootPage = event.urlAfterRedirects === '/#' || event.urlAfterRedirects === '/';
-                this.updateNavbarVisibility();
             }
         });
 
         if (isPlatformBrowser(this.platformId)) {
-            window.addEventListener('scroll', this.onWindowScroll.bind(this));
-            this.onWindowScroll(); // Check scroll position on load
             const options = {
                 strings: ['am open for new opportunities', 'do back-end development', 'do front-end development'],
                 typeSpeed: 50,
@@ -63,9 +74,6 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
         if (this.routerSubscription) {
             this.routerSubscription.unsubscribe();
         }
-        if (isPlatformBrowser(this.platformId)) {
-            window.removeEventListener('scroll', this.onWindowScroll.bind(this));
-        }
         if (this.typed) {
             this.typed.destroy();
         }
@@ -73,44 +81,21 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
 
     ngAfterViewInit(): void {
         this.isRootPage = this.router.url === '/#' || this.router.url === '/';
-        this.updateNavbarVisibility();
-
-        if (isPlatformBrowser(this.platformId)) {
-            window.addEventListener('scroll', this.onWindowScroll.bind(this));
-        }
     }
 
-    @HostListener('window:scroll', [])
-    onWindowScroll(): void {
-        if (!this.isRootPage) return;
-
-        if (window.scrollY > 300) {
-            if (this.navbarUnscrolled && !this.navbarUnscrolled.nativeElement.classList.contains('invisible')) {
-                this.navbarUnscrolled.nativeElement.classList.add('invisible');
-            }
-            if (this.navbarScrolled && this.navbarScrolled.nativeElement.classList.contains('invisible')) {
-                this.navbarScrolled.nativeElement.classList.remove('invisible');
-            }
-        } else {
-            if (this.navbarUnscrolled && this.navbarUnscrolled.nativeElement.classList.contains('invisible')) {
-                this.navbarUnscrolled.nativeElement.classList.remove('invisible');
-            }
-            if (this.navbarScrolled && !this.navbarScrolled.nativeElement.classList.contains('invisible')) {
-                this.navbarScrolled.nativeElement.classList.add('invisible');
-            }
-        }
+    toggleTheme(): void {
+        this.isDarkTheme = !this.isDarkTheme;
+        localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+        this.applyTheme();
     }
 
-    private updateNavbarVisibility(): void {
-        if (this.isRootPage) {
-            this.navbarUnscrolled.nativeElement.classList.remove('invisible');
-            this.navbarUnscrolled.nativeElement.classList.add('flex');
-            this.navbarUnscrolled.nativeElement.classList.remove('hidden');
-            this.navbarScrolled.nativeElement.classList.add('invisible');
+    private applyTheme(): void {
+        if (this.isDarkTheme) {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
         } else {
-            this.navbarUnscrolled.nativeElement.classList.add('invisible');
-            this.navbarUnscrolled.nativeElement.classList.add('hidden');
-            this.navbarScrolled.nativeElement.classList.remove('invisible');
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
         }
     }
 }
