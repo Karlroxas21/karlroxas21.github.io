@@ -13,9 +13,8 @@ import { NoteViewerComponent } from './notes/note-viewer/note-viewer/note-viewer
 export const routes: Routes = [
     {
         path: '',
-        component: NavigationBarComponent,
+        component: HomeComponent,
         children: [
-            { path: '', component: HomeComponent, title: "Hello, I'm Karl!" },
             { path: 'notes', component: NotesComponent, title: 'My Notes' },
             { path: 'articles', component: ArticlesComponent, title: 'My Articles' },
             { path: 'projects', component: ProjectsComponent, title: 'My Projects' },

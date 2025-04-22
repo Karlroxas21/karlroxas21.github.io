@@ -1,15 +1,4 @@
-import {
-    Component,
-    AfterViewInit,
-    ElementRef,
-    ViewChild,
-    QueryList,
-    ViewChildren,
-    OnInit,
-    PLATFORM_ID,
-    Inject,
-    OnDestroy,
-} from '@angular/core';
+import { Component, AfterViewInit, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -31,12 +20,6 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
     readonly Linkedin = Linkedin;
     readonly Sun = Sun;
     readonly Moon = Moon;
-
-    @ViewChild('navbarDefault') navbarDefault!: ElementRef;
-    @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
-
-    @ViewChild('navbarUnscrolled') navbarUnscrolled!: ElementRef;
-    @ViewChild('navbarScrolled') navbarScrolled!: ElementRef;
 
     private routerSubscription!: Subscription;
     private isRootPage!: boolean;
