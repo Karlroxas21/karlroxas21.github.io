@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HomeComponent } from './home/home.component';
 import { NotesComponent } from './notes/notes.component';
 import { ArticlesComponent } from './articles/articles.component';

@@ -1,28 +1,59 @@
-
-    <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur-xs flex flex-col items-center">
-      <div class="container flex h-16 items-center justify-between">
+<header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur-xs md:flex md:flex-col md:items-center">
+    <div class="w-full h-16 flex items-center justify-end md:justify-between lg:px-22 px-2">
         <div class="font-medium">
-          <a class="text-xl font-bold">
-            Karl Marx Roxas
-          </a>
+            <a class="text-xl font-bold">
+                Karl Marx Roxas
+            </a>
         </div>
-        <nav class="flex-col">
+        <button id="hamburger-button" class="block pl-16 md:hidden p-2 text-gray-600 hover:text-black focus:outline-none"
+            (click)="toggleMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+        <nav class="hidden md:flex flex-col">
             <ul class="flex flex-row gap-5">
                 <li><a href="#about" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
-                <li><a href="#articles" class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
+                <li><a href="#articles"
+                        class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
                 <li><a href="#notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
-                <li><a href="#skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a></li>
-                <li><a href="#project" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a></li>
-                <li><a href="#contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a></li>
+                <li><a href="#skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                </li>
+                <li><a href="#project" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
+                </li>
+                <li><a href="#contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                </li>
             </ul>
         </nav>
-        <div class="flex gap-4">
+        <div class="hidden md:flex gap-4">
             <button (click)="toggleTheme()" class="theme-toggle">
                 <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon"></lucide-icon>
             </button>
             <a href=""><lucide-icon [img]="Github" class="my-icon"></lucide-icon></a>
             <a href=""><lucide-icon [img]="Linkedin" class="my-icon"></lucide-icon></a>
-          <!-- Social icons -->
         </div>
-      </div>
-    </header>
+        <!-- Mobile Menu -->
+        <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg">
+            <ul class="flex flex-col gap-3 p-4">
+                <li><a href="#about" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
+                <li><a href="#articles"
+                        class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
+                <li><a href="#notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
+                <li><a href="#skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                </li>
+                <li><a href="#project" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
+                </li>
+                <li><a href="#contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                </li>
+            </ul>
+            <div class="flex flex-col gap-4 pl-4 pb-4">
+                <button (click)="toggleTheme()" class="theme-toggle">
+                    <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon"></lucide-icon>
+                </button>
+                <a href=""><lucide-icon [img]="Github" class="my-icon"></lucide-icon></a>
+                <a href=""><lucide-icon [img]="Linkedin" class="my-icon"></lucide-icon></a>
+            </div>
+        </div>
+    </div>
+</header>

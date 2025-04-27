@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnInit, PLATFORM_ID, Inject, OnDestroy, HostListener } from '@angular/core';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,7 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
     private typed: Typed | undefined;
 
     isDarkTheme: boolean = false;
+    isMenuOpen: boolean = false;
 
     readonly Github = Github;
     readonly Linkedin = Linkedin;
@@ -79,6 +80,27 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
         } else {
             document.body.classList.add('light-theme');
             document.body.classList.remove('dark-theme');
+        }
+    }
+
+    toggleMenu(): void {
+        this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        const menuElement = document.querySelector('#mobile-menu'); // Adjust selector if needed
+        const buttonElement = document.querySelector('#hamburger-button'); // Adjust selector if needed
+
+        if (
+            this.isMenuOpen &&
+            menuElement &&
+            !menuElement.contains(target) &&
+            buttonElement &&
+            !buttonElement.contains(target)
+        ) {
+            this.toggleMenu();
         }
     }
 }
