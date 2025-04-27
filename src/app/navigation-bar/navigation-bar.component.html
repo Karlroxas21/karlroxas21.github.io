@@ -1,7 +1,7 @@
-<header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur-xs md:flex md:flex-col md:items-center">
+<header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur-sm dark:bg-neutral-900 md:flex md:flex-col md:items-center">
     <div class="w-full h-16 flex items-center justify-end md:justify-between lg:px-22 px-2">
         <div class="font-medium">
-            <a class="text-xl font-bold">
+            <a class="text-xl font-bold dark:text-white">
                 Karl Marx Roxas
             </a>
         </div>
@@ -14,24 +14,24 @@
         </button>
         <nav class="hidden md:flex flex-col">
             <ul class="flex flex-row gap-5">
-                <li><a href="#about" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
+                <li><a href="#about" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">About</a></li>
                 <li><a href="#articles"
-                        class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
-                <li><a href="#notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
-                <li><a href="#skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                        class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Articles</a></li>
+                <li><a href="#notes" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Notes</a></li>
+                <li><a href="#skills" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Skills</a>
                 </li>
-                <li><a href="#project" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
+                <li><a href="#project" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Project</a>
                 </li>
-                <li><a href="#contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                <li><a href="#contact" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Contact</a>
                 </li>
             </ul>
         </nav>
         <div class="hidden md:flex gap-4">
             <button (click)="toggleTheme()" class="theme-toggle">
-                <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon"></lucide-icon>
+                <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon dark:stroke-white"></lucide-icon>
             </button>
-            <a href=""><lucide-icon [img]="Github" class="my-icon"></lucide-icon></a>
-            <a href=""><lucide-icon [img]="Linkedin" class="my-icon"></lucide-icon></a>
+            <a href="https://github.com/Karlroxas21" target="_blank"><lucide-icon [img]="Github"  class="my-icon dark:stroke-white"></lucide-icon></a>
+            <a href="https://www.linkedin.com/in/km-roxas/" target="_blank"><lucide-icon [img]="Linkedin"  class="my-icon dark:stroke-white"></lucide-icon></a>
         </div>
         <!-- Mobile Menu -->
         <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg">

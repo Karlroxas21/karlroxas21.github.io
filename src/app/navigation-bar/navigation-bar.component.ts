@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, OnInit, PLATFORM_ID, Inject, OnDestroy, HostListener } from '@angular/core';
-import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { Component, PLATFORM_ID, Inject, HostListener } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import Typed from 'typed.js';
@@ -11,7 +11,7 @@ import { LucideAngularModule, Github, Linkedin, Sun, Moon } from 'lucide-angular
     imports: [RouterModule, CommonModule, LucideAngularModule],
     templateUrl: './navigation-bar.component.html',
 })
-export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy {
+export class NavigationBarComponent {
     private typed: Typed | undefined;
 
     isDarkTheme: boolean = false;
@@ -36,50 +36,23 @@ export class NavigationBarComponent implements AfterViewInit, OnInit, OnDestroy 
         }
     }
 
-    ngOnInit(): void {
-        this.routerSubscription = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.isRootPage = event.urlAfterRedirects === '/#' || event.urlAfterRedirects === '/';
-            }
-        });
-
-        if (isPlatformBrowser(this.platformId)) {
-            const options = {
-                strings: ['am open for new opportunities', 'do back-end development', 'do front-end development'],
-                typeSpeed: 50,
-                backSpeed: 50,
-                loop: true,
-            };
-            this.typed = new Typed('.typed', options);
-        }
-    }
-
-    ngOnDestroy(): void {
-        if (this.routerSubscription) {
-            this.routerSubscription.unsubscribe();
-        }
-        if (this.typed) {
-            this.typed.destroy();
-        }
-    }
-
-    ngAfterViewInit(): void {
-        this.isRootPage = this.router.url === '/#' || this.router.url === '/';
-    }
-
     toggleTheme(): void {
         this.isDarkTheme = !this.isDarkTheme;
         localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
         this.applyTheme();
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            this.isDarkTheme = e.matches;
+            this.applyTheme();
+        });
     }
 
     private applyTheme(): void {
+        const htmlElement = document.documentElement;
         if (this.isDarkTheme) {
-            document.body.classList.add('dark-theme');
-            document.body.classList.remove('light-theme');
+            htmlElement.classList.add('dark');
         } else {
-            document.body.classList.add('light-theme');
-            document.body.classList.remove('dark-theme');
+            htmlElement.classList.remove('dark');
         }
     }
 
