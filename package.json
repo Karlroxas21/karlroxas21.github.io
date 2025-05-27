@@ -28,8 +28,10 @@
     "express": "^4.18.2",
     "lucide-angular": "^0.494.0",
     "ngx-markdown": "^18.0.0",
+    "postcss": "^8.5.3",
     "prismjs": "^1.29.0",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.4",
     "tslib": "^2.3.0",
     "typed.js": "^2.1.0",
     "zone.js": "~0.14.3"
@@ -46,7 +48,7 @@
     "@types/node": "^18.18.0",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.1",
     "eslint-config-standard": "^17.1.0",
@@ -62,10 +64,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.4",
     "typescript": "~5.5.2",
     "typescript-eslint": "^8.29.0"
   }
