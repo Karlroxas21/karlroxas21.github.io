@@ -1,17 +1,16 @@
-<section id="article" class="">
-    <div class="mx-2 flex justify-center h-screen border-r border-l border-gray-300 py-20 lg:mx-20">
-
+<section id="article" class="dark:text-white">
+    <div class="mx-2 flex justify-center">
         <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
             <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
                 <p>My Articles</p>
             </div>
             <div class="article-container" class="grid grid-cols-2 gap-5">
-                <div id="article-1" class="border  rounded-lg shadow-md hover:scale-101 transition">
+                <div id="article-1" class="border rounded-lg shadow-md hover:scale-101 transition">
                     <div id="details" class="p-5 flex flex-col gap-2">
                         <div>
                             <a class="text-xl font-semibold underline" [routerLink]="['/article', 'ecotopia']">Undestanding Hexagonal Architecture(Ports and Adapters)</a>
                         </div>
-                        <div id="date-tag" class="flex flex-row justify-between text-gray-800 ">
+                        <div id="date-tag" class="flex flex-row justify-between text-gray-800 dark:text-white">
                             <div>
                                 <p>June 03, 2025 </p>
                             </div>
@@ -21,12 +20,11 @@
                             
                         </div>
                         <div class="border"></div>
-                        <div class="text-gray-800 ">
+                        <div class="text-gray-800 dark:text-white/60">
                             Hexagonal Architecture, also known as Ports and Adapters, is a software design pattern that emphasizes separation of concerns. It allows applications to be independent of frameworks, databases, and external agencies, making them easier to test and maintain.
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>

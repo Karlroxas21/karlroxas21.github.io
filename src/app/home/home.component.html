@@ -1,7 +1,7 @@
 <!-- Main -->
 <router-outlet></router-outlet>
  <section id="hero" class="text-gray-800 dark:bg-neutral-900">
-    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20 border-gray-300 border-l border-r">
+    <div class="flex justify-center items-center mx-2 py-20">
         <div class="flex flex-col gap-5">
             <div class="flex flex-col gap-5">
                 <div class="flex justify-center rounded-full">
@@ -30,12 +30,12 @@
                     </div>
                     <div class="flex justify-center gap-4">
                         <button
-                            class="bg-gray-800 dark:hover:border dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white text-white p-2 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-900 transition-all">
-                            <a href="#" class="hover:cursor-pointer">Get in touch</a>
-                        </button>
-                        <button
                             class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
                             <a href="#" class="cursor-pointer">View my work</a>
+                        </button>
+                         <button
+                            class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
+                            <a href="#" class="cursor-pointer">Download my resume</a>
                         </button>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
     </div>
 </section>
 <section id="about-me" class="text-gray-800 dark:bg-neutral-900 border-t">
-    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20 border-gray-300 border-l border-r">
+    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
         <div class="flex flex-row w-full justify-between mx-5 gap-5 xl:mx-72 lg:gap-20">
             <div class="text-left flex gap-5 flex-col">
                 <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
@@ -67,7 +67,7 @@
     </div>
 </section>
 <section id="skills" class="text-gray-800 dark:bg-neutral-900 border-t">
-    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20 border-gray-300 border-l border-r">
+    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
         <div class="flex flex-col w-full mx-5 xl:mx-72 gap-5">
             <div class="text-left flex gap-5 flex-col ">
                 <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
@@ -156,9 +156,13 @@
         </div>
     </div>
 </section>
-<app-projects></app-projects>
-<section id="get-in-touch" class="text-gray-500 dark:bg-neutral-900 border-t border-t">
-    <div class="flex flex-row justify-center items-center mx-2 lg:mx-20 py-20 border-gray-300 border-l border-r">
+<section id="projects" class="text-gray-800 dark:bg-neutral-900 mx-2 border-t">
+    <div class="py-20 lg:mx-20"> 
+        <app-projects></app-projects>
+    </div>
+</section>
+<section id="get-in-touch" class="text-gray-500 dark:bg-neutral-900 border-t">
+    <div class="flex flex-row justify-center items-center mx-2 lg:mx-20 py-20">
         <div class="grid md:grid-cols-1 md:grid-cols-2 w-full mx-5 gap-5 xl:mx-72 lg:gap-20">
             <div class="text-left gap-5 flex flex-col ">
                 <div class="text-2xl text-gray-800 font-extrabold dark:text-white/80">
@@ -170,7 +174,7 @@
                 <div class="flex flex-col gap-2 dark:text-white/60">
                     <div class="flex gap-2">
                         <lucide-icon [img]="Mail" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
-                        <a href="mailto:example@example.com" type="email" class="hover:text-gray-800 dark:hover:text-white/80 transition">karlm.roxas&#64;gmail.com</a>
+                        <a href="mailto:karlm.roxas@gmail.com" type="email" class="hover:text-gray-800 dark:hover:text-white/80 transition">karlm.roxas&#64;gmail.com</a>
                     </div>
                     <div class="flex gap-2">
                         <lucide-icon [img]="Linkedin" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>

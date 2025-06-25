@@ -9,6 +9,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { ArticleViewerComponent } from './articles/article-viewer/article-viewer/article-viewer.component';
 import { NoteViewerComponent } from './notes/note-viewer/note-viewer/note-viewer.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, title: 'Karl Marx Roxas - Home' },
@@ -20,4 +21,5 @@ export const routes: Routes = [
     { path: 'resume', component: ResumeComponent, title: 'Hire me!' },
     { path: 'article/:file', component: ArticleViewerComponent },
     { path: 'note/:file', component: NoteViewerComponent },
+    { path: 'contact', component: ContactComponent },
 ];
