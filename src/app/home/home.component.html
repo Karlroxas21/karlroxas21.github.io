@@ -1,11 +1,223 @@
 <!-- Main -->
-<div class="bg-custom-gray pb-24">
-  <div class="pt-10 text-gray-400">
-    <section class="mt-5">
-     
-      <div class="mt-5">
-        <app-project-template></app-project-template>
-      </div>
-    </section>
-  </div>
-</div>
+<router-outlet></router-outlet>
+ <section id="hero" class="text-gray-800 dark:bg-neutral-900">
+    <div class="flex justify-center items-center mx-2 py-20">
+        <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-5">
+                <div class="flex justify-center rounded-full">
+                    <div class="w-20 lg:w-32 rounded-full ">
+                        <a routerLink="" class="items-center space-x-3 sm:flex">
+                            <img src="/home/my_pic_circle.png" alt="Logo of Karl" class="w-20 lg:w-32 rounded-full" />
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div>
+                        <p class="text-2xl font-extrabold text-gray-800 dark:text-white">Karl Marx Roxas</p>
+                    </div>
+                    <div class="text-gray-600 dark:text-white/80 font-semibold">Software Engineer & Full Stack Developer</div>
+                    <div class="text-gray-600 dark:text-white/80 font-semibold">I'm open for new opportunities and job </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="flex flex-col gap-7 text-center mx-5 md:mx-20 xl:mx-72">
+
+                    <div class="">
+                        <p class="text-gray-600 lg:text-center dark:text-white/60">I build accessible, user-friendly web applications with
+                            modern
+                            technologies.
+                            Focused on creating elegant solutions to complex problems</p>
+                    </div>
+                    <div class="flex justify-center gap-4">
+                        <button
+                            class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
+                            <a href="#" class="cursor-pointer">View my work</a>
+                        </button>
+                         <button
+                            class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
+                            <a href="#" class="cursor-pointer">Download my resume</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="about-me" class="text-gray-800 dark:bg-neutral-900 border-t">
+    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
+        <div class="flex flex-row w-full justify-between mx-5 gap-5 xl:mx-72 lg:gap-20">
+            <div class="text-left flex gap-5 flex-col">
+                <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
+                    <p>About me</p>
+                </div>
+                <div class="text-gray-600 flex flex-col gap-2 dark:text-white/60">
+                    <p>I'm a software engineer with ~1 year of experience building web applications and digital
+                        solutions. I specialized in Angular, Spring Ecosystem, Typescript, and Node.js</p>
+                    <p>My approach combines technical expertise with a strong focus on user experience. I believe in
+                        writing clean, maintanable code that solves real problems.</p>
+                    <p>Currently, I am working at Amihan Global Strategies (now Nmblr.ai) where I contribute to delivering
+                        cutting-edge enterprise technologies to business that improved customer satisfaction</p>
+                </div>
+            </div>
+            <div class="">
+                <img src="/home/my_pic_resized.png" alt="My Picture" class="rounded-sm" />
+            </div>
+        </div>
+    </div>
+</section>
+<section id="skills" class="text-gray-800 dark:bg-neutral-900 border-t">
+    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
+        <div class="flex flex-col w-full mx-5 xl:mx-72 gap-5">
+            <div class="text-left flex gap-5 flex-col ">
+                <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
+                    <p>Skills & Expertise</p>
+                </div>
+            </div>
+            <div class="flex flex-row gap-5 justify-between">
+                <div class="w-full flex flex-col gap-2 lg:gap-4">
+                    <div class="flex flex-col gap-2">
+                        <div class="font-bold dark:text-white">
+                            <p>Frontend Development</p>
+                        </div>
+                        <div class="flex flex-row flex-wrap gap-2 text-sm">
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Angular</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Nextjs</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Flutter</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">React</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">NgRx</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Tailwind CSS</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Shadcn UI</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Ionic</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-bold dark:text-white">
+                            <p>Backend Development</p>
+                        </div>
+                        <div class="flex flex-row flex-wrap gap-2 text-sm">
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Expressjs</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Spring Boot</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Spring Security</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Spring Batch</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Typescript</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Java</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Go</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">C++</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">PostgreSQL</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">MongoDB</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Neo4j</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">OAuth 2.0</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Ory Kratos</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">REST API</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">GraphQL</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Domain Driven Design</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">OWASP Coding Practices</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex flex-col gap-4">
+                    <div class="flex flex-col gap-2">
+                        <div class="font-bold dark:text-white">
+                            <p>Tools & Platforms</p>
+                        </div>
+                        <div class="flex flex-row flex-wrap gap-2 text-sm">
+                            
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">OpenAPI</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">VS Code</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">IntelliJ IDEA</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Git</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">GitHub</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">GitHub Actions</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Postman</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Docker</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Kubernetes</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Linux</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Bash Scripting</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-bold dark:text-white">
+                            <p>Soft skills</p>
+                        </div>
+                        <div class="flex flex-row flex-wrap gap-2 text-sm">
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Ownership</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Communication</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Grit</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Critical Thinking</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Problem Solving</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Time management</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">Adaptability</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="projects" class="text-gray-800 dark:bg-neutral-900 mx-2 border-t">
+    <div class="py-20 lg:mx-20"> 
+        <app-projects></app-projects>
+    </div>
+</section>
+<section id="get-in-touch" class="text-gray-500 dark:bg-neutral-900 border-t">
+    <div class="flex flex-row justify-center items-center mx-2 lg:mx-20 py-20">
+        <div class="grid md:grid-cols-1 md:grid-cols-2 w-full mx-5 gap-5 xl:mx-72 lg:gap-20">
+            <div class="text-left gap-5 flex flex-col ">
+                <div class="text-2xl text-gray-800 font-extrabold dark:text-white/80">
+                    <p>Get In Touch</p>
+                </div>
+                <div class="dark:text-white/60">
+                    <p>I'm currently open to new opportunities and colloaborations. Feel free to rech out if you'd like to work together or just say hello.</p>
+                </div>
+                <div class="flex flex-col gap-2 dark:text-white/60">
+                    <div class="flex gap-2">
+                        <lucide-icon [img]="Mail" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
+                        <a href="mailto:karlm.roxas@gmail.com" type="email" class="hover:text-gray-800 dark:hover:text-white/80 transition">karlm.roxas&#64;gmail.com</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <lucide-icon [img]="Linkedin" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
+                        <a href="https://www.linkedin.com/in/km-roxas/" target="_blank" class="hover:text-gray-800 dark:hover:text-white/80 transition">linkedin.com/in/km-roxas/</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <lucide-icon [img]="Github" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
+                        <a href="https://github.com/Karlroxas21"  target="_blank" class="hover:text-gray-800 dark:hover:text-white/80 transition">github.com/Karlroxas21</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-black dark:border-white flex flex-col gap-2 p-5 rounded-lg">
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class=" flex flex-col gap-2">
+                    <div>
+                      <label class="text-gray-800 dark:text-white/80">Name</label>
+                      <input formControlName="name" type="text" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your name" />
+                      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-red-500 text-sm pl-2">
+                        Name is required.
+                      </div>
+                    </div>
+              
+                    <div>
+                      <label class="text-gray-800 dark:text-white/80">Email</label>
+                      <input formControlName="email" type="email" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your Email"/>
+                      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-500 text-sm pl-2">
+                        Valid email is required.
+                      </div>
+                    </div>
+              
+                    <div>
+                      <label class="text-gray-800 dark:text-white/80">Message</label>
+                      <textarea formControlName="message" rows="4" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your Message"></textarea>
+                      <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="text-red-500 text-sm pl-2">
+                        Message is required.
+                      </div>
+                    </div>
+              
+                    <button type="submit" [disabled]="contactForm.invalid" class="bg-gray-800 text-white dark:hover:bg-white dark:hover:text-neutral-900 py-2 px-4 rounded hover:bg-gray-900 transition">
+                      Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,43 +1,31 @@
-<div
-  class="mt-32 h-screen bg-custom-gray px-5 text-gray-400 lg:mx-40 2xl:mx-32 2xl:px-96"
->
-  <div class="text-3xl font-medium">
-    <p class="text-white">Articles</p>
-  </div>
-  <section id="notes">
-    <div class="mt-10">
-      <div id="note-1">
-        <div class="grid grid-cols-4 border-b border-gray-400 pb-2 font-medium">
-          <div id="title" class="col-span-2 text-lg">
-            <a
-              [routerLink]="['/article', 'ecotopia']"
-              target="_blank"
-              class="cursor-pointer decoration-wavy transition hover:text-custom-red hover:underline"
-              >Ecotopia: The Making 1</a
-            >
-          </div>
-          <div
-            id="tag"
-            class="col-span-2 hidden justify-end gap-2 text-xs md:flex"
-          >
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Software Engineering</a>
+<section id="article" class="dark:text-white">
+    <div class="mx-2 flex justify-center">
+        <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
+            <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
+                <p>My Articles</p>
             </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Informative</a>
+            <div class="article-container" class="grid grid-cols-2 gap-5">
+                <div id="article-1" class="border rounded-lg shadow-md hover:scale-101 transition">
+                    <div id="details" class="p-5 flex flex-col gap-2">
+                        <div>
+                            <a class="text-xl font-semibold underline" [routerLink]="['/article', 'ecotopia']">Undestanding Hexagonal Architecture(Ports and Adapters)</a>
+                        </div>
+                        <div id="date-tag" class="flex flex-row justify-between text-gray-800 dark:text-white">
+                            <div>
+                                <p>June 03, 2025 </p>
+                            </div>
+                            <div>
+                                <p>#softwareEngineering</p>
+                            </div>
+                            
+                        </div>
+                        <div class="border"></div>
+                        <div class="text-gray-800 dark:text-white/60">
+                            Hexagonal Architecture, also known as Ports and Adapters, is a software design pattern that emphasizes separation of concerns. It allows applications to be independent of frameworks, databases, and external agencies, making them easier to test and maintain.
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4 text-custom-red"
-            >
-              <a href="">August 2024</a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-</div>
+</section>

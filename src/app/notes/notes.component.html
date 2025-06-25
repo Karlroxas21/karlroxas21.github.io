@@ -1,77 +1,33 @@
-<div
-  class="mt-32 h-screen bg-custom-gray px-5 text-gray-400 lg:mx-40 2xl:mx-32 2xl:px-96"
->
-  <div class="text-3xl font-medium">
-    <p class="text-white">Notes</p>
-  </div>
-  <section id="notes">
-    <div class="mt-10">
-      <div id="note-1">
-        <div class="grid grid-cols-4 border-b border-gray-400 pb-2 font-medium">
-          <div id="title" class="col-span-2 text-lg">
-            <a
-              [routerLink]="['/note', 'ecotopia-note']"
-              target="_blank"
-              class="decoration-wavy transition hover:text-custom-red hover:underline"
-              >Design Patterns</a
-            >
-          </div>
-          <div
-            id="tag"
-            class="col-span-2 hidden justify-end gap-2 text-xs md:flex"
-          >
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Software Engineering</a>
+<section id="notes" class="dark:text-white">
+    <div class="mx-2 flex justify-center">
+
+        <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
+            <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
+                <p>My Notes</p>
             </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Informative</a>
+            <div class="article-container" class="grid grid-cols-2 gap-5">
+                <div id="article-1" class="border  rounded-lg shadow-md hover:scale-101 transition">
+                    <div id="details" class="p-5 flex flex-col gap-2">
+                        <div>
+                            <a class="text-xl font-semibold underline" [routerLink]="['/note', 'ecotopia']">How System Talk to each other</a>
+                        </div>
+                        <div id="date-tag" class="flex flex-row justify-between text-gray-800 dark:text-white">
+                            <div>
+                                <p>June 03, 2025 </p>
+                            </div>
+                            <div>
+                                <p>#softwareEngineering</p>
+                            </div>
+                            
+                        </div>
+                        <div class="border"></div>
+                        <div class="text-gray-800 dark:text-white/60">
+                            REST API, GRAPHQL,
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4 text-custom-red"
-            >
-              <a href="">August 2024</a>
-            </div>
-          </div>
         </div>
-      </div>
-      <div id="note-2">
-        <div
-          class="grid grid-cols-4 border-b border-gray-400 pb-2 pt-5 font-medium"
-        >
-          <div id="title" class="col-span-2 text-lg">
-            <a
-              [routerLink]="['/note', 'semver']"
-              target="_blank"
-              class="decoration-wavy transition hover:text-custom-red hover:underline"
-              >Semantic Versioning</a
-            >
-          </div>
-          <div
-            id="tag"
-            class="col-span-2 hidden justify-end gap-2 text-xs md:flex"
-          >
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Software Engineering</a>
-            </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4"
-            >
-              <a href="">Informative</a>
-            </div>
-            <div
-              class="flex items-center rounded-2xl border border-gray-400 px-4 text-custom-red"
-            >
-              <a href="">August 2024</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-</div>
+</section>

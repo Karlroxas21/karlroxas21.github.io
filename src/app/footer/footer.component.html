@@ -1,10 +1,16 @@
-<footer
-  class="border-t border-gray-400 bg-custom-gray lg:flex"
->
-  <div
-    class="lg:mx-40 2xl:mx-32 2xl:px-96 grid grid-rows-4 items-center justify-center gap-3 p-5 text-sm text-gray-300 md:grid-cols-3 md:grid-rows-2 lg:flex"
-  >
-  <p class="">Built with <a href="https://angular.dev/"  class="hover:text-gray-100" target="_blank">Angular</a>, <a href="https://tailwindcss.com/" class="hover:text-gray-100" target="_blank">TailwindCSS</a>, and <a href="https://github.com/" class="hover:text-gray-100" target="_blank">GitHub Pages</a></p>
-  </div>
-  
+<footer class="border-t lg:flex dark:bg-neutral-900">
+    <div class="w-full flex flex-col items-center lg:flex-row lg:mx-20 lg:justify-between gap-3 p-5 text-sm text-gray-800 dark:text-white/80">
+        <div>
+            <p class="">Built with <a href="https://angular.dev/" class="hover:text-black" target="_blank">Angular</a> ,
+                <a href="https://tailwindcss.com/" class="hover:text-black" target="_blank">TailwindCSS</a>, and
+                <a href="https://github.com/" class="hover:text-black" target="_blank">GitHub Pages</a>
+            </p>
+        </div>
+
+        <div class="flex flex-row gap-2">
+            <a href="https://github.com/Karlroxas21" target="_blank"><lucide-icon [img]="Github" class="my-icon dark:stroke-white"></lucide-icon></a>
+            <a href="https://www.linkedin.com/in/km-roxas/" target="_blank"><lucide-icon [img]="Linkedin" class="my-icon dark:stroke-white"></lucide-icon></a>
+            <a href="mailto:karlm.roxas@gmail.com" ><lucide-icon [img]="Mail" class="my-icon dark:stroke-white"></lucide-icon></a>
+        </div>
+    </div>
 </footer>
