@@ -41,3 +41,7 @@ layer(base);
 /* * {
     font-family: "Mulish", sans-serif;
 } */
+
+.project-background-color {
+    background-color: #0d1117;
+}
