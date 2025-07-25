@@ -10,10 +10,12 @@ import { ArticleViewerComponent } from './articles/article-viewer/article-viewer
 import { NoteViewerComponent } from './notes/note-viewer/note-viewer/note-viewer.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ContactComponent } from './contact/contact.component';
+import { ServicesComponent } from './services/services.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, title: 'Karl Marx Roxas - Home' },
     { path: 'about-me', component: AboutMeComponent, title: 'About me' },
+    { path: 'service', component: ServicesComponent, title: 'Service I Offer' },
     { path: 'articles', component: ArticlesComponent, title: 'My Articles' },
     { path: 'notes', component: NotesComponent, title: 'My Notes' },
     { path: 'skills', component: SkillsComponent, title: 'My skills' },

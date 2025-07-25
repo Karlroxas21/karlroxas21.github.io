@@ -15,6 +15,7 @@
         <nav class="hidden md:flex flex-col">
             <ul class="flex flex-row gap-5 text-sm">
                 <li><a routerLink="/about-me" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">About</a></li>
+                <li><a routerLink="/service" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Service</a></li>
                 <li><a routerLink="/articles"
                         class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Articles</a></li>
                 <li><a routerLink="/notes" class="font-medium text-gray-600 dark:text-white/80 dark:hover:text-white hover:text-black transition-colors">Notes</a></li>
@@ -36,15 +37,15 @@
         <!-- Mobile Menu -->
         <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg">
             <ul class="flex flex-col gap-3 p-4">
-                <li><a href="#about" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
-                <li><a href="#articles"
+                <li><a routerLink="/about-me" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
+                <li><a routerLink="/articles"
                         class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
-                <li><a href="#notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
-                <li><a href="#skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                <li><a routerLink="/notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
+                <li><a routerLink="/skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
                 </li>
-                <li><a href="#project" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
+                <li><a routerLink="/projects" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
                 </li>
-                <li><a href="#contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                <li><a routerLink="/contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
                 </li>
             </ul>
             <div class="flex flex-col gap-4 pl-4 pb-4">

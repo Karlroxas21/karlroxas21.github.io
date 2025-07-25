@@ -1,0 +1,16 @@
+<div class="flex flex-col p-5 w-auto">
+    <div class="flex items-center justify-center"><lucide-icon [img]="icon" class="my-icon dark:stroke-white"></lucide-icon></div>
+    <div>
+        <p class="text-xl font-semibold">{{title}}</p>
+    </div>
+    <div class="text-gray-600 lg:text-center dark:text-white/60">
+        <p>{{description}}</p>
+    </div>
+    <div>
+        <div class="flex flex-row flex-wrap gap-2 text-sm mt-2">
+            @for(tag of tags; track tag ) {
+                <p class="bg-gray-200 px-5 py-1 rounded-xl">{{tag}}</p>
+            }
+         </div>
+    </div>
+</div>

@@ -33,9 +33,21 @@
                             class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
                             <a href="#" class="cursor-pointer">View my work</a>
                         </button>
-                         <button
+                         <button 
+                            (click)="downloadResume()"
                             class="border p-2 text-neutral-800 dark:text-white dark:hover:text-neutral-900 rounded-lg text-sm font-semibold hover:cursor-pointer hover:bg-gray-100 transition">
-                            <a href="#" class="cursor-pointer">Download my resume</a>
+                            @if(isDownloadResumeLoading()){
+                                <div class="flex items-center justify-center">
+                                    <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                                    <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 11-8 8z" />
+                                    </svg>
+                                    <span>Downloading...</span>
+                                </div>
+                            } @else {
+                                <span class="cursor-pointer">Download my resume</span>
+                            }
                         </button>
                     </div>
                 </div>
@@ -52,12 +64,12 @@
                     <p>About me</p>
                 </div>
                 <div class="text-gray-600 flex flex-col gap-2 dark:text-white/60">
-                    <p>I'm a software engineer with ~1 year of experience building web applications and digital
-                        solutions. I specialized in Angular, Spring Ecosystem, Typescript, and Node.js</p>
+                    <p>I'm a software engineer with ~1 year of experience building & maintaining web applications and digital
+                        products. I specialized in Angular, Spring Ecosystem, Typescript, and Backend but flexible to any technologies</p>
                     <p>My approach combines technical expertise with a strong focus on user experience. I believe in
                         writing clean, maintanable code that solves real problems.</p>
-                    <p>Currently, I am working at Amihan Global Strategies (now Nmblr.ai) where I contribute to delivering
-                        cutting-edge enterprise technologies to business that improved customer satisfaction</p>
+                    <p>Currently, I am working at Amihan Global Strategies where I contribute to delivering
+                        cutting-edge enterprise technologies to business and end-user that improved customer satisfaction</p>
                 </div>
             </div>
             <div class="">
@@ -81,6 +93,7 @@
                             <p>Frontend Development</p>
                         </div>
                         <div class="flex flex-row flex-wrap gap-2 text-sm">
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">HTML, CSS, JS</p>
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Angular</p>
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Nextjs</p>
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Flutter</p>
@@ -89,6 +102,7 @@
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Tailwind CSS</p>
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Shadcn UI</p>
                             <p class="bg-gray-200 px-5 py-1 rounded-xl">Ionic</p>
+                            <p class="bg-gray-200 px-5 py-1 rounded-xl">PrimeNG</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
@@ -161,63 +175,49 @@
         <app-projects></app-projects>
     </div>
 </section>
-<section id="get-in-touch" class="text-gray-500 dark:bg-neutral-900 border-t">
-    <div class="flex flex-row justify-center items-center mx-2 lg:mx-20 py-20">
-        <div class="grid md:grid-cols-1 md:grid-cols-2 w-full mx-5 gap-5 xl:mx-72 lg:gap-20">
-            <div class="text-left gap-5 flex flex-col ">
-                <div class="text-2xl text-gray-800 font-extrabold dark:text-white/80">
-                    <p>Get In Touch</p>
-                </div>
-                <div class="dark:text-white/60">
-                    <p>I'm currently open to new opportunities and colloaborations. Feel free to rech out if you'd like to work together or just say hello.</p>
-                </div>
-                <div class="flex flex-col gap-2 dark:text-white/60">
-                    <div class="flex gap-2">
-                        <lucide-icon [img]="Mail" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
-                        <a href="mailto:karlm.roxas@gmail.com" type="email" class="hover:text-gray-800 dark:hover:text-white/80 transition">karlm.roxas&#64;gmail.com</a>
-                    </div>
-                    <div class="flex gap-2">
-                        <lucide-icon [img]="Linkedin" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
-                        <a href="https://www.linkedin.com/in/km-roxas/" target="_blank" class="hover:text-gray-800 dark:hover:text-white/80 transition">linkedin.com/in/km-roxas/</a>
-                    </div>
-                    <div class="flex gap-2">
-                        <lucide-icon [img]="Github" class="my-icon w-5 h-6 dark:stroke-white"></lucide-icon>
-                        <a href="https://github.com/Karlroxas21"  target="_blank" class="hover:text-gray-800 dark:hover:text-white/80 transition">github.com/Karlroxas21</a>
-                    </div>
-                </div>
+<section id="about-me" class="text-gray-800 dark:bg-neutral-900 border-t">
+    <div class="flex flex-col justify-center items-center mx-2 lg:mx-20 py-20">
+        <div class="flex flex-col gap-7 text-center mx-5 md:mx-20 xl:mx-72">
+            <p class="text-black font-semibold text-2xl">Services I Offer</p>
+            <div class="grid grid-cols-3 gap-5">
+                <app-card
+                    class="border rounded-xl"
+                    [icon]=Code
+                    title="Web Development"
+                    description="Custom web application like E-commerce, tailored system for your business, projects, etc."
+                    [tags]="['Angular', 'React', 'Expressjs', 'Spring Boot', 'NestJS', 'Typescript', 'HTML', 'CSS', 'Java']"
+                ></app-card>
+                
+                <app-card
+                    class="border rounded-xl"
+                    [icon]=Code
+                    title="Mobile Apps"
+                    description="Cross-platform mobile applications using React native for iOS and Android Platforms"
+                    [tags]="['React native', 'Expo', 'Supabase', 'Firebase']"
+                ></app-card>
+                
+                <app-card
+                    class="border rounded-xl"
+                    [icon]=Code
+                    title="Backend Development"
+                    description="Scalable server-side API, databases, and cloud integration"
+                    [tags]="['Node.js', 'Spring Boot', 'Expressjs', 'Java', 'Typescript', 'PostgreSQL', 'Neo4j', 'Render', 'GitHub Pages', 'Heroku']"
+                ></app-card>
+                
+                <app-card
+                    class="border rounded-xl"
+                    [icon]=Code
+                    title="Maintenance & Support"
+                    description="Ongoing support, updates, and features enhancement for your amazing application."
+                    [tags]="['Bug fixes', 'Updates', 'Monitoring']"
+                ></app-card>
+                
             </div>
-            <div class="border border-black dark:border-white flex flex-col gap-2 p-5 rounded-lg">
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class=" flex flex-col gap-2">
-                    <div>
-                      <label class="text-gray-800 dark:text-white/80">Name</label>
-                      <input formControlName="name" type="text" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your name" />
-                      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-red-500 text-sm pl-2">
-                        Name is required.
-                      </div>
-                    </div>
-              
-                    <div>
-                      <label class="text-gray-800 dark:text-white/80">Email</label>
-                      <input formControlName="email" type="email" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your Email"/>
-                      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-500 text-sm pl-2">
-                        Valid email is required.
-                      </div>
-                    </div>
-              
-                    <div>
-                      <label class="text-gray-800 dark:text-white/80">Message</label>
-                      <textarea formControlName="message" rows="4" class="w-full border p-2 rounded dark:text-white" placeholder="Enter your Message"></textarea>
-                      <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="text-red-500 text-sm pl-2">
-                        Message is required.
-                      </div>
-                    </div>
-              
-                    <button type="submit" [disabled]="contactForm.invalid" class="bg-gray-800 text-white dark:hover:bg-white dark:hover:text-neutral-900 py-2 px-4 rounded hover:bg-gray-900 transition">
-                      Send Message
-                    </button>
-                </form>
-            </div>
-
+            
         </div>
+        
     </div>
+</section>
+<section id="get-in-touch" class="text-gray-500 dark:bg-neutral-900 border-t py-20">
+     <app-contact></app-contact>
 </section>
