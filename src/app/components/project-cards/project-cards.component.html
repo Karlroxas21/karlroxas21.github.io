@@ -1,0 +1,49 @@
+    <div id="project-1" class="flex flex-col rounded-xl border h-full group hover:-translate-y-2 transition-all duration-500 backdrop-blur-sm hover:shadow-2xl hover:shadow-purple-500/10">
+        <div class="flex-1 flex flex-col">
+            <div class="flex h-72 w-auto items-center justify-center rounded-t-xl project-background-color -z-10 overflow-hidden">
+                <img [src]="img">
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+                <div class="font-bold text-xl dark:text-white/80 group-hover:text-purple-600 transition-colors duration-300">
+                    <p>{{title}}</p>
+                </div>
+                <div class="mt-2 text-gray-500 dark:text-white/60">
+                    <p>{{description}}</p>
+                </div>
+                <app-tags
+                    [tags]="tags">
+                </app-tags>
+            </div>
+            <div class="inline-flex border-t w-full gap-5 justify-center items-center px-4 py-3">
+                <div class="w-full">
+                    <a href={{buttonLink}} target="_blank" class="">
+                        <button class="border py-1 rounded-lg font-semibold text-md hover:cursor-pointer dark:text-white/80 w-full flex 
+                        justify-center items-center gap-2 bg-transparent flex-1 hover:bg-gradient-to-r 
+                        hover:from-gray-50 hover:to-blue-50 dark:hover:from-gray-950 dark:hover:to-blue-950 transition-colors group">
+                            <div>
+                                <lucide-icon [img]="Github" class="my-icon h-4 w-4 dark:stroke-white transition-transform duration-300 group-hover:scale-110"></lucide-icon>
+                            </div>
+                            <p>Github</p>
+                        </button>
+                    </a>
+                </div>
+               
+                <div class="w-full">
+                    <a href={{buttonLink}} target="_blank" class="">
+                        <button class="border py-1 rounded-lg font-semibold text-md hover:cursor-pointer dark:text-white/80 w-full flex flex-wrap
+                        justify-center items-center gap-2 bg-transparent flex-1 hover:bg-gradient-to-r 
+                        hover:from-gray-50 hover:to-blue-50 dark:hover:from-gray-950 dark:hover:to-blue-950 transition-colors group">
+                            <div>
+                                <lucide-icon [img]="SquareArrowOutUpRight" class="my-icon h-4 w-4 dark:stroke-white transition-transform duration-300 group-hover:scale-110"></lucide-icon>
+                            </div>
+                            @if(buttonName) {
+                                <p>{{buttonName}}</p>
+                            } @else {
+                                <p>Demo</p>
+                            }
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { LucideAngularModule, Github, Linkedin, Mail, Phone, FileDown } from 'lucide-angular';
+import { LucideAngularModule, Github, Linkedin, Phone, FileDown, Mail } from 'lucide-angular';
 import { EmailService } from '../service/email.service';
 
 @Component({
@@ -22,6 +22,8 @@ export class ContactComponent {
 
     emailService = inject(EmailService);
 
+    isEmailSending = signal(false);
+
     constructor(private fb: FormBuilder) {
         this.contactForm = this.fb.group({
             name: ['', Validators.required],
@@ -34,10 +36,12 @@ export class ContactComponent {
     onSubmit() {
         const from = this.contactForm.value.email;
         const body = `From ${this.contactForm.value.name}\n${this.contactForm.value.message}`;
+        this.isEmailSending.set(true);
 
         this.emailService.sendEmail({ from, message: body }).subscribe({
             next: () => {
                 alert('Message sent!');
+                this.isEmailSending.set(false);
                 this.contactForm.reset();
             },
             error: (err) => {
@@ -45,9 +49,5 @@ export class ContactComponent {
                 console.error(err);
             },
         });
-
-        // if (this.contactForm.valid) {
-        //     console.log('Form submitted:', this.contactForm.value);
-        // }
     }
 }

@@ -1,14 +1,33 @@
-<section id="projects" class="">
-        <div class="mx-2 flex justify-center">
-            <div class="mx-5 flex w-full flex-col gap-5 xl:mx-72">
-                <div class="flex flex-col gap-5 text-left">
-                    <div class="text-2xl font-extrabold text-gray-800 dark:text-white">
-                        <p>Featured Personal Projects</p>
-                    </div>
-                </div>
-                <div class="">
-                    <app-project-template></app-project-template>
-                </div>
-            </div>
-        </div>
-</section>
+<!-- Header -->
+<div class="flex flex-col mb-4 gap-5">
+    <div
+        class="inline-flex justify-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent font-semibold text-sm ">
+        <lucide-icon [img]="Star" class="my-icon dark:stroke-white text-green-600"></lucide-icon>
+        <p>FEATURED PROJECTS</p>
+    </div>
+    <p class="text-4xl font-bold tracking-tight mb-4 text-center dark:text-white">My Latest Work</p>
+    <p class="text-gray-600 lg:text-center dark:text-white/60 text-lg">
+        Showcasing some of my recent weekend projects that demonstrate my skills and passion for creating something.
+    </p>
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-4">
+        <app-project-cards 
+            class="col-span-1"
+            img="/projects/programming-bro.png"
+            title="this.personalWebsite"
+            buttonLink="https://karlroxas21.github.io"
+            description="Explore my personal website to see my work and services as a Problem Solver, alongside valuable examples and articles created to give back to the community that has taught me so much."
+            [tags]="['Angular', 'Github Pages', 'Github Flow', 'Tailwind CSS']"
+        >
+        </app-project-cards>
+        <app-project-cards 
+            class="col-span-1"
+            img="/projects/innovation-amico.png"
+            buttonName="Open API/Swagger"
+            buttonLink="https://google.com"
+            title="Marx Tech API"
+            description="This personal REST API, built with Express.js, exemplifies Hexagonal and Clean Architecture principles to deliver a robust and maintainable backend."
+            [tags]="['ExpressJS', 'NodeJS', 'Docker', 'Github Flow', 'Github Container Registry', 'Hexagonal Architecture', 'Clean architecture']"
+        >
+        </app-project-cards>
+    </div>
+</div>

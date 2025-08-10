@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LucideAngularModule, Github, SquareArrowOutUpRight } from 'lucide-angular';
+import { LucideAngularModule, Github } from 'lucide-angular';
 @Component({
     selector: 'app-project-template',
     standalone: true,
@@ -9,5 +9,4 @@ import { LucideAngularModule, Github, SquareArrowOutUpRight } from 'lucide-angul
 })
 export class ProjectTemplateComponent {
     readonly Github = Github;
-    readonly SquareArrowOutUpRight = SquareArrowOutUpRight;
 }

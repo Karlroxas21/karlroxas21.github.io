@@ -7,7 +7,7 @@
         </div>
         <button id="hamburger-button" class="block pl-16 md:hidden p-2 text-gray-600 hover:text-black focus:outline-none"
             (click)="toggleMenu()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark:stroke-white" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
@@ -35,26 +35,31 @@
             <a href="https://www.linkedin.com/in/km-roxas/" target="_blank"><lucide-icon [img]="Linkedin"  class="my-icon dark:stroke-white"></lucide-icon></a>
         </div>
         <!-- Mobile Menu -->
-        <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg">
-            <ul class="flex flex-col gap-3 p-4">
-                <li><a routerLink="/about-me" class="font-medium text-gray-600 hover:text-black transition-colors">About</a></li>
-                <li><a routerLink="/articles"
-                        class="font-medium text-gray-600 hover:text-black transition-colors">Articles</a></li>
-                <li><a routerLink="/notes" class="font-medium text-gray-600 hover:text-black transition-colors">Notes</a></li>
-                <li><a routerLink="/skills" class="font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
-                </li>
-                <li><a routerLink="/projects" class="font-medium text-gray-600 hover:text-black transition-colors">Project</a>
-                </li>
-                <li><a routerLink="/contact" class="font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
-                </li>
-            </ul>
-            <div class="flex flex-col gap-4 pl-4 pb-4">
-                <button (click)="toggleTheme()" class="theme-toggle">
-                    <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon"></lucide-icon>
-                </button>
-                <a href=""><lucide-icon [img]="Github" class="my-icon"></lucide-icon></a>
-                <a href=""><lucide-icon [img]="Linkedin" class="my-icon"></lucide-icon></a>
+        @if(isMenuOpen) {
+        <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg dark:bg-neutral-900">
+            <div class="flex flex-col justify-end items-end">
+                <ul class="flex flex-col gap-3 p-4">
+                    <li><a routerLink="/about-me" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">About</a></li>
+                    <li><a routerLink="/articles"
+                                class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Articles</a></li>
+                    <li><a routerLink="/notes" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Notes</a></li>
+                    <li><a routerLink="/skills" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Skills</a>
+                    </li>
+                    <li><a routerLink="/projects" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Project</a>
+                    </li>
+                    <li><a routerLink="/contact" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Contact</a>
+                    </li>
+                </ul>
+                <div class="flex gap-4 pr-4 pb-4">
+                    <button (click)="toggleTheme()" class="theme-toggle">
+                        <lucide-icon [img]="isDarkTheme ? Sun : Moon" class="my-icon dark:stroke-white"></lucide-icon>
+                    </button>
+                    <a href=""><lucide-icon [img]="Github" class="my-icon dark:stroke-white"></lucide-icon></a>
+                    <a href=""><lucide-icon [img]="Linkedin" class="my-icon dark:stroke-white"></lucide-icon></a>
+                </div>
             </div>
         </div>
+
+        }
     </div>
 </header>

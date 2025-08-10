@@ -10,8 +10,7 @@ import { LucideAngularModule } from 'lucide-angular';
 })
 export class CardComponent {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    @Input() icon!: any;
+    // @Input() icon!: any;
     @Input() title!: string;
     @Input() description!: string;
-    @Input() tags: string[] = [];
 }
