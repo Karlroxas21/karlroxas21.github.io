@@ -4,11 +4,25 @@ import { RouterModule } from '@angular/router';
 import { ProjectTemplateComponent } from '../projects/project-template/project-template/project-template.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-import { LucideAngularModule, Github, Linkedin, Mail, Code } from 'lucide-angular';
+import {
+    LucideAngularModule,
+    Github,
+    Linkedin,
+    Mail,
+    Code,
+    Smartphone,
+    Database,
+    Construction,
+    Award,
+    Zap,
+    Wrench,
+    PersonStanding,
+} from 'lucide-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from '../contact/contact.component';
 import { CardComponent } from '../components/card/card.component';
+import { TagsComponent } from '../components/tags/tags.component';
 
 @Component({
     selector: 'app-home',
@@ -24,6 +38,7 @@ import { CardComponent } from '../components/card/card.component';
         ReactiveFormsModule,
         ContactComponent,
         CardComponent,
+        TagsComponent,
     ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
@@ -33,6 +48,13 @@ export class HomeComponent implements OnInit {
     readonly Linkedin = Linkedin;
     readonly Mail = Mail;
     readonly Code = Code;
+    readonly Smartphone = Smartphone;
+    readonly Database = Database;
+    readonly Construction = Construction;
+    readonly Award = Award;
+    readonly Zap = Zap;
+    readonly Wrench = Wrench;
+    readonly PersonStanding = PersonStanding;
 
     isDownloadResumeLoading = signal(false);
     ngOnInit(): void {}
