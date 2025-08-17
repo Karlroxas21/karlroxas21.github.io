@@ -2,259 +2,408 @@
     <div class="flex justify-center items-center">
         <div class="flex flex-col gap-5">
             <div class="flex flex-col gap-5 text-center">
-                <h1 class="text-4xl text-gray-600 font-bold dark:text-gray-200">Hi, I'm <span class="text-black dark:text-white">Karl</span></h1>
-                <p class="text-gray-600 lg:text-center dark:text-white/60">I like to keep things simple and effective.
-                </p>
-            </div>
-            <div class="">
-                <div class="flex flex-col gap-7 text-center mx-5 md:mx-20 xl:mx-72">
 
-                    <div class="">
-                        <p class="text-gray-600 lg:text-center dark:text-white/60">Currently, a Software Engineer at
-                            NMBLR that focuses on building web application using Expressjs and Typescript.
-                            I also have experience in building web applications using Angular and Java.
-                            I am also passionate about learning new technologies and improving my skills.
-                            I'm writing my articles on my blog to share my knowledge and experience with others.
+                <app-page-header title="About Me"
+                    subtitle="My journey, passion, keeping things simple & effective and the story behind the code">
+                </app-page-header>
+            </div>
+            <div class="flex justify-start items-center mx-2 lg:mx-20 py-20">
+                <div class="mx-5 md:mx-20 xl:mx-72">
+
+                    <div class="inline-flex gap-2 ">
+                        <lucide-icon [img]="Waypoints" class="my-icon dark:stroke-white text-red-600"></lucide-icon>
+                        <p
+                            class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-sm">
+                            MY JOURNEY</p>
+                    </div>
+                    <div class="space-y-6 text-lg text-gray-600 dark:text-white/60">
+                        <p>I remember back in college, the Fundamentals of Programming subject, that was the time Java
+                            was
+                            introduced
+                            to me by my professor. I am confused most of the time because it was my first time to code.
+                            I was struggling to understand the concepts, but I was determined to learn. I spent
+                            countless
+                            hours studying.
                         </p>
+                        <p>The good thing about that subject is my professor gave a anonymous question board its called
+                            Piazza to encourage
+                            students to ask questions without fear of being judged. I was the most active user in that
+                            board!
+                            I asked questions, answered questions, and learned from my classmates. It was a great
+                            experience
+                            that
+                            helped me
+                            to understand the concepts better.
+                        </p>
+                        <p>Then leetcode comes... our professor gave us a easy to medium leetcode problem for our finals
+                            exam.
+                            I'm not gonna lie, I was nervous at first because I don't know how to solve it.
+                            I searched a lot of resources online, watched videos, read articles, and practiced a lot.
+                            I was able to solve the problem, and it was a great feeling of accomplishment.
+                        </p>
+                        <p>
+                            After that, I started to explore more about programming, I learned about web development,
+                            mobile
+                            development,
+                            databases, technologies, software architectures, information security, networks,
+                            infrastructure,
+                            and many more. I was fascinated by the idea of creating something that can help people,
+                            something that can
+                            make their lives easier (and also profit XD). I started to build my own projects, and I was
+                            able
+                            to apply what I learned in college.
+                        </p>
+                        <p>Fast forward today, I am currently a Associate Application Support Engineer at Amihan Global
+                            Strategies
+                            where I respond to client filed tickets by resolving issues in code level, adding new
+                            features, upgrading system, infrastructure and bug fix.
+                            I'm also asigned as a Backend Developer where I code APIs using Expressjs and Typescript.
+                            Upgrading legacy Angular codebase and
+                            fine-tuning LLM's.
+                        </p>
+                        <p>In the future, I really want to be a Software Engineer that specializes into Blockchain
+                            technology and enterprise systems.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section id="experience">
-    <div class="mx-2 flex items-center justify-center py-20 lg:mx-20">
+<section id="experience" class="py-20 border-t">
+    <div class="mx-2 flex items-center justify-center lg:mx-20 ">
 
         <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
-            <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
-                <p>Work Experience</p>
+            <div class="inline-flex justify-center items-center gap-2 font-semibold text-sm ">
+                <lucide-icon [img]="Briefcase" class="my-icon dark:stroke-white text-green-600"></lucide-icon>
+                <p class=" bg-gradient-to-r from-green-600 to-blue-600  bg-clip-text text-transparent ">PROFESSIONAL
+                    EXPERIENCE</p>
             </div>
-            <div class="relative ml-16 ">
-                <div class="sm:absolute top-0 left h-full w-0.5 -translate-x-1/2 bg-gray-300 dark:bg-white"></div>
+            <app-page-header title="My Career Journey"
+                subtitle="Over 1.5 year of professional experience building scalable applications and freelancing web apps">
+            </app-page-header>
 
-                <div class="relative mb-8">
-                    <div
-                        class="hidden sm:block top-0 left-0 h-4 w-4 -translate-x-1/2 rounded-full bg-gray-600 dark:bg-white dark:border-white">
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Associate Software Engineer</h3>
-                        <time class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            February 2025 - Present
-                        </time>
-                        <p class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            Amihan Global Strategies, Inc.
-                        </p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                            I am on a backend team that focuses on building APIs using Expressjs and Typescript, and
-                            make
-                            sure everything is working as expected. To make sure that everything is neatly packed, we
-                            are using
-                            docker containers. I also jump in to support clients with their concerns and issues. Handle
-                            user
-                            identity with Ory Kratos, always making sure that my code aligns perfectly with the business
-                            needs.
-                            Also involved in KYC using Go. Plus, I've had a bit of experience with AWS too.
-                        </p>
-                        <div class="mt-2">
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Skills acquired:</p>
-                            <div class="flex flex-row mt-2 flex-wrap gap-2 text-sm">
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Enterprise Software Architectures</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Hexagonal Architecture</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Ports and adapters</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Seperation of Concerns</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Do not repeat yourself (DRY)</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Dependency Injection</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Strong typing</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Handling errors</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Code Reviews</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Postman tests</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">WSL2 Dev Environment</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Bit of AWS</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">More Linux/Mac Commands</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Docker</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Kubernetes</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Ory Kratos</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Go</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Stripe</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">More knowledge in middlewares</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Agile</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Typescript</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Expressjs</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Spring Ecosystem</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">PostgreSQL</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Neo4j</p>
+            <!-- Amihan -->
+            <div class="group">
+                <div
+                    class="ml-16 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl transition-all rounded-lg duration-500 hover:-translate-y-1">
+                    <div class="p-8">
+                        <div class="absolute -left-20 top-8">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <lucide-icon [img]="Briefcase" class="my-icon stroke-white"></lucide-icon>
                             </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Associate Application Support
+                                    Enginer</h3>
+                                <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">Amihan Global
+                                    Strategies</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <lucide-icon [img]="Calendar" class="my-icon dark:stroke-white"></lucide-icon>
+                                <span class="dark:text-white">2024 - Present</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Assigned as a App Support Engineer and in Engineering Team as a Software Engineer
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Improved application performance and security by 25% by upgrading from Angular 7 to
+                                Angular 18
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Part of a back-end team that developed a real-estate web app, fixed critical bugs, and
+                                delivered new features aligned with business requirements
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Implemented secure REST APIs and GraphQL based on PRD, integrating Ory Kratos IAM for
+                                user authentication and access control.
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Fine-tune LLM prompts using AWS Bedrock and Meta Llama to enhance response accuracy and
+                                system efficiency.
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Built backend APIs in NODE.JS (Express.js, Typescript) with comprehensive OpenAPI
+                                specification, error handling, and robust edge cases management.
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Monitored AWS Web App Firewall (WAF) to detect and mitigate security threats by blocking
+                                malicious IP addresses.
+                            </li>
+
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Assigned as L3 support to resolve production bugs reported in Jira, ensuring system
+                                stability and a seamless-user experience.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End Amihan  -->
+            <!-- Freelance TODO: Update-->
+            <div class="group">
+                <div
+                    class="ml-16 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl transition-all rounded-lg duration-500 hover:-translate-y-1">
+                    <div class="p-8">
+                        <div class="absolute -left-20 top-8">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <lucide-icon [img]="Briefcase" class="my-icon stroke-white"></lucide-icon>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Software Developer Freelance</h3>
+                                <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">Self employed</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <lucide-icon [img]="Calendar" class="my-icon dark:stroke-white"></lucide-icon>
+                                <span class="dark:text-white">2023 - Present</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                OWASP Coding Practices, Security, VM's, Flutter, Firebase, Google Maps API,
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Freelance -->
+            <!-- NAMRIA -->
+            <div class="group">
+                <div
+                    class="ml-16 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl transition-all rounded-lg duration-500 hover:-translate-y-1">
+                    <div class="p-8">
+                        <div class="absolute -left-20 top-8">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <lucide-icon [img]="Briefcase" class="my-icon stroke-white"></lucide-icon>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Computer Programmer Itern</h3>
+                                <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">National Mapping and
+                                    Resource Information Authority</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <lucide-icon [img]="Calendar" class="my-icon dark:stroke-white"></lucide-icon>
+                                <span class="dark:text-white">2024 - 2024 (400 hours)</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Developed a scalable custom web application for NAMRIA, enabling real-time tracking of
+                                employee whereabouts, status, and updates. The
+                                solution is built from the ground up using Angular, ExpressJS, NodeS, Microsoft SQL
+                                Server, and Tailwind CSS.
+                                Designed to accomodate an expanding workforce of up to 1,000 employees.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End NAMRIA -->
+            <!-- AWB  -->
+            <div class="group">
+                <div
+                    class="ml-16 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl transition-all rounded-lg duration-500 hover:-translate-y-1">
+                    <div class="p-8">
+                        <div class="absolute -left-20 top-8">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <lucide-icon [img]="Briefcase" class="my-icon stroke-white"></lucide-icon>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Full Stack Developer Intern</h3>
+                                <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">Achieve Without
+                                    Borders, Inc.</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <lucide-icon [img]="Calendar" class="my-icon dark:stroke-white"></lucide-icon>
+                                <span class="dark:text-white">2023 - 2024 (400 hours)</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Developed and customized Odoo 15 & 17 apps.
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Fixed critical bugs in Lazada connected, collaborated in Agile sprints, conducted
+                                critical path manual testing
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Designed and streamlined e-commerce website using Python and Odoo.
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Used Odoo Framework, Python, and PostgreSQL.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End of AWB -->
+        </div>
+    </div>
+</section>
+<section id="education" class="py-20 border-t">
+    <div class="mx-2 flex items-center justify-center lg:mx-20">
+
+        <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
+            <div class="inline-flex justify-center items-center gap-2 font-semibold text-sm ">
+                <lucide-icon [img]="GraduationCap" class="my-icon dark:stroke-white text-purple-600"></lucide-icon>
+                <p class=" bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent ">EDUCATION</p>
+            </div>
+            <app-page-header title="Academic Foundation">
+            </app-page-header>
+
+            <div class="group">
+                <div
+                    class="ml-16 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl transition-all rounded-lg duration-500 hover:-translate-y-1">
+                    <div class="p-8">
+                        <div class="absolute -left-20 top-8">
+                            <div
+                                class="w-12 h-12 border rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <img src="/NU-Logo.png">
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Bachelor of Science in Information
+                                    Technology with Specialization in Multimedia arts and Animation</h3>
+                                <p class="text-lg text-indigo-900 dark:text-white font-semibold">National University Manila, Philippines</p>
+
+                                <div class="flex items-center gap-2">
+                                    <lucide-icon [img]="Calendar" class="my-icon dark:stroke-white"></lucide-icon>
+                                    <span class="dark:text-white">2020 - 2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-gray-600 dark:text-white/80">
+                            <p>100% scholar of National University</p>
+                            <p>
+                                Graduated with Cum Laude Honors. Published a researched paper titled Ecotopia in IEEE.
+                            </p>
+                            <p>Participated in different organization like NU Wizard Circle (maintainer of NU Safe),
+                                Google Developers Student Club NU Chapter, and Junior Philippines Computing Society.</p>
+                            <p>Related course work are: Parallax Website, System Design, Enterprise Systems, Information
+                                Security,
+                                Computer Organization & Architecture, Audio Engineering, 2D Animation, 2D Game using
+                                Unity 3D </p>
                         </div>
                     </div>
                 </div>
-
-                <div class="relative mb-8">
-                    <div
-                        class="hidden sm:block top-0 left-0 h-4 w-4 -translate-x-1/2 rounded-full bg-gray-600 dark:bg-white dark:border-white">
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Associate Application Support
-                            Engineer</h3>
-                        <time class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            October 2024 - February 2025
-                        </time>
-                        <p class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            Amihan Global Strategies, Inc.
-                        </p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                            I've driven major Angular enterprise upgrades (from version 7 all the way to 18) and
-                            consistently
-                            support clients with deployments and tickets, all while working with powerful tools like
-                            Kubernetes, Docker, GO, Typescript, Angular, Neo4j, PostgreSQL, and the Spring Ecosystem.
-                        </p>
-                        <div class="mt-2">
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Skills acquired:</p>
-                            <div class="flex flex-row mt-2 flex-wrap gap-2 text-sm">
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Reading legacy codebase</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Deeper Angular knowledge</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Reading legacy codebase</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Linux Commands</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Kubernetes</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Google Workspace</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Jira</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Reading legacy codebase</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Talking with clients</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative mb-8">
-                    <div
-                        class="hidden sm:block top-0 left-0 h-4 w-4 -translate-x-1/2 rounded-full bg-gray-600 dark:bg-white dark:border-white">
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Computer Programmer Intern</h3>
-                        <time class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            2024 - 400 hours Internship
-                        </time>
-                        <p class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            National Mapping and Resource Information Authority
-                        </p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                            For the GSDD department, I was tasked with creating a comprehensive personnel tracking
-                            web system that significantly improved theit internal processes, build using Node.js,
-                            Expressjs, Angular, and MS SQL.
-                        </p>
-                        <div class="mt-2">
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Skills acquired:</p>
-                            <div class="flex flex-row mt-2 flex-wrap gap-2 text-sm">
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Full-stack development</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Working with government officials</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Designing</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">PrimeNG</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative mb-8">
-                    <div
-                        class="hidden sm:block top-0 left-0 h-4 w-4 -translate-x-1/2 rounded-full bg-gray-600 dark:bg-white dark:border-white">
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-6">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Full Stack Developer Intern</h3>
-                        <time class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            2023 - 400 hours Internship
-                        </time>
-                        <p class="mb-2 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                            Achieve Without Borders, Inc.
-                        </p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                            My experience includes developing Lazada and Shopee connectors for odoo, extensive bug
-                            fixing
-                            within the platform, and assisting with QA tasks, all following Agile principles.
-                        </p>
-                        <div class="mt-2">
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Skills acquired:</p>
-                            <div class="flex flex-row mt-2 flex-wrap gap-2 text-sm">
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Odoo Framework</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Quality Assurance</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Agile</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Working with clients</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Accountability</p>
-                                <p class="bg-gray-200 px-5 py-1 rounded-xl">Rapport</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 </section>
-<section id="why" class="text-gray-800 dark:bg-neutral-900 border-t">
-    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
-        <div class="flex flex-row w-full justify-between mx-5 gap-5 xl:mx-72 lg:gap-20">
-            <div class="text-left flex gap-5 flex-col">
-                <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
-                    <p>Why</p>
-                </div>
-                <div class="text-gray-600 flex flex-col gap-2 dark:text-white/60">
-                    <p>Why I'm here? It's the only thing I am good at. Since child I was curious about computers,
-                        exploring
-                        different setttings in the computer (I always break it), trying to understand how it works.
-                        I was fascinated by the idea of creating something out of nothing, and I wanted to be a part of
-                        it.
-                        I wanted to create something that can help people, something that can make their lives easier.
-                    </p>
-                    <p>A little story, before college, I don't know how to code. But then Java was introduced to me and
-                        I was amazed by the power of programming, creating something
-                        that you can use in anything.
-                    </p>
+<section id="certification-awards" class="py-20 border-t">
+    <div class="mx-2 flex items-center justify-center lg:mx-20">
+
+        <div class="flex flex-col xl:mx-72 gap-5 justitfy-start w-full">
+            <div class="inline-flex justify-center items-center gap-2 font-semibold text-sm ">
+                <lucide-icon [img]="Award" class="my-icon dark:stroke-white text-yellow-600"></lucide-icon>
+                <p class=" bg-gradient-to-r from-yellow-600 to-orange-600  bg-clip-text text-transparent ">Certification
+                    and Awards</p>
+            </div>
+            <app-page-header title="Recognition & Achievements"
+                subtitle="Professional certifications and academic recognition for excellence.">
+            </app-page-header>
+
+            <!-- freecodecamp -->
+            <div
+                class="group border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl rounded-lg transition-all duration-500 hover:-translate-y-1">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <lucide-icon [img]="Award" class="my-icon stroke-white"></lucide-icon>
+                        </div>
+                        <div class="text-gray-600 dark:text-white">
+                            <h3 class="text-lg font-bold">Backend & APIs Development</h3>
+                            <p class="text-muted-foreground">freeCodeCamp • 2024</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<section id="journey-and-evolution" class="text-gray-800 dark:bg-neutral-900 border-t">
-    <div class="flex justify-center items-center mx-2 lg:mx-20 py-20">
-        <div class="flex flex-row w-full justify-between mx-5 gap-5 xl:mx-72 lg:gap-20">
-            <div class="text-left flex gap-5 flex-col">
-                <div class="text-2xl text-gray-800 font-extrabold dark:text-white">
-                    <p>Journey and Evolution</p>
-                </div>
-                <div class="text-gray-600 flex flex-col gap-2 dark:text-white/60">
-                    <p>I remember back in college, the Fundamentals of Programming subject, that was the time Java was
-                        introduced
-                        to me by my professor. I am confused most of the time because it was my first time to code.
-                        I was struggling to understand the concepts, but I was determined to learn. I spent countless
-                        hours studying.
-                    </p>
-                    <p>The good thing about that subject is my professor gave a anonymous question board its called
-                        Piazza to encourage
-                        students to ask questions without fear of being judged. I was the most active user in that
-                        board!
-                        I asked questions, answered questions, and learned from my classmates. It was a great experience that
-                        helped me
-                        to understand the concepts better.
-                    </p>
-                    <p>Then leetcode comes... our professor gave us a easy to medium leetcode problem for our finals
-                        exam.
-                        I'm not gonna lie, I was nervous at first because I don't know how to solve it.
-                        I searched a lot of resources online, watched videos, read articles, and practiced a lot.
-                        I was able to solve the problem, and it was a great feeling of accomplishment.
-                    </p>
-                    <p>
-                        After that, I started to explore more about programming, I learned about web development, mobile
-                        development,
-                        databases, technologies, software architectures, information security, networks, infrastructure,
-                        and many more. I was fascinated by the idea of creating something that can help people,
-                        something that can
-                        make their lives easier (and also profit XD). I started to build my own projects, and I was able
-                        to apply what I learned in college.
-                    </p>
-                    <p>Fast forward today, I am currently a Associate Software Engineer at Amihan Global Strategies
-                        where I'm developing
-                        APIs using Expressjs and Typescript. Upgrading some legacy Angular codebase and doing things.
-                    </p>
-                    <p>In the future, I want to deep dive into Blockchain technology and enterprise systems.</p>
+            <!-- Cum laude -->
+            <div
+                class="group border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-xl rounded-lg transition-all duration-500 hover:-translate-y-1">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <lucide-icon [img]="Award" class="my-icon stroke-white"></lucide-icon>
+                        </div>
+                        <div class="text-gray-600 dark:text-white">
+                            <h3 class="text-lg font-bold">Cum Laude</h3>
+                            <p class="text-muted-foreground">National University • 2024</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
