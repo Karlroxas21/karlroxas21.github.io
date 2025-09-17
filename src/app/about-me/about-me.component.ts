@@ -46,5 +46,4 @@ export class AboutMeComponent {
     closeBackendApiDevModal() {
         this.isBackendApiDevOpen = false;
     }
-
 }
