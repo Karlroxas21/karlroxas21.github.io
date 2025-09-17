@@ -189,7 +189,7 @@
 
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Software Developer Freelance</h3>
+                                <h3 class="text-2xl font-bold mb-1 dark:text-white">Freelance Dev</h3>
                                 <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">Self employed</p>
                             </div>
                             <div class="flex items-center gap-2">
@@ -203,7 +203,25 @@
                                 <div
                                     class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
                                 </div>
-                                OWASP Coding Practices, Security, VM's, Flutter, Firebase, Google Maps API,
+                                Solving your problems
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                I do from concept to planning to coding to deployment and maintenance.
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                                Built a Admin dashboard web app using Angular and ExpressJS deployed in Heroku.
+                            </li>
+                            <li class="flex items-start gap-3 dark:text-white">
+                                <div
+                                    class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0">
+                                </div>
+                               Built ground-up mobile app using Flutter, Supabase, and Firebase for messaging, Google Maps API for emergency report with admin dashboard.
                             </li>
                         </ul>
                     </div>
@@ -387,6 +405,11 @@
                             <h3 class="text-lg font-bold">Backend & APIs Development</h3>
                             <p class="text-muted-foreground">freeCodeCamp • 2024</p>
                         </div>
+                        <div class="ml-auto">
+                            <button (click)="openBackendApiDevModal()" class="p-2">
+                                <lucide-icon [img]="ArrowUpRight" class="my-icon dark:stroke-white"></lucide-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,9 +426,42 @@
                             <h3 class="text-lg font-bold">Cum Laude</h3>
                             <p class="text-muted-foreground">National University • 2024</p>
                         </div>
+                        <div class="ml-auto">
+                            <button (click)="openCumLaudeModal()" class="p-2">
+                                <lucide-icon [img]="ArrowUpRight" class="my-icon dark:stroke-white"></lucide-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Cum Laude Image Modal -->
+             @if (isCumLaudeModalOpen) {
+                <div class="fixed inset-0 flex items-center justify-center bg-black/70 z-50" (click)="closeCumLaudeModal()">
+                    <div class="flex items-center justify-center rounded-lg p-4 relative w-[60vw] h-[60vh] shadow-lg"  (click)="$event.stopPropagation()" >
+                        <button 
+                            (click)="closeCumLaudeModal()" 
+                            class="absolute top-2 right-2 text-gray-500 hover:text-black"
+                            >
+                            ✖
+                        </button>
+                        <img src="/about-me/kmvr-diploma.png" alt="Diploma" class="rounded-lg max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+            }
+             <!-- Backend & APIs Development Image Modal -->
+             @if (isBackendApiDevOpen) {
+                <div class="fixed inset-0 flex items-center justify-center bg-black/70 z-50" (click)="closeBackendApiDevModal()">
+                    <div class="flex items-center justify-center rounded-lg p-4 relative w-[60vw] h-[60vh] shadow-lg"  (click)="$event.stopPropagation()" >
+                        <button 
+                            (click)="closeBackendApiDevModal()" 
+                            class="absolute top-2 right-2 text-gray-500 hover:text-black"
+                            >
+                            ✖
+                        </button>
+                        <img src="/about-me/fcc-backend-dev-api.png" alt="Backend & APIs Development" class="rounded-lg max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+             }
         </div>
     </div>
 </section>
