@@ -1,15 +1,28 @@
-# Version Numbering Parts (SEMVER)
-SEMVER means Semantic Versioning.
+# Semantic Versioning (SemVer)
+###### *Karl Marx Roxas September 17, 2025*
 
-For example, you might see in your package.json:
-```
-"express": "^4.18.2"
-```
-Imagine it like this, X.Y.Z. Which X is for major changes, Y is for minor changes, and Z is for bug fix.
+---
 
-## Tilde & Caret Shorthand
-Node.js implementation of semver also introduces shorthand ranges: `~` (tilde) and `^` (caret). The general explanation for how these work is:
+**X.Y.Z** is a placeholder for a version number, where each letter represents a different type of change:
 
-- Prefixing a single semver version string with the `~` character defines a range of acceptable versions that include all patch versions from the one specified up to, but not including, the next minor version. `~1.2.3` can be approximately expanded as `>=1.2.3 <1.3.0`.
+- **X (Major)**: Incremented for major, breaking changes. These changes are not backward-compatible and often require a user to refactor their code. For example, a version change from `1.0.0` to `2.0.0` indicates a new major version.
 
-- Prefixing a single semver version string with the `^` character defines a range of acceptable versions that include all patch and minor versions from the ones specified up to, but not including, the next version. So `^1.2.3` can be approximately expanded as `>=1.2.3 <2.0.0`.
+- **Y (Minor)**: Incremented for new features that are backward-compatible. This means you can update to a new minor version without breaking existing functionality. When Y is incremented, Z is reset to 0. For example, a version change from `1.2.0`to `1.3.0` indicates a new minor version.
+
+- **Z (Patch)**: Incremented for backward-compatible bug fixes and hotfixes. When Z is incremented, the X and Y values remain the same. For example, a version change from `1.2.3` to `1.2.4` indicates a new patch version.
+
+**Tilde (~)** and **Caret (^)** Shorthand
+
+- Tilde (~): Prefixing a version with a ~ allows for patch-level updates. It locks the major and minor versions but allows the patch version to be the latest available.
+
+`~1.2.3` resolves to a version range of `>=1.2.3` `<1.3.0`.
+
+- Caret (^): Prefixing a version with a ^ allows for minor and patch-level updates. It locks the major version but allows the minor and patch versions to be the latest available.
+
+`^1.2.3` resolves to a version range of `>=1.2.3` `<2.0.0`.
+
+**The "Zero-Major" Edge Case**
+
+If the major version is 0 (e.g., 0.x.x), the caret (^) behaves like a tilde (~). This is because a major version of 0 indicates the software is still in its initial development phase, and the public API should not be considered stable.
+
+`^0.2.3` resolves to a version range of `>=0.2.3` `<0.3.0`. This prevents you from accidentally getting a new minor version that could introduce breaking changes when the package is not yet stable.

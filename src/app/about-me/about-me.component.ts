@@ -9,6 +9,7 @@ import {
     GraduationCap,
     Award,
     MessageCircleQuestion,
+    ArrowUpRight,
 } from 'lucide-angular';
 
 @Component({
@@ -25,4 +26,24 @@ export class AboutMeComponent {
     readonly GraduationCap = GraduationCap;
     readonly Award = Award;
     readonly MessageCircleQuestion = MessageCircleQuestion;
+    readonly ArrowUpRight = ArrowUpRight;
+
+    isCumLaudeModalOpen = false;
+    isBackendApiDevOpen = false;
+
+    openCumLaudeModal() {
+        this.isCumLaudeModalOpen = true;
+    }
+
+    closeCumLaudeModal() {
+        this.isCumLaudeModalOpen = false;
+    }
+
+    openBackendApiDevModal() {
+        this.isBackendApiDevOpen = true;
+    }
+
+    closeBackendApiDevModal() {
+        this.isBackendApiDevOpen = false;
+    }
 }
