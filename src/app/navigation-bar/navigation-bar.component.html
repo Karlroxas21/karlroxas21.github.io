@@ -37,17 +37,17 @@
         <!-- Mobile Menu -->
         @if(isMenuOpen) {
         <div *ngIf="isMenuOpen" id="mobile-menu" class="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden bg-white shadow-lg dark:bg-neutral-900">
-            <div class="flex flex-col justify-end items-end">
+            <div class="flex flex-col justify-center items-center">
                 <ul class="flex flex-col gap-3 p-4">
-                    <li><a routerLink="/about-me" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">About</a></li>
-                    <li><a routerLink="/articles"
+                    <li><a routerLink="/about-me" (click)="toggleMenu()" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">About</a></li>
+                    <li><a routerLink="/articles" (click)="toggleMenu()"
                                 class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Articles</a></li>
-                    <li><a routerLink="/notes" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Notes</a></li>
-                    <li><a routerLink="/skills" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Skills</a>
+                    <li><a routerLink="/notes" (click)="toggleMenu()" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Notes</a></li>
+                    <li><a routerLink="/skills" (click)="toggleMenu()" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Skills</a>
                     </li>
-                    <li><a routerLink="/projects" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Project</a>
+                    <li><a routerLink="/projects" (click)="toggleMenu()" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Project</a>
                     </li>
-                    <li><a routerLink="/contact" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Contact</a>
+                    <li><a routerLink="/contact" (click)="toggleMenu()" class="font-medium text-gray-600 hover:text-black transition-colors dark:text-white">Contact</a>
                     </li>
                 </ul>
                 <div class="flex gap-4 pr-4 pb-4">
