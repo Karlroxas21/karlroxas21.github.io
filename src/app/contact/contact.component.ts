@@ -31,7 +31,11 @@ export class ContactComponent {
             message: ['', Validators.required],
         });
     }
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.contactForm.get('name')?.disable();
+        this.contactForm.get('email')?.disable();
+        this.contactForm.get('message')?.disable();
+    }
 
     onSubmit() {
         const from = this.contactForm.value.email;
