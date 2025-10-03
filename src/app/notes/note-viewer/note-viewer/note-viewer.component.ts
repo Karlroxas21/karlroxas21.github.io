@@ -54,7 +54,6 @@ export class NoteViewerComponent implements OnInit {
             .get(`/notes-dir/${fileName}.md`, { responseType: 'text' })
             .pipe(
                 finalize(() => {
-                    console.log('Set isContentLoading to false');
                     this.isContentLoading.set(false);
                 }),
             )

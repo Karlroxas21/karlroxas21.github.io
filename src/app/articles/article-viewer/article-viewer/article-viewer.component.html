@@ -1,12 +1,19 @@
-<div
-  class="max-w-full mx-72"
->
-  <article class="mx-20">
-    <markdown
-      lineNumbers
-      [start]="1"
-      class="prose-xl dark:text-white" 
-      [data]="markDownContent"
-    ></markdown>
-  </article>
+@if (isContentLoading()) {
+<div class="flex flex-col justify-center items-center">
+    <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 11-8 8z" />
+    </svg>
+    <span class="text-lg">Loading content...</span>
 </div>
+} @else {
+<div class="max-w-full mx-72">
+    <article class="mx-20">
+        <markdown lineNumbers [start]="1" class="prose dark:prose-invert max-w-none
+                        prose-code:bg-gray-100 prose-code:text-gray-800 
+                        prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md
+                        prose-code:before:content-[''] prose-code:after:content-['']
+                        dark:prose-code:bg-gray-800 dark:prose-code:text-gray-200" [data]="markDownContent"></markdown>
+    </article>
+</div>
+}
