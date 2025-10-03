@@ -4,7 +4,6 @@
 ---
 
 **X.Y.Z** is a placeholder for a version number, where each letter represents a different type of change:
-
 - **X (Major)**: Incremented for major, breaking changes. These changes are not backward-compatible and often require a user to refactor their code. For example, a version change from `1.0.0` to `2.0.0` indicates a new major version.
 
 - **Y (Minor)**: Incremented for new features that are backward-compatible. This means you can update to a new minor version without breaking existing functionality. When Y is incremented, Z is reset to 0. For example, a version change from `1.2.0`to `1.3.0` indicates a new minor version.
