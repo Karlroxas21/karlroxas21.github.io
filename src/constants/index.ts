@@ -1,23 +1,5 @@
 import type { WindowConfig } from "@store/window";
 
-const navLinks = [
-    {
-        id: 1,
-        name: 'Projects',
-        type: 'finder',
-    },
-    {
-        id: 3,
-        name: 'Contact',
-        type: 'contact',
-    },
-    {
-        id: 4,
-        name: 'Resume',
-        type: 'resume',
-    },
-];
-
 const navIcons = [
     {
         id: 1,
@@ -39,40 +21,28 @@ const navIcons = [
 
 const dockApps = [
     {
-        id: 'finder',
-        name: 'Portfolio', 
-        icon: '/images/vscode.png',
+        id: 'files',
+        name: 'Portfolio',
+        icon: '/images/files.png',
         canOpen: true,
     },
     {
         id: 'firefox',
-        name: 'Articles', 
+        name: 'Articles',
         icon: '/images/firefox_logo.png',
         canOpen: true,
     },
     {
-        id: 'photos',
-        name: 'Gallery',
-        icon: '/images/ssd.png',
-        canOpen: true,
-    },
-    {
-        id: 'contact',
-        name: 'Contact', 
-        icon: '/images/contact.png',
-        canOpen: true,
-    },
-    {
         id: 'terminal',
-        name: 'Skills', // was "Terminal"
+        name: 'Skills',
         icon: '/images/terminal.png',
         canOpen: true,
     },
     {
-        id: 'trash',
-        name: 'Archive', // was "Trash"
-        icon: '/images/trash.png',
-        canOpen: false,
+        id: 'ubuntu',
+        name: 'Contact',
+        icon: '/icons/ubuntu-dock.svg',
+        canOpen: true,
     },
 ];
 
@@ -103,28 +73,32 @@ const blogPosts = [
 const techStack = [
     {
         category: 'Frontend',
-        items: ['React.js', 'Next.js', 'TypeScript'],
+        items: ['React + Vite', 'Angular', 'Nextjs', 'TypeScript'],
     },
     {
         category: 'Mobile',
         items: ['React Native', 'Expo'],
     },
     {
+        category: 'AI',
+        items: ['Prompt Engineering', 'Agentic AI Development']
+    },
+    {
         category: 'Styling',
-        items: ['Tailwind CSS', 'Sass', 'CSS'],
+        items: ['Tailwind CSS', 'CSS', 'shadcn'],
     },
     {
         category: 'Backend',
-        items: ['Node.js', 'Express', 'NestJS', 'Hono'],
+        items: ['Node.js', 'Express', 'Spring Boot', 'Java', 'Typescript'],
     },
     {
         category: 'Database',
-        items: ['MongoDB', 'PostgreSQL'],
+        items: ['PostgreSQL', 'Neo4J', 'Redis'],
     },
     {
         category: 'Dev Tools',
-        items: ['Git', 'GitHub', 'Docker'],
-    },
+        items: ['Git', 'GitHub', 'Docker', 'Kubernetes'],
+    }
 ];
 
 const socials = [
@@ -205,9 +179,9 @@ const gallery = [
     },
 ];
 
-export { navLinks, navIcons, dockApps, blogPosts, techStack, socials, photosLinks, gallery };
+export { navIcons, dockApps, blogPosts, techStack, socials, photosLinks, gallery };
 
-const WORK_LOCATION = {
+export const WORK_LOCATION = {
     id: 1,
     type: 'work',
     name: 'Work',
@@ -375,7 +349,7 @@ const WORK_LOCATION = {
     ],
 };
 
-const ABOUT_LOCATION = {
+export const ABOUT_LOCATION = {
     id: 2,
     type: 'about',
     name: 'About me',
@@ -417,7 +391,7 @@ const ABOUT_LOCATION = {
             fileType: 'txt',
             position: 'top-60 left-5',
             subtitle: 'Meet the Developer Behind the Code',
-            image: '/images/adrian.jpg',
+            image: '/images/txt.png',
             description: [
                 'Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.',
                 'I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.',
@@ -428,7 +402,7 @@ const ABOUT_LOCATION = {
     ],
 };
 
-const RESUME_LOCATION = {
+export const RESUME_LOCATION = {
     id: 3,
     type: 'resume',
     name: 'Resume',
@@ -447,7 +421,7 @@ const RESUME_LOCATION = {
     ],
 };
 
-const TRASH_LOCATION = {
+export const TRASH_LOCATION = {
     id: 4,
     type: 'trash',
     name: 'Trash',
@@ -485,12 +459,11 @@ export const locations = {
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG: WindowConfig = {
-    finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    files: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
     resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
     firefox: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-    photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
     terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    ubuntu: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
     txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
     imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };

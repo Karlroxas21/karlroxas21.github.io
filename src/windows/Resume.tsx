@@ -6,7 +6,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const Resume = () => {
     const [totalPages, setTotalPages] = useState(0);
@@ -17,7 +17,7 @@ const Resume = () => {
 
     return (
         <>
-            <div id="window-header" className=''>
+            <div id="window-header" className="">
                 <a href="files/resume.pdf" download className="cursor-pointer" title="Download resume">
                     <Download className="icon" />
                 </a>
@@ -25,14 +25,23 @@ const Resume = () => {
 
                 <WindowControls target="resume" />
             </div>
-             <div style={{ overflowY: 'auto', height: '800px' }}>
-
-            <Document file="files/resume.pdf" onLoadSuccess={onDocumentLoadSuccess} className={"p-1 rounded-sm"}>
-                {Array.from({ length: totalPages }, (_, i) => (
-                    <Page key={i + 1} pageNumber={i + 1} renderTextLayer renderAnnotationLayer className={"pt-5"}/>
-                ))}
-            </Document>
-             </div>
+            <div className="overflow-y-auto h-200 bg-zinc-90">
+                <Document file="files/resume.pdf" onLoadSuccess={onDocumentLoadSuccess} className={'p-1 rounded-sm'}>
+                    {Array.from({ length: totalPages }, (_, i) => {
+                        const pageNum = i + 1;
+                        const isEven = pageNum % 2 === 0;
+                        return (
+                            <Page
+                                key={i + 1}
+                                pageNumber={i + 1}
+                                renderTextLayer
+                                renderAnnotationLayer
+                                className={`${isEven ? 'mb-10' : 'mb-2'} bg-black shadow-lg`}
+                            />
+                        );
+                    })}
+                </Document>
+            </div>
         </>
     );
 };

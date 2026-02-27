@@ -1,21 +1,33 @@
 import WindowControls from '@components/WindowControls';
 import { techStack } from '@constants/index';
 import WindowWrapper from '@hoc/WindowWrapper';
-import { Check, Flag } from 'lucide-react';
+import { Check } from 'lucide-react';
+
+const Command: React.FC<{ cmd?: string; append?: string }> = ({ cmd, append }) => {
+    return (
+        <>
+            <span className="font-bold text-[#27a169]">karl@Supercrane</span>
+            <span>:</span>
+            <span className="text-[#12488b]">~{append && <span>/{append}</span>}</span>
+            <span>$ </span>
+            {cmd && <span>{cmd}</span>}
+        </>
+    );
+};
 
 const Terminal = () => {
     return (
         <>
             <div id="window-header">
-                <h2>Tech Stack</h2>
-
-                <WindowControls target="terminal"/>
+                <h2>Tech Stack</h2> <WindowControls target="terminal" />
             </div>
 
             <div className="techstack">
                 <p>
-                    <span className="font-bold">@karl %</span>
-                    show tech stack
+                    <Command cmd={'cd Documents'} />
+                </p>
+                <p>
+                    <Command cmd={'cat karlTechStack.txt'} append="Documents" />
                 </p>
 
                 <div className="label">
@@ -39,16 +51,9 @@ const Terminal = () => {
                         </li>
                     ))}
                 </ul>
-                <div className="footnote">
-                    <p>
-                        <Check size={20} />5 of 5 stacks loaded successfully (100%)
-                    </p>
-
-                    <p className="text-white">
-                        <Flag size={15} fill="black" />
-                        Render time: 5ms
-                    </p>
-                </div>
+                <p>
+                    <Command append="Documents" />
+                </p>
             </div>
         </>
     );

@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { WINDOW_CONFIG, INITIAL_Z_INDEX } from '@constants/index';
+import type { AppItem } from './fileLocation';
 
 interface WindowItem {
     isOpen: boolean,
     zIndex: number,
-    data: unknown | null,
+    data: AppItem | null,
 }
 
 export type WindowConfig = {
@@ -18,7 +19,7 @@ interface WindowState {
 }
 
 interface WindowActions {
-    openWindow: (windowKey: string, data: unknown) => void;
+    openWindow: (windowKey: string, data?: AppItem | null) => void;
     closeWindow: (windowKey: string) => void;
     focusWindow: (windowKey: string) => void;
 }
@@ -29,8 +30,7 @@ const useWindowStore = create<WindowStore>()(
     immer(set => ({
         windows: WINDOW_CONFIG,
         nextZIndex: INITIAL_Z_INDEX + 1,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        openWindow: (windowKey: string, data = null) => set((state) => {
+        openWindow: (windowKey: string, data: AppItem | null = null) => set((state) => {
             const win = state.windows[windowKey];
             if (!win) return; // Guard clause for safety
 

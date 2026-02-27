@@ -3,14 +3,6 @@ import useWindowStore from '@store/window';
 import { useRef } from 'react';
 import { Tooltip } from 'react-tooltip';
 
-/**
- * 
- * @returns  id: "finder",
-    name: "Portfolio", // was "Finder"
-    icon: "finder.png",
-    canOpen: true,
- */
-
 interface DockApps {
     id: string;
     name: string;
@@ -22,7 +14,6 @@ const Dock = () => {
     const dockRef = useRef(null);
 
     const toggleApp = ({ id, canOpen }: Pick<DockApps, 'id' | 'canOpen'>) => {
-        console.log("OPENNNNEEDDD")
         if (canOpen) {
             const window = windows[id];
             if (!window) return;
@@ -39,7 +30,7 @@ const Dock = () => {
         <section id="dock">
             <div ref={dockRef} className="dock-container">
                 {dockApps.map(({ id, name, icon, canOpen }) => (
-                    <div key={id} className="relative flex justify-center items-center">
+                    <div key={id} className="relative flex justify-center items-center ">
                         <button
                             type="button"
                             className="dock-icon"
@@ -53,7 +44,7 @@ const Dock = () => {
                         </button>
                     </div>
                 ))}
-                <Tooltip id="dock-tooltip" place="top" className="tooltip" />
+                <Tooltip id="dock-tooltip" place="top" className="tooltip transition" noArrow={true} />
             </div>
         </section>
     );
