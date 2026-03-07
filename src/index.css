@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-html,
-body {
+main {
     width: 100dvw;
     overflow: hidden;
     height: 100dvh;
@@ -38,24 +38,23 @@ body {
 }
 
 @layer components {
-
     .blog {
-        @apply p-10 max-w-3xl mx-auto;
+        @apply p-10 max-w-3xl mx-auto h-150;
 
         h2 {
-            @apply text-xl font-bold text-pink-600 mb-10;
+            @apply text-xl font-bold  mb-10;
         }
     }
 
     .blog-post {
-        @apply grid grid-cols-12 space-x-5;
+        @apply grid grid-cols-10 space-x-5;
 
         img {
             @apply size-full rounded-md object-cover;
         }
 
         .content {
-            @apply col-span-10 space-y-3;
+            @apply col-span-6 space-y-3;
 
             p {
                 @apply text-xs;
@@ -129,7 +128,6 @@ body {
 
     #firefox {
         @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
-
     }
 
     #terminal {

@@ -7,7 +7,7 @@ const ImageViewer = () => {
     const data = windows.imgfile?.data;
 
     if (!data) return null;
-    console.log("DATA: ", data);
+    console.log('DATA: ', data);
 
     const { name, imageUrl } = data;
     return (
@@ -16,8 +16,8 @@ const ImageViewer = () => {
                 <h2>{name}</h2>
                 <WindowControls target="imgfile" />
             </div>
-            <div className="bg-[#1f1e25] text-[#d6d6d6] p-4 w-full">
-                <img src={imageUrl} alt={name} className='h-auto max-h-[70vh] object-contain rounded'/>
+            <div className="flex items-center justify-center bg-[#1f1e25] text-[#d6d6d6] p-4 w-full">
+                <img src={imageUrl} alt={name} className="h-auto max-h-[70vh] object-contain rounded" />
             </div>
         </>
     );

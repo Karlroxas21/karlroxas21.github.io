@@ -114,7 +114,7 @@ const Files = () => {
                         </div>
                     </div>
 
-                    <div className="px-5 text-white">
+                    <div className="px-5 text-white ">
                         <ul className="grid grid-cols-7 space-x-5">
                             {selectedWorkId
                                 ? // Find and display the selected work item
@@ -146,7 +146,7 @@ const Files = () => {
                                           <img
                                               src={item.icon}
                                               alt={item.name}
-                                              className="flex-1 size-full rounded-md object-contain"
+                                              className="flex-1 max-w-16 rounded-md object-contain"
                                           />
                                           <p className="flex-1 text-sm text-pretty">{(item as AppItem).name}</p>
                                       </li>

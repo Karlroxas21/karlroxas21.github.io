@@ -21,10 +21,10 @@ const Dock = () => {
                 closeWindow(id);
             } else {
                 openWindow(id, null);
+                console.log('ID: ', id);
             }
         }
-
-    }
+    };
 
     return (
         <section id="dock">
@@ -40,7 +40,14 @@ const Dock = () => {
                             data-tooltip-delay-show={150}
                             disabled={!canOpen}
                             onClick={() => toggleApp({ id, canOpen })}>
-                            <img src={icon} alt={name} loading={'lazy'} className={canOpen ? '' : 'opacity-60'} width={62} height={62}/>
+                            <img
+                                src={icon}
+                                alt={name}
+                                loading={'lazy'}
+                                className={canOpen ? '' : 'opacity-60'}
+                                width={62}
+                                height={62}
+                            />
                         </button>
                     </div>
                 ))}
