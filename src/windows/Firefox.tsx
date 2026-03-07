@@ -13,6 +13,7 @@ import {
     MoveRight,
 } from 'lucide-react';
 import { blogPosts } from '@constants/index';
+import { Link } from 'react-router';
 
 const Firefox = () => {
     return (
@@ -72,9 +73,9 @@ const Firefox = () => {
                                 <div className="content">
                                     <p>{date}</p>
                                     <h3>{title}</h3>
-                                    <a href={link} target="_blank" rel="noopener noreferrer">
+                                    <Link to={link} target="_blank" rel="noopener noreferrer">
                                         Checkout the full post <MoveRight className="icon-hover" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
