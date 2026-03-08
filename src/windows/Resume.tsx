@@ -17,6 +17,7 @@ const Resume = () => {
     };
 
     const trackDownloadClick = () => {
+        console.log('CLICKED');
         ReactGA.event({
             category: 'Resume',
             action: 'Downloaded my Resume',
@@ -27,14 +28,14 @@ const Resume = () => {
     return (
         <>
             <div id="window-header" className="">
-                <a
-                    href="files/resume.pdf"
-                    download
-                    className="cursor-pointer"
-                    title="Download resume"
-                    onClick={() => trackDownloadClick()}>
-                    <Download className="icon" />
-                </a>
+                <div
+                    onClick={() => {
+                        trackDownloadClick();
+                    }}>
+                    <a href="files/resume.pdf" download className="cursor-pointer" title="Download resume">
+                        <Download className="icon" />
+                    </a>
+                </div>
                 <h2>Resume.pdf</h2>
 
                 <WindowControls target="resume" />
