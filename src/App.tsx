@@ -19,15 +19,16 @@ gsap.registerPlugin(Draggable);
 
 const App = () => {
     const gTagId = import.meta.env.VITE_G_ID;
-
     const location = useLocation();
-    const isBlogs = location.pathname.startsWith('/blogs');
+    // We use HashRouter
+    const fullPath = location.pathname + location.hash;
+    const isBlogs = fullPath.startsWith('/blogs');
 
     const MEASUREMENT_ID = gTagId;
     ReactGA.initialize(MEASUREMENT_ID);
 
     useEffect(() => {
-        ReactGA.send({ hitType: 'pageview', page: location.pathname, title: location.pathname });
+        ReactGA.send({ hitType: 'pageview', page: fullPath, title: fullPath });
     }, [location]);
 
     return (
