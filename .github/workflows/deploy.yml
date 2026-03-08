@@ -29,7 +29,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-            VITE_GA_ID: ${{ secrets.VITE_G_ID }}
+            VITE_G_ID: ${{ secrets.VITE_G_ID }}
 
       # Step 5: Deploy to the gh-pages branch
       - name: Deploy to GitHub Pages
