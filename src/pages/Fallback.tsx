@@ -1,5 +1,4 @@
 import { locations } from '@constants/index';
-import type { AppItem } from '@store/fileLocation';
 import { Download, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import ReactGA from 'react-ga4';
@@ -14,6 +13,23 @@ const Fallback = () => {
             label: 'Download button in medium-small screens',
         });
     };
+
+    const experience = locations['experience'].children.map(
+        item => item.children.find(data => data.id === 11)?.description[0]
+    );
+
+    const yearWorking = locations['experience'].children.map(
+        item => item.children.find(data => data.id === 11)?.description[1]
+    );
+
+    const company = locations['experience'].children.map(
+        item => item.children.find(data => data.id === 11)?.description[2]
+    );
+
+    // find all work description except for the job title (id 11)
+    const workDesc = locations['experience'].children.map(item => item.children.filter(data => data.id !== 11));
+
+    console.log('workDesc ', workDesc);
 
     return (
         <div className="">
@@ -63,12 +79,45 @@ const Fallback = () => {
                         {locations['about'].children.map(item =>
                             Array.isArray(item.description) && item.description.length > 0 ? (
                                 <div className="text-[#57534e] leading-relaxed mb-4">
-                                    {item.description.map((para, index) => (
-                                        <p key={index}>{para}</p>
+                                    {item.description.map((desc, index) => (
+                                        <p key={index}>{desc}</p>
                                     ))}
                                 </div>
                             ) : null
                         )}
+                    </div>
+
+                    {/* EXPERIENCE */}
+
+                    {/* --- */}
+                    <div className="mt-8">
+                        <h2 className="text-2xl font-semibold tracking-tight text-[#1c1917] mb-2">Experience</h2>
+                        <div className="h-1 w-10 bg-[#fbbf24] rounded-full mb-8"></div>
+                        <div className="bg-[#fafaf9] border border-warm-200 rounded-xl p-6">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+                                <div>
+                                    <h3 className="font-semibold text-warm-900">{experience}</h3>
+                                    <p className="text-accent-700 text-sm font-medium">{company}</p>
+                                </div>
+                                <span className="text-sm text-[#a8a29e] whitespace-nowrap">{yearWorking}</span>
+                            </div>
+                            {workDesc.map((group, groupIndex) => (
+                                <div key={groupIndex}>
+                                    {group.map(job => (
+                                        <div key={job.id}>
+                                            <ul className="space-y-2 text-sm text-[#57534e]">
+                                                {job.description.map((point, index) => (
+                                                    <li className="flex gap-2" key={index}>
+                                                        <span className="text-[#f59e0b] mt-1">&#8226;</span>
+                                                        {point.startsWith('- ') ? point.substring(2) : point}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

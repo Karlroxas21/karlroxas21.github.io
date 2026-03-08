@@ -222,7 +222,11 @@ export const EXPERIENCE_LOCATION = {
                     icon: '/images/txt.png',
                     kind: 'file',
                     fileType: 'txt',
-                    description: ['Associate Application Support Engineer & Software Engineer'],
+                    description: [
+                        'Associate Application Support Engineer & Software Engineer',
+                        'Oct 2024 - Present',
+                        'Amihan Global Strategies',
+                    ],
                 },
                 {
                     id: 12,
