@@ -90,38 +90,7 @@ const techStack = [
     },
 ];
 
-const socials = [
-    {
-        id: 1,
-        text: 'Github',
-        icon: '/icons/github.svg',
-        bg: '#f4656b',
-        link: 'https://github.com/JavaScript-Mastery-Pro',
-    },
-    {
-        id: 2,
-        text: 'Platform',
-        icon: '/icons/atom.svg',
-        bg: '#4bcb63',
-        link: 'https://jsmastery.com/',
-    },
-    {
-        id: 3,
-        text: 'Twitter/X',
-        icon: '/icons/twitter.svg',
-        bg: '#ff866b',
-        link: 'https://x.com/jsmasterypro',
-    },
-    {
-        id: 4,
-        text: 'LinkedIn',
-        icon: '/icons/linkedin.svg',
-        bg: '#05b6f6',
-        link: 'https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all',
-    },
-];
-
-export { dockApps, blogPosts, techStack, socials };
+export { dockApps, blogPosts, techStack };
 
 export const WORK_LOCATION = {
     id: 1,
@@ -234,30 +203,42 @@ export const RESUME_LOCATION = {
     ],
 };
 
-export const TRASH_LOCATION = {
+export const EXPERIENCE_LOCATION = {
     id: 4,
-    type: 'trash',
-    name: 'Trash',
-    icon: '/icons/trash.svg',
+    type: 'experience',
+    name: 'Experience',
+    icon: '/icons/briefcase.svg',
     kind: 'folder',
     children: [
         {
-            id: 1,
-            name: 'trash1.png',
-            icon: '/images/image.png',
-            kind: 'file',
-            fileType: 'img',
-            position: 'top-10 left-10',
-            imageUrl: '/images/trash-1.png',
-        },
-        {
-            id: 2,
-            name: 'trash2.png',
-            icon: '/images/image.png',
-            kind: 'file',
-            fileType: 'img',
-            position: 'top-40 left-80',
-            imageUrl: '/images/trash-2.png',
+            id: 6,
+            name: 'Amihan Global Strategies - Hybrid',
+            icon: '/images/folder.png',
+            kind: 'folder',
+            children: [
+                {
+                    id: 11,
+                    name: 'Role.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    description: ['Associate Application Support Engineer & Software Engineer'],
+                },
+                {
+                    id: 12,
+                    name: 'Amihan Global Strategies - Hybrid.txt',
+                    icon: '/images/txt.png',
+                    kind: 'file',
+                    fileType: 'txt',
+                    description: [
+                        '- Led the full-lifecycle migration of BDO Internal System from Angular 7 to Angular 18, modernizing the legacy codebase to use the Ivy Engine and reducing estimated page load times by ~30%.',
+                        '- Assigned as Software Engineer for internal ventures (Bahai Deals), and Chemlink (talent network powered by AI) using Next.js, ExpressJS, and Typescript, contributing to platforms generating to over $12M in gross revenue.',
+                        '- Exposed to AWS Environment and conducted code reviews to enforce Clean Architecture standards and practices.',
+                        '- Provided L3 full-stack support for enterprise clients like BDO, and SMDC. Diagnosing complex code-level issues, maintining 99% system uptime and delivering feature enhancements based on client requirements.',
+                        '- Collaborated with stakeholders and internal teams to translate business and product requirements into clear, functional, and maintainable frontend components.',
+                    ],
+                },
+            ],
         },
     ],
 };
@@ -266,7 +247,7 @@ export const locations = {
     work: WORK_LOCATION,
     about: ABOUT_LOCATION,
     resume: RESUME_LOCATION,
-    trash: TRASH_LOCATION,
+    experience: EXPERIENCE_LOCATION,
 };
 
 const INITIAL_Z_INDEX = 1000;

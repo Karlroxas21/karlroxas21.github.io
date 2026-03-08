@@ -75,12 +75,16 @@ const Files = () => {
 
     const openItem = (item: AppItem) => {
         if (item.fileType === 'pdf') return openWindow('resume', null);
-        if (item.kind === 'folder') return setSelectedWorkId(item.id);
+        if (item.kind === 'folder') {
+            console.log('ITEM: ', item);
+            return setSelectedWorkId(item.id);
+        }
         if ((item.fileType === 'fig' || item.fileType === 'url') && item.href) return window.open(item.href, '_blank');
 
         console.log(`${item.fileType}${item.kind}`);
         openWindow(`${item.fileType}${item.kind}`, item);
     };
+
     return (
         <>
             <div className="flex bg-[#1f1e25]">
@@ -116,23 +120,24 @@ const Files = () => {
 
                     <div className="px-5 text-white ">
                         <ul className="grid grid-cols-7 space-x-5">
-                            {selectedWorkId
+                            {selectedWorkId && 'children' in locations[activeLocation]
                                 ? // Find and display the selected work item
-                                  locations.work.children
-                                      .find(work => work.id === selectedWorkId)
-                                      ?.children.map(item => (
+                                  locations[activeLocation].children
+                                      .find(item => item.id === selectedWorkId)
+                                      // @ts-expect-error - Locations union type mismatch on 'children'
+                                      ?.children.map(data => (
                                           <li
-                                              key={item.id}
+                                              key={data.id}
                                               className={
                                                   'flex flex-col gap-2 justify-center items-center hover:cursor-pointer hover:bg-[#4b4b4b] transition rounded-lg p-2'
                                               }
-                                              onClick={() => openItem(item as AppItem)}>
+                                              onClick={() => openItem(data as AppItem)}>
                                               <img
-                                                  src={item.icon}
-                                                  alt={item.name}
+                                                  src={data.icon}
+                                                  alt={data.name}
                                                   className="flex-1 size-full rounded-md object-contain"
                                               />
-                                              <p className="flex-1 text-sm text-pretty">{item.name}</p>
+                                              <p className="flex-1 text-sm text-pretty">{data.name}</p>
                                           </li>
                                       ))
                                 : // Display default location children
