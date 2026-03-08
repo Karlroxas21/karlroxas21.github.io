@@ -12,12 +12,23 @@ import ImageViewerWindow from '@windows/Image';
 import ContactWindow from '@windows/Contact';
 import ScreenGuard from '@components/ScreenGuard';
 import { useLocation } from 'react-router';
+import ReactGA from 'react-ga4';
+import { useEffect } from 'react';
 
 gsap.registerPlugin(Draggable);
 
 const App = () => {
+    const gTagId = import.meta.env.VITE_G_ID;
+
     const location = useLocation();
     const isBlogs = location.pathname.startsWith('/blogs');
+
+    const MEASUREMENT_ID = gTagId;
+    ReactGA.initialize(MEASUREMENT_ID);
+
+    useEffect(() => {
+        ReactGA.send({ hitType: 'pageview', page: location.pathname, title: 'App.tsx' });
+    }, [location]);
 
     return (
         <ScreenGuard>

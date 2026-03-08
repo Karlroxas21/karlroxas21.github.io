@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
+import ReactGA from 'react-ga4';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -15,10 +16,23 @@ const Resume = () => {
         setTotalPages(numPages);
     };
 
+    const trackDownloadClick = () => {
+        ReactGA.event({
+            category: 'Resume',
+            action: 'Downloaded my Resume',
+            label: 'Download button',
+        });
+    };
+
     return (
         <>
             <div id="window-header" className="">
-                <a href="files/resume.pdf" download className="cursor-pointer" title="Download resume">
+                <a
+                    href="files/resume.pdf"
+                    download
+                    className="cursor-pointer"
+                    title="Download resume"
+                    onClick={() => trackDownloadClick}>
                     <Download className="icon" />
                 </a>
                 <h2>Resume.pdf</h2>
