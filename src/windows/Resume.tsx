@@ -32,7 +32,7 @@ const Resume = () => {
                     download
                     className="cursor-pointer"
                     title="Download resume"
-                    onClick={() => trackDownloadClick}>
+                    onClick={() => trackDownloadClick()}>
                     <Download className="icon" />
                 </a>
                 <h2>Resume.pdf</h2>
