@@ -29,7 +29,7 @@ const App = () => {
 
     useEffect(() => {
         ReactGA.send({ hitType: 'pageview', page: fullPath, title: fullPath });
-    }, [location]);
+    }, [fullPath]);
 
     return (
         <ScreenGuard>
