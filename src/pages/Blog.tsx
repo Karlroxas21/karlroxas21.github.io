@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import 'highlight.js/styles/atom-one-dark.css';
+import ReactGA from 'react-ga4';
 
 const Blog = () => {
     const { title } = useParams();
@@ -18,8 +19,12 @@ const Blog = () => {
     }, [title]);
 
     useEffect(() => {
-        console.log(content);
-    }, [content]);
+        ReactGA.event({
+            category: 'Blog',
+            action: `Click ${title} blog`,
+            label: 'Checked my blog',
+        });
+    }, [title]);
 
     if (!title) return null;
 

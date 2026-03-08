@@ -17,7 +17,6 @@ const Resume = () => {
     };
 
     const trackDownloadClick = () => {
-        console.log('CLICKED');
         ReactGA.event({
             category: 'Resume',
             action: 'Downloaded my Resume',
