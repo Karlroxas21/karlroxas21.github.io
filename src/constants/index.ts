@@ -59,6 +59,7 @@ const blogPosts = [
     },
 ];
 
+// TODO: Add sample demo each of skills so that they have a proof that I am qualified.
 const techStack = [
     {
         category: 'Frontend',
@@ -78,11 +79,15 @@ const techStack = [
     },
     {
         category: 'Backend',
-        items: ['Node.js', 'Express', 'Spring Boot', 'Java', 'Typescript'],
+        items: ['Node.js', 'Express.js', 'Spring Boot', 'Java', 'Typescript'],
     },
     {
         category: 'Database',
-        items: ['PostgreSQL', 'Neo4J', 'Redis'],
+        items: ['PostgreSQL', 'Neo4J', 'Redis', 'NoSQL'],
+    },
+    {
+        category: 'Testing',
+        items: ['Karma', 'Jest', 'Playwright', 'JUnit'],
     },
     {
         category: 'Dev Tools',
