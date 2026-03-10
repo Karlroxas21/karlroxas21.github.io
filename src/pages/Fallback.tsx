@@ -401,7 +401,7 @@ const Fallback = () => {
                                 <a
                                     href="https://www.freecodecamp.org/certification/fcc28b946f6-a530-4de7-8823-102f7eed7fc8/back-end-development-and-apis"
                                     target="_blank"
-                                    className="text-sm text-[#78716c] mt-2">
+                                    className="text-sm text-[#78716c] mt-2 wrap-normal">
                                     https://www.freecodecamp.org/certification/fcc28b946f6-a530-4de7-8823-102f7eed7fc8/back-end-development-and-apis{' '}
                                 </a>
                             </div>
