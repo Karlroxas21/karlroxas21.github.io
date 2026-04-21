@@ -1,7 +1,9 @@
 import { NOW_ITEMS, REPOS } from './data';
 import SectionHead from './SectionHead';
+import { useAnalytics } from '../hooks/use-analytics';
 
 const NowOss = () => {
+    const { trackEvent } = useAnalytics();
     return (
         <section className="section" id="now">
             <div className="shell g12">
@@ -31,7 +33,12 @@ const NowOss = () => {
                         </div>
                         <div>
                             {REPOS.map(r => (
-                                <a className="repo" href={r.link} target="_blank" key={r.name}>
+                                <a
+                                    className="repo"
+                                    href={r.link}
+                                    target="_blank"
+                                    key={r.name}
+                                    onClick={() => trackEvent(`Open Repo ${r.name}`, 'OSS', r.link)}>
                                     <div className="repo__name">
                                         <span className="o">karlroxas21/</span>
                                         {r.name}

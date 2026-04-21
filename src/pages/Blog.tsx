@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import 'highlight.js/styles/atom-one-dark.css';
-import ReactGA from 'react-ga4';
+import { useAnalytics } from '../hooks/use-analytics';
 
 const Blog = () => {
     const { title } = useParams();
     const [content, setContent] = useState<string>('');
+    const { trackEvent } = useAnalytics();
 
     useEffect(() => {
         if (!title) return;
@@ -19,12 +20,9 @@ const Blog = () => {
     }, [title]);
 
     useEffect(() => {
-        ReactGA.event({
-            category: 'Blog',
-            action: `Click ${title} blog`,
-            label: 'Checked my blog',
-        });
-    }, [title]);
+        if (!title) return;
+        trackEvent(`Read Blog ${title}`, 'Blog', title);
+    }, [title, trackEvent]);
 
     if (!title) return null;
 

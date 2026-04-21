@@ -19,8 +19,8 @@ export const PROFILE: Profile = {
 };
 
 export const LINKS: Link[] = [
-    { k: 'github', v: 'github.com/karlroxas', href: '#' },
-    { k: 'linkedin', v: 'linkedin.com/in/km-roxas', href: '#' },
+    { k: 'github', v: 'github.com/karlroxas', href: 'https://github.com/Karlroxas21' },
+    { k: 'linkedin', v: 'linkedin.com/in/km-roxas', href: 'https://www.linkedin.com/in/km-roxas/' },
     { k: 'writing', v: '/notes', href: '#writing' },
     { k: 'resume', v: 'resume.pdf', href: 'files/resume.pdf' },
     { k: 'email', v: 'karlm.roxas@gmail.com', href: 'mailto:karlm.roxas@gmail.com' },

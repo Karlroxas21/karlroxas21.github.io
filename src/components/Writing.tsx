@@ -1,14 +1,21 @@
 import SectionHead from './SectionHead';
 import { POSTS } from './data';
+import { useAnalytics } from '../hooks/use-analytics';
 
 const Writing = () => {
+    const { trackEvent } = useAnalytics();
     return (
         <section className="section" id="writing">
             <div className="shell g12">
                 <SectionHead n="03" title={<>Writing.</>} meta="Occasional Articles" />
                 <div className="writing">
                     {POSTS.map((p, i) => (
-                        <a className="post" href={p.link} target="_blank" key={i}>
+                        <a
+                            className="post"
+                            href={p.link}
+                            target="_blank"
+                            key={i}
+                            onClick={() => trackEvent(`Open Post ${p.title}`, 'Writing', p.link)}>
                             <div className="post__meta">
                                 <span>
                                     {p.date} · {p.tag}

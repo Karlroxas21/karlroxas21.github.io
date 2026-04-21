@@ -1,6 +1,7 @@
 import { Download } from 'lucide-react';
 import { PROFILE } from './data';
 import { useAnalytics } from '../hooks/use-analytics';
+import { Link } from 'react-router';
 
 interface Chrome {
     theme: string;
@@ -45,7 +46,10 @@ const Chrome = ({ theme, onToggleTheme, timeStr }: Chrome) => {
 
                 <button
                     className="theme-toggle shrink-0"
-                    onClick={onToggleTheme}
+                    onClick={() => {
+                        trackEvent('Toggle Theme', 'Chrome', theme === 'dark' ? 'dark→light' : 'light→dark');
+                        onToggleTheme();
+                    }}
                     aria-label="Toggle theme"
                     data-theme={theme}>
                     <span>{theme === 'dark' ? 'DARK' : 'LIGHT'}</span>
@@ -68,11 +72,12 @@ const Chrome = ({ theme, onToggleTheme, timeStr }: Chrome) => {
                     <span>Set in Archivo / IBM Plex</span>
                 </div>
 
-                <a
-                    href="#contact"
-                    className="shrink-0 border-b border-dotted border-transparent hover:border-[var(--color-fg)]">
+                <Link
+                    to="#contact"
+                    className="shrink-0 border-b border-dotted border-transparent hover:border-[var(--color-fg)]"
+                    onClick={() => trackEvent('Click Get In Touch', 'Chrome', 'Footer CTA')}>
                     Get in touch →
-                </a>
+                </Link>
             </footer>
         </>
     );

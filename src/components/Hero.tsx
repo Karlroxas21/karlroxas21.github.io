@@ -1,8 +1,10 @@
 import React from 'react';
 import { PROFILE } from './data';
 import { Link } from 'react-router';
+import { useAnalytics } from '../hooks/use-analytics';
 
 const Hero = () => {
+    const { trackEvent } = useAnalytics();
     const sections = [
         { n: '01', label: 'About', href: '#about', arrow: '↓' },
         { n: '02', label: 'Work', href: '#work', arrow: '↓' },
@@ -34,6 +36,7 @@ const Hero = () => {
                         <Link
                             key={s.n}
                             to={`${s.href}`}
+                            onClick={() => trackEvent(`Navigate ${s.label}`, 'Hero Index', s.href)}
                             className="group grid grid-cols-[28px_1fr_60px] gap-2.5 items-baseline py-2 border-t border-(--hairline) last:border-b transition-[padding,color] duration-250 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:pl-3 hover:text-(--accent)">
                             <span className="text-(--fg-3)">{s.n}</span>
                             <span>{s.label}</span>
