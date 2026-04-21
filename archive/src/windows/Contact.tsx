@@ -42,9 +42,7 @@ const Contact = () => {
                         </div>
                         <div className="flex items-center gap-2 hover:scale-101 transition">
                             <Github size={16} />
-                            <a
-                                href="https://github.com/Karlroxas21/"
-                                target="_blank">
+                            <a href="https://github.com/Karlroxas21/" target="_blank">
                                 github.com/Karlroxas21/
                             </a>
                         </div>

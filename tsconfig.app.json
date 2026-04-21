@@ -25,11 +25,7 @@
         "noUncheckedSideEffectImports": true,
 
         "paths": {
-            "@components/*": ["./src/components/*"],
-            "@constants/*": ["./src/constants/*"],
-            "@store/*": ["./src/store/*"],
-            "@hoc/*": ["./src/hoc/*"],
-            "@windows/*": ["./src/windows/*"]
+            "@components/*": ["./src/components/*"]
         }
     },
     "include": ["src"]

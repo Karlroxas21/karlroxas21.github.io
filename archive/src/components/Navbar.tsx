@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <nav className="flex justify-center items-center bg-[#1b1a1c] text-white backdrop-blur-3xl p-2 px-5 select-none">
             <div className="flex-1"></div>
-            
+
             <div className="flex-1 text-sm font-medium text-white text-center">
                 <time>{now.format('ddd MMM D h:mm:ss A')}</time>
             </div>
