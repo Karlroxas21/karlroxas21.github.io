@@ -132,49 +132,6 @@ body {
         gap: var(--gap);
     }
 
-    /* -------- Chrome -------- */
-    .chrome {
-        @apply fixed inset-0 pointer-events-none z-50;
-    }
-
-    .chrome .topbar,
-    .chrome .botbar {
-        @apply absolute left-0 right-0 flex justify-between items-center text-[11px] tracking-[0.14em] uppercase pointer-events-auto;
-        padding: 14px var(--pad-x);
-        font-family: var(--font-label);
-        color: var(--color-fg-3);
-        backdrop-filter: blur(6px);
-    }
-
-    .chrome .topbar {
-        @apply top-0;
-        border-bottom: 1px solid var(--color-hairline);
-        background: linear-gradient(var(--color-bg), color-mix(in oklab, var(--color-bg) 85%, transparent));
-    }
-
-    .chrome .botbar {
-        @apply bottom-0;
-        border-top: 1px solid var(--color-hairline);
-        background: linear-gradient(color-mix(in oklab, var(--color-bg) 85%, transparent), var(--color-bg));
-    }
-
-    .chrome .group {
-        @apply flex items-center gap-[22px];
-    }
-
-    .chrome .dot {
-        @apply inline-block w-[6px] h-[6px] rounded-full;
-        background: var(--color-fg);
-    }
-
-    .chrome a {
-        @apply border-b border-dotted border-transparent;
-    }
-
-    .chrome a:hover {
-        border-bottom-color: var(--color-fg);
-    }
-
     .theme-toggle {
         font-family: var(--font-label);
         @apply text-[11px] tracking-[0.14em] uppercase inline-flex items-center gap-2;
@@ -819,16 +776,6 @@ body {
 
     .shead__meta {
         text-align: left;
-    }
-
-    .chrome .topbar,
-    .chrome .botbar {
-        font-size: 10px;
-        padding: 10px 16px;
-    }
-
-    .chrome .topbar .group:nth-child(2) {
-        display: none;
     }
 }
 
