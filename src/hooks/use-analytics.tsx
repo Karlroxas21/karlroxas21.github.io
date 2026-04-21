@@ -10,5 +10,9 @@ export const useAnalytics = () => {
         });
     }, []);
 
-    return { trackEvent };
+    const trackPageview = useCallback((path: string, title?: string) => {
+        ReactGA.send({ hitType: 'pageview', page: path, title: title ?? path });
+    }, []);
+
+    return { trackEvent, trackPageview };
 };
