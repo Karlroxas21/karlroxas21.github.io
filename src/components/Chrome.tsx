@@ -1,6 +1,6 @@
 import { Download } from 'lucide-react';
 import { PROFILE } from './data';
-import { useAnalytics } from '../../hooks/use-analytics';
+import { useAnalytics } from '../hooks/use-analytics';
 
 interface Chrome {
     theme: string;

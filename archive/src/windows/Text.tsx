@@ -17,7 +17,7 @@ const TextEditor = () => {
             </div>
 
             {image ? (
-                <div className='w-full bg-[#1f1e25]'>
+                <div className="w-full bg-[#1f1e25]">
                     <img src={image} alt={name} className="w-full max-h-100 rounded object-contain" />
                 </div>
             ) : null}

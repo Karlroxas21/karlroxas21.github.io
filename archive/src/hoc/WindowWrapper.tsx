@@ -28,10 +28,10 @@ const WindowWrapper = (Component: React.ComponentType, windowKey: string) => {
             const el = ref.current;
             if (!el) return;
 
-            const [instace] = Draggable.create(el, { onPress: () => focusWindow(windowKey)});
+            const [instace] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
 
             return () => instace.kill();
-        },[]);
+        }, []);
 
         useLayoutEffect(() => {
             const el = ref.current;

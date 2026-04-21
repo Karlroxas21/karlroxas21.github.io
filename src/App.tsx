@@ -1,52 +1,49 @@
-import Dock from '@components/Dock';
-import Navbar from '@components/Navbar';
-import Firefox from '@windows/Firefox';
-import Welcome from '@components/Welcome';
-import Terminal from '@windows/Terminal';
-import gsap from 'gsap';
-import { Draggable } from 'gsap/Draggable';
-import Resume from '@windows/Resume';
-import Files from '@windows/Files';
-import TextEditorWindow from '@windows/Text';
-import ImageViewerWindow from '@windows/Image';
-import ContactWindow from '@windows/Contact';
-import ScreenGuard from '@components/ScreenGuard';
-import { useLocation } from 'react-router';
-import ReactGA from 'react-ga4';
-import { useEffect } from 'react';
-
-gsap.registerPlugin(Draggable);
+import { useEffect, useState } from 'react';
+import { useTheme } from './providers/theme-context';
+import Chrome from './components/Chrome';
+import Cursor from './components/Cursor';
+import Hero from './components/Hero';
+import About from './components/About';
+import Work from './components/Work';
+import Writing from './components/Writing';
+import Experience from './components/Experience';
+import Contact from './components/Contact';
+import FootEnd from './components/FootEnd';
+import NowOss from './components/NowOss';
 
 const App = () => {
-    const gTagId = import.meta.env.VITE_G_ID;
-    const location = useLocation();
-    // We use HashRouter
-    const fullPath = location.pathname + location.hash;
-    const isBlogs = fullPath.startsWith('/blogs');
+    const [timeStr, setTimeStr] = useState('');
 
-    const MEASUREMENT_ID = gTagId;
-    ReactGA.initialize(MEASUREMENT_ID);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
-        ReactGA.send({ hitType: 'pageview', page: fullPath, title: fullPath });
-    }, [fullPath]);
+        function tick() {
+            const d = new Date();
+            const hh = String(d.getHours()).padStart(2, '0');
+            const mm = String(d.getMinutes()).padStart(2, '0');
+            const ss = String(d.getSeconds()).padStart(2, '0');
+            setTimeStr(`${hh}:${mm}:${ss}`);
+        }
+        tick();
+        const t = setInterval(tick, 1000);
+        return () => clearInterval(t);
+    }, []);
 
     return (
-        <ScreenGuard>
-            <main className={isBlogs ? 'bg-none' : ''}>
-                <Navbar />
-                <Welcome />
-                <Dock />
-
-                <Terminal />
-                <Firefox />
-                <Resume />
-                <Files />
-                <TextEditorWindow />
-                <ImageViewerWindow />
-                <ContactWindow />
+        <>
+            <Cursor />
+            <Chrome theme={theme} onToggleTheme={toggleTheme} timeStr={timeStr} />
+            <main>
+                <Hero />
+                <About />
+                <Work />
+                <Writing />
+                <Experience />
+                <NowOss />
+                <Contact />
+                <FootEnd />
             </main>
-        </ScreenGuard>
+        </>
     );
 };
 
