@@ -1,6 +1,7 @@
 import SectionHead from './SectionHead';
 import { POSTS } from './data';
 import { useAnalytics } from '../hooks/use-analytics';
+import { Link } from 'react-router';
 
 const Writing = () => {
     const { trackEvent } = useAnalytics();
@@ -10,9 +11,9 @@ const Writing = () => {
                 <SectionHead n="03" title={<>Writing.</>} meta="Occasional Articles" />
                 <div className="writing">
                     {POSTS.map((p, i) => (
-                        <a
+                        <Link
                             className="post"
-                            href={p.link}
+                            to={p.link}
                             target="_blank"
                             key={i}
                             onClick={() => trackEvent(`Open Post ${p.title}`, 'Writing', p.link)}>
@@ -25,7 +26,7 @@ const Writing = () => {
                             <h3 className="post__title">{p.title}</h3>
                             <p className="post__excerpt">{p.excerpt}</p>
                             <div className="post__more">Read →</div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

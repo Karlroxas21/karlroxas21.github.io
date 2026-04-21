@@ -72,7 +72,7 @@ export const POSTS: Post[] = [
         excerpt:
             'Before React 16.8, if you wanted your component to have state, handle side effects, or do anything beyond showing static HTML, you had to write a class component. Classes meant writing this.state, this.setState, binding methods in the constructor, and dealing with lifecycle methods like componentDidMount, componentDidUpdate, and componentWillUnmount.',
         tag: 'React',
-        link: 'https://karlroxas.is-a.dev',
+        link: 'blogs/react-hooks',
     },
     {
         date: 'Jan 2026',
@@ -81,7 +81,7 @@ export const POSTS: Post[] = [
         excerpt:
             "Imagine you're building a house. You could cut every piece of lumber yourself, mix your own concrete, and forge your own nails. Or you could just tell the contractor 'I need a kitchen here' and they figure out the plumbing, electrical, and materials.",
         tag: 'Spring Boot',
-        link: 'https://karlroxas.is-a.dev',
+        link: 'blogs/spring-boot-di',
     },
     {
         date: 'Jan 2026',
@@ -90,7 +90,7 @@ export const POSTS: Post[] = [
         excerpt:
             "If you've ever built a React app bigger than a todo list, you've probably hit a wall. You start with a few useState calls and it's fine. Then your app grows. Suddenly, you're passing callbacks and state through 5 layers of components just so a tiny button at the bottom can update something at the top",
         tag: 'State Management',
-        link: 'https://karlroxas.is-a.dev',
+        link: 'blogs/zustand',
     },
     {
         date: 'Oct 2025',
@@ -99,7 +99,7 @@ export const POSTS: Post[] = [
         excerpt:
             "So, you've hosted your personal website on GitHub Pages, but as a broke dev, buying a custom domain isn't an option. Don't worry! I'll show you how to get a free .is-a.dev domain. It's not only a cool, memorable domain, but immediately signals the visitors that you are a developer!",
         tag: 'DNS',
-        link: 'https://karlroxas.is-a.dev',
+        link: 'blogs/is-a-dev-domain',
     },
 ];
 
