@@ -37,10 +37,10 @@ const Hero = () => {
                             key={s.n}
                             to={`${s.href}`}
                             onClick={() => trackEvent(`Navigate ${s.label}`, 'Hero Index', s.href)}
-                            className="group grid grid-cols-[28px_1fr_60px] gap-2.5 items-baseline py-2 border-t border-(--hairline) last:border-b transition-[padding,color] duration-250 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:pl-3 hover:text-(--accent)">
+                            className="group grid md:grid-cols-[28px_1fr_60px]  lg:gap-2.5 items-baseline py-2 border-t border-(--hairline) last:border-b transition-[padding,color] duration-250 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:pl-3 hover:text-(--accent)">
                             <span className="text-(--fg-3)">{s.n}</span>
                             <span>{s.label}</span>
-                            <span className="text-right text-(--fg-3) transition-transform duration-250 group-hover:text-(--accent) group-hover:translate-x-1">
+                            <span className="hidden md:block text-right text-(--fg-3) transition-transform duration-250 group-hover:text-(--accent) group-hover:translate-x-1">
                                 {s.arrow}
                             </span>
                         </Link>
