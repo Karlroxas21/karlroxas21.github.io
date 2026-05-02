@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
         desc: 'An offline-first mobile savings tracker built with React Native and Expo. Track personal savings, manage group funds, and sync groups peer-to-peer via QR codes — all data stays on your device.',
         tags: ['Cross-platform', 'React Native', 'Typescript', 'Cryptoraphy'],
         year: "'25",
-        link: '',
+        link: '/rainydays',
     },
     {
         n: '02',
