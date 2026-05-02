@@ -1,6 +1,7 @@
 import SectionHead from './SectionHead';
 import { PROJECTS } from './data';
 import { useAnalytics } from '../hooks/use-analytics';
+import { Link } from 'react-router';
 
 const Work = () => {
     const { trackEvent } = useAnalytics();
@@ -10,12 +11,12 @@ const Work = () => {
                 <SectionHead n="02" title={<>Selected work.</>} meta={`${PROJECTS.length} projects · 2025—26`} />
                 <div className="work__list">
                     {PROJECTS.map(p => (
-                        <a
+                        <Link
                             className="proj"
-                            href="#"
+                            to={p.link}
                             key={p.n}
+                            target="_blank"
                             onClick={e => {
-                                e.preventDefault();
                                 trackEvent(`Click Project ${p.title}`, 'Work', `${p.n} · ${p.year}`);
                             }}>
                             <div className="proj__num">{p.n}</div>
@@ -32,7 +33,7 @@ const Work = () => {
                             <div className="proj__arrow" aria-hidden>
                                 ↗
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
