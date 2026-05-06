@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { sendAIMessage, AI_PROVIDER, type Message } from '../lib/ai-chat';
 
 const CHIPS = ['Who are you?', 'What do you build?', 'What are you working on?', 'How can I reach you?'];
@@ -185,7 +187,7 @@ const ChatBot = () => {
                                     lineHeight: 1.5,
                                     color: 'var(--color-fg)',
                                 }}>
-                                {msg.text}
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
                             </div>
                         ) : (
                             // User bubble
