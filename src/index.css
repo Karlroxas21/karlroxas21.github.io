@@ -1029,3 +1029,236 @@ body {
         scroll-behavior: auto;
     }
 }
+
+/* ============================================================
+   RainyDays page — animation keyframes + pseudo-element styles
+   ============================================================ */
+
+/* Page font/bg reset (Tailwind handles layout) */
+.rd-page {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Hero grid texture overlay */
+.rd-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse at 30% 30%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
+    mask-image: radial-gradient(ellipse at 30% 30%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* How-it-works grid texture */
+.rd-how::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+}
+
+/* Privacy callout radial overlay */
+.rd-callout::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%);
+    pointer-events: none;
+}
+
+/* Mesh gradient blobs */
+@keyframes rd-mesh-1 {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(15%, 20%) scale(1.15);
+    }
+    66% {
+        transform: translate(-10%, 10%) scale(0.9);
+    }
+}
+@keyframes rd-mesh-2 {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(-20%, 15%) scale(0.95);
+    }
+    66% {
+        transform: translate(10%, -10%) scale(1.1);
+    }
+}
+@keyframes rd-mesh-3 {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(20%, -25%) scale(1.2);
+    }
+}
+@keyframes rd-mesh-4 {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-15%, -15%) scale(0.85);
+    }
+}
+
+/* Device breathing */
+@keyframes rd-breathe {
+    0%,
+    100% {
+        transform: rotate(5.5deg);
+    }
+    50% {
+        transform: rotate(6.5deg);
+    }
+}
+@keyframes rd-breathe-md {
+    0%,
+    100% {
+        transform: rotate(3.5deg);
+    }
+    50% {
+        transform: rotate(4.5deg);
+    }
+}
+@keyframes rd-breathe-sm {
+    0%,
+    100% {
+        transform: rotate(2.5deg);
+    }
+    50% {
+        transform: rotate(3.5deg);
+    }
+}
+
+.rd-device-animate {
+    animation: rd-breathe 7s ease-in-out infinite;
+}
+@media (max-width: 1023px) {
+    .rd-device-animate {
+        animation-name: rd-breathe-md;
+    }
+}
+@media (max-width: 639px) {
+    .rd-device-animate {
+        animation-name: rd-breathe-sm;
+    }
+}
+
+/* Fund bar fill */
+@keyframes rd-fund-fill {
+    from {
+        width: 0;
+    }
+    to {
+        width: 68%;
+    }
+}
+.rd-fund-bar-fill {
+    height: 100%;
+    width: 68%;
+    background: #fff;
+    border-radius: 999px;
+    animation: rd-fund-fill 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+}
+
+/* Scroll indicator pulse */
+@keyframes rd-scroll-pulse {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+.rd-scroll-pulse {
+    animation: rd-scroll-pulse 2.4s ease-in-out infinite;
+}
+
+/* Reveal on scroll */
+.rd-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 400ms ease-out,
+        transform 400ms ease-out;
+    will-change: opacity, transform;
+}
+.rd-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays */
+.rd-stagger-1 {
+    transition-delay: 0ms;
+}
+.rd-stagger-2 {
+    transition-delay: 80ms;
+}
+.rd-stagger-3 {
+    transition-delay: 160ms;
+}
+.rd-stagger-4 {
+    transition-delay: 240ms;
+}
+.rd-stagger-5 {
+    transition-delay: 320ms;
+}
+.rd-stagger-6 {
+    transition-delay: 400ms;
+}
+
+/* Nav link underline animation */
+.rd-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 150ms ease;
+}
+.rd-nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rd-device-animate,
+    .rd-scroll-pulse,
+    .rd-fund-bar-fill {
+        animation: none !important;
+    }
+    .rd-fund-bar-fill {
+        width: 68%;
+    }
+    .rd-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
