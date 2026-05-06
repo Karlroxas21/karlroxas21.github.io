@@ -8,6 +8,9 @@ const PROVIDER_ENV = import.meta.env.VITE_AI_PROVIDER as string | undefined;
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
 const OPENROUTER_KEY = import.meta.env.VITE_OPENROUTER_API_KEY as string | undefined;
 const OPENROUTER_MODEL = (import.meta.env.VITE_OPENROUTER_MODEL as string | undefined) ?? 'anthropic/claude-haiku-4-5';
+// Set VITE_AI_ENDPOINT to your Cloudflare Worker URL to keep the key server-side
+const OPENROUTER_ENDPOINT =
+    (import.meta.env.VITE_AI_ENDPOINT as string | undefined) ?? 'https://openrouter.ai/api/v1/chat/completions';
 
 function resolveProvider(): Provider | null {
     if (PROVIDER_ENV === 'openrouter') return OPENROUTER_KEY ? 'openrouter' : null;
@@ -35,12 +38,12 @@ async function sendOpenRouter(history: Message[], userText: string): Promise<str
         { role: 'user', content: userText },
     ];
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (OPENROUTER_KEY) headers['Authorization'] = `Bearer ${OPENROUTER_KEY}`;
+
+    const response = await fetch(OPENROUTER_ENDPOINT, {
         method: 'POST',
-        headers: {
-            Authorization: `Bearer ${OPENROUTER_KEY}`,
-            'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({ model: OPENROUTER_MODEL, messages, max_tokens: 512 }),
     });
 
