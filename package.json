@@ -10,7 +10,8 @@
         "preview": "vite preview",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "prepare": "husky"
+        "prepare": "husky",
+        "deploy-worker": "wrangler deploy"
     },
     "dependencies": {
         "@google/genai": "^1.52.0",
