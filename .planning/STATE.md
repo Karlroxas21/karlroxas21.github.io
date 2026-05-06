@@ -3,9 +3,9 @@
 ## Current Position
 
 Phase: 1 — Chat Widget  
-Plan: 01 of N (01-01 complete)
+Plan: 02 of N (01-02 complete)
 Status: In progress  
-Last activity: 2026-05-06 — Plan 01-01 complete (SDK + SYSTEM_PROMPT)
+Last activity: 2026-05-06 — Plan 01-02 complete (ChatBot.tsx widget + chatDotPulse keyframe)
 
 ## Project Reference
 
@@ -29,8 +29,17 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 - Off-topic guard phrase: "I can only answer questions about Karl. Try asking about his experience, projects, or skills."
 - `src/constants/` directory established for non-component shared exports
 
+## Decisions (01-02)
+
+- Panel always in DOM (not conditional render) — CSS transitions require element to persist in both open/close directions
+- chatRef.current stores Gemini chat session in useRef for multi-turn conversation persistence
+- handleSend accepts optional overrideText — enables chip clicks to send without input field typing
+- headerCloseHover state added for × close button hover color transition (onMouseEnter/Leave pattern)
+- Zero hardcoded hex values — all colors use var(--color-\*) CSS tokens
+
 ## Performance Metrics
 
 | Phase | Plan | Duration | Tasks | Files |
 | ----- | ---- | -------- | ----- | ----- |
 | 01    | 01   | 2min     | 3     | 4     |
+| 01    | 02   | 2min     | 2     | 2     |

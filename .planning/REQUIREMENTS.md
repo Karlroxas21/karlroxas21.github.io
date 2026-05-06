@@ -7,16 +7,16 @@
 
 ### Chatbot Widget
 
-- [ ] **CHAT-01**: Visitor can open a chat panel via a fixed floating button on the portfolio
+- [x] **CHAT-01**: Visitor can open a chat panel via a fixed floating button on the portfolio
 - [x] **CHAT-02**: Visitor can type a question and receive a response about Karl from Gemini AI
 - [x] **CHAT-03**: Bot response is grounded in Karl's actual resume data (experience, skills, projects, posts)
 - [x] **CHAT-04**: Conversation history is maintained within the session (multi-turn context)
-- [ ] **CHAT-05**: Chat panel displays a welcome message and suggested prompt chips on open
-- [ ] **CHAT-06**: Visitor can close the chat panel
-- [ ] **CHAT-07**: Loading state is shown while awaiting API response
-- [ ] **CHAT-08**: Friendly error message shown if API call fails
-- [ ] **CHAT-09**: Input is cleared after sending; cannot send empty messages
-- [ ] **CHAT-10**: Chat widget follows the existing editorial monochrome design system
+- [x] **CHAT-05**: Chat panel displays a welcome message and suggested prompt chips on open
+- [x] **CHAT-06**: Visitor can close the chat panel
+- [x] **CHAT-07**: Loading state is shown while awaiting API response
+- [x] **CHAT-08**: Friendly error message shown if API call fails
+- [x] **CHAT-09**: Input is cleared after sending; cannot send empty messages
+- [x] **CHAT-10**: Chat widget follows the existing editorial monochrome design system
 - [ ] **CHAT-11**: API key is loaded via VITE_GEMINI_API_KEY env var (not hardcoded)
 - [ ] **CHAT-12**: GitHub Actions build passes VITE_GEMINI_API_KEY secret to Vite build step
 
@@ -34,16 +34,16 @@
 
 | Requirement | Phase   | Status   |
 | ----------- | ------- | -------- |
-| CHAT-01     | Phase 1 | Pending  |
+| CHAT-01     | Phase 1 | Complete |
 | CHAT-02     | Phase 1 | Complete |
 | CHAT-03     | Phase 1 | Complete |
 | CHAT-04     | Phase 1 | Complete |
-| CHAT-05     | Phase 1 | Pending  |
-| CHAT-06     | Phase 1 | Pending  |
-| CHAT-07     | Phase 1 | Pending  |
-| CHAT-08     | Phase 1 | Pending  |
-| CHAT-09     | Phase 1 | Pending  |
-| CHAT-10     | Phase 1 | Pending  |
+| CHAT-05     | Phase 1 | Complete |
+| CHAT-06     | Phase 1 | Complete |
+| CHAT-07     | Phase 1 | Complete |
+| CHAT-08     | Phase 1 | Complete |
+| CHAT-09     | Phase 1 | Complete |
+| CHAT-10     | Phase 1 | Complete |
 | CHAT-11     | Phase 2 | Pending  |
 | CHAT-12     | Phase 2 | Pending  |
 
