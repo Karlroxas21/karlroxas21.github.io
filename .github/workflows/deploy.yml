@@ -30,6 +30,7 @@ jobs:
         run: npm run build
         env:
             VITE_G_ID: ${{ secrets.VITE_G_ID }}
+            VITE_AI_ENDPOINT: ${{ secrets.VITE_AI_ENDPOINT }}
 
       # Step 5: Deploy to the gh-pages branch
       - name: Deploy to GitHub Pages
