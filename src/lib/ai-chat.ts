@@ -1,4 +1,5 @@
 import { SYSTEM_PROMPT } from '../constants/chatbot-context';
+import { fixMarkdownSpacing } from '../utils/markdown';
 
 export type Message = { role: 'user' | 'model'; text: string };
 
@@ -26,7 +27,10 @@ export const AI_PROVIDER: Provider | null = resolveProvider();
 
 export async function sendAIMessage(history: Message[], userText: string): Promise<string> {
     if (!AI_PROVIDER) throw new Error('No AI provider configured');
-    return AI_PROVIDER === 'openrouter' ? sendOpenRouter(history, userText) : sendGemini(history, userText);
+    const raw = await (AI_PROVIDER === 'openrouter'
+        ? sendOpenRouter(history, userText)
+        : sendGemini(history, userText));
+    return fixMarkdownSpacing(raw);
 }
 
 async function sendOpenRouter(history: Message[], userText: string): Promise<string> {
