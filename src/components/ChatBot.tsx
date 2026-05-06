@@ -1,13 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { GoogleGenAI } from '@google/genai';
-import { SYSTEM_PROMPT } from '../constants/chatbot-context';
-
-type Message = { role: 'user' | 'model'; text: string };
+import { sendAIMessage, AI_PROVIDER, type Message } from '../lib/ai-chat';
 
 const CHIPS = ['Who are you?', 'What do you build?', 'What are you working on?', 'How can I reach you?'];
-
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
-const ai = GEMINI_API_KEY ? new GoogleGenAI({ apiKey: GEMINI_API_KEY }) : null;
 
 const ChatBot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,19 +10,9 @@ const ChatBot = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [headerCloseHover, setHeaderCloseHover] = useState(false);
 
-    const chatRef = useRef<ReturnType<NonNullable<typeof ai>['chats']['create']> | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
-
-    // Initialize chat session on mount
-    useEffect(() => {
-        if (!ai) return;
-        chatRef.current = ai.chats.create({
-            model: 'gemini-2.0-flash',
-            config: { systemInstruction: SYSTEM_PROMPT },
-        });
-    }, []);
 
     // Auto-scroll to bottom on new messages
     useEffect(() => {
@@ -46,13 +30,13 @@ const ChatBot = () => {
 
     const handleSend = async (overrideText?: string) => {
         const userText = (overrideText ?? value).trim();
-        if (!userText || isLoading || !chatRef.current) return;
+        if (!userText || isLoading || !AI_PROVIDER) return;
+        const history = messages;
         setValue('');
         setMessages(prev => [...prev, { role: 'user', text: userText }]);
         setIsLoading(true);
         try {
-            const response = await chatRef.current.sendMessage({ message: userText });
-            const aiText = response.text ?? 'No response received.';
+            const aiText = await sendAIMessage(history, userText);
             setMessages(prev => [...prev, { role: 'model', text: aiText }]);
         } catch {
             setMessages(prev => [...prev, { role: 'model', text: 'Something went wrong. Try again.' }]);
@@ -70,7 +54,7 @@ const ChatBot = () => {
             {/* Floating chat button */}
             <button
                 ref={buttonRef}
-                className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-opacity hover:opacity-90"
+                className="fixed bottom-15 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-opacity hover:opacity-90"
                 style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
                 onClick={() => setIsOpen(o => !o)}
                 aria-label={isOpen ? 'Close chat' : 'Open chat'}>
@@ -101,7 +85,7 @@ const ChatBot = () => {
                 role="dialog"
                 aria-label="Chat with Karl's AI assistant"
                 aria-modal="true"
-                className="fixed bottom-24 right-6 z-40 w-[380px] h-[560px] rounded-lg flex flex-col"
+                className="fixed bottom-34 right-6 z-40 w-[380px] h-[560px] rounded-lg flex flex-col"
                 style={{
                     background: 'var(--color-bg)',
                     border: '1px solid var(--color-hairline)',
