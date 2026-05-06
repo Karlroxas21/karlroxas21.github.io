@@ -929,6 +929,18 @@ body {
     }
 }
 
+@keyframes chatDotPulse {
+    0%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .cursor {
         display: block;
