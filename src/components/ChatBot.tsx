@@ -56,7 +56,7 @@ const ChatBot = () => {
             {/* Floating chat button */}
             <button
                 ref={buttonRef}
-                className="fixed bottom-15 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-opacity hover:opacity-90"
+                className={`fixed bottom-15 right-6 z-50 w-14 h-14 rounded-full items-center justify-center transition-opacity hover:opacity-90 ${isOpen ? 'hidden sm:flex' : 'flex'}`}
                 style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
                 onClick={() => setIsOpen(o => !o)}
                 aria-label={isOpen ? 'Close chat' : 'Open chat'}>
@@ -87,7 +87,10 @@ const ChatBot = () => {
                 role="dialog"
                 aria-label="Chat with Karl's AI assistant"
                 aria-modal="true"
-                className="fixed bottom-15 right-23 z-40 w-[380px] h-[560px] rounded-lg flex flex-col"
+                className="fixed z-40 flex flex-col
+                    bottom-10 right-0 left-0 
+                    h-[85dvh] rounded-t-lg
+                    sm:bottom-14 sm:right-24 sm:left-auto sm:w-[380px] sm:h-[560px] sm:rounded-lg"
                 style={{
                     background: 'var(--color-bg)',
                     border: '1px solid var(--color-hairline)',
@@ -187,7 +190,9 @@ const ChatBot = () => {
                                     lineHeight: 1.5,
                                     color: 'var(--color-fg)',
                                 }}>
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                                <div className="chat-md">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                                </div>
                             </div>
                         ) : (
                             // User bubble
@@ -243,10 +248,12 @@ const ChatBot = () => {
 
                 {/* Panel footer — input row */}
                 <div
-                    className="shrink-0 flex items-center gap-2 px-4 h-14"
+                    className="shrink-0 flex items-center gap-2 px-4"
                     style={{
                         borderTop: '1px solid var(--color-hairline)',
                         opacity: isLoading ? 0.6 : 1,
+                        height: 'calc(3.5rem + env(safe-area-inset-bottom, 0px))',
+                        paddingBottom: 'env(safe-area-inset-bottom, 0px)',
                     }}>
                     <input
                         ref={inputRef}
