@@ -13,7 +13,6 @@
         "prepare": "husky"
     },
     "dependencies": {
-        "@anthropic-ai/sdk": "^0.94.0",
         "@google/genai": "^1.52.0",
         "@tailwindcss/vite": "^4.1.18",
         "highlight.js": "^11.11.1",

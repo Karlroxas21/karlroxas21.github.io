@@ -2,17 +2,18 @@ import { SYSTEM_PROMPT } from '../constants/chatbot-context';
 
 export type Message = { role: 'user' | 'model'; text: string };
 
-type Provider = 'gemini' | 'anthropic';
+type Provider = 'gemini' | 'openrouter';
 
 const PROVIDER_ENV = import.meta.env.VITE_AI_PROVIDER as string | undefined;
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
-const ANTHROPIC_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY as string | undefined;
+const OPENROUTER_KEY = import.meta.env.VITE_OPENROUTER_API_KEY as string | undefined;
+const OPENROUTER_MODEL = (import.meta.env.VITE_OPENROUTER_MODEL as string | undefined) ?? 'anthropic/claude-haiku-4-5';
 
 function resolveProvider(): Provider | null {
-    if (PROVIDER_ENV === 'anthropic') return ANTHROPIC_KEY ? 'anthropic' : null;
+    if (PROVIDER_ENV === 'openrouter') return OPENROUTER_KEY ? 'openrouter' : null;
     if (PROVIDER_ENV === 'gemini') return GEMINI_KEY ? 'gemini' : null;
-    // auto-detect: Anthropic first, then Gemini
-    if (ANTHROPIC_KEY) return 'anthropic';
+    // auto-detect: OpenRouter first, then Gemini
+    if (OPENROUTER_KEY) return 'openrouter';
     if (GEMINI_KEY) return 'gemini';
     return null;
 }
@@ -21,7 +22,32 @@ export const AI_PROVIDER: Provider | null = resolveProvider();
 
 export async function sendAIMessage(history: Message[], userText: string): Promise<string> {
     if (!AI_PROVIDER) throw new Error('No AI provider configured');
-    return AI_PROVIDER === 'anthropic' ? sendAnthropic(history, userText) : sendGemini(history, userText);
+    return AI_PROVIDER === 'openrouter' ? sendOpenRouter(history, userText) : sendGemini(history, userText);
+}
+
+async function sendOpenRouter(history: Message[], userText: string): Promise<string> {
+    const messages = [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...history.map(m => ({
+            role: m.role === 'model' ? 'assistant' : 'user',
+            content: m.text,
+        })),
+        { role: 'user', content: userText },
+    ];
+
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${OPENROUTER_KEY}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ model: OPENROUTER_MODEL, messages }),
+    });
+
+    if (!response.ok) throw new Error(`OpenRouter ${response.status}`);
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content ?? 'No response received.';
 }
 
 async function sendGemini(history: Message[], userText: string): Promise<string> {
@@ -43,27 +69,4 @@ async function sendGemini(history: Message[], userText: string): Promise<string>
     });
 
     return response.text ?? 'No response received.';
-}
-
-async function sendAnthropic(history: Message[], userText: string): Promise<string> {
-    const Anthropic = (await import('@anthropic-ai/sdk')).default;
-    const client = new Anthropic({ apiKey: ANTHROPIC_KEY!, dangerouslyAllowBrowser: true });
-
-    const messages = [
-        ...history.map(m => ({
-            role: (m.role === 'model' ? 'assistant' : 'user') as 'assistant' | 'user',
-            content: m.text,
-        })),
-        { role: 'user' as const, content: userText },
-    ];
-
-    const response = await client.messages.create({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages,
-    });
-
-    const block = response.content[0];
-    return block.type === 'text' ? block.text : 'No response received.';
 }
