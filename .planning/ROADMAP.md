@@ -17,6 +17,14 @@
 
 **Requirements:** CHAT-01, CHAT-02, CHAT-03, CHAT-04, CHAT-05, CHAT-06, CHAT-07, CHAT-08, CHAT-09, CHAT-10
 
+**Plans:** 3 plans
+
+Plans:
+
+- [ ] 01-01-PLAN.md — Install @google/genai, create .env.example, build SYSTEM_PROMPT constant
+- [ ] 01-02-PLAN.md — Build ChatBot.tsx (complete widget) and add chatDotPulse keyframe
+- [ ] 01-03-PLAN.md — Wire ChatBot into App.tsx and human-verify full widget
+
 **Files to create:**
 
 - `src/components/ChatBot.tsx` — floating button + chat panel component
@@ -26,6 +34,7 @@
 
 - `src/App.tsx` — import and render `<ChatBot />`
 - `.env.example` — document `VITE_GEMINI_API_KEY`
+- `src/index.css` — add `@keyframes chatDotPulse` for loading dots
 
 **Success criteria:**
 
@@ -55,3 +64,4 @@
 ---
 
 _Roadmap created: 2026-05-06_
+_Updated: 2026-05-06 — Phase 1 plans added (3 plans, 3 waves)_
