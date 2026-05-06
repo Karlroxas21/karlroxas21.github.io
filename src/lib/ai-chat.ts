@@ -41,7 +41,7 @@ async function sendOpenRouter(history: Message[], userText: string): Promise<str
             Authorization: `Bearer ${OPENROUTER_KEY}`,
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ model: OPENROUTER_MODEL, messages }),
+        body: JSON.stringify({ model: OPENROUTER_MODEL, messages, max_tokens: 512 }),
     });
 
     if (!response.ok) throw new Error(`OpenRouter ${response.status}`);
