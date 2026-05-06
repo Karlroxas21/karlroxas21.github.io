@@ -5,6 +5,7 @@ import { useTheme } from './providers/theme-context';
 import { useAnalytics } from './hooks/use-analytics';
 import Chrome from './components/Chrome';
 import Cursor from './components/Cursor';
+import ChatBot from './components/ChatBot';
 import Hero from './components/Hero';
 import About from './components/About';
 import Work from './components/Work';
@@ -44,6 +45,7 @@ const App = () => {
     return (
         <>
             <Cursor />
+            <ChatBot />
             <Chrome theme={theme} onToggleTheme={toggleTheme} timeStr={timeStr} />
             <main>
                 <Hero />
