@@ -8,9 +8,9 @@
 ### Chatbot Widget
 
 - [ ] **CHAT-01**: Visitor can open a chat panel via a fixed floating button on the portfolio
-- [ ] **CHAT-02**: Visitor can type a question and receive a response about Karl from Gemini AI
-- [ ] **CHAT-03**: Bot response is grounded in Karl's actual resume data (experience, skills, projects, posts)
-- [ ] **CHAT-04**: Conversation history is maintained within the session (multi-turn context)
+- [x] **CHAT-02**: Visitor can type a question and receive a response about Karl from Gemini AI
+- [x] **CHAT-03**: Bot response is grounded in Karl's actual resume data (experience, skills, projects, posts)
+- [x] **CHAT-04**: Conversation history is maintained within the session (multi-turn context)
 - [ ] **CHAT-05**: Chat panel displays a welcome message and suggested prompt chips on open
 - [ ] **CHAT-06**: Visitor can close the chat panel
 - [ ] **CHAT-07**: Loading state is shown while awaiting API response
@@ -32,20 +32,20 @@
 
 ## Traceability
 
-| Requirement | Phase   | Status  |
-| ----------- | ------- | ------- |
-| CHAT-01     | Phase 1 | Pending |
-| CHAT-02     | Phase 1 | Pending |
-| CHAT-03     | Phase 1 | Pending |
-| CHAT-04     | Phase 1 | Pending |
-| CHAT-05     | Phase 1 | Pending |
-| CHAT-06     | Phase 1 | Pending |
-| CHAT-07     | Phase 1 | Pending |
-| CHAT-08     | Phase 1 | Pending |
-| CHAT-09     | Phase 1 | Pending |
-| CHAT-10     | Phase 1 | Pending |
-| CHAT-11     | Phase 2 | Pending |
-| CHAT-12     | Phase 2 | Pending |
+| Requirement | Phase   | Status   |
+| ----------- | ------- | -------- |
+| CHAT-01     | Phase 1 | Pending  |
+| CHAT-02     | Phase 1 | Complete |
+| CHAT-03     | Phase 1 | Complete |
+| CHAT-04     | Phase 1 | Complete |
+| CHAT-05     | Phase 1 | Pending  |
+| CHAT-06     | Phase 1 | Pending  |
+| CHAT-07     | Phase 1 | Pending  |
+| CHAT-08     | Phase 1 | Pending  |
+| CHAT-09     | Phase 1 | Pending  |
+| CHAT-10     | Phase 1 | Pending  |
+| CHAT-11     | Phase 2 | Pending  |
+| CHAT-12     | Phase 2 | Pending  |
 
 **Coverage:**
 

@@ -4,10 +4,10 @@
 **Phases:** 2  
 **Requirements:** 12 mapped, 12 total ✓
 
-| #   | Phase            | Goal                                                 | Requirements | Success Criteria |
-| --- | ---------------- | ---------------------------------------------------- | ------------ | ---------------- |
-| 1   | Chat Widget      | Build the full chatbot UI and Gemini API integration | CHAT-01–10   | 5                |
-| 2   | Deployment Setup | Wire API key through env vars and GitHub Actions     | CHAT-11–12   | 2                |
+| #   | Phase            | Goal                                             | Requirements | Success Criteria |
+| --- | ---------------- | ------------------------------------------------ | ------------ | ---------------- |
+| 1   | 1/3              | In Progress                                      |              | 5                |
+| 2   | Deployment Setup | Wire API key through env vars and GitHub Actions | CHAT-11–12   | 2                |
 
 ---
 
@@ -17,7 +17,7 @@
 
 **Requirements:** CHAT-01, CHAT-02, CHAT-03, CHAT-04, CHAT-05, CHAT-06, CHAT-07, CHAT-08, CHAT-09, CHAT-10
 
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
 
