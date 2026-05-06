@@ -87,7 +87,7 @@ const ChatBot = () => {
                 role="dialog"
                 aria-label="Chat with Karl's AI assistant"
                 aria-modal="true"
-                className="fixed bottom-34 right-6 z-40 w-[380px] h-[560px] rounded-lg flex flex-col"
+                className="fixed bottom-15 right-23 z-40 w-[380px] h-[560px] rounded-lg flex flex-col"
                 style={{
                     background: 'var(--color-bg)',
                     border: '1px solid var(--color-hairline)',
