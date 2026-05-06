@@ -23,6 +23,7 @@ A minimal personal portfolio site built with React, TypeScript, and Vite. Focuse
 - **Icons**: lucide-react
 - **Code quality**: ESLint, Prettier, Husky, lint-staged
 - **React Compiler**: babel-plugin-react-compiler
+- **AI Proxy**: Cloudflare Worker (`withered-shape-02b5`) — proxies OpenRouter API, keeps API key server-side
 
 ## Getting Started
 
@@ -48,7 +49,8 @@ npm run prepare
 Create a `.env` file:
 
 ```env
-VITE_G_ID=G-XXXXXXXXXX   # Google Analytics 4 measurement ID (optional)
+VITE_G_ID=G-XXXXXXXXXX          # Google Analytics 4 measurement ID (optional)
+VITE_AI_ENDPOINT=https://...    # Cloudflare Worker URL for AI proxy (optional)
 ```
 
 ### Development
@@ -150,6 +152,57 @@ Articles use syntax highlighting via highlight.js + rehype-highlight.
 ```
 
 **Husky** runs Prettier on staged files (`*.js, *.jsx, *.ts, *.tsx, *.json, *.css, *.md`) before each commit via lint-staged.
+
+## Cloudflare Worker (AI Proxy)
+
+`withered-shape-02b5/` — Cloudflare Worker that proxies requests to OpenRouter, keeping the API key server-side.
+
+### Why
+
+The chatbot feature calls OpenRouter. Embedding the API key in frontend JS exposes it. Worker injects the key at the edge.
+
+### Setup
+
+Prerequisites: [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+
+```bash
+npm install -g wrangler
+wrangler login
+```
+
+Deploy:
+
+```bash
+cd withered-shape-02b5
+npm install
+wrangler secret put OPENROUTER_API_KEY   # paste key when prompted
+wrangler deploy
+```
+
+The deployed worker URL is your `VITE_AI_ENDPOINT` value.
+
+### Environment Variables (Worker)
+
+| Variable             | Required | Description                                  |
+| -------------------- | -------- | -------------------------------------------- |
+| `OPENROUTER_API_KEY` | Yes      | OpenRouter API key (set via wrangler secret) |
+| `SITE_URL`           | No       | Sent as `HTTP-Referer` header to OpenRouter  |
+
+### Local Development
+
+```bash
+cd withered-shape-02b5
+npm run dev   # starts at http://localhost:8787
+```
+
+### CORS
+
+Worker allows requests from:
+
+- `https://karlroxas.is-a.dev`
+- `https://karlroxas21.github.io`
+
+Update `Access-Control-Allow-Origin` in `withered-shape-02b5/src/worker.js` if domains change.
 
 ## License
 

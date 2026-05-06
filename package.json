@@ -13,6 +13,7 @@
         "prepare": "husky"
     },
     "dependencies": {
+        "@google/genai": "^1.52.0",
         "@tailwindcss/vite": "^4.1.18",
         "highlight.js": "^11.11.1",
         "lucide-react": "^0.562.0",
