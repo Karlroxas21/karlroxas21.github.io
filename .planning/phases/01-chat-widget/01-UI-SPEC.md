@@ -119,7 +119,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 **Panel header (row, 48px tall):**
 
 - Left: title "Ask Karl" in `var(--font-display)`, 16px, italic, weight 400, `var(--color-fg)`
-- Right: × close button, 32px tap target, `var(--color-fg-3)` default, `var(--color-fg)` on hover
+- Right: × close button, 32px tap target, `var(--color-fg-3)` default, `var(--color-fg)` on hover, `aria-label="Close chat panel"`
 - Bottom border: `1px solid var(--color-hairline)`
 - Padding: 16px horizontal
 
@@ -135,7 +135,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 - Max width: 85% of panel width
 - Background: `var(--color-bg)`, border: `1px solid var(--color-hairline)`
 - Border radius: `rounded-lg` (8px), with bottom-left corner squared: `rounded-bl-sm` (2px)
-- Padding: 10px 14px
+- Padding: 8px 16px
 - Font: `var(--font-body)`, 15px, weight 400, line-height 1.5
 
 **Message bubble — User:**
@@ -144,7 +144,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 - Max width: 85% of panel width
 - Background: `var(--color-fg)`, text: `var(--color-bg)`
 - Border radius: `rounded-lg` (8px), with bottom-right corner squared: `rounded-br-sm` (2px)
-- Padding: 10px 14px
+- Padding: 8px 16px
 - Font: `var(--font-body)`, 15px, weight 400, line-height 1.5
 
 **Loading indicator (inside AI bubble):**
@@ -159,7 +159,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 - Each chip: pill shape, `border: 1px solid var(--color-hairline)`, `var(--color-bg)` bg
 - Chip hover: border upgrades to `var(--color-fg)`, no bg change
 - Font: `var(--font-mono)`, 11px, `tracking-[0.10em]`
-- Padding: 6px 14px
+- Padding: 8px 16px
 - Border radius: 999px (full pill)
 - Four chips — exact labels locked:
     1. "Who are you?"
@@ -170,7 +170,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 **Panel footer (input row, 56px tall):**
 
 - Top border: `1px solid var(--color-hairline)`
-- Padding: 8px 12px
+- Padding: 8px 16px
 - Input: plain `<input type="text">`, no border, no outline, bg transparent, `var(--font-body)` 15px, `var(--color-fg)` text, `var(--color-fg-3)` placeholder
 - Send button: 36px × 36px, circle, `var(--color-fg)` bg when enabled, `var(--color-hairline)` bg when disabled, `var(--color-bg)` icon, border-radius 50%
 - Send button icon: right-pointing arrow SVG (inline)
@@ -212,6 +212,7 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 | Send button aria-label          | Send message                                                                                                      |
 | Chat button aria-label (closed) | Open chat                                                                                                         |
 | Chat button aria-label (open)   | Close chat                                                                                                        |
+| Panel header × close aria-label | Close chat panel                                                                                                  |
 | Chip 1                          | Who are you?                                                                                                      |
 | Chip 2                          | What do you build?                                                                                                |
 | Chip 3                          | What are you working on?                                                                                          |
@@ -219,13 +220,14 @@ Source: CONTEXT.md ("Color: `--color-fg` background, `--color-bg` icon — adapt
 
 No destructive actions in this phase. No confirmation dialogs.
 
-Source: CONTEXT.md decisions section (chip labels, error copy, guard copy locked). Input placeholder and aria-labels are from Claude's discretion.
+Source: CONTEXT.md decisions section (chip labels, error copy, guard copy locked). Input placeholder, aria-labels, and close button aria-label are from Claude's discretion.
 
 ---
 
 ## Accessibility Contract
 
 - Chat button: `aria-label` toggled between "Open chat" and "Close chat"
+- Panel header × close button: `aria-label="Close chat panel"` (icon-only button requires explicit label)
 - Panel: `role="dialog"` with `aria-label="Chat with Karl's AI assistant"` and `aria-modal="true"`
 - Message list: `aria-live="polite"` so screen readers announce new messages
 - Send button: `aria-label="Send message"` + `disabled` attribute when empty
