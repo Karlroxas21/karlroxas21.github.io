@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.mmg-page {
+    background: #f4ede0;
+    color: #161412;
+    font-family: 'Manrope', Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.mmg-display {
+    font-family: 'Archivo Black', Helvetica, sans-serif;
+}
+
+.mmg-serif {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+.mmg-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Schedule cell type backgrounds */
+.mmg-cell-mma {
+    background: #161412 !important;
+    color: #f4ede0 !important;
+}
+.mmg-cell-mma .mmg-coach {
+    color: #ccc !important;
+}
+.mmg-cell-cardio {
+    background: #f0e3c8;
+}
+.mmg-cell-strength {
+    background: #e7d2ad;
+}
+.mmg-cell-mobility {
+    background: #ddd9c8;
+}
