@@ -8,12 +8,17 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+const ALLOWED_ORIGINS = new Set(['https://karlroxas.is-a.dev', 'https://karlroxas21.github.io']);
+
 export default {
 	async fetch(request, env) {
+		const origin = request.headers.get('Origin') ?? '';
+		const allowedOrigin = ALLOWED_ORIGINS.has(origin) ? origin : '';
+
 		if (request.method === 'OPTIONS') {
 			return new Response(null, {
 				headers: {
-					'Access-Control-Allow-Origin': 'https://karlroxas.is-a.dev, https://karlroxas21.github.io',
+					'Access-Control-Allow-Origin': allowedOrigin,
 					'Access-Control-Allow-Methods': 'POST, OPTIONS',
 					'Access-Control-Allow-Headers': 'Content-Type',
 				},
@@ -22,6 +27,10 @@ export default {
 
 		if (request.method !== 'POST') {
 			return new Response('Method not allowed', { status: 405 });
+		}
+
+		if (!allowedOrigin) {
+			return new Response('Forbidden', { status: 403 });
 		}
 
 		const body = await request.json();
@@ -42,7 +51,7 @@ export default {
 			status: response.status,
 			headers: {
 				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': 'https://karlroxas.is-a.dev, https://karlroxas21.github.io',
+				'Access-Control-Allow-Origin': allowedOrigin,
 			},
 		});
 	},

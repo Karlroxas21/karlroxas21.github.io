@@ -1,4 +1,5 @@
 import { SYSTEM_PROMPT } from '../constants/chatbot-context';
+import { fixMarkdownSpacing } from '../utils/markdown';
 
 export type Message = { role: 'user' | 'model'; text: string };
 
@@ -8,15 +9,16 @@ const PROVIDER_ENV = import.meta.env.VITE_AI_PROVIDER as string | undefined;
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
 const OPENROUTER_KEY = import.meta.env.VITE_OPENROUTER_API_KEY as string | undefined;
 const OPENROUTER_MODEL = (import.meta.env.VITE_OPENROUTER_MODEL as string | undefined) ?? 'anthropic/claude-haiku-4-5';
-// Set VITE_AI_ENDPOINT to your Cloudflare Worker URL to keep the key server-side
-const OPENROUTER_ENDPOINT =
-    (import.meta.env.VITE_AI_ENDPOINT as string | undefined) ?? 'https://openrouter.ai/api/v1/chat/completions';
+const OPENROUTER_ENDPOINT = import.meta.env.DEV
+    ? 'https://openrouter.ai/api/v1/chat/completions'
+    : ((import.meta.env.VITE_AI_ENDPOINT as string | undefined) ?? 'https://openrouter.ai/api/v1/chat/completions');
 
 function resolveProvider(): Provider | null {
-    if (PROVIDER_ENV === 'openrouter') return OPENROUTER_KEY ? 'openrouter' : null;
+    const hasProxy = !import.meta.env.DEV && !!import.meta.env.VITE_AI_ENDPOINT;
+    if (PROVIDER_ENV === 'openrouter') return OPENROUTER_KEY || hasProxy ? 'openrouter' : null;
     if (PROVIDER_ENV === 'gemini') return GEMINI_KEY ? 'gemini' : null;
     // auto-detect: OpenRouter first, then Gemini
-    if (OPENROUTER_KEY) return 'openrouter';
+    if (OPENROUTER_KEY || hasProxy) return 'openrouter';
     if (GEMINI_KEY) return 'gemini';
     return null;
 }
@@ -25,7 +27,10 @@ export const AI_PROVIDER: Provider | null = resolveProvider();
 
 export async function sendAIMessage(history: Message[], userText: string): Promise<string> {
     if (!AI_PROVIDER) throw new Error('No AI provider configured');
-    return AI_PROVIDER === 'openrouter' ? sendOpenRouter(history, userText) : sendGemini(history, userText);
+    const raw = await (AI_PROVIDER === 'openrouter'
+        ? sendOpenRouter(history, userText)
+        : sendGemini(history, userText));
+    return fixMarkdownSpacing(raw);
 }
 
 async function sendOpenRouter(history: Message[], userText: string): Promise<string> {
@@ -39,7 +44,7 @@ async function sendOpenRouter(history: Message[], userText: string): Promise<str
     ];
 
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-    if (OPENROUTER_KEY) headers['Authorization'] = `Bearer ${OPENROUTER_KEY}`;
+    if (import.meta.env.DEV && OPENROUTER_KEY) headers['Authorization'] = `Bearer ${OPENROUTER_KEY}`;
 
     const response = await fetch(OPENROUTER_ENDPOINT, {
         method: 'POST',
