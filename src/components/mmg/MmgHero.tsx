@@ -21,7 +21,6 @@ export default function MmgHero() {
                 playsInline
             />
 
-            {/* Gradient overlays for text readability */}
             <div
                 className="absolute inset-0 z-[1] pointer-events-none"
                 style={{
@@ -30,8 +29,7 @@ export default function MmgHero() {
                 }}
             />
 
-            {/* Content */}
-            <div className="relative z-[2]" style={{ padding: '120px 56px 96px' }}>
+            <div className="relative z-[2] px-4 sm:px-14 pt-16 sm:pt-[120px] pb-12 sm:pb-24">
                 <div
                     className="mmg-mono uppercase text-[#f4ede0]"
                     style={{ fontSize: 11, letterSpacing: '2px', opacity: 0.85, marginBottom: 24 }}>
@@ -41,7 +39,7 @@ export default function MmgHero() {
                 <h1
                     className="mmg-display text-[#f4ede0] m-0"
                     style={{
-                        fontSize: 'clamp(56px, 9vw, 144px)',
+                        fontSize: 'clamp(40px, 9vw, 144px)',
                         lineHeight: 0.92,
                         letterSpacing: '-2px',
                     }}>
@@ -55,17 +53,17 @@ export default function MmgHero() {
 
                 <p
                     className="text-[#f4ede0]"
-                    style={{ fontSize: 18, lineHeight: 1.5, marginTop: 32, maxWidth: '52ch', opacity: 0.9 }}>
+                    style={{ fontSize: 16, lineHeight: 1.5, marginTop: 24, maxWidth: '52ch', opacity: 0.9 }}>
                     MMG Stellar is a neighborhood gym for everyone — basketball, MMA, courts, classes, and a coaching
                     team that knows your name.
                 </p>
 
-                <div className="flex gap-3 flex-wrap" style={{ marginTop: 36 }}>
+                <div className="flex gap-3 flex-wrap" style={{ marginTop: 28 }}>
                     <Link
                         to="#membership"
                         className="inline-flex items-center no-underline transition-colors"
                         style={{
-                            padding: '14px 22px',
+                            padding: '12px 18px',
                             background: '#b94e2a',
                             border: '1px solid #b94e2a',
                             color: '#f4ede0',
@@ -89,7 +87,7 @@ export default function MmgHero() {
                         to="#courts"
                         className="inline-flex items-center no-underline transition-colors"
                         style={{
-                            padding: '14px 22px',
+                            padding: '12px 18px',
                             border: '1px solid rgba(244,237,224,0.7)',
                             color: '#f4ede0',
                             fontSize: 13,
@@ -111,8 +109,8 @@ export default function MmgHero() {
                 </div>
 
                 <div
-                    className="flex flex-wrap gap-12 mmg-mono uppercase text-[#f4ede0]"
-                    style={{ marginTop: 96, fontSize: 11, letterSpacing: '1.5px', opacity: 0.85 }}>
+                    className="grid grid-cols-2 sm:flex sm:flex-wrap gap-6 sm:gap-12 mmg-mono uppercase text-[#f4ede0]"
+                    style={{ marginTop: 64, fontSize: 11, letterSpacing: '1.5px', opacity: 0.85 }}>
                     {STATS.map(({ value, label }) => (
                         <div key={label}>
                             <strong

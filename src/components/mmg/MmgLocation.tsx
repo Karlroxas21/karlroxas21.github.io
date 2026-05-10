@@ -1,7 +1,7 @@
 export default function MmgLocation() {
     return (
-        <section id="location" style={{ padding: '96px 0', borderTop: '1px solid rgba(22,20,18,0.12)' }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
+        <section id="location" className="py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
                 <div className="mmg-mono uppercase text-[#6b6259]" style={{ fontSize: 11, letterSpacing: '2px' }}>
                     05 — Find Us
                 </div>
@@ -11,19 +11,13 @@ export default function MmgLocation() {
                         fontSize: 'clamp(32px,4vw,56px)',
                         lineHeight: 1,
                         letterSpacing: '-1px',
-                        margin: '8px 0 48px',
+                        margin: '8px 0 40px',
                     }}>
                     Come <span className="mmg-serif">train.</span>
                 </h2>
 
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 2fr',
-                        gap: 48,
-                        alignItems: 'center',
-                    }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-12 items-center">
+                    <div className="flex flex-col gap-8">
                         <div>
                             <div
                                 className="mmg-mono uppercase"

@@ -36,8 +36,8 @@ export default function MmgCommunity() {
     }, [lightbox]);
 
     return (
-        <section id="community" style={{ padding: '96px 0', borderTop: '1px solid rgba(22,20,18,0.12)' }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
+        <section id="community" className="py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
                 <div className="mmg-mono uppercase text-[#6b6259]" style={{ fontSize: 11, letterSpacing: '2px' }}>
                     04 — Community
                 </div>
@@ -52,14 +52,13 @@ export default function MmgCommunity() {
                     Built by <span className="mmg-serif">our regulars.</span>
                 </h2>
 
-                {/* Photo wall */}
+                {/* Photo wall — 2-col on mobile, 6-col on md+ */}
                 <div
+                    className="mt-10 sm:mt-12 hidden sm:grid"
                     style={{
-                        display: 'grid',
                         gridTemplateColumns: 'repeat(6, 1fr)',
                         gridAutoRows: 140,
                         gap: 8,
-                        marginTop: 48,
                     }}>
                     {PHOTOS.map(p => (
                         <div
@@ -87,14 +86,26 @@ export default function MmgCommunity() {
                     ))}
                 </div>
 
+                {/* Mobile photo grid — simple 2-col */}
+                <div className="grid grid-cols-2 gap-2 mt-10 sm:hidden" style={{ gridAutoRows: 120 }}>
+                    {PHOTOS.map(p => (
+                        <div
+                            key={p.id}
+                            className="relative overflow-hidden cursor-pointer"
+                            style={{ border: '1px solid rgba(22,20,18,0.12)' }}
+                            onClick={() => setLightbox({ src: p.src, label: p.label })}>
+                            <img
+                                src={p.src}
+                                alt={p.label}
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: p.pos ?? 'center center' }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
                 {/* Testimonials */}
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: 32,
-                        marginTop: 64,
-                    }}>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
                     {QUOTES.map(q => (
                         <blockquote
                             key={q.cite}
@@ -104,7 +115,7 @@ export default function MmgCommunity() {
                                 border: '1px solid rgba(22,20,18,0.12)',
                                 background: '#f4ede0',
                             }}>
-                            <p className="mmg-serif" style={{ fontSize: 24, lineHeight: 1.3, margin: '0 0 16px' }}>
+                            <p className="mmg-serif" style={{ fontSize: 22, lineHeight: 1.3, margin: '0 0 16px' }}>
                                 {q.text}
                             </p>
                             <cite

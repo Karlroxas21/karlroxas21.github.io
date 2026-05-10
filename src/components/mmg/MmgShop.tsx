@@ -9,14 +9,14 @@ export default function MmgShop() {
     return (
         <section
             id="shop"
+            className="py-16 sm:py-24"
             style={{
-                padding: '96px 0',
                 borderTop: '1px solid rgba(22,20,18,0.12)',
                 background: '#161412',
                 color: '#f4ede0',
             }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
-                <div className="flex justify-between items-end flex-wrap" style={{ marginBottom: 48 }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
+                <div className="flex justify-between items-end flex-wrap gap-4 mb-10 sm:mb-12">
                     <div>
                         <div
                             className="mmg-mono uppercase"
@@ -59,12 +59,7 @@ export default function MmgShop() {
                     </a>
                 </div>
 
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
-                        gap: 16,
-                    }}>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {ITEMS.map(item => (
                         <div
                             key={item.name}
@@ -75,7 +70,9 @@ export default function MmgShop() {
                             <div className="relative overflow-hidden" style={{ aspectRatio: '1' }}>
                                 <img src={item.src} alt={item.name} className="w-full h-full object-cover" />
                             </div>
-                            <div className="flex justify-between" style={{ padding: '14px 16px', fontSize: 14 }}>
+                            <div
+                                className="flex justify-between flex-wrap gap-1"
+                                style={{ padding: '12px 14px', fontSize: 13 }}>
                                 <span>{item.name}</span>
                                 <span>{item.price}</span>
                             </div>

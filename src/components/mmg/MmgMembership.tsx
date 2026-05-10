@@ -33,8 +33,9 @@ export default function MmgMembership() {
     return (
         <section
             id="membership"
-            style={{ padding: '96px 0', borderTop: '1px solid rgba(22,20,18,0.12)', background: '#ece3d2' }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
+            className="py-16 sm:py-24"
+            style={{ borderTop: '1px solid rgba(22,20,18,0.12)', background: '#ece3d2' }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
                 <div className="mmg-mono uppercase text-[#6b6259]" style={{ fontSize: 11, letterSpacing: '2px' }}>
                     03 — Membership
                 </div>
@@ -48,26 +49,19 @@ export default function MmgMembership() {
                     }}>
                     Pick your <span className="mmg-serif">cadence.</span>
                 </h2>
-                <p style={{ fontSize: 18, lineHeight: 1.5, color: '#3d3833', marginTop: 16 }}>
+                <p style={{ fontSize: 16, lineHeight: 1.5, color: '#3d3833', marginTop: 16 }}>
                     One-time enrollment of <strong>₱1,500</strong>. Cancel anytime after your initial term.
                 </p>
 
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
-                        gap: 16,
-                        marginTop: 48,
-                    }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-10 sm:mt-12">
                     {PLANS.map(plan => (
                         <PriceCard key={plan.tag} plan={plan} />
                     ))}
                 </div>
 
                 <div
-                    className="mmg-mono flex flex-wrap gap-8 uppercase"
+                    className="mmg-mono flex flex-wrap gap-6 sm:gap-8 uppercase mt-8"
                     style={{
-                        marginTop: 32,
                         padding: '20px 24px',
                         border: '1px dashed rgba(22,20,18,0.4)',
                         fontSize: 12,

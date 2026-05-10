@@ -50,19 +50,9 @@ const PHOTO_STYLES: Record<string, string> = {
 
 export default function MmgFeatures() {
     return (
-        <section
-            id="courts"
-            className="mmg-page"
-            style={{ padding: '96px 0', borderTop: '1px solid rgba(22,20,18,0.12)' }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
-                <div
-                    className="grid"
-                    style={{
-                        gridTemplateColumns: '1fr 2fr',
-                        gap: 64,
-                        alignItems: 'end',
-                        marginBottom: 48,
-                    }}>
+        <section id="courts" className="mmg-page py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-end mb-10 sm:mb-12">
                     <div>
                         <div
                             className="mmg-mono uppercase text-[#6b6259]"
@@ -80,16 +70,15 @@ export default function MmgFeatures() {
                             A full club <span className="mmg-serif">under one roof.</span>
                         </h2>
                     </div>
-                    <p style={{ fontSize: 18, lineHeight: 1.5, color: '#3d3833', maxWidth: '60ch', margin: 0 }}>
+                    <p style={{ fontSize: 16, lineHeight: 1.5, color: '#3d3833', maxWidth: '60ch', margin: 0 }}>
                         Five training surfaces, fifteen weekly classes, and a coaching team that knows your name. Built
                         for the neighborhood, run by people who train here every day.
                     </p>
                 </div>
 
                 <div
+                    className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4"
                     style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
                         gap: 1,
                         background: 'rgba(22,20,18,0.12)',
                         border: '1px solid rgba(22,20,18,0.12)',

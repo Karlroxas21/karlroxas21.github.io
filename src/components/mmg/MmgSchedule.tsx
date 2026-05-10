@@ -64,9 +64,9 @@ const CELL_CLASS: Record<string, string> = {
 
 export default function MmgSchedule() {
     return (
-        <section id="classes" style={{ padding: '96px 0', borderTop: '1px solid rgba(22,20,18,0.12)' }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px' }}>
-                <div className="flex justify-between items-end flex-wrap gap-6" style={{ marginBottom: 32 }}>
+        <section id="classes" className="py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
+                <div className="flex justify-between items-end flex-wrap gap-6 mb-8">
                     <div>
                         <div
                             className="mmg-mono uppercase text-[#6b6259]"
@@ -118,83 +118,83 @@ export default function MmgSchedule() {
                     </div>
                 </div>
 
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: '80px repeat(7, 1fr)',
-                        border: '1px solid rgba(22,20,18,0.12)',
-                        overflowX: 'auto',
-                    }}>
-                    {/* Header row */}
+                <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
                     <div
-                        className="mmg-mono uppercase text-[#6b6259]"
                         style={{
-                            padding: '14px 12px',
-                            fontSize: 10,
-                            letterSpacing: '1.5px',
-                            borderBottom: '1px solid rgba(22,20,18,0.12)',
-                            borderRight: '1px solid rgba(22,20,18,0.12)',
-                        }}
-                    />
-                    {DAYS.map((day, i) => (
+                            display: 'grid',
+                            gridTemplateColumns: '70px repeat(7, minmax(90px, 1fr))',
+                            border: '1px solid rgba(22,20,18,0.12)',
+                            minWidth: 640,
+                        }}>
                         <div
-                            key={day}
                             className="mmg-mono uppercase text-[#6b6259]"
                             style={{
                                 padding: '14px 12px',
                                 fontSize: 10,
                                 letterSpacing: '1.5px',
                                 borderBottom: '1px solid rgba(22,20,18,0.12)',
-                                borderRight: i < 6 ? '1px solid rgba(22,20,18,0.12)' : undefined,
-                            }}>
-                            {day}
-                        </div>
-                    ))}
-
-                    {/* Schedule rows */}
-                    {SCHEDULE.map((row, ri) => (
-                        <>
+                                borderRight: '1px solid rgba(22,20,18,0.12)',
+                            }}
+                        />
+                        {DAYS.map((day, i) => (
                             <div
-                                key={`time-${ri}`}
-                                className="mmg-mono text-[#6b6259]"
+                                key={day}
+                                className="mmg-mono uppercase text-[#6b6259]"
                                 style={{
-                                    padding: '14px 12px',
-                                    fontSize: 11,
-                                    borderRight: '1px solid rgba(22,20,18,0.12)',
-                                    borderBottom:
-                                        ri < SCHEDULE.length - 1 ? '1px solid rgba(22,20,18,0.12)' : undefined,
+                                    padding: '14px 8px',
+                                    fontSize: 10,
+                                    letterSpacing: '1.5px',
+                                    borderBottom: '1px solid rgba(22,20,18,0.12)',
+                                    borderRight: i < 6 ? '1px solid rgba(22,20,18,0.12)' : undefined,
                                 }}>
-                                {row[0]}
+                                {day}
                             </div>
-                            {(row.slice(1) as ClassCell[]).map((cell, ci) => (
+                        ))}
+
+                        {SCHEDULE.map((row, ri) => (
+                            <>
                                 <div
-                                    key={`cell-${ri}-${ci}`}
-                                    className={`cursor-pointer transition-colors ${cell?.[2] ? (CELL_CLASS[cell[2]] ?? '') : ''}`}
+                                    key={`time-${ri}`}
+                                    className="mmg-mono text-[#6b6259]"
                                     style={{
-                                        padding: 10,
-                                        borderRight: ci < 6 ? '1px solid rgba(22,20,18,0.12)' : undefined,
+                                        padding: '14px 8px',
+                                        fontSize: 11,
+                                        borderRight: '1px solid rgba(22,20,18,0.12)',
                                         borderBottom:
                                             ri < SCHEDULE.length - 1 ? '1px solid rgba(22,20,18,0.12)' : undefined,
-                                        minHeight: 64,
                                     }}>
-                                    {cell && (
-                                        <>
-                                            <div
-                                                className="mmg-display"
-                                                style={{ fontSize: 12, letterSpacing: '-0.2px', lineHeight: 1.1 }}>
-                                                {cell[0]}
-                                            </div>
-                                            <div
-                                                className="mmg-coach mmg-mono uppercase text-[#6b6259]"
-                                                style={{ fontSize: 10, letterSpacing: '1px', marginTop: 4 }}>
-                                                {cell[1]}
-                                            </div>
-                                        </>
-                                    )}
+                                    {row[0]}
                                 </div>
-                            ))}
-                        </>
-                    ))}
+                                {(row.slice(1) as ClassCell[]).map((cell, ci) => (
+                                    <div
+                                        key={`cell-${ri}-${ci}`}
+                                        className={`cursor-pointer transition-colors ${cell?.[2] ? (CELL_CLASS[cell[2]] ?? '') : ''}`}
+                                        style={{
+                                            padding: 8,
+                                            borderRight: ci < 6 ? '1px solid rgba(22,20,18,0.12)' : undefined,
+                                            borderBottom:
+                                                ri < SCHEDULE.length - 1 ? '1px solid rgba(22,20,18,0.12)' : undefined,
+                                            minHeight: 64,
+                                        }}>
+                                        {cell && (
+                                            <>
+                                                <div
+                                                    className="mmg-display"
+                                                    style={{ fontSize: 11, letterSpacing: '-0.2px', lineHeight: 1.1 }}>
+                                                    {cell[0]}
+                                                </div>
+                                                <div
+                                                    className="mmg-coach mmg-mono uppercase text-[#6b6259]"
+                                                    style={{ fontSize: 9, letterSpacing: '1px', marginTop: 4 }}>
+                                                    {cell[1]}
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                ))}
+                            </>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
