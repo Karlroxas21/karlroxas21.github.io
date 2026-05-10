@@ -19,19 +19,32 @@ export default function MmgShop() {
                 <div className="flex justify-between items-end flex-wrap gap-4 mb-10 sm:mb-12">
                     <div>
                         <div
-                            className="mmg-mono uppercase"
-                            style={{ fontSize: 11, letterSpacing: '2px', color: '#bbb' }}>
+                            className="uppercase"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '2px',
+                                color: '#bbb',
+                            }}>
                             06 — Shop
                         </div>
                         <h2
-                            className="mmg-display"
                             style={{
+                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
                                 fontSize: 'clamp(32px,4vw,56px)',
                                 lineHeight: 1,
                                 letterSpacing: '-1px',
                                 margin: '8px 0 0',
                             }}>
-                            Wear the <span className="mmg-serif">stellar.</span>
+                            Wear the{' '}
+                            <span
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                }}>
+                                stellar.
+                            </span>
                         </h2>
                     </div>
                     <a

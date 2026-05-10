@@ -19,17 +19,29 @@ export default function MmgNav() {
             style={{ background: '#f4ede0', borderBottom: '1px solid rgba(22,20,18,0.12)' }}>
             <div className="flex items-center px-4 sm:px-14 py-[18px]">
                 <Link
-                    to="#"
+                    to="/mmg"
                     className="flex items-center gap-2.5 text-[#161412] no-underline flex-1"
                     aria-label="MMG Stellar home">
                     <img src={'/images/mmg/mmg-logo.jpg'} className="rounded-md" width={38} />
                     <span className="flex flex-col leading-none">
-                        <span className="mmg-display" style={{ fontSize: 18, letterSpacing: '-0.5px', lineHeight: 1 }}>
+                        <span
+                            style={{
+                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                fontSize: 18,
+                                letterSpacing: '-0.5px',
+                                lineHeight: 1,
+                            }}>
                             MMG STELLAR
                         </span>
                         <span
-                            className="mmg-serif"
-                            style={{ fontSize: 10, letterSpacing: '5px', marginTop: 3, fontStyle: 'italic' }}>
+                            style={{
+                                fontFamily: "'DM Serif Display', Georgia, serif",
+                                fontStyle: 'italic',
+                                fontWeight: 400,
+                                fontSize: 10,
+                                letterSpacing: '5px',
+                                marginTop: 3,
+                            }}>
                             GYM
                         </span>
                     </span>
@@ -92,8 +104,9 @@ export default function MmgNav() {
                         <Link
                             key={label}
                             to={href}
-                            className="text-[#161412] no-underline px-4 py-3 mmg-mono uppercase"
+                            className="text-[#161412] no-underline px-4 py-3 uppercase"
                             style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                 fontSize: 12,
                                 letterSpacing: '1.5px',
                                 borderBottom: '1px solid rgba(22,20,18,0.08)',

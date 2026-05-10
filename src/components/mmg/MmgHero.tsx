@@ -31,14 +31,21 @@ export default function MmgHero() {
 
             <div className="relative z-[2] px-4 sm:px-14 pt-16 sm:pt-[120px] pb-12 sm:pb-24">
                 <div
-                    className="mmg-mono uppercase text-[#f4ede0]"
-                    style={{ fontSize: 11, letterSpacing: '2px', opacity: 0.85, marginBottom: 24 }}>
+                    className="uppercase text-[#f4ede0]"
+                    style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                        fontSize: 11,
+                        letterSpacing: '2px',
+                        opacity: 0.85,
+                        marginBottom: 24,
+                    }}>
                     EST. 2026 · TAGUIG CITY
                 </div>
 
                 <h1
-                    className="mmg-display text-[#f4ede0] m-0"
+                    className="text-[#f4ede0] m-0"
                     style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
                         fontSize: 'clamp(40px, 9vw, 144px)',
                         lineHeight: 0.92,
                         letterSpacing: '-2px',
@@ -46,7 +53,13 @@ export default function MmgHero() {
                     Train hard.
                     <br />
                     Stay close.{' '}
-                    <p className="mmg-serif" style={{ fontSize: '0.95em' }}>
+                    <p
+                        style={{
+                            fontFamily: "'DM Serif Display', Georgia, serif",
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                            fontSize: '0.95em',
+                        }}>
                         stellar.
                     </p>
                 </h1>
@@ -109,13 +122,24 @@ export default function MmgHero() {
                 </div>
 
                 <div
-                    className="grid grid-cols-2 sm:flex sm:flex-wrap gap-6 sm:gap-12 mmg-mono uppercase text-[#f4ede0]"
-                    style={{ marginTop: 64, fontSize: 11, letterSpacing: '1.5px', opacity: 0.85 }}>
+                    className="grid grid-cols-2 sm:flex sm:flex-wrap gap-6 sm:gap-12 uppercase text-[#f4ede0]"
+                    style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                        marginTop: 64,
+                        fontSize: 11,
+                        letterSpacing: '1.5px',
+                        opacity: 0.85,
+                    }}>
                     {STATS.map(({ value, label }) => (
                         <div key={label}>
                             <strong
-                                className="mmg-display block text-[#f4ede0]"
-                                style={{ fontSize: 22, letterSpacing: '-0.5px', marginBottom: 4 }}>
+                                className="block text-[#f4ede0]"
+                                style={{
+                                    fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                    fontSize: 22,
+                                    letterSpacing: '-0.5px',
+                                    marginBottom: 4,
+                                }}>
                                 {value}
                             </strong>
                             {label}

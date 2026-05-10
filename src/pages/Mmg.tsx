@@ -1,4 +1,3 @@
-import '../components/mmg/mmg.css';
 import MmgNav from '../components/mmg/MmgNav';
 import MmgHero from '../components/mmg/MmgHero';
 import MmgFeatures from '../components/mmg/MmgFeatures';
@@ -12,7 +11,15 @@ import MmgChatbot from '../components/mmg/MmgChatbot';
 
 export default function Mmg() {
     return (
-        <div className="mmg-page">
+        <div
+            style={{
+                background: '#f4ede0',
+                color: '#161412',
+                fontFamily: "'Manrope', Helvetica, sans-serif",
+                WebkitFontSmoothing: 'antialiased',
+                fontSize: '15px',
+                lineHeight: '1.5',
+            }}>
             <MmgNav />
             <MmgHero />
             <MmgFeatures />

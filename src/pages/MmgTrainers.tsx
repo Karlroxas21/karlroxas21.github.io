@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import '../components/mmg/mmg.css';
 import MmgNav from '../components/mmg/MmgNav';
 import MmgChatbot from '../components/mmg/MmgChatbot';
 
@@ -196,8 +195,8 @@ function PhotoPlaceholder({ trainer, minHeight = 240 }: { trainer: Trainer; minH
                 padding: '12px 14px',
             }}>
             <span
-                className="mmg-mono"
                 style={{
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                     fontSize: 9,
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
@@ -236,8 +235,8 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
                 {trainer.specialties.map(s => (
                     <span
                         key={s}
-                        className="mmg-mono"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             padding: '4px 8px',
                             border: `1px solid ${C.lineStrong}`,
                             fontSize: 9,
@@ -253,11 +252,24 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
             {/* Name */}
             <div>
                 <span
-                    className="mmg-display"
-                    style={{ display: 'block', fontSize: 28, lineHeight: 1, letterSpacing: '-0.5px' }}>
+                    style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                        display: 'block',
+                        fontSize: 28,
+                        lineHeight: 1,
+                        letterSpacing: '-0.5px',
+                    }}>
                     {trainer.first}
                 </span>
-                <span className="mmg-serif" style={{ display: 'block', fontSize: 28, lineHeight: 1 }}>
+                <span
+                    style={{
+                        fontFamily: "'DM Serif Display', Georgia, serif",
+                        fontStyle: 'italic',
+                        fontWeight: 400,
+                        display: 'block',
+                        fontSize: 28,
+                        lineHeight: 1,
+                    }}>
                     {trainer.last}
                 </span>
             </div>
@@ -276,8 +288,8 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
                 }}>
                 <div>
                     <span
-                        className="mmg-mono"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             fontSize: 9,
                             letterSpacing: '1px',
                             textTransform: 'uppercase',
@@ -287,14 +299,20 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
                         }}>
                         From
                     </span>
-                    <span className="mmg-display" style={{ fontSize: 17, display: 'block', letterSpacing: '-0.3px' }}>
+                    <span
+                        style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                            fontSize: 17,
+                            display: 'block',
+                            letterSpacing: '-0.3px',
+                        }}>
                         ₱{trainer.rate.toLocaleString()}
                     </span>
                 </div>
                 <div>
                     <span
-                        className="mmg-mono"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             fontSize: 9,
                             letterSpacing: '1px',
                             textTransform: 'uppercase',
@@ -304,14 +322,20 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
                         }}>
                         Rating
                     </span>
-                    <span className="mmg-display" style={{ fontSize: 17, display: 'block', letterSpacing: '-0.3px' }}>
+                    <span
+                        style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                            fontSize: 17,
+                            display: 'block',
+                            letterSpacing: '-0.3px',
+                        }}>
                         {trainer.rating}
                     </span>
                 </div>
                 <div>
                     <span
-                        className="mmg-mono"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             fontSize: 9,
                             letterSpacing: '1px',
                             textTransform: 'uppercase',
@@ -321,7 +345,12 @@ function TrainerCard({ trainer, onClick }: { trainer: Trainer; onClick: () => vo
                         }}>
                         Next
                     </span>
-                    <span className="mmg-display" style={{ fontSize: 12, display: 'block' }}>
+                    <span
+                        style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                            fontSize: 12,
+                            display: 'block',
+                        }}>
                         {trainer.next}
                     </span>
                 </div>
@@ -405,13 +434,13 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: 24,
-                animation: 'mmg-fade 0.2s ease',
+                animation: 'modal-fade 0.2s ease',
             }}>
-            <style>{`@keyframes mmg-fade { from { opacity: 0 } }`}</style>
+            <style>{`@keyframes modal-fade { from { opacity: 0 } }`}</style>
 
             <div
                 onClick={e => e.stopPropagation()}
-                className="max-[700px]:grid-cols-1"
+                className="grid grid-cols-2 max-[700px]:grid-cols-1"
                 style={{
                     background: C.bg,
                     width: '100%',
@@ -419,8 +448,6 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                     maxHeight: 'calc(100vh - 48px)',
                     overflowY: 'auto',
                     border: `1px solid ${C.ink}`,
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
                     position: 'relative',
                 }}>
                 <button
@@ -445,9 +472,12 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                     ✕
                 </button>
 
-                <PhotoPlaceholder trainer={trainer} minHeight={480} />
+                <div className="max-[700px]:hidden">
+                    <PhotoPlaceholder trainer={trainer} minHeight={480} />
+                </div>
 
                 <div
+                    className="max-[700px]:px-5 max-[700px]:py-8"
                     style={{
                         padding: '40px 36px',
                         display: 'flex',
@@ -458,8 +488,8 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                     {step === 'contact' ? (
                         <>
                             <div
-                                className="mmg-mono"
                                 style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                     fontSize: 10,
                                     letterSpacing: '2px',
                                     textTransform: 'uppercase',
@@ -467,8 +497,22 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                                 }}>
                                 {trainer.tagline}
                             </div>
-                            <h2 className="mmg-display" style={{ fontSize: 38, lineHeight: 1, margin: 0 }}>
-                                {trainer.first} <span className="mmg-serif">{trainer.last}</span>
+                            <h2
+                                style={{
+                                    fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                    fontSize: 38,
+                                    lineHeight: 1,
+                                    margin: 0,
+                                }}>
+                                {trainer.first}{' '}
+                                <span
+                                    style={{
+                                        fontFamily: "'DM Serif Display', Georgia, serif",
+                                        fontStyle: 'italic',
+                                        fontWeight: 400,
+                                    }}>
+                                    {trainer.last}
+                                </span>
                             </h2>
                             <p style={{ color: C.ink2, margin: 0, fontSize: 14, lineHeight: 1.5 }}>{trainer.bio}</p>
 
@@ -490,8 +534,8 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                                 ].map(({ label, value, sub }) => (
                                     <div key={label}>
                                         <div
-                                            className="mmg-mono"
                                             style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                                 fontSize: 9,
                                                 letterSpacing: '1.5px',
                                                 textTransform: 'uppercase',
@@ -500,7 +544,12 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                                             }}>
                                             {label}
                                         </div>
-                                        <div className="mmg-display" style={{ fontSize: 20, letterSpacing: '-0.3px' }}>
+                                        <div
+                                            style={{
+                                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                                fontSize: 20,
+                                                letterSpacing: '-0.3px',
+                                            }}>
                                             {value}
                                             {sub && (
                                                 <span
@@ -520,8 +569,8 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                             {/* Certs */}
                             <div>
                                 <div
-                                    className="mmg-mono"
                                     style={{
+                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                         fontSize: 9,
                                         letterSpacing: '1.5px',
                                         textTransform: 'uppercase',
@@ -530,7 +579,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                                     }}>
                                     Certifications
                                 </div>
-                                <div className="mmg-mono" style={{ fontSize: 12 }}>
+                                <div style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 12 }}>
                                     {trainer.certs}
                                 </div>
                             </div>
@@ -571,7 +620,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                                     />
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                                <div className="grid grid-cols-2 max-[500px]:grid-cols-1" style={{ gap: 10 }}>
                                     <div>
                                         <label style={labelStyle}>Goal</label>
                                         <select
@@ -631,7 +680,15 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                         </>
                     ) : (
                         <div style={{ padding: '60px 0', textAlign: 'center' }}>
-                            <div className="mmg-serif" style={{ fontSize: 56, lineHeight: 1, marginBottom: 16 }}>
+                            <div
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                    fontSize: 56,
+                                    lineHeight: 1,
+                                    marginBottom: 16,
+                                }}>
                                 Sent.
                             </div>
                             <p style={{ color: C.ink2, maxWidth: 320, margin: '0 auto 24px', fontSize: 14 }}>
@@ -673,7 +730,16 @@ export default function MmgTrainers() {
     }, [filter]);
 
     return (
-        <div className="mmg-page" style={{ minHeight: '100vh' }}>
+        <div
+            style={{
+                minHeight: '100vh',
+                background: '#f4ede0',
+                color: '#161412',
+                fontFamily: "'Manrope', Helvetica, sans-serif",
+                WebkitFontSmoothing: 'antialiased',
+                fontSize: '15px',
+                lineHeight: '1.5',
+            }}>
             <MmgNav />
 
             {/* Hero */}
@@ -682,19 +748,32 @@ export default function MmgTrainers() {
                 className="max-[700px]:!px-5 max-[700px]:!py-10">
                 <div style={{ maxWidth: 1440, margin: '0 auto' }}>
                     <div
-                        className="mmg-mono"
-                        style={{ fontSize: 11, letterSpacing: '2px', textTransform: 'uppercase', color: C.ink3 }}>
+                        style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                            fontSize: 11,
+                            letterSpacing: '2px',
+                            textTransform: 'uppercase',
+                            color: C.ink3,
+                        }}>
                         Coaching · {TRAINERS.length} trainers
                     </div>
                     <h1
-                        className="mmg-display"
                         style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
                             fontSize: 'clamp(48px, 6vw, 88px)',
                             lineHeight: 1,
                             letterSpacing: '-2px',
                             margin: '12px 0 0',
                         }}>
-                        Coaches who <span className="mmg-serif">know your name.</span>
+                        Coaches who{' '}
+                        <span
+                            style={{
+                                fontFamily: "'DM Serif Display', Georgia, serif",
+                                fontStyle: 'italic',
+                                fontWeight: 400,
+                            }}>
+                            know your name.
+                        </span>
                     </h1>
                     <p style={{ marginTop: 24, fontSize: 18, color: C.ink2, maxWidth: 620, lineHeight: 1.5 }}>
                         Every MMG trainer is certified, vetted by our head coach, and trains here daily. Book a
@@ -718,8 +797,8 @@ export default function MmgTrainers() {
                     <button
                         key={f}
                         onClick={() => setFilter(f)}
-                        className="mmg-mono"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             padding: '7px 13px',
                             border: `1px solid ${f === filter ? C.ink : C.lineStrong}`,
                             background: f === filter ? C.ink : 'transparent',
@@ -734,7 +813,13 @@ export default function MmgTrainers() {
                     </button>
                 ))}
                 <span style={{ flex: 1 }} />
-                <span className="mmg-mono" style={{ fontSize: 10, letterSpacing: '1px', color: C.ink3 }}>
+                <span
+                    style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                        fontSize: 10,
+                        letterSpacing: '1px',
+                        color: C.ink3,
+                    }}>
                     {filtered.length} TRAINERS
                 </span>
             </div>
@@ -742,13 +827,11 @@ export default function MmgTrainers() {
             {/* Grid */}
             <div
                 style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: 1,
                     background: C.line,
                     borderBottom: `1px solid ${C.line}`,
                 }}
-                className="max-[1100px]:!grid-cols-2 max-[700px]:!grid-cols-1">
+                className="grid grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-1">
                 {filtered.map(t => (
                     <TrainerCard key={t.id} trainer={t} onClick={() => setOpen(t)} />
                 ))}
@@ -758,8 +841,8 @@ export default function MmgTrainers() {
             <div style={{ padding: '24px 56px', borderTop: `1px solid ${C.line}` }} className="max-[700px]:!px-5">
                 <Link
                     to="/mmg"
-                    className="mmg-mono"
                     style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                         fontSize: 11,
                         letterSpacing: '1px',
                         textTransform: 'uppercase',

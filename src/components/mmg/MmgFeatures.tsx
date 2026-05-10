@@ -37,7 +37,7 @@ const FEATURES = [
         title: 'Weights, Cardio and Studio',
         desc: 'Free weights, machines, and a dedicated studio space for cardio and group training.',
         link: 'Meet the team →',
-        href: '#trainers',
+        href: 'trainers',
     },
 ] as const;
 
@@ -50,24 +50,44 @@ const PHOTO_STYLES: Record<string, string> = {
 
 export default function MmgFeatures() {
     return (
-        <section id="courts" className="mmg-page py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
+        <section
+            id="courts"
+            className="py-16 sm:py-24"
+            style={{
+                background: '#f4ede0',
+                color: '#161412',
+                fontFamily: "'Manrope', Helvetica, sans-serif",
+                borderTop: '1px solid rgba(22,20,18,0.12)',
+            }}>
             <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-end mb-10 sm:mb-12">
                     <div>
                         <div
-                            className="mmg-mono uppercase text-[#6b6259]"
-                            style={{ fontSize: 11, letterSpacing: '2px' }}>
+                            className="uppercase text-[#6b6259]"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '2px',
+                            }}>
                             01 — Inside MMG
                         </div>
                         <h2
-                            className="mmg-display"
                             style={{
+                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
                                 fontSize: 'clamp(32px,4vw,56px)',
                                 lineHeight: 1,
                                 letterSpacing: '-1px',
                                 margin: '8px 0 0',
                             }}>
-                            A full club <span className="mmg-serif">under one roof.</span>
+                            A full club{' '}
+                            <span
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                }}>
+                                under one roof.
+                            </span>
                         </h2>
                     </div>
                     <p style={{ fontSize: 16, lineHeight: 1.5, color: '#3d3833', maxWidth: '60ch', margin: 0 }}>
@@ -108,8 +128,9 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
                 />
             </div>
             <span
-                className="mmg-mono w-full uppercase"
+                className="w-full uppercase"
                 style={{
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                     fontSize: 11,
                     letterSpacing: '1px',
                     padding: '10px 12px',
@@ -120,8 +141,9 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
 
             <div className="flex flex-col flex-1" style={{ padding: 24 }}>
                 <div
-                    className="mmg-mono uppercase inline-block"
+                    className="uppercase inline-block"
                     style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                         fontSize: 10,
                         letterSpacing: '1.5px',
                         padding: '4px 8px',
@@ -131,12 +153,24 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
                 </div>
 
                 <h3
-                    className="mmg-display"
-                    style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.3px', margin: '14px 0 0' }}>
+                    style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                        fontSize: 22,
+                        lineHeight: 1.1,
+                        letterSpacing: '-0.3px',
+                        margin: '14px 0 0',
+                    }}>
                     {Array.isArray(feature.title) ? (
                         <>
                             {feature.title[0]}
-                            <span className="mmg-serif">{feature.title[1]}</span>
+                            <span
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                }}>
+                                {feature.title[1]}
+                            </span>
                             {feature.title[2]}
                         </>
                     ) : (
@@ -147,8 +181,9 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
                 <p style={{ color: '#6b6259', margin: '10px 0 18px', fontSize: 14, lineHeight: 1.5 }}>{feature.desc}</p>
 
                 <span
-                    className="mmg-mono uppercase mt-auto"
+                    className="uppercase mt-auto"
                     style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                         fontSize: 11,
                         letterSpacing: '1.5px',
                         paddingTop: 14,

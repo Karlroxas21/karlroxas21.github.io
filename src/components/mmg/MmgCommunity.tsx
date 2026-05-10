@@ -38,18 +38,32 @@ export default function MmgCommunity() {
     return (
         <section id="community" className="py-16 sm:py-24" style={{ borderTop: '1px solid rgba(22,20,18,0.12)' }}>
             <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
-                <div className="mmg-mono uppercase text-[#6b6259]" style={{ fontSize: 11, letterSpacing: '2px' }}>
+                <div
+                    className="uppercase text-[#6b6259]"
+                    style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                        fontSize: 11,
+                        letterSpacing: '2px',
+                    }}>
                     04 — Community
                 </div>
                 <h2
-                    className="mmg-display"
                     style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
                         fontSize: 'clamp(32px,4vw,56px)',
                         lineHeight: 1,
                         letterSpacing: '-1px',
                         margin: '8px 0 0',
                     }}>
-                    Built by <span className="mmg-serif">our regulars.</span>
+                    Built by{' '}
+                    <span
+                        style={{
+                            fontFamily: "'DM Serif Display', Georgia, serif",
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                        }}>
+                        our regulars.
+                    </span>
                 </h2>
 
                 {/* Photo wall — 2-col on mobile, 6-col on md+ */}
@@ -115,12 +129,26 @@ export default function MmgCommunity() {
                                 border: '1px solid rgba(22,20,18,0.12)',
                                 background: '#f4ede0',
                             }}>
-                            <p className="mmg-serif" style={{ fontSize: 22, lineHeight: 1.3, margin: '0 0 16px' }}>
+                            <p
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                    fontSize: 22,
+                                    lineHeight: 1.3,
+                                    margin: '0 0 16px',
+                                }}>
                                 {q.text}
                             </p>
                             <cite
-                                className="mmg-mono uppercase"
-                                style={{ fontSize: 11, letterSpacing: '1.5px', color: '#6b6259', fontStyle: 'normal' }}>
+                                className="uppercase"
+                                style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                    fontSize: 11,
+                                    letterSpacing: '1.5px',
+                                    color: '#6b6259',
+                                    fontStyle: 'normal',
+                                }}>
                                 {q.cite}
                             </cite>
                         </blockquote>
@@ -140,8 +168,9 @@ export default function MmgCommunity() {
                         onClick={e => e.stopPropagation()}
                     />
                     <button
-                        className="absolute top-6 right-8 mmg-mono uppercase text-[#d8c8a6]"
+                        className="absolute top-6 right-8 uppercase text-[#d8c8a6]"
                         style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                             fontSize: 12,
                             letterSpacing: '1.5px',
                             background: 'none',

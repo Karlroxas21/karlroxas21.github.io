@@ -36,18 +36,32 @@ export default function MmgMembership() {
             className="py-16 sm:py-24"
             style={{ borderTop: '1px solid rgba(22,20,18,0.12)', background: '#ece3d2' }}>
             <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
-                <div className="mmg-mono uppercase text-[#6b6259]" style={{ fontSize: 11, letterSpacing: '2px' }}>
+                <div
+                    className="uppercase text-[#6b6259]"
+                    style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                        fontSize: 11,
+                        letterSpacing: '2px',
+                    }}>
                     03 — Membership
                 </div>
                 <h2
-                    className="mmg-display"
                     style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
                         fontSize: 'clamp(32px,4vw,56px)',
                         lineHeight: 1,
                         letterSpacing: '-1px',
                         margin: '8px 0 0',
                     }}>
-                    Pick your <span className="mmg-serif">cadence.</span>
+                    Pick your{' '}
+                    <span
+                        style={{
+                            fontFamily: "'DM Serif Display', Georgia, serif",
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                        }}>
+                        cadence.
+                    </span>
                 </h2>
                 <p style={{ fontSize: 16, lineHeight: 1.5, color: '#3d3833', marginTop: 16 }}>
                     One-time enrollment of <strong>₱1,500</strong>. Cancel anytime after your initial term.
@@ -60,8 +74,9 @@ export default function MmgMembership() {
                 </div>
 
                 <div
-                    className="mmg-mono flex flex-wrap gap-6 sm:gap-8 uppercase mt-8"
+                    className="flex flex-wrap gap-6 sm:gap-8 uppercase mt-8"
                     style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                         padding: '20px 24px',
                         border: '1px dashed rgba(22,20,18,0.4)',
                         fontSize: 12,
@@ -93,8 +108,9 @@ function PriceCard({ plan }: { plan: (typeof PLANS)[number] }) {
                 boxShadow: plan.popular ? '0 0 0 1px #b94e2a inset' : undefined,
             }}>
             <div
-                className="mmg-mono uppercase inline-block"
+                className="uppercase inline-block"
                 style={{
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                     fontSize: 10,
                     letterSpacing: '1.5px',
                     padding: '4px 8px',
@@ -106,7 +122,13 @@ function PriceCard({ plan }: { plan: (typeof PLANS)[number] }) {
                 {plan.tag}
             </div>
 
-            <div className="mmg-display" style={{ fontSize: 56, lineHeight: 1, letterSpacing: '-2px' }}>
+            <div
+                style={{
+                    fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                    fontSize: 56,
+                    lineHeight: 1,
+                    letterSpacing: '-2px',
+                }}>
                 <span style={{ fontSize: 28, verticalAlign: 'top', marginRight: 4 }}>₱</span>
                 {plan.price}
                 <span

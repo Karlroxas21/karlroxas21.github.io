@@ -100,8 +100,8 @@ export default function MmgChatbot() {
                 <button
                     onClick={() => setOpen(true)}
                     aria-label="Open chat"
-                    className="mmg-display"
                     style={{
+                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
                         position: 'fixed',
                         bottom: 24,
                         right: 24,
@@ -131,18 +131,10 @@ export default function MmgChatbot() {
                 <div
                     role="dialog"
                     aria-label="MMG Stellar concierge"
+                    className="fixed inset-0 z-[90] flex flex-col sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[380px] sm:h-[560px] sm:max-h-[calc(100vh-48px)]"
                     style={{
-                        position: 'fixed',
-                        bottom: 24,
-                        right: 24,
-                        zIndex: 90,
-                        width: 380,
-                        height: 560,
-                        maxHeight: 'calc(100vh - 48px)',
                         background: '#f4ede0',
                         border: '1px solid #161412',
-                        display: 'flex',
-                        flexDirection: 'column',
                         boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
                         animation: 'mmg-pop 0.18s ease',
                     }}>
@@ -160,13 +152,31 @@ export default function MmgChatbot() {
                             flexShrink: 0,
                         }}>
                         <div>
-                            <div className="mmg-display" style={{ fontSize: 14, letterSpacing: '0.5px' }}>
+                            <div
+                                style={{
+                                    fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                    fontSize: 14,
+                                    letterSpacing: '0.5px',
+                                }}>
                                 STELLAR{' '}
-                                <span className="mmg-serif" style={{ fontWeight: 400 }}>
+                                <span
+                                    style={{
+                                        fontFamily: "'DM Serif Display', Georgia, serif",
+                                        fontStyle: 'italic',
+                                        fontWeight: 400,
+                                    }}>
                                     concierge
                                 </span>
                             </div>
-                            <div className="mmg-serif" style={{ fontSize: 11, opacity: 0.7, marginTop: 2 }}>
+                            <div
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                    fontSize: 11,
+                                    opacity: 0.7,
+                                    marginTop: 2,
+                                }}>
                                 Ask me anything — courts, classes, rates
                             </div>
                         </div>
@@ -242,7 +252,7 @@ export default function MmgChatbot() {
                                 <button
                                     key={chip}
                                     onClick={() => send(chip)}
-                                    className="mmg-mono uppercase transition-colors"
+                                    className="uppercase transition-colors"
                                     style={{
                                         fontSize: 10,
                                         letterSpacing: '1px',
@@ -290,7 +300,7 @@ export default function MmgChatbot() {
                         <button
                             type="submit"
                             disabled={loading || !value.trim()}
-                            className="mmg-mono uppercase"
+                            className="uppercase"
                             style={{
                                 border: 'none',
                                 background: '#161412',

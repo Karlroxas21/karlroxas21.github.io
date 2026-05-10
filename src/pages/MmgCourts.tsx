@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import '../components/mmg/mmg.css';
 import MmgNav from '../components/mmg/MmgNav';
 import MmgChatbot from '../components/mmg/MmgChatbot';
 
@@ -117,7 +116,14 @@ function Slot({ booked, selected, onClick }: { booked: boolean; selected: boolea
             }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: dotColor, flexShrink: 0 }} />
             <span style={{ fontSize: 13 }}>{booked ? 'Booked' : selected ? 'Selected' : 'Available'}</span>
-            <span className="mmg-mono" style={{ fontSize: 10, letterSpacing: '1px', opacity: 0.6, marginLeft: 'auto' }}>
+            <span
+                style={{
+                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                    fontSize: 10,
+                    letterSpacing: '1px',
+                    opacity: 0.6,
+                    marginLeft: 'auto',
+                }}>
                 60 MIN
             </span>
         </div>
@@ -168,28 +174,52 @@ export default function MmgCourts() {
     const padCount = 3 - sport.courts.length;
 
     return (
-        <div className="mmg-page" style={{ minHeight: '100vh' }}>
+        <div
+            style={{
+                minHeight: '100vh',
+                background: '#f4ede0',
+                color: '#161412',
+                fontFamily: "'Manrope', Helvetica, sans-serif",
+                WebkitFontSmoothing: 'antialiased',
+                fontSize: '15px',
+                lineHeight: '1.5',
+            }}>
             <MmgNav />
 
             <div
-                style={{ display: 'grid', gridTemplateColumns: '1fr 380px', minHeight: 'calc(100vh - 73px)' }}
-                className="max-[1100px]:grid-cols-1">
+                style={{ minHeight: 'calc(100vh - 73px)' }}
+                className="grid grid-cols-[1fr_380px] max-[1100px]:grid-cols-1">
                 {/* ── Main ── */}
                 <div
-                    style={{ padding: '56px', borderRight: `1px solid ${C.line}` }}
-                    className="max-[1100px]:!px-5 max-[1100px]:!py-8">
-                    <div className="mmg-mono uppercase" style={{ fontSize: 11, letterSpacing: '2px', color: C.ink3 }}>
+                    style={{ borderRight: `1px solid ${C.line}` }}
+                    className="p-14 max-[1100px]:px-5 max-[1100px]:py-8">
+                    <div
+                        className="uppercase"
+                        style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                            fontSize: 11,
+                            letterSpacing: '2px',
+                            color: C.ink3,
+                        }}>
                         Reserve · Courts
                     </div>
                     <h1
-                        className="mmg-display"
                         style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
                             fontSize: 'clamp(40px,5vw,64px)',
                             lineHeight: 1,
                             letterSpacing: '-2px',
                             margin: '8px 0 8px',
                         }}>
-                        Book your <span className="mmg-serif">court.</span>
+                        Book your{' '}
+                        <span
+                            style={{
+                                fontFamily: "'DM Serif Display', Georgia, serif",
+                                fontStyle: 'italic',
+                                fontWeight: 400,
+                            }}>
+                            court.
+                        </span>
                     </h1>
                     <p style={{ fontSize: 18, color: C.ink2, marginBottom: 32 }}>
                         Live availability · pay on arrival or with the card on file. Free cancellation up to 2 hours
@@ -201,8 +231,10 @@ export default function MmgCourts() {
                         style={{
                             display: 'flex',
                             border: `1px solid ${C.line}`,
-                            width: 'fit-content',
                             marginBottom: 32,
+                            overflowX: 'auto',
+                            width: 'fit-content',
+                            maxWidth: '100%',
                         }}>
                         {SPORTS.map(s => (
                             <button
@@ -211,8 +243,8 @@ export default function MmgCourts() {
                                     setSportId(s.id);
                                     setSelected([]);
                                 }}
-                                className="mmg-display"
                                 style={{
+                                    fontFamily: "'Archivo Black', Helvetica, sans-serif",
                                     background: s.id === sportId ? C.ink : 'transparent',
                                     color: s.id === sportId ? C.bg : C.ink,
                                     border: 'none',
@@ -232,153 +264,189 @@ export default function MmgCourts() {
                     {/* Court info */}
                     <div style={{ padding: 18, border: `1px solid ${C.line}`, marginBottom: 24, background: C.bg }}>
                         <div
-                            className="mmg-mono uppercase"
-                            style={{ fontSize: 11, letterSpacing: '1.5px', color: C.ink3, marginBottom: 8 }}>
+                            className="uppercase"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '1.5px',
+                                color: C.ink3,
+                                marginBottom: 8,
+                            }}>
                             About this court
                         </div>
                         <p style={{ margin: 0, fontSize: 14 }}>{sport.info}</p>
                     </div>
 
                     {/* Date strip */}
-                    <div
-                        style={{
-                            display: 'grid',
-                            gridTemplateColumns: '32px repeat(7, 1fr) 32px',
-                            gap: 8,
-                            alignItems: 'center',
-                            margin: '24px 0 32px',
-                        }}>
-                        <button
-                            onClick={() => setWeekOffset(w => w - 1)}
-                            className="mmg-mono"
+                    <div style={{ overflowX: 'auto', margin: '24px 0 32px' }}>
+                        <div
                             style={{
-                                background: 'transparent',
-                                border: 'none',
-                                cursor: 'pointer',
-                                fontSize: 14,
-                                color: C.ink,
+                                display: 'grid',
+                                gridTemplateColumns: '32px repeat(7, 1fr) 32px',
+                                gap: 8,
+                                alignItems: 'center',
+                                minWidth: 480,
                             }}>
-                            ‹
-                        </button>
-                        {days.map((d, i) => {
-                            const isToday = i + weekOffset * 7 === 0;
-                            const sel = i === dateOffset;
-                            return (
-                                <div
-                                    key={i}
-                                    onClick={() => setDateOffset(i)}
-                                    style={{
-                                        padding: '14px 8px',
-                                        border: `1px solid ${sel ? C.ink : C.line}`,
-                                        background: sel ? C.ink : C.bg,
-                                        color: sel ? C.bg : C.ink,
-                                        cursor: 'pointer',
-                                        textAlign: 'center',
-                                        transition: 'all 0.15s',
-                                    }}>
+                            <button
+                                onClick={() => setWeekOffset(w => w - 1)}
+                                style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                    background: 'transparent',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    fontSize: 14,
+                                    color: C.ink,
+                                }}>
+                                ‹
+                            </button>
+                            {days.map((d, i) => {
+                                const isToday = i + weekOffset * 7 === 0;
+                                const sel = i === dateOffset;
+                                return (
                                     <div
-                                        className="mmg-mono"
+                                        key={i}
+                                        onClick={() => setDateOffset(i)}
                                         style={{
-                                            fontSize: 10,
-                                            letterSpacing: '1.5px',
-                                            textTransform: 'uppercase',
-                                            opacity: 0.6,
+                                            padding: '14px 8px',
+                                            border: `1px solid ${sel ? C.ink : C.line}`,
+                                            background: sel ? C.ink : C.bg,
+                                            color: sel ? C.bg : C.ink,
+                                            cursor: 'pointer',
+                                            textAlign: 'center',
+                                            transition: 'all 0.15s',
                                         }}>
-                                        {dayLabel(d)}
+                                        <div
+                                            style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                                fontSize: 10,
+                                                letterSpacing: '1.5px',
+                                                textTransform: 'uppercase',
+                                                opacity: 0.6,
+                                            }}>
+                                            {dayLabel(d)}
+                                        </div>
+                                        <div
+                                            style={{
+                                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                                fontSize: 24,
+                                                lineHeight: 1,
+                                                marginTop: 4,
+                                            }}>
+                                            {d.getDate()}
+                                        </div>
+                                        <div
+                                            style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                                fontSize: 9,
+                                                letterSpacing: '1px',
+                                                opacity: 0.5,
+                                                marginTop: 4,
+                                            }}>
+                                            {isToday
+                                                ? 'TODAY'
+                                                : d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}
+                                        </div>
                                     </div>
-                                    <div className="mmg-display" style={{ fontSize: 24, lineHeight: 1, marginTop: 4 }}>
-                                        {d.getDate()}
-                                    </div>
-                                    <div
-                                        className="mmg-mono"
-                                        style={{ fontSize: 9, letterSpacing: '1px', opacity: 0.5, marginTop: 4 }}>
-                                        {isToday
-                                            ? 'TODAY'
-                                            : d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                        <button
-                            onClick={() => setWeekOffset(w => w + 1)}
-                            className="mmg-mono"
-                            style={{
-                                background: 'transparent',
-                                border: 'none',
-                                cursor: 'pointer',
-                                fontSize: 14,
-                                color: C.ink,
-                            }}>
-                            ›
-                        </button>
+                                );
+                            })}
+                            <button
+                                onClick={() => setWeekOffset(w => w + 1)}
+                                style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                    background: 'transparent',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    fontSize: 14,
+                                    color: C.ink,
+                                }}>
+                                ›
+                            </button>
+                        </div>
                     </div>
 
                     {/* Slot grid */}
-                    <div
-                        style={{
-                            display: 'grid',
-                            gridTemplateColumns: `100px repeat(3, 1fr)`,
-                            border: `1px solid ${C.line}`,
-                        }}>
-                        {/* Header row */}
-                        <div className="mmg-mono" style={{ ...headStyle }}>
-                            Time
-                        </div>
-                        {sport.courts.map(c => (
-                            <div key={c} className="mmg-mono" style={{ ...headStyle }}>
-                                {c}
+                    <div style={{ overflowX: 'auto' }}>
+                        <div
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: `100px repeat(3, 1fr)`,
+                                border: `1px solid ${C.line}`,
+                                minWidth: 380,
+                            }}>
+                            {/* Header row */}
+                            <div style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", ...headStyle }}>
+                                Time
                             </div>
-                        ))}
-                        {Array.from({ length: padCount }).map((_, i) => (
-                            <div key={`phd${i}`} className="mmg-mono" style={{ ...headStyle, opacity: 0.3 }}>
-                                —
-                            </div>
-                        ))}
-
-                        {/* Time rows */}
-                        {SLOT_TIMES.map(t => (
-                            <>
+                            {sport.courts.map(c => (
                                 <div
-                                    key={`t${t}`}
-                                    className="mmg-mono"
-                                    style={{
-                                        fontSize: 13,
-                                        color: C.ink2,
-                                        background: C.bg2,
-                                        borderBottom: `1px solid ${C.line}`,
-                                        borderRight: `1px solid ${C.line}`,
-                                        padding: '14px 16px',
-                                    }}>
-                                    {t}
+                                    key={c}
+                                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", ...headStyle }}>
+                                    {c}
                                 </div>
-                                {sport.courts.map(c => (
-                                    <Slot
-                                        key={c + t}
-                                        booked={isBooked(sport.id, dateOffset + weekOffset * 7, c, t)}
-                                        selected={!!selected.find(s => s.key === `${c}|${t}`)}
-                                        onClick={() => toggleSlot(c, t)}
-                                    />
-                                ))}
-                                {Array.from({ length: padCount }).map((_, i) => (
+                            ))}
+                            {Array.from({ length: padCount }).map((_, i) => (
+                                <div
+                                    key={`phd${i}`}
+                                    style={{
+                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                        ...headStyle,
+                                        opacity: 0.3,
+                                    }}>
+                                    —
+                                </div>
+                            ))}
+
+                            {/* Time rows */}
+                            {SLOT_TIMES.map(t => (
+                                <>
                                     <div
-                                        key={`ps${t}${i}`}
+                                        key={`t${t}`}
                                         style={{
+                                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                            fontSize: 13,
+                                            color: C.ink2,
                                             background: C.bg2,
-                                            opacity: 0.2,
                                             borderBottom: `1px solid ${C.line}`,
                                             borderRight: `1px solid ${C.line}`,
-                                            minHeight: 56,
-                                        }}
-                                    />
-                                ))}
-                            </>
-                        ))}
+                                            padding: '14px 16px',
+                                        }}>
+                                        {t}
+                                    </div>
+                                    {sport.courts.map(c => (
+                                        <Slot
+                                            key={c + t}
+                                            booked={isBooked(sport.id, dateOffset + weekOffset * 7, c, t)}
+                                            selected={!!selected.find(s => s.key === `${c}|${t}`)}
+                                            onClick={() => toggleSlot(c, t)}
+                                        />
+                                    ))}
+                                    {Array.from({ length: padCount }).map((_, i) => (
+                                        <div
+                                            key={`ps${t}${i}`}
+                                            style={{
+                                                background: C.bg2,
+                                                opacity: 0.2,
+                                                borderBottom: `1px solid ${C.line}`,
+                                                borderRight: `1px solid ${C.line}`,
+                                                minHeight: 56,
+                                            }}
+                                        />
+                                    ))}
+                                </>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Legend */}
                     <div
-                        className="mmg-mono flex flex-wrap gap-4 uppercase"
-                        style={{ marginTop: 16, fontSize: 10, letterSpacing: '1px', color: C.ink3 }}>
+                        className="flex flex-wrap gap-4 uppercase"
+                        style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                            marginTop: 16,
+                            fontSize: 10,
+                            letterSpacing: '1px',
+                            color: C.ink3,
+                        }}>
                         {[
                             { label: 'Available', color: C.moss },
                             { label: 'Booked', color: C.ink3 },
@@ -405,16 +473,27 @@ export default function MmgCourts() {
                     style={{
                         padding: '40px 32px',
                         background: C.bg2,
-                        position: 'sticky',
                         top: 73,
-                        height: 'calc(100vh - 73px)',
                         overflowY: 'auto',
                     }}
-                    className="max-[1100px]:!static max-[1100px]:!h-auto">
-                    <div className="mmg-mono uppercase" style={{ fontSize: 11, letterSpacing: '2px', color: C.ink3 }}>
+                    className="sticky h-[calc(100vh-73px)] max-[1100px]:static max-[1100px]:h-auto">
+                    <div
+                        className="uppercase"
+                        style={{
+                            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                            fontSize: 11,
+                            letterSpacing: '2px',
+                            color: C.ink3,
+                        }}>
                         Your reservation
                     </div>
-                    <h3 className="mmg-display" style={{ fontSize: 22, letterSpacing: '-0.5px', margin: '8px 0 24px' }}>
+                    <h3
+                        style={{
+                            fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                            fontSize: 22,
+                            letterSpacing: '-0.5px',
+                            margin: '8px 0 24px',
+                        }}>
                         {sport.label} · {dateLabel(days[dateOffset])}
                     </h3>
 
@@ -437,8 +516,8 @@ export default function MmgCourts() {
                                             fontSize: 14,
                                         }}>
                                         <span
-                                            className="mmg-mono"
                                             style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                                 fontSize: 11,
                                                 letterSpacing: '1px',
                                                 textTransform: 'uppercase',
@@ -446,7 +525,11 @@ export default function MmgCourts() {
                                             }}>
                                             {s.court} · {s.time}
                                         </span>
-                                        <span className="mmg-mono" style={{ fontSize: 13 }}>
+                                        <span
+                                            style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                                fontSize: 13,
+                                            }}>
                                             ₱{ratePerSession}
                                         </span>
                                     </div>
@@ -456,8 +539,14 @@ export default function MmgCourts() {
                             {/* Rate toggle */}
                             <div style={{ marginTop: 24 }}>
                                 <div
-                                    className="mmg-mono uppercase"
-                                    style={{ fontSize: 11, letterSpacing: '2px', color: C.ink3, marginBottom: 8 }}>
+                                    className="uppercase"
+                                    style={{
+                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                        fontSize: 11,
+                                        letterSpacing: '2px',
+                                        color: C.ink3,
+                                        marginBottom: 8,
+                                    }}>
                                     Rate
                                 </div>
                                 <div style={{ display: 'flex', border: `1px solid ${C.lineStrong}` }}>
@@ -465,8 +554,8 @@ export default function MmgCourts() {
                                         <button
                                             key={type}
                                             onClick={() => setMemberType(type)}
-                                            className="mmg-mono"
                                             style={{
+                                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                                 flex: 1,
                                                 padding: 10,
                                                 border: 'none',
@@ -494,11 +583,21 @@ export default function MmgCourts() {
                                     margin: '24px 0 16px',
                                 }}>
                                 <span
-                                    className="mmg-mono uppercase"
-                                    style={{ fontSize: 11, letterSpacing: '1px', color: C.ink3 }}>
+                                    className="uppercase"
+                                    style={{
+                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                        fontSize: 11,
+                                        letterSpacing: '1px',
+                                        color: C.ink3,
+                                    }}>
                                     Total · {selected.length} hr
                                 </span>
-                                <span className="mmg-display" style={{ fontSize: 40, letterSpacing: '-1px' }}>
+                                <span
+                                    style={{
+                                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                        fontSize: 40,
+                                        letterSpacing: '-1px',
+                                    }}>
                                     ₱{total.toLocaleString()}
                                 </span>
                             </div>
@@ -554,7 +653,8 @@ export default function MmgCourts() {
                                         border: `1px solid ${C.moss}`,
                                         fontSize: 13,
                                     }}>
-                                    <strong className="mmg-display" style={{ fontSize: 14 }}>
+                                    <strong
+                                        style={{ fontFamily: "'Archivo Black', Helvetica, sans-serif", fontSize: 14 }}>
                                         You're set.
                                     </strong>
                                     <p style={{ margin: '8px 0 0', color: C.ink2 }}>
@@ -568,8 +668,14 @@ export default function MmgCourts() {
                     {/* Help */}
                     <div style={{ marginTop: 32, paddingTop: 24, borderTop: `1px solid ${C.line}` }}>
                         <div
-                            className="mmg-mono uppercase"
-                            style={{ fontSize: 11, letterSpacing: '2px', color: C.ink3, marginBottom: 12 }}>
+                            className="uppercase"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '2px',
+                                color: C.ink3,
+                                marginBottom: 12,
+                            }}>
                             Need help?
                         </div>
                         <p style={{ fontSize: 13, color: C.ink2, margin: 0 }}>
@@ -582,8 +688,14 @@ export default function MmgCourts() {
                     <div style={{ marginTop: 24, paddingTop: 24, borderTop: `1px solid ${C.line}` }}>
                         <Link
                             to="/mmg"
-                            className="mmg-mono uppercase"
-                            style={{ fontSize: 11, letterSpacing: '1px', color: C.ink3, textDecoration: 'none' }}>
+                            className="uppercase"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '1px',
+                                color: C.ink3,
+                                textDecoration: 'none',
+                            }}>
                             ← Back to home
                         </Link>
                     </div>

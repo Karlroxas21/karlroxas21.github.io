@@ -1,12 +1,12 @@
-import MmgLogo from './MmgLogo';
+import { Link } from 'react-router-dom';
 
 const FOOTER_COLS = [
     {
         heading: 'Train',
         items: [
-            { label: 'Court booking', href: '#courts' },
+            { label: 'Court booking', href: '/mmg/courts' },
             { label: 'Group classes', href: '#classes' },
-            { label: 'Personal trainers', href: '#trainers' },
+            { label: 'Personal trainers', href: '/mmg/trainers' },
             { label: 'MMA / Boxing', href: '#classes' },
         ],
     },
@@ -23,9 +23,9 @@ const FOOTER_COLS = [
         heading: 'Account',
         items: [
             { label: 'Membership', href: '#membership' },
-            { label: 'Admin login', href: '#' },
-            { label: 'Member portal', href: '#' },
-            { label: 'FAQ', href: '#' },
+            { label: 'Admin login', href: '/mmg/admin' },
+            { label: 'Member portal', href: '/mmg' },
+            { label: 'FAQ', href: '/mmg' },
         ],
     },
 ];
@@ -37,16 +37,29 @@ export default function MmgFooter() {
                 <div className="grid grid-cols-2 sm:grid-cols-[2fr_1fr_1fr_1fr] gap-10 sm:gap-12">
                     <div className="col-span-2 sm:col-span-1">
                         <div className="flex items-center gap-2.5">
-                            <MmgLogo invert />
+                            <img src={'/images/mmg/mmg-logo.jpg'} className="rounded-md" width={38} />
+
                             <span className="flex flex-col leading-none">
                                 <span
-                                    className="mmg-display text-[#f4ede0]"
-                                    style={{ fontSize: 18, letterSpacing: '-0.5px', lineHeight: 1 }}>
-                                    STELLAR
+                                    className="text-[#f4ede0]"
+                                    style={{
+                                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                        fontSize: 18,
+                                        letterSpacing: '-0.5px',
+                                        lineHeight: 1,
+                                    }}>
+                                    MMG STELLAR
                                 </span>
                                 <span
-                                    className="mmg-serif text-[#f4ede0]"
-                                    style={{ fontSize: 10, letterSpacing: '5px', marginTop: 3 }}>
+                                    className="text-[#f4ede0]"
+                                    style={{
+                                        fontFamily: "'DM Serif Display', Georgia, serif",
+                                        fontStyle: 'italic',
+                                        fontWeight: 400,
+                                        fontSize: 10,
+                                        letterSpacing: '5px',
+                                        marginTop: 3,
+                                    }}>
                                     GYM
                                 </span>
                             </span>
@@ -66,8 +79,9 @@ export default function MmgFooter() {
                     {FOOTER_COLS.map(col => (
                         <div key={col.heading}>
                             <h4
-                                className="mmg-mono uppercase"
+                                className="uppercase"
                                 style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                     fontSize: 11,
                                     letterSpacing: '2px',
                                     opacity: 0.5,
@@ -89,11 +103,11 @@ export default function MmgFooter() {
                                 {col.items.map(item => (
                                     <li key={item.label}>
                                         {item.href ? (
-                                            <a
-                                                href={item.href}
+                                            <Link
+                                                to={item.href}
                                                 className="no-underline text-[#f4ede0] opacity-80 hover:opacity-100 transition-opacity">
                                                 {item.label}
-                                            </a>
+                                            </Link>
                                         ) : (
                                             <span style={{ opacity: 0.7 }}>{item.label}</span>
                                         )}
@@ -105,8 +119,9 @@ export default function MmgFooter() {
                 </div>
 
                 <div
-                    className="mmg-mono flex justify-between flex-wrap gap-4 mt-16 pt-6"
+                    className="flex justify-between flex-wrap gap-4 mt-16 pt-6"
                     style={{
+                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                         borderTop: '1px solid rgba(255,255,255,0.08)',
                         fontSize: 11,
                         opacity: 0.5,

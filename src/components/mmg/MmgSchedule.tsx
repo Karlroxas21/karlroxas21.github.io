@@ -55,11 +55,11 @@ const SCHEDULE: [string, ...ClassCell[]][] = [
     ],
 ];
 
-const CELL_CLASS: Record<string, string> = {
-    mma: 'mmg-cell-mma',
-    cardio: 'mmg-cell-cardio',
-    strength: 'mmg-cell-strength',
-    mobility: 'mmg-cell-mobility',
+const CELL_STYLE: Record<string, React.CSSProperties> = {
+    mma: { background: '#161412', color: '#f4ede0' },
+    cardio: { background: '#f0e3c8' },
+    strength: { background: '#e7d2ad' },
+    mobility: { background: '#ddd9c8' },
 };
 
 export default function MmgSchedule() {
@@ -69,24 +69,36 @@ export default function MmgSchedule() {
                 <div className="flex justify-between items-end flex-wrap gap-6 mb-8">
                     <div>
                         <div
-                            className="mmg-mono uppercase text-[#6b6259]"
-                            style={{ fontSize: 11, letterSpacing: '2px' }}>
+                            className="uppercase text-[#6b6259]"
+                            style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                fontSize: 11,
+                                letterSpacing: '2px',
+                            }}>
                             02 — Group classes
                         </div>
                         <h2
-                            className="mmg-display"
                             style={{
+                                fontFamily: "'Archivo Black', Helvetica, sans-serif",
                                 fontSize: 'clamp(32px,4vw,56px)',
                                 lineHeight: 1,
                                 letterSpacing: '-1px',
                                 margin: '8px 0 0',
                             }}>
-                            This week <span className="mmg-serif">at MMG.</span>
+                            This week{' '}
+                            <span
+                                style={{
+                                    fontFamily: "'DM Serif Display', Georgia, serif",
+                                    fontStyle: 'italic',
+                                    fontWeight: 400,
+                                }}>
+                                at MMG.
+                            </span>
                         </h2>
                     </div>
                     <div className="flex gap-2">
                         <button
-                            className="mmg-page transition-colors"
+                            className="transition-colors"
                             style={{
                                 padding: '8px 14px',
                                 background: '#161412',
@@ -101,7 +113,7 @@ export default function MmgSchedule() {
                             This week
                         </button>
                         <button
-                            className="mmg-page transition-colors"
+                            className="transition-colors"
                             style={{
                                 padding: '8px 14px',
                                 border: '1px solid rgba(22,20,18,0.25)',
@@ -127,8 +139,9 @@ export default function MmgSchedule() {
                             minWidth: 640,
                         }}>
                         <div
-                            className="mmg-mono uppercase text-[#6b6259]"
+                            className="uppercase text-[#6b6259]"
                             style={{
+                                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                 padding: '14px 12px',
                                 fontSize: 10,
                                 letterSpacing: '1.5px',
@@ -139,8 +152,9 @@ export default function MmgSchedule() {
                         {DAYS.map((day, i) => (
                             <div
                                 key={day}
-                                className="mmg-mono uppercase text-[#6b6259]"
+                                className="uppercase text-[#6b6259]"
                                 style={{
+                                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                     padding: '14px 8px',
                                     fontSize: 10,
                                     letterSpacing: '1.5px',
@@ -155,8 +169,9 @@ export default function MmgSchedule() {
                             <>
                                 <div
                                     key={`time-${ri}`}
-                                    className="mmg-mono text-[#6b6259]"
+                                    className="text-[#6b6259]"
                                     style={{
+                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
                                         padding: '14px 8px',
                                         fontSize: 11,
                                         borderRight: '1px solid rgba(22,20,18,0.12)',
@@ -168,24 +183,35 @@ export default function MmgSchedule() {
                                 {(row.slice(1) as ClassCell[]).map((cell, ci) => (
                                     <div
                                         key={`cell-${ri}-${ci}`}
-                                        className={`cursor-pointer transition-colors ${cell?.[2] ? (CELL_CLASS[cell[2]] ?? '') : ''}`}
+                                        className="cursor-pointer transition-colors"
                                         style={{
                                             padding: 8,
                                             borderRight: ci < 6 ? '1px solid rgba(22,20,18,0.12)' : undefined,
                                             borderBottom:
                                                 ri < SCHEDULE.length - 1 ? '1px solid rgba(22,20,18,0.12)' : undefined,
                                             minHeight: 64,
+                                            ...(cell?.[2] ? (CELL_STYLE[cell[2]] ?? {}) : {}),
                                         }}>
                                         {cell && (
                                             <>
                                                 <div
-                                                    className="mmg-display"
-                                                    style={{ fontSize: 11, letterSpacing: '-0.2px', lineHeight: 1.1 }}>
+                                                    style={{
+                                                        fontFamily: "'Archivo Black', Helvetica, sans-serif",
+                                                        fontSize: 11,
+                                                        letterSpacing: '-0.2px',
+                                                        lineHeight: 1.1,
+                                                    }}>
                                                     {cell[0]}
                                                 </div>
                                                 <div
-                                                    className="mmg-coach mmg-mono uppercase text-[#6b6259]"
-                                                    style={{ fontSize: 9, letterSpacing: '1px', marginTop: 4 }}>
+                                                    className="uppercase"
+                                                    style={{
+                                                        fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                                                        fontSize: 9,
+                                                        letterSpacing: '1px',
+                                                        marginTop: 4,
+                                                        color: cell[2] === 'mma' ? '#ccc' : '#6b6259',
+                                                    }}>
                                                     {cell[1]}
                                                 </div>
                                             </>
