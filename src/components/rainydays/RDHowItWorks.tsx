@@ -34,12 +34,12 @@ export default function RDHowItWorks() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-3 gap-12 lg:grid-cols-1">
+                <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
                     {STEPS.map((s, i) => (
                         <div
                             key={s.n}
                             className={`rd-reveal rd-stagger-${i + 1} border-t border-white/10 pt-8 flex flex-col gap-4`}>
-                            <div className="font-mono text-[80px] font-bold tracking-[-0.04em] text-white/10 leading-none sm:text-[56px]">
+                            <div className="text-white text-[80px] font-bold tracking-[-0.04em] leading-none sm:text-[56px]">
                                 {s.n}
                             </div>
                             <h3 className="text-[22px] font-semibold tracking-[-0.01em]">{s.t}</h3>
