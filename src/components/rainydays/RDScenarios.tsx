@@ -39,12 +39,12 @@ export default function RDScenarios() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-3 gap-6 lg:grid-cols-1">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                     {SCENARIOS.map((s, i) => (
                         <article
                             key={s.title}
                             className={`rd-reveal rd-stagger-${i + 1} bg-white border border-[#E5E5E5] rounded-2xl p-8 flex flex-col gap-4 shadow-[0_1px_3px_rgba(0,0,0,.08),0_4px_12px_rgba(0,0,0,.06)] hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(0,0,0,.12),0_1px_4px_rgba(0,0,0,.06)] transition-all duration-200 sm:p-6`}>
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-col lg:flex-row justify-between items-center">
                                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium tracking-wide bg-[#F0F0F0] text-[#0A0A0A]">
                                     {s.chip}
                                 </span>

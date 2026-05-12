@@ -34,7 +34,7 @@ export default function RDHero() {
             </div>
 
             <div className="max-w-[1200px] mx-auto px-20 w-full lg:px-10 sm:px-6 relative z-10">
-                <div className="grid grid-cols-2 gap-20 items-center w-full lg:grid-cols-1 lg:gap-14 sm:gap-10">
+                <div className="grid grid-cols-1 gap-20 items-center w-full lg:grid-cols-2 lg:gap-14 sm:gap-10">
                     {/* Copy */}
                     <div className="rd-reveal max-w-[580px]">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium tracking-wide bg-white/10 text-white border border-white/15">
@@ -63,7 +63,7 @@ export default function RDHero() {
                     </div>
 
                     {/* Device mock */}
-                    <div className="rd-reveal flex justify-center lg:justify-start">
+                    <div className="rd-reveal flex justify-start lg:justify-end">
                         <div
                             className="rd-device-animate relative w-[360px] lg:w-[320px] sm:w-[260px]"
                             style={{
