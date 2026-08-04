@@ -1077,19 +1077,49 @@ body {
    RainyDays page — animation keyframes + pseudo-element styles
    ============================================================ */
 
+/* The product page is its own white world — override the site's cream body bg
+   so overscroll and rubber-banding don't flash #f7f3ec. */
+html:has(.rd-page),
+body:has(.rd-page) {
+    background-color: #ffffff !important;
+    color: #0a0a0a !important;
+}
+
 /* Page font/bg reset (Tailwind handles layout) */
 .rd-page {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
     background: #ffffff;
     color: #0a0a0a;
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
 }
 
-/* Hero grid texture overlay */
-.rd-hero::before {
-    content: '';
+/* Anchor offset for the fixed nav */
+.rd-page section[id] {
+    scroll-margin-top: 72px;
+}
+
+/* Mesh blob layer — static gradients, kept cheap to paint */
+.rd-mesh {
+    filter: blur(60px) saturate(0%);
+    opacity: 0.9;
+    pointer-events: none;
+    contain: paint;
+}
+
+/* Grid texture over ink sections */
+.rd-grid-texture {
     position: absolute;
     inset: 0;
+    z-index: 0;
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
@@ -1097,19 +1127,20 @@ body {
     -webkit-mask-image: radial-gradient(ellipse at 30% 30%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
     mask-image: radial-gradient(ellipse at 30% 30%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
     pointer-events: none;
-    z-index: 0;
 }
 
-/* How-it-works grid texture */
-.rd-how::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 64px 64px;
-    pointer-events: none;
+/* Horizontal screen rail — scrollbar hidden, keyboard focus kept visible */
+.rd-rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+}
+.rd-rail::-webkit-scrollbar {
+    display: none;
+}
+.rd-rail:focus-visible {
+    outline: 2px solid #0a0a0a;
+    outline-offset: 4px;
 }
 
 /* Privacy callout radial overlay */
@@ -1119,110 +1150,6 @@ body {
     inset: 0;
     background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%);
     pointer-events: none;
-}
-
-/* Mesh gradient blobs */
-@keyframes rd-mesh-1 {
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-    33% {
-        transform: translate(15%, 20%) scale(1.15);
-    }
-    66% {
-        transform: translate(-10%, 10%) scale(0.9);
-    }
-}
-@keyframes rd-mesh-2 {
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-    33% {
-        transform: translate(-20%, 15%) scale(0.95);
-    }
-    66% {
-        transform: translate(10%, -10%) scale(1.1);
-    }
-}
-@keyframes rd-mesh-3 {
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(20%, -25%) scale(1.2);
-    }
-}
-@keyframes rd-mesh-4 {
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(-15%, -15%) scale(0.85);
-    }
-}
-
-/* Device breathing */
-@keyframes rd-breathe {
-    0%,
-    100% {
-        transform: rotate(5.5deg);
-    }
-    50% {
-        transform: rotate(6.5deg);
-    }
-}
-@keyframes rd-breathe-md {
-    0%,
-    100% {
-        transform: rotate(3.5deg);
-    }
-    50% {
-        transform: rotate(4.5deg);
-    }
-}
-@keyframes rd-breathe-sm {
-    0%,
-    100% {
-        transform: rotate(2.5deg);
-    }
-    50% {
-        transform: rotate(3.5deg);
-    }
-}
-
-.rd-device-animate {
-    animation: rd-breathe 7s ease-in-out infinite;
-}
-@media (max-width: 1023px) {
-    .rd-device-animate {
-        animation-name: rd-breathe-md;
-    }
-}
-@media (max-width: 639px) {
-    .rd-device-animate {
-        animation-name: rd-breathe-sm;
-    }
-}
-
-/* Fund bar fill */
-@keyframes rd-fund-fill {
-    from {
-        width: 0;
-    }
-    to {
-        width: 68%;
-    }
-}
-.rd-fund-bar-fill {
-    height: 100%;
-    width: 68%;
-    background: #fff;
-    border-radius: 999px;
-    animation: rd-fund-fill 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
 }
 
 /* Scroll indicator pulse */
@@ -1279,25 +1206,21 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -4px;
+    bottom: -5px;
     height: 1px;
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 150ms ease;
 }
-.rd-nav-link:hover::after {
+.rd-nav-link:hover::after,
+.rd-nav-link.is-active::after {
     transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .rd-device-animate,
-    .rd-scroll-pulse,
-    .rd-fund-bar-fill {
+    .rd-scroll-pulse {
         animation: none !important;
-    }
-    .rd-fund-bar-fill {
-        width: 68%;
     }
     .rd-reveal {
         opacity: 1;
