@@ -29,19 +29,19 @@ export const LINKS: Link[] = [
 export const ABOUT: About = {
     lede: (
         <>
-            I've spent a two years <em>writing, shipping, and deleting</em> software — from a one-person web app to
-            production touching a hundreds requests a day. I care about the work, not the stack.
+            I've spent two years <em>writing, shipping, and deleting</em> software — from a one-person web app to
+            production touching hundreds of requests a day. I care about the work, not the stack.
         </>
     ),
     cols: [
-        "I'm Karl, a software engineer who enjoys building useful, purposeful website that actually works well.",
+        "I'm Karl, a software engineer who enjoys building useful, purposeful websites that actually work well.",
         "These days I work mostly in TypeScript, Java, React, and React Native, with detours into infra. Off-hours, you'll find me at the gym and outside running, cycling or hiking.",
     ],
     stats: [
         { k: 'based', v: 'Taguig, PH' },
         { k: 'since', v: '2024' },
         { k: 'stack', v: 'TS · Java · React' },
-        { k: 'available', v: 'ANY TIME' },
+        { k: 'available', v: 'Any time' },
     ],
 };
 
@@ -50,13 +50,13 @@ export const PROJECTS: Project[] = [
         n: '01',
         title: 'RainyDays',
         desc: 'An offline-first mobile savings tracker built with React Native and Expo. Track personal savings, manage group funds, and sync groups peer-to-peer via QR codes — all data stays on your device.',
-        tags: ['Cross-platform', 'React Native', 'Typescript', 'Cryptoraphy'],
+        tags: ['Cross-platform', 'React Native', 'TypeScript', 'Cryptography'],
         year: "'25",
         link: '/rainydays',
     },
     {
         n: '02',
-        title: 'My  Website',
+        title: 'My Website',
         desc: 'My site is a living history of my journey as a developer. It’s evolved from a simple starting point into what you see today—a space heavily inspired by grid systems and the power of typography to tell a story. In an era where everything is starting to look like an AI-generated template, I’m sticking to the script that works: doubling down on the fundamentals and the timeless basics of great design.',
         tags: ['TypeScript', 'React + Vite', 'Tailwind', 'CSS'],
         year: "'26",
@@ -115,7 +115,7 @@ export const EXPERIENCE: Experience[] = [
         years: '2024 — now',
         role: 'Application Support Engineer',
         company: 'Amihan Global Strategies',
-        note: 'L3 Support for enterprise clients - BDO, SMDC, and Chemonics. Forensic debugging code-level issues and maitaining 99.9% system uptime and delivering feature enhancements based on client requirements',
+        note: 'L3 Support for enterprise clients - BDO, SMDC, and Chemonics. Forensic debugging code-level issues and maintaining 99.9% system uptime and delivering feature enhancements based on client requirements',
         loc: 'Hybrid',
     },
 ];
@@ -130,13 +130,13 @@ export const REPOS: Repository[] = [
     {
         name: 'this-website',
         desc: 'My website.',
-        lang: 'React, Typescript',
+        lang: 'React, TypeScript',
         link: 'https://github.com/Karlroxas21/karlroxas21.github.io',
     },
     {
         name: 'rainydays-ui',
         desc: 'Emergency fund system mobile app with offline first architecture in mind.',
-        lang: 'Typescirpt, Java',
+        lang: 'TypeScript, Java',
         link: '',
     },
 ];

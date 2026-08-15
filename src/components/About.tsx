@@ -3,24 +3,21 @@ import SectionHead from './SectionHead';
 
 const About = () => {
     return (
-        <section className="section" id="about">
-            <div className="shell g12">
-                <SectionHead n="01" title={<>About.</>} meta="The short version" />
-                <div className="about__stats">
-                    <div className="label">Facts</div>
-                    {ABOUT.stats.map(s => (
-                        <div className="stat" key={s.k}>
-                            <span className="k">{s.k}</span>
-                            <span className="v">{s.v}</span>
-                        </div>
-                    ))}
-                </div>
-                <p className="about__lede">{ABOUT.lede}</p>
-                <div className="about__cols">
-                    {ABOUT.cols.map((c, i) => (
-                        <p key={i}>{c}</p>
-                    ))}
-                </div>
+        <section className="sec" id="about">
+            <SectionHead icon="📇" title="About" />
+            <p>{ABOUT.lede}</p>
+            {ABOUT.cols.map((c, i) => (
+                <p key={i} className={i > 0 ? 'dim' : undefined}>
+                    {c}
+                </p>
+            ))}
+            <div className="kv" style={{ marginTop: 18 }}>
+                {ABOUT.stats.map(s => (
+                    <div key={s.k} className="contents">
+                        <div className="k">{s.k}</div>
+                        <div className="v">{s.v}</div>
+                    </div>
+                ))}
             </div>
         </section>
     );

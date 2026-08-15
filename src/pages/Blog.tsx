@@ -7,26 +7,12 @@ import 'highlight.js/styles/atom-one-dark.css';
 import { useAnalytics } from '../hooks/use-analytics';
 import { useTheme } from '../providers/theme-context';
 import Chrome from '../components/Chrome';
-import Cursor from '../components/Cursor';
 
 const Blog = () => {
     const { title } = useParams();
     const [content, setContent] = useState<string | null>(null);
-    const [timeStr, setTimeStr] = useState('');
     const { theme, toggleTheme } = useTheme();
     const { trackEvent } = useAnalytics();
-
-    useEffect(() => {
-        function tick() {
-            const d = new Date();
-            setTimeStr(
-                `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`
-            );
-        }
-        tick();
-        const t = setInterval(tick, 1000);
-        return () => clearInterval(t);
-    }, []);
 
     useEffect(() => {
         if (!title) return;
@@ -45,10 +31,9 @@ const Blog = () => {
 
     return (
         <>
-            <Cursor />
-            <Chrome theme={theme} onToggleTheme={toggleTheme} timeStr={timeStr} />
+            <Chrome theme={theme} onToggleTheme={toggleTheme} />
             <main style={{ background: 'var(--color-bg)', color: 'var(--color-fg)', minHeight: '100vh' }}>
-                <section className="section blog-section">
+                <section className="blog-section">
                     <div className="shell">
                         <Link
                             to="/#writing"
@@ -57,7 +42,9 @@ const Blog = () => {
                             ← Writing
                         </Link>
 
-                        {content === null ? null : content === '' ? (
+                        {content === null ? (
+                            <p className="label">Loading…</p>
+                        ) : content === '' ? (
                             <div className="blog-not-found">
                                 <p className="label">Post not found</p>
                                 <Link to="/#writing" className="blog-back label label--ink">

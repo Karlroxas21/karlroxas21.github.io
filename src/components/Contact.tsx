@@ -3,71 +3,56 @@ import SectionHead from './SectionHead';
 import { LINKS, PROFILE } from './data';
 import { useAnalytics } from '../hooks/use-analytics';
 
+const LABELS: Record<string, string> = {
+    email: 'Email',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    resume: 'Résumé',
+};
+const ORDER = ['email', 'github', 'linkedin', 'resume'];
+
 const Contact = () => {
     const { trackEvent } = useAnalytics();
+    const rows = ORDER.map(k => LINKS.find(l => l.k === k)).filter((l): l is (typeof LINKS)[number] => !!l);
+
     return (
-        <section className="section" id="contact">
-            <div className="shell g12">
-                <SectionHead n="06" title={<>Contact.</>} meta="Let's talk" />
-                <div className="contact">
-                    <h3 className="contact__big">
-                        Say{' '}
-                        <a
-                            href={`mailto:${PROFILE.email}`}
-                            onClick={() => trackEvent('Click Email', 'Contact', 'hello')}>
-                            hello
-                        </a>
-                        ,
-                        <br />
-                        or{' '}
-                        <a
-                            href={`mailto:${PROFILE.email}`}
-                            onClick={() => trackEvent('Click Email', 'Contact', 'send a letter')}>
-                            send a letter
-                        </a>
-                        .
-                    </h3>
-                    <div className="contact__rows">
-                        {LINKS.filter(k => k.k != 'resume').map(l => (
-                            <>
-                                {l.k !== 'writing' ? (
-                                    <a
-                                        className="contact__row"
-                                        target="_blank"
-                                        key={l.k}
-                                        href={l.href}
-                                        onClick={() => trackEvent(`Click ${l.k}`, 'Contact Links', l.href)}>
-                                        <span className="k">{l.k}</span>
-                                        <span className="v">{l.v}</span>
-                                        <span className="arrow">↗</span>
-                                    </a>
-                                ) : (
-                                    <Link
-                                        className="contact__row"
-                                        key={l.k}
-                                        to={`${l.href}`}
-                                        onClick={() => trackEvent(`Click ${l.k}`, 'Contact Links', l.href)}>
-                                        <span className="k">{l.k}</span>
-                                        <span className="v">{l.v}</span>
-                                        <span className="arrow">↗</span>
-                                    </Link>
-                                )}
-                            </>
-                        ))}
-                        {LINKS.filter(k => k.k === 'resume').map(l => (
-                            <a
-                                className="contact__row"
-                                key={l.k}
-                                href={l.href}
-                                download
-                                onClick={() => trackEvent('Download Resume', 'Contact Links', 'Contact Row')}>
-                                <span className="k">{l.k}</span>
-                                <span className="v">{l.v}</span>
-                                <span className="arrow">↗</span>
-                            </a>
-                        ))}
+        <section className="sec" id="contact">
+            <SectionHead icon="✉️" title="Contact" />
+            <p className="lede" style={{ marginBottom: 18 }}>
+                Say{' '}
+                <a href={`mailto:${PROFILE.email}`} onClick={() => trackEvent('Click Email', 'Contact', 'hello')}>
+                    hello
+                </a>
+                .
+            </p>
+            <div className="kv">
+                {rows.map(l => (
+                    <div className="contents" key={l.k}>
+                        <div className="k">{LABELS[l.k] ?? l.k}</div>
+                        <div className="v">
+                            {l.href.startsWith('#') ? (
+                                <Link to={l.href} onClick={() => trackEvent(`Click ${l.k}`, 'Contact Links', l.href)}>
+                                    {l.v}
+                                </Link>
+                            ) : l.k === 'resume' ? (
+                                <a
+                                    href={l.href}
+                                    download
+                                    onClick={() => trackEvent(`Click ${l.k}`, 'Contact Links', l.href)}>
+                                    {l.v}
+                                </a>
+                            ) : (
+                                <a
+                                    href={l.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => trackEvent(`Click ${l.k}`, 'Contact Links', l.href)}>
+                                    {l.v}
+                                </a>
+                            )}
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         </section>
     );

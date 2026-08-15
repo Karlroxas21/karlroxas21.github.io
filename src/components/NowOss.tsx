@@ -2,56 +2,62 @@ import { NOW_ITEMS, REPOS } from './data';
 import SectionHead from './SectionHead';
 import { useAnalytics } from '../hooks/use-analytics';
 
+const NOW_ICON: Record<string, string> = {
+    building: '🔨',
+    learning: '📚',
+};
+
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 const NowOss = () => {
     const { trackEvent } = useAnalytics();
     return (
-        <section className="section" id="now">
-            <div className="shell g12">
-                <SectionHead n="05" title={<>Now &amp; open source.</>} meta="Updated Apr 18" />
-                <div className="now-oss">
-                    <div className="panel">
-                        <div className="panel__head">
-                            <h3>Now</h3>
-                            <span className="label">What I'm up to</span>
-                        </div>
-                        <div className="now__list">
-                            {NOW_ITEMS.map(n => (
-                                <div className="now__item" key={n.k}>
-                                    <span className="k">{n.k}</span>
-                                    <span className="v">
-                                        {n.v}
-                                        <small>{n.note}</small>
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+        <>
+            <section className="sec" id="now">
+                <SectionHead icon="🌱" title="Now" />
+                {NOW_ITEMS.map((n, i) => (
+                    <div className="callout" key={i}>
+                        <span className="ico" aria-hidden="true">
+                            {NOW_ICON[n.k] ?? '•'}
+                        </span>
+                        <p>
+                            <strong>{cap(n.k)}</strong> {n.v}. <span className="dim">{n.note}</span>
+                        </p>
                     </div>
-                    <div className="panel">
-                        <div className="panel__head">
-                            <h3>Open source</h3>
-                            <span className="label">Selected repositories</span>
-                        </div>
-                        <div>
-                            {REPOS.map(r => (
-                                <a
-                                    className="repo"
-                                    href={r.link}
-                                    target="_blank"
-                                    key={r.name}
-                                    onClick={() => trackEvent(`Open Repo ${r.name}`, 'OSS', r.link)}>
-                                    <div className="repo__name">
-                                        <span className="o">karlroxas21/</span>
-                                        {r.name}
-                                    </div>
-                                    <div className="repo__lang">{r.lang}</div>
-                                    <div className="repo__desc">{r.desc}</div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                ))}
+            </section>
+
+            <section className="sec" id="oss">
+                <SectionHead icon="📦" title="Open Source" />
+                <ul className="bare">
+                    {REPOS.map(r => (
+                        <li className="item" key={r.name}>
+                            <div className="item__top">
+                                <h3 className="item__title">
+                                    {r.link ? (
+                                        <a
+                                            href={r.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => trackEvent(`Open Repo ${r.name}`, 'OSS', r.link)}>
+                                            <span className="co">karlroxas21/</span>
+                                            {r.name}
+                                        </a>
+                                    ) : (
+                                        <>
+                                            <span className="co">karlroxas21/</span>
+                                            {r.name}
+                                        </>
+                                    )}
+                                </h3>
+                                <span className="item__yr">{r.lang}</span>
+                            </div>
+                            <p className="item__desc">{r.desc}</p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        </>
     );
 };
 
