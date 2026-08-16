@@ -101,12 +101,14 @@ Never import from a feature's internal file from outside its directory. If somet
 
 ### Current Feature Mapping
 
-| Feature     | Current (legacy)            | Target                    |
-| ----------- | --------------------------- | ------------------------- |
-| `mmg`       | `src/components/mmg/`       | `src/features/mmg/`       |
-| `rainydays` | `src/components/rainydays/` | `src/features/rainydays/` |
+| Feature     | Location                  | Status   |
+| ----------- | ------------------------- | -------- |
+| `rainydays` | `src/features/rainydays/` | Migrated |
+| `postwall`  | `src/features/postwall/`  | Migrated |
 
-Migrate from legacy paths to `src/features/` on next touch. Do not create new code in `src/components/<feature>/`.
+Both features live under `src/features/` with a barrel `index.ts`; their pages only compose barrel exports. The `mmg` feature was deleted (components, pages, routes and `public/images/mmg`); recover it from git history if needed.
+
+Do not create new code in `src/components/<feature>/` — shared UI only.
 
 ## Code Style
 
