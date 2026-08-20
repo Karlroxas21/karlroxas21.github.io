@@ -6,30 +6,29 @@ import { Link } from 'react-router';
 const Writing = () => {
     const { trackEvent } = useAnalytics();
     return (
-        <section className="section" id="writing">
-            <div className="shell g12">
-                <SectionHead n="03" title={<>Writing.</>} meta="Occasional Articles" />
-                <div className="writing">
-                    {POSTS.map((p, i) => (
-                        <Link
-                            className="post"
-                            to={p.link}
-                            target="_blank"
-                            key={i}
-                            onClick={() => trackEvent(`Open Post ${p.title}`, 'Writing', p.link)}>
-                            <div className="post__meta">
-                                <span>
-                                    {p.date} · {p.tag}
-                                </span>
-                                <span>{p.readtime}</span>
-                            </div>
-                            <h3 className="post__title">{p.title}</h3>
-                            <p className="post__excerpt">{p.excerpt}</p>
-                            <div className="post__more">Read →</div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
+        <section className="sec" id="writing">
+            <SectionHead icon="✍️" title="Writing" />
+            <ul className="bare">
+                {POSTS.map((p, i) => (
+                    <li className="item" key={i}>
+                        <div className="item__top">
+                            <h3 className="item__title">
+                                <Link
+                                    to={p.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => trackEvent(`Open Post ${p.title}`, 'Writing', p.link)}>
+                                    {p.title}
+                                </Link>
+                            </h3>
+                            <span className="item__yr num">{p.date}</span>
+                        </div>
+                        <p className="item__desc">
+                            {p.tag} · {p.readtime} read
+                        </p>
+                    </li>
+                ))}
+            </ul>
         </section>
     );
 };

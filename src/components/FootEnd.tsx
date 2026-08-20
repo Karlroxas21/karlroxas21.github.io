@@ -2,12 +2,10 @@ import { PROFILE } from './data';
 
 const FootEnd = () => {
     return (
-        <div className="shell">
-            <div className="footend">
-                <span>— End of document —</span>
-                <span>{PROFILE.name} · 2026</span>
-            </div>
-        </div>
+        <footer className="footend">
+            <span>© 2026 {PROFILE.name}</span>
+            <span>Built with React · Hosted on GitHub Pages</span>
+        </footer>
     );
 };
 

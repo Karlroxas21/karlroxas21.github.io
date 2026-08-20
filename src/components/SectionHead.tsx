@@ -1,18 +1,18 @@
 import type { ReactNode } from 'react';
 
 interface SectionHead {
-    n: string;
+    icon: string;
     title: ReactNode;
-    meta: string;
 }
 
-const SectionHead = ({ n, title, meta }: SectionHead) => {
+const SectionHead = ({ icon, title }: SectionHead) => {
     return (
-        <div className="shead">
-            <div className="shead__num label num">{n}</div>
-            <h2 className="shead__title">{title}</h2>
-            <div className="shead__meta">{meta}</div>
-        </div>
+        <h2 className="sec__h">
+            <span className="he" aria-hidden="true">
+                {icon}
+            </span>
+            {title}
+        </h2>
     );
 };
 
