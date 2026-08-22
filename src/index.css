@@ -219,6 +219,10 @@ body {
         max-width: 62ch;
     }
 
+    .industries {
+        @apply mt-[14px] mb-0 flex flex-wrap items-baseline gap-x-[10px] gap-y-[4px] text-[15px];
+    }
+
     /* -------- Callout -------- */
     .callout {
         @apply flex items-start gap-3;
@@ -310,15 +314,44 @@ body {
         color: var(--color-fg-3);
     }
 
+    .ext {
+        @apply inline-block align-[-0.08em] ml-[5px] w-[0.78em] h-[0.78em] shrink-0;
+        color: var(--color-fg-3);
+        opacity: 0.75;
+        transition:
+            opacity 0.12s ease,
+            color 0.12s ease;
+    }
+
+    a:hover .ext,
+    a:focus-visible .ext {
+        color: inherit;
+        opacity: 1;
+    }
+
     .item__desc {
         @apply mt-[6px] mb-0 text-[15px];
         color: var(--color-fg-2);
         line-height: 1.6;
     }
 
+    .item__list {
+        @apply mt-[8px] mb-0 pl-[18px] text-[14.5px] list-disc;
+        color: var(--color-fg-2);
+        line-height: 1.65;
+    }
+
+    .item__list li::marker {
+        color: var(--color-fg-3);
+    }
+
     /* -------- Tag chips -------- */
     .chips {
         @apply flex flex-wrap gap-[6px] mt-[9px];
+    }
+
+    .chips--flush {
+        @apply mt-0;
     }
 
     .chip {

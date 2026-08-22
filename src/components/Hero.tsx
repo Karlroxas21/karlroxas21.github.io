@@ -17,6 +17,11 @@ const Hero = () => {
                 <p className="lede">{PROFILE.tagline}</p>
                 <p className="dim">{PROFILE.sub}</p>
 
+                <p className="industries">
+                    <span className="label">Industries</span>
+                    <span className="dim">{PROFILE.industries.join(' \u00b7 ')}</span>
+                </p>
+
                 <div className="callout">
                     <span className="ico" aria-hidden="true">
                         ✦
@@ -24,7 +29,7 @@ const Hero = () => {
                     <p>
                         <strong>{PROFILE.status}.</strong>{' '}
                         <span className="dim">
-                            TypeScript · Java · React · React Native.{' '}
+                            TypeScript · C# · .NET · React · Angular.{' '}
                             <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
                         </span>
                     </p>

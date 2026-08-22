@@ -9,6 +9,7 @@ export type Profile = {
     initials: string;
     tagline: ReactNode;
     sub: string;
+    industries: string[];
     email: string;
 };
 
@@ -66,4 +67,39 @@ export type Repository = {
     desc: string;
     lang: string;
     link: string;
+};
+
+export type Education = {
+    institution: string;
+    area: string;
+    years: string;
+    loc: string;
+    highlights: string[];
+};
+
+export type SkillGroup = {
+    label: string;
+    items: string[];
+};
+
+export type Publication = {
+    title: string;
+    authors: string[];
+    venue: string;
+    year: string;
+    summary: string;
+    doi: string;
+};
+
+export type Certification = {
+    name: string;
+    date: string;
+};
+
+export type Service = {
+    n: string;
+    title: string;
+    desc: string;
+    includes: string[];
+    stack: string[];
 };
