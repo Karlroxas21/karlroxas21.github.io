@@ -1,42 +1,142 @@
-import { Check, SectionHead } from './PWPrimitives';
+import { useRef } from 'react';
 
+import { Check, PinIcon, SectionHead } from './PWPrimitives';
+import { useScrollProgress } from '../hooks/use-scroll-progress';
+import { useStageScale } from '../hooks/use-stage-scale';
 import { PW, PW_GRAIN, noteColor, type NoteColorKey } from '../pwTokens';
+import { easeInOutCubic } from '../utils/spring';
 
 type Item = [string, string];
 
-function WSNote({
-    color,
-    w,
-    h,
-    x,
-    y,
-    rot,
-    title,
-    items,
-    due,
-    pinned,
-}: {
+const STAGE_W = 960;
+const STAGE_H = 520;
+const NOTE_W = 210;
+const NOTE_H = 190;
+const COLS = 4;
+const GAP = 22;
+const PAD_X = (STAGE_W - COLS * NOTE_W - (COLS - 1) * GAP) / 2;
+const PAD_Y = 64;
+
+interface WallNote {
     color: NoteColorKey;
-    w: number;
-    h: number;
-    x: number;
-    y: number;
-    rot: number;
     title: string;
     items: Item[];
     due?: string;
     pinned?: boolean;
-}) {
-    const c = noteColor(color);
+    /** Where it starts before the scroll tidies it: offset from its grid slot + tilt + scale. */
+    scatter: [dx: number, dy: number, rot: number, scale: number];
+}
+
+const NOTES: WallNote[] = [
+    {
+        color: 'butter',
+        title: 'Launch checklist',
+        pinned: true,
+        due: 'Tue 4pm',
+        items: [
+            ['c', 'Confirm hero copy'],
+            ['c', 'Export og-image'],
+            ['', 'Review pricing'],
+            ['', 'Send draft to Sarah'],
+        ],
+        scatter: [64, 48, -12, 1.04],
+    },
+    {
+        color: 'sage',
+        title: 'Q2 ideas',
+        items: [
+            ['', 'Inline AI rewrite'],
+            ['', 'Calendar sync'],
+            ['', 'Voice capture'],
+        ],
+        scatter: [-96, 128, 9, 0.96],
+    },
+    {
+        color: 'sky',
+        title: 'Reading',
+        items: [
+            ['', 'Dieter Rams — Ten'],
+            ['', 'Synthesis of form'],
+            ['', 'The Design of Everyday Things'],
+        ],
+        scatter: [72, -28, -7, 1.02],
+    },
+    {
+        color: 'peach',
+        title: 'Standup',
+        items: [
+            ['', 'Y: onboarding'],
+            ['', 'T: editor polish'],
+            ['', 'B: design review'],
+        ],
+        scatter: [-44, 156, 14, 0.94],
+    },
+    {
+        color: 'blush',
+        title: 'Copy variants',
+        items: [
+            ['', 'A. "Think on paper, on screen."'],
+            ['', 'B. "Cross-platform, finally."'],
+            ['', 'C. "Your wall, everywhere."'],
+        ],
+        scatter: [118, -132, 8, 0.98],
+    },
+    {
+        color: 'sand',
+        title: 'Errands',
+        items: [
+            ['c', 'Pick up keys'],
+            ['', 'Dry cleaning'],
+            ['', 'Book vet'],
+        ],
+        scatter: [-66, -84, -11, 1.03],
+    },
+    {
+        color: 'butter',
+        title: 'Quote',
+        items: [
+            ['', '"As few as possible, but as many as necessary."'],
+            ['', '— Rams'],
+        ],
+        scatter: [36, -168, 6, 0.95],
+    },
+    {
+        color: 'sage',
+        title: 'Grocery',
+        items: [
+            ['', 'Bread, eggs, oat milk'],
+            ['', 'Tomatoes, basil'],
+            ['', 'Olive oil'],
+        ],
+        scatter: [-128, -44, -9, 1.01],
+    },
+];
+
+function WSNote({ note, index }: { note: WallNote; index: number }) {
+    const c = noteColor(note.color);
+    const col = index % COLS;
+    const row = Math.floor(index / COLS);
+    const gx = PAD_X + col * (NOTE_W + GAP);
+    const gy = PAD_Y + row * (NOTE_H + GAP);
+    const [dx, dy, rot, sc] = note.scatter;
+
+    // At --p = 0 the note sits at its scattered pose; at 1 it has settled into the grid slot.
+    const transform =
+        `translate3d(calc(${gx + dx}px - var(--p, 1) * ${dx}px), calc(${gy + dy}px - var(--p, 1) * ${dy}px), 0) ` +
+        `rotate(calc(${rot}deg * (1 - var(--p, 1)))) ` +
+        `scale(calc(${sc} + (1 - ${sc}) * var(--p, 1)))`;
+
     return (
         <div
+            className="pw-parallax"
             style={{
                 position: 'absolute',
-                left: x,
-                top: y,
-                width: w,
-                height: h,
-                transform: `rotate(${rot}deg)`,
+                left: 0,
+                top: 0,
+                width: NOTE_W,
+                height: NOTE_H,
+                transform,
+                willChange: 'transform',
                 borderRadius: 13,
                 background: c.bg,
                 color: c.ink,
@@ -44,25 +144,15 @@ function WSNote({
                 boxShadow: '0 1px 2px rgba(40,30,20,0.10), 0 10px 24px rgba(40,30,20,0.14)',
                 padding: '12px 14px',
                 fontFamily: PW.font,
+                zIndex: note.pinned ? 3 : 1,
             }}>
             <div className="flex items-center" style={{ marginBottom: 5 }}>
-                <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: -0.2, flex: 1 }}>{title}</div>
-                {pinned && (
-                    <svg
-                        width="10"
-                        height="10"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        stroke={PW.accent}
-                        strokeWidth="1.6"
-                        strokeLinecap="round">
-                        <path d="M5 1.5h4M7 1.5v4M3.5 5.5h7l-1 3h-5z M7 8.5v4" />
-                    </svg>
-                )}
+                <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>{note.title}</div>
+                {note.pinned && <PinIcon />}
             </div>
-            {items.map(([k, txt], i) => (
+            {note.items.map(([k, txt], i) => (
                 <div key={i} className="flex items-start" style={{ marginBottom: 2 }}>
-                    {k !== undefined && <Check checked={k === 'c'} ink={c.ink} edge={c.edge} />}
+                    <Check checked={k === 'c'} ink={c.ink} edge={c.edge} />
                     <span
                         style={{
                             fontSize: 11,
@@ -74,7 +164,7 @@ function WSNote({
                     </span>
                 </div>
             ))}
-            {due && (
+            {note.due && (
                 <div
                     style={{
                         position: 'absolute',
@@ -84,177 +174,130 @@ function WSNote({
                         fontFamily: PW.mono,
                         opacity: 0.6,
                     }}>
-                    {due}
+                    {note.due}
                 </div>
             )}
         </div>
     );
 }
 
+/**
+ * Scatter → structure. A 240vh wrapper pins the wall for one viewport while `--p` (eased) scrubs the
+ * eight notes from a thrown-on-the-desk mess into a tidy grid. Reduced motion shows the tidy end state.
+ */
 export default function PWWall() {
+    const wrap = useRef<HTMLDivElement>(null);
+    const stageWrap = useRef<HTMLDivElement>(null);
+    useScrollProgress(wrap, { mode: 'pin', range: [0.08, 0.8], ease: easeInOutCubic, reduced: 1 });
+    useStageScale(stageWrap, STAGE_W);
+
     return (
-        <section className="py-[120px]">
-            <div className="max-w-[1180px] mx-auto px-8">
+        <section id="pw-wall" className="pt-[110px] md:pt-[140px]" style={{ scrollMarginTop: 64 }}>
+            <div className="max-w-[1180px] mx-auto px-6 md:px-8">
                 <SectionHead
                     eyebrow="The Wall"
-                    title="Your desktop, structured."
-                    kicker="Group, scatter, pin and re-arrange. The Wall is where loose thoughts learn to live together — without becoming a database."
+                    title="Chaos in. Order out."
+                    kicker="Group, scatter, pin and re-arrange. The Wall is where loose thoughts learn to live together — without becoming a database. Keep scrolling and watch it tidy itself."
                 />
+            </div>
 
-                <div
-                    className="relative overflow-hidden"
-                    style={{
-                        borderRadius: 18,
-                        height: 460,
-                        background: PW.paper,
-                        boxShadow:
-                            '0 1px 2px rgba(40,30,20,0.06), 0 30px 60px rgba(40,30,20,0.18), inset 0 0 0 0.5px ' +
-                            PW.hairlineStrong,
-                    }}>
-                    <div
-                        className="flex items-center gap-2.5"
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            height: 40,
-                            background: 'rgba(255,255,255,0.55)',
-                            borderBottom: '0.5px solid ' + PW.hairline,
-                            padding: '0 16px',
-                        }}>
-                        <div className="flex gap-1.5">
-                            {['#ed6a5e', '#f4be4f', '#61c554'].map(c => (
-                                <div key={c} style={{ width: 11, height: 11, borderRadius: '50%', background: c }} />
-                            ))}
-                        </div>
-                        <div className="flex-1 text-center" style={{ fontSize: 12.5, fontWeight: 600 }}>
-                            Wall · 14 notes
-                        </div>
+            <div ref={wrap} className="relative" style={{ height: '240vh' }}>
+                <div className="sticky top-0 h-[100vh] flex items-center">
+                    <div className="max-w-[1180px] w-full mx-auto px-6 md:px-8">
                         <div
-                            className="inline-flex items-center gap-[5px]"
-                            style={{ fontSize: 11.5, color: PW.inkSoft }}>
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.ok }} />
-                            Synced
-                        </div>
-                    </div>
+                            ref={stageWrap}
+                            className="relative w-full"
+                            style={{ height: `calc(${STAGE_H}px * var(--s, 1))` }}>
+                            <div
+                                className="absolute left-0 top-0 overflow-hidden"
+                                style={{
+                                    width: STAGE_W,
+                                    height: STAGE_H,
+                                    transform: 'scale(var(--s, 1))',
+                                    transformOrigin: 'top left',
+                                    borderRadius: 18,
+                                    background: PW.paper,
+                                    boxShadow:
+                                        '0 1px 2px rgba(40,30,20,0.06), 0 30px 60px rgba(40,30,20,0.18), inset 0 0 0 0.5px ' +
+                                        PW.hairlineStrong,
+                                }}>
+                                {/* Title bar — translucent material, content scrolls underneath it. */}
+                                <div
+                                    className="pw-glass flex items-center gap-2.5"
+                                    style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        height: 40,
+                                        zIndex: 5,
+                                        background: 'rgba(250,248,243,0.7)',
+                                        backdropFilter: 'blur(14px) saturate(160%)',
+                                        WebkitBackdropFilter: 'blur(14px) saturate(160%)',
+                                        boxShadow: '0 0.5px 0 ' + PW.hairline,
+                                        padding: '0 16px',
+                                    }}>
+                                    <div className="flex gap-1.5">
+                                        {['#ed6a5e', '#f4be4f', '#61c554'].map(c => (
+                                            <div
+                                                key={c}
+                                                style={{ width: 11, height: 11, borderRadius: '50%', background: c }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <div
+                                        className="flex-1 text-center relative"
+                                        style={{ fontSize: 12.5, fontWeight: 600 }}>
+                                        <span
+                                            style={{ opacity: 'calc(1 - var(--p, 1) * 2)' }}
+                                            className="absolute inset-0">
+                                            Wall · 8 notes · scattered
+                                        </span>
+                                        <span style={{ opacity: 'calc((var(--p, 1) - 0.5) * 2)' }}>
+                                            Wall · 8 notes · arranged
+                                        </span>
+                                    </div>
+                                    <div
+                                        className="inline-flex items-center gap-[5px]"
+                                        style={{ fontSize: 11.5, color: PW.inkSoft }}>
+                                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.ok }} />
+                                        Synced
+                                    </div>
+                                </div>
 
-                    <div style={{ position: 'absolute', inset: 0, paddingTop: 50 }}>
-                        <WSNote
-                            color="butter"
-                            w={196}
-                            h={170}
-                            x={56}
-                            y={26}
-                            rot={-2.2}
-                            pinned
-                            title="Launch checklist"
-                            items={[
-                                ['c', 'Confirm hero copy'],
-                                ['c', 'Export og-image'],
-                                ['', 'Review pricing'],
-                                ['', 'Send draft to Sarah'],
-                            ]}
-                            due="Tue 4pm"
-                        />
-                        <WSNote
-                            color="sage"
-                            w={200}
-                            h={148}
-                            x={282}
-                            y={52}
-                            rot={1.4}
-                            title="Q2 ideas"
-                            items={[
-                                ['', 'Inline AI rewrite'],
-                                ['', 'Calendar sync'],
-                                ['', 'Voice capture'],
-                            ]}
-                        />
-                        <WSNote
-                            color="sky"
-                            w={194}
-                            h={184}
-                            x={510}
-                            y={20}
-                            rot={-1.8}
-                            title="Reading"
-                            items={[
-                                ['', 'Dieter Rams — Ten'],
-                                ['', 'Synthesis of form'],
-                                ['', 'The Design of Everyday Things'],
-                                ['', 'Pattern Language'],
-                            ]}
-                        />
-                        <WSNote
-                            color="peach"
-                            w={178}
-                            h={142}
-                            x={732}
-                            y={56}
-                            rot={2.4}
-                            title="Standup"
-                            items={[
-                                ['', 'Y: onboarding'],
-                                ['', 'T: editor polish'],
-                                ['', 'B: design review'],
-                            ]}
-                        />
-                        <WSNote
-                            color="blush"
-                            w={208}
-                            h={156}
-                            x={86}
-                            y={238}
-                            rot={2.0}
-                            title="Copy variants"
-                            items={[
-                                ['', 'A. "Think on paper, on screen."'],
-                                ['', 'B. "Cross-platform, finally."'],
-                                ['', 'C. "Your wall, everywhere."'],
-                            ]}
-                        />
-                        <WSNote
-                            color="sand"
-                            w={186}
-                            h={140}
-                            x={324}
-                            y={238}
-                            rot={-1.4}
-                            title="Errands"
-                            items={[
-                                ['c', 'Pick up keys'],
-                                ['', 'Dry cleaning'],
-                                ['', 'Book vet'],
-                            ]}
-                        />
-                        <WSNote
-                            color="butter"
-                            w={170}
-                            h={158}
-                            x={544}
-                            y={236}
-                            rot={2.6}
-                            title="Quote"
-                            items={[
-                                ['', '"As few as possible, but as many as necessary."'],
-                                ['', '— Rams'],
-                            ]}
-                        />
-                        <WSNote
-                            color="sage"
-                            w={188}
-                            h={136}
-                            x={742}
-                            y={238}
-                            rot={-2.0}
-                            title="Grocery"
-                            items={[
-                                ['', 'Bread, eggs, oat milk'],
-                                ['', 'Tomatoes, basil'],
-                                ['', 'Olive oil'],
-                            ]}
-                        />
+                                {/* Grid ghost — where the notes are heading. Fades in as they arrive. */}
+                                <div
+                                    aria-hidden
+                                    style={{
+                                        position: 'absolute',
+                                        inset: 0,
+                                        opacity: 'calc(var(--p, 1) * 0.8 - 0.2)',
+                                    }}>
+                                    {NOTES.map((_, i) => {
+                                        const col = i % COLS;
+                                        const row = Math.floor(i / COLS);
+                                        return (
+                                            <div
+                                                key={i}
+                                                style={{
+                                                    position: 'absolute',
+                                                    left: PAD_X + col * (NOTE_W + GAP),
+                                                    top: PAD_Y + row * (NOTE_H + GAP),
+                                                    width: NOTE_W,
+                                                    height: NOTE_H,
+                                                    borderRadius: 13,
+                                                    border: '1px dashed ' + PW.hairlineStrong,
+                                                }}
+                                            />
+                                        );
+                                    })}
+                                </div>
+
+                                {NOTES.map((n, i) => (
+                                    <WSNote key={n.title} note={n} index={i} />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
