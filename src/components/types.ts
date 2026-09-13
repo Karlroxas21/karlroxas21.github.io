@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
-
 export type Profile = {
     name: string;
     role: string;
@@ -7,7 +5,8 @@ export type Profile = {
     timezone: string;
     status: string;
     initials: string;
-    tagline: ReactNode;
+    /** Inline-HTML string (`<em>`, `<br>`); render with richText(). */
+    tagline: string;
     sub: string;
     email: string;
 };
@@ -24,7 +23,8 @@ export type Stat = {
 };
 
 export type About = {
-    lede: ReactNode;
+    /** Inline-HTML string (`<em>`, `<br>`); render with richText(). */
+    lede: string;
     cols: string[];
     stats: Stat[];
 };

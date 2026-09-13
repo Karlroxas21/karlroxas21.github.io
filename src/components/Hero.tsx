@@ -1,6 +1,8 @@
-import { PROFILE } from './data';
+import { useContent } from '../hooks/use-content';
+import { richText } from '../utils/richText';
 
 const Hero = () => {
+    const { PROFILE } = useContent();
     return (
         <>
             <header className="pagehead">
@@ -14,7 +16,7 @@ const Hero = () => {
             </header>
 
             <section className="intro">
-                <p className="lede">{PROFILE.tagline}</p>
+                <p className="lede">{richText(PROFILE.tagline)}</p>
                 <p className="dim">{PROFILE.sub}</p>
 
                 <div className="callout">

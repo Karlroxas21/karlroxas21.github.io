@@ -22,9 +22,15 @@ No test suite exists. Husky runs Prettier on staged files before each commit via
 
 HashRouter is intentional — GitHub Pages static hosting can't handle history API, hashes avoid 404s.
 
-### Content Architecture
+### Content Architecture (i18n)
 
-All site content lives in a single file: `src/components/data.tsx` — exports `PROFILE`, `ABOUT`, `EXPERIENCE`, `PROJECTS`, `POSTS`, `NOW_ITEMS`, `LINKS`. No CMS or database. The AI chatbot system prompt at `src/constants/chatbot-context.ts` compiles this data into natural language.
+All site content lives in per-locale JSON files: `src/locales/<code>.json` (e.g. `en.json`, `tl.json`), all sharing the shape of `en.json` (the source of truth). No CMS or database — edit the JSON to change copy.
+
+- `src/locales/index.ts` — registry: `LOCALES`, `Locale`, `SiteContent` (= `typeof en`), `DEFAULT_LOCALE`, `LOCALE_LABELS`. `satisfies Record<string, SiteContent>` makes a shape mismatch a compile error. **Add a language**: copy `en.json`, translate, then `import` + add to `LOCALES` and `LOCALE_LABELS`.
+- `src/providers/LocaleProvider.tsx` + `locale-context.ts` — Context + localStorage (`lang`) + `navigator.language` default. Mirrors ThemeProvider. `useLocale()` → `{ locale, setLocale, content }`.
+- `src/hooks/use-content.ts` — `useContent()` returns the active locale's content under the legacy names (`PROFILE`, `ABOUT`, `EXPERIENCE`, `PROJECTS`, `POSTS`, `NOW_ITEMS`, `LINKS`, `REPOS`). Components read data through this hook, not static imports.
+- Rich-text fields (`profile.tagline`, `about.lede`) are inline-HTML strings (`<em>`, `<br>`); render with `richText()` from `src/utils/richText.tsx` (no `dangerouslySetInnerHTML`).
+- The AI chatbot system prompt (`src/constants/chatbot-context.ts`) always compiles from `en.json` directly — it stays English regardless of UI language.
 
 ### Routing
 

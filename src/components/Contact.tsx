@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import SectionHead from './SectionHead';
-import { LINKS, PROFILE } from './data';
+import { useContent } from '../hooks/use-content';
 import { useAnalytics } from '../hooks/use-analytics';
 
 const LABELS: Record<string, string> = {
@@ -12,6 +12,7 @@ const LABELS: Record<string, string> = {
 const ORDER = ['email', 'github', 'linkedin', 'resume'];
 
 const Contact = () => {
+    const { LINKS, PROFILE } = useContent();
     const { trackEvent } = useAnalytics();
     const rows = ORDER.map(k => LINKS.find(l => l.k === k)).filter((l): l is (typeof LINKS)[number] => !!l);
 

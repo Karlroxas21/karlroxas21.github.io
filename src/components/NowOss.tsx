@@ -1,4 +1,4 @@
-import { NOW_ITEMS, REPOS } from './data';
+import { useContent } from '../hooks/use-content';
 import SectionHead from './SectionHead';
 import { useAnalytics } from '../hooks/use-analytics';
 
@@ -10,6 +10,7 @@ const NOW_ICON: Record<string, string> = {
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const NowOss = () => {
+    const { NOW_ITEMS, REPOS } = useContent();
     const { trackEvent } = useAnalytics();
     return (
         <>

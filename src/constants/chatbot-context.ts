@@ -1,4 +1,16 @@
-import { PROFILE, ABOUT, EXPERIENCE, PROJECTS, POSTS, NOW_ITEMS, LINKS } from '../components/data';
+// The chatbot always speaks from the English content — the system prompt is
+// internal, and English data is what the model reasons over best.
+import en from '../locales/en.json';
+
+const {
+    profile: PROFILE,
+    about: ABOUT,
+    experience: EXPERIENCE,
+    projects: PROJECTS,
+    posts: POSTS,
+    now: NOW_ITEMS,
+    links: LINKS,
+} = en;
 
 export const SYSTEM_PROMPT = `
 You're a friendly, casual AI that represents Karl Marx Roxas on his portfolio site — think of yourself as a knowledgeable friend who knows Karl well, not a formal assistant.

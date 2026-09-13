@@ -4,14 +4,17 @@ import './index.css';
 import { HashRouter } from 'react-router';
 import { AppRoutes } from './routes';
 import { ThemeProvider } from './providers/ThemeProvider';
+import { LocaleProvider } from './providers/LocaleProvider';
 import { ScrollToHash } from './utils/ScrollToHash';
 
 createRoot(document.getElementById('root')!).render(
     <HashRouter>
         <StrictMode>
             <ThemeProvider>
-                <AppRoutes />
-                <ScrollToHash />
+                <LocaleProvider>
+                    <AppRoutes />
+                    <ScrollToHash />
+                </LocaleProvider>
             </ThemeProvider>
         </StrictMode>
     </HashRouter>

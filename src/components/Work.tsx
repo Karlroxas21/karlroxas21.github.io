@@ -1,9 +1,10 @@
 import SectionHead from './SectionHead';
-import { PROJECTS } from './data';
+import { useContent } from '../hooks/use-content';
 import { useAnalytics } from '../hooks/use-analytics';
 import { Link } from 'react-router';
 
 const Work = () => {
+    const { PROJECTS } = useContent();
     const { trackEvent } = useAnalytics();
     return (
         <section className="sec" id="work">

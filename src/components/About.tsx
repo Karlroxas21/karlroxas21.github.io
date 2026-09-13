@@ -1,11 +1,13 @@
-import { ABOUT } from './data';
+import { useContent } from '../hooks/use-content';
 import SectionHead from './SectionHead';
+import { richText } from '../utils/richText';
 
 const About = () => {
+    const { ABOUT } = useContent();
     return (
         <section className="sec" id="about">
             <SectionHead icon="📇" title="About" />
-            <p>{ABOUT.lede}</p>
+            <p>{richText(ABOUT.lede)}</p>
             {ABOUT.cols.map((c, i) => (
                 <p key={i} className={i > 0 ? 'dim' : undefined}>
                     {c}

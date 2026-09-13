@@ -1,7 +1,8 @@
 import SectionHead from './SectionHead';
-import { EXPERIENCE } from './data';
+import { useContent } from '../hooks/use-content';
 
 const Experience = () => {
+    const { EXPERIENCE } = useContent();
     return (
         <section className="sec" id="exp">
             <SectionHead icon="💼" title="Experience" />

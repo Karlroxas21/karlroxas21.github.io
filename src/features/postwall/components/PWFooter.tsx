@@ -1,4 +1,12 @@
+import { PW_RELEASES_URL, PW_REPO, PW_RELEASE_DATE, PW_VERSION } from '../releases';
 import { PW } from '../pwTokens';
+
+/** Only links that actually resolve today. A dead href reads worse than no link. */
+const LINKS: { label: string; href?: string }[] = [
+    { label: 'Releases', href: PW_RELEASES_URL },
+    { label: 'Changelog', href: `${PW_RELEASES_URL}/tag/${PW_VERSION}` },
+    { label: 'GitHub', href: PW_REPO },
+];
 
 export default function PWFooter() {
     return (
@@ -29,12 +37,19 @@ export default function PWFooter() {
                     <span style={{ opacity: 0.6 }}>© 2026</span>
                 </div>
                 <div className="flex-1" />
-                {['About', 'Privacy', 'Changelog', 'Press', 'Twitter', 'GitHub'].map(l => (
-                    <a key={l} className="cursor-pointer hover:opacity-80">
-                        {l}
+                {LINKS.map(l => (
+                    <a
+                        key={l.label}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cursor-pointer hover:opacity-80">
+                        {l.label}
                     </a>
                 ))}
-                <span style={{ opacity: 0.6, fontFamily: PW.mono, fontSize: 11 }}>v2.4.1 — May 2026</span>
+                <span style={{ opacity: 0.6, fontFamily: PW.mono, fontSize: 11 }}>
+                    {PW_VERSION} beta — {PW_RELEASE_DATE}
+                </span>
             </div>
         </footer>
     );

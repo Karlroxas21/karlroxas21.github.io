@@ -1,6 +1,7 @@
-import { PROFILE } from './data';
+import { useContent } from '../hooks/use-content';
 
 const FootEnd = () => {
+    const { PROFILE } = useContent();
     return (
         <footer className="footend">
             <span>© 2026 {PROFILE.name}</span>
