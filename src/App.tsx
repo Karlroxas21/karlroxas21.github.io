@@ -8,8 +8,13 @@ import ChatBot from './components/ChatBot';
 import Hero from './components/Hero';
 import About from './components/About';
 import Work from './components/Work';
+import Services from './components/Services';
 import Writing from './components/Writing';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Education from './components/Education';
+import Publications from './components/Publications';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import FootEnd from './components/FootEnd';
 import NowOss from './components/NowOss';
@@ -36,8 +41,13 @@ const App = () => {
                     <Hero />
                     <About />
                     <Work />
+                    <Services />
                     <Writing />
                     <Experience />
+                    <Skills />
+                    <Education />
+                    <Publications />
+                    <Certifications />
                     <NowOss />
                     <Contact />
                     <FootEnd />

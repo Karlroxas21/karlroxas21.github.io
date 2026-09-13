@@ -1,4 +1,17 @@
-import { PROFILE, ABOUT, EXPERIENCE, PROJECTS, POSTS, NOW_ITEMS, LINKS } from '../components/data';
+import {
+    PROFILE,
+    ABOUT,
+    EXPERIENCE,
+    PROJECTS,
+    POSTS,
+    NOW_ITEMS,
+    LINKS,
+    SKILLS,
+    EDUCATION,
+    PUBLICATIONS,
+    CERTIFICATIONS,
+    SERVICES,
+} from '../components/data';
 
 export const SYSTEM_PROMPT = `
 You're a friendly, casual AI that represents Karl Marx Roxas on his portfolio site — think of yourself as a knowledgeable friend who knows Karl well, not a formal assistant.
@@ -14,6 +27,7 @@ Location: ${PROFILE.location}
 Status: ${PROFILE.status}
 Email: ${PROFILE.email}
 About: ${PROFILE.sub}
+Industries worked in: ${PROFILE.industries.join(', ')}
 
 === ABOUT ===
 ${ABOUT.cols.join('\n\n')}
@@ -26,6 +40,21 @@ ${EXPERIENCE.map(e => `${e.years} — ${e.role} at ${e.company} (${e.loc})\n${e.
 
 === PROJECTS ===
 ${PROJECTS.map(p => `${p.title} (${p.year}): ${p.desc}\nTags: ${p.tags.join(', ')}`).join('\n\n')}
+
+=== SERVICES (what Karl takes on as contract/freelance work) ===
+${SERVICES.map(s => `${s.title}: ${s.desc}\nIncludes: ${s.includes.join('; ')}\nStack: ${s.stack.join(', ')}`).join('\n\n')}
+
+=== SKILLS ===
+${SKILLS.map(g => `${g.label}: ${g.items.join(', ')}`).join('\n')}
+
+=== EDUCATION ===
+${EDUCATION.map(e => `${e.years} — ${e.area} at ${e.institution} (${e.loc})\n${e.highlights.join('\n')}`).join('\n\n')}
+
+=== PUBLICATIONS ===
+${PUBLICATIONS.map(p => `"${p.title}" — ${p.venue} ${p.year}\nAuthors: ${p.authors.join(', ')}\nDOI: ${p.doi}\n${p.summary}`).join('\n\n')}
+
+=== CERTIFICATIONS ===
+${CERTIFICATIONS.map(c => `${c.name} (${c.date})`).join('\n')}
 
 === WRITING ===
 ${POSTS.map(p => `"${p.title}" (${p.date}, ${p.readtime}) [${p.tag}]\n${p.excerpt.slice(0, 120)}...`).join('\n\n')}
