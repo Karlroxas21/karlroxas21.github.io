@@ -28,8 +28,8 @@ export const PROFILE: Profile = {
             for the messy parts of the web.
         </>
     ),
-    sub: 'Software engineer, two years in. Modernizing legacy systems and sustaining mission critical enterprise applications. .NET and Azure on the backend, ReactAdd a on the front.',
-    industries: ['Fintech', 'Real Estate', 'Enterprise', 'Maritime'],
+    sub: 'Software engineer, two years in. Modernizing legacy systems and sustaining mission critical enterprise applications. .NET, Expressjs, and Azure, AWS, Supabase on the backend, React on the front.',
+    industries: ['Fintech', 'Real Estate', 'Enterprise', 'Maritime', 'AI'],
     email: 'karlm.roxas@gmail.com',
 };
 
