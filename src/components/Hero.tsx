@@ -29,7 +29,7 @@ const Hero = () => {
                     <p>
                         <strong>{PROFILE.status}.</strong>{' '}
                         <span className="dim">
-                            TypeScript · C# · .NET · React · Angular.{' '}
+                            TypeScript · C# · .NET · React · Azure · AWS.{' '}
                             <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
                         </span>
                     </p>
