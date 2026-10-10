@@ -10,7 +10,6 @@ const ACTS: { id: string; label: string; dark?: boolean }[] = [
     { id: 'pw-day', label: 'A day' },
     { id: 'pw-platforms', label: 'Platforms' },
     { id: 'pw-editor', label: 'Editor' },
-    { id: 'pw-wall', label: 'The Wall' },
     { id: 'pw-features', label: 'Features' },
     { id: 'pw-download', label: 'Get it', dark: true },
 ];

@@ -12,7 +12,6 @@ import {
     PWRail,
     PWShell,
     PWStatement,
-    PWWall,
 } from '../features/postwall';
 import { useAnalytics } from '../hooks/use-analytics';
 import { useEffect } from 'react';
@@ -22,8 +21,8 @@ const GA_ID = import.meta.env.VITE_G_ID as string | undefined;
 if (GA_ID) ReactGA.initialize(GA_ID);
 
 /**
- * Story beats, in order: hook → context → the day → proof → craft → climax → detail → close.
- * Three sections pin (Why, A day, Editor/Wall); the rest scroll normally so the rhythm breathes.
+ * Story beats, in order: hook → context → the day → proof → craft → detail → close.
+ * Three sections pin (Why, A day, Editor); the rest scroll normally so the rhythm breathes.
  */
 export default function PostWall() {
     const { trackPageview } = useAnalytics();
@@ -43,7 +42,6 @@ export default function PostWall() {
             <PWJourney />
             <PWPlatforms />
             <PWEditor />
-            <PWWall />
             <PWFeatures />
             <PWPalette />
             <PWCTA />

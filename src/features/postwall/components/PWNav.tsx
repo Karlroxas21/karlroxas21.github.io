@@ -10,7 +10,6 @@ const LINKS: { label: string; target: string }[] = [
     { label: 'A day', target: 'pw-day' },
     { label: 'Platforms', target: 'pw-platforms' },
     { label: 'Editor', target: 'pw-editor' },
-    { label: 'The Wall', target: 'pw-wall' },
     { label: 'Features', target: 'pw-features' },
     { label: 'Download', target: 'pw-download' },
 ];

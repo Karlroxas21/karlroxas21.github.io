@@ -7,7 +7,6 @@ export { default as PWStatement } from './components/PWStatement';
 export { default as PWJourney } from './components/PWJourney';
 export { default as PWPlatforms } from './components/PWPlatforms';
 export { default as PWEditor } from './components/PWEditor';
-export { default as PWWall } from './components/PWWall';
 export { default as PWFeatures } from './components/PWFeatures';
 export { default as PWPalette } from './components/PWPalette';
 export { default as PWCTA } from './components/PWCTA';
