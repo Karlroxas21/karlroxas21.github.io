@@ -193,16 +193,16 @@ export default function PWJourney() {
                 borderBottom: '0.5px solid ' + PW.hairline,
                 scrollMarginTop: 64,
             }}>
-            <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-[110px] md:pt-[140px]">
-                <SectionHead
-                    eyebrow="One day · five notes"
-                    title="A Tuesday, sideways."
-                    kicker="This is the whole product, in the order you actually meet it. Keep scrolling. The day moves across, not down."
-                />
-            </div>
-
             <div ref={wrap} className="pw-hwrap relative" style={{ height: '340vh' }}>
-                <div className="pw-hpin sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden">
+                {/* The intro pins with the track, so the two read as one block rather than an empty band. */}
+                <div className="pw-hpin sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden pt-16">
+                    <div className="max-w-[1180px] w-full mx-auto px-6 md:px-8">
+                        <SectionHead
+                            eyebrow="One day · five notes"
+                            title="A Tuesday, sideways."
+                            kicker="This is the whole product, in the order you actually meet it. Keep scrolling. The day moves across, not down."
+                        />
+                    </div>
                     <div
                         className="pw-htrack flex items-start gap-8 md:gap-14 px-6 md:px-8"
                         style={{
