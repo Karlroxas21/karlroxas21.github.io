@@ -80,6 +80,14 @@ body:has(.pw-page) {
     outline-offset: 3px;
 }
 
+/* Nav links: full-strength soft ink (AA on paper), ink on hover. */
+.pw-navlink {
+    color: #696863;
+}
+.pw-navlink:hover {
+    color: #2c2b29;
+}
+
 /* ---------- Grabbable notes (hero) ---------- */
 .pw-grab {
     cursor: grab;

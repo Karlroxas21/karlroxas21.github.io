@@ -71,8 +71,8 @@ export default function PWNav() {
                             key={l.target}
                             type="button"
                             onClick={() => scrollToSection(l.target)}
-                            className="pw-btn bg-transparent border-0 p-0 cursor-pointer hover:opacity-100"
-                            style={{ color: PW.inkSoft, opacity: 0.9, fontFamily: 'inherit', fontSize: 'inherit' }}>
+                            className="pw-btn pw-navlink bg-transparent border-0 p-0 cursor-pointer"
+                            style={{ fontFamily: 'inherit', fontSize: 'inherit' }}>
                             {l.label}
                         </button>
                     ))}
