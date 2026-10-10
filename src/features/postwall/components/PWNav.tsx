@@ -65,13 +65,13 @@ export default function PWNav() {
                     <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em' }}>PostWall</span>
                 </button>
 
-                <div className="hidden md:flex gap-[22px]" style={{ fontSize: 13.5, fontWeight: 500 }}>
+                <div className="hidden lg:flex gap-[22px]" style={{ fontSize: 13.5, fontWeight: 500 }}>
                     {LINKS.map(l => (
                         <button
                             key={l.target}
                             type="button"
                             onClick={() => scrollToSection(l.target)}
-                            className="pw-btn pw-navlink bg-transparent border-0 p-0 cursor-pointer"
+                            className="pw-btn pw-navlink bg-transparent border-0 p-0 cursor-pointer whitespace-nowrap"
                             style={{ fontFamily: 'inherit', fontSize: 'inherit' }}>
                             {l.label}
                         </button>
