@@ -20,9 +20,9 @@ const PANELS: Panel[] = [
     {
         time: '07:12',
         label: 'Kitchen table',
-        title: 'Before the laptop opens',
-        body: '⌘⇧N from the menu bar. Three lines, one tag, back to coffee. The note is on disk before the lid is fully up.',
-        color: 'butter',
+        title: 'Three lines before coffee',
+        body: 'Press N on the wall and a fresh note opens. Three lines, back to coffee. It saves as you type. There is no save button.',
+        color: 'yellow',
         rot: -2.2,
         items: [
             [false, 'Call the vet back'],
@@ -36,7 +36,7 @@ const PANELS: Panel[] = [
         label: 'Standup',
         title: 'Pinned above the call',
         body: 'One note floats over the meeting window. Yesterday, today, blockers. It never gets buried under a browser.',
-        color: 'sky',
+        color: 'blue',
         rot: 1.8,
         items: [
             [true, 'Y: shipped onboarding'],
@@ -48,9 +48,9 @@ const PANELS: Panel[] = [
     {
         time: '11:45',
         label: 'Deep work',
-        title: 'Everything rolled up',
-        body: 'Collapse the wall to title bars docked in the corner. Six notes, six lines, zero noise. Click one to expand it back.',
-        color: 'sage',
+        title: 'Tick it off',
+        body: 'Checklists tick and strike through as you go. When a note is done, archive it, and the wall keeps only what is still live.',
+        color: 'green',
         rot: -1.4,
         items: [
             [true, 'Draft the launch post'],
@@ -62,13 +62,13 @@ const PANELS: Panel[] = [
     {
         time: '16:20',
         label: 'Handoff',
-        title: 'One hash, sorted',
-        body: 'Tag today’s note #copy and it joins the rest. No folder shuffling, no deciding where a note belongs.',
-        color: 'blush',
+        title: 'One tag, sorted',
+        body: 'Give the note a copy tag from its + TAG button and it joins the rest. One click on the tag filters the wall to them.',
+        color: 'purple',
         rot: 2.4,
         items: [
             [true, 'Send draft to Sarah'],
-            [false, 'Tagged #copy'],
+            [false, 'Tagged: copy'],
             [false, 'Schedule announcement'],
         ],
         depth: 0.4,
@@ -77,8 +77,8 @@ const PANELS: Panel[] = [
         time: '22:05',
         label: 'Other desk, other OS',
         title: 'Same wall, waiting',
-        body: 'The Windows machine wakes up and the wall is already there — carried over by the folder you already sync.',
-        color: 'peach',
+        body: 'The Windows machine wakes up and the wall is already there, carried over by the folder you already sync.',
+        color: 'orange',
         rot: -2,
         items: [
             [true, 'Synced 14 notes'],
@@ -107,7 +107,7 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                         fontFamily: PW.mono,
                         fontSize: 13,
                         fontWeight: 500,
-                        color: PW.accent,
+                        color: PW.inkSoft,
                         letterSpacing: '0.02em',
                     }}>
                     {panel.time}
@@ -159,11 +159,11 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
             <h3
                 className="m-0 mb-2"
                 style={{
-                    fontFamily: PW.serif,
-                    fontWeight: 500,
-                    fontSize: 'clamp(22px, 2.4vw, 30px)',
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.02em',
+                    fontFamily: PW.font,
+                    fontWeight: 700,
+                    fontSize: 'clamp(21px, 2.3vw, 28px)',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em',
                 }}>
                 {panel.title}
             </h3>
@@ -188,7 +188,7 @@ export default function PWJourney() {
         <section
             id="pw-day"
             style={{
-                background: '#f3efe5',
+                background: PW.sidebar,
                 borderTop: '0.5px solid ' + PW.hairline,
                 borderBottom: '0.5px solid ' + PW.hairline,
                 scrollMarginTop: 64,
@@ -197,7 +197,7 @@ export default function PWJourney() {
                 <SectionHead
                     eyebrow="One day · five notes"
                     title="A Tuesday, sideways."
-                    kicker="This is the whole product, in the order you actually meet it. Keep scrolling — the day moves across, not down."
+                    kicker="This is the whole product, in the order you actually meet it. Keep scrolling. The day moves across, not down."
                 />
             </div>
 
@@ -226,7 +226,7 @@ export default function PWJourney() {
                                 style={{
                                     position: 'absolute',
                                     inset: 0,
-                                    background: PW.accent,
+                                    background: PW.ink,
                                     transform: 'scaleX(var(--p, 0))',
                                     transformOrigin: 'left',
                                 }}

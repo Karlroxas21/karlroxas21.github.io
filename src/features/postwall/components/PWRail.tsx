@@ -11,7 +11,7 @@ const ACTS: { id: string; label: string; dark?: boolean }[] = [
     { id: 'pw-platforms', label: 'Platforms' },
     { id: 'pw-editor', label: 'Editor' },
     { id: 'pw-features', label: 'Features' },
-    { id: 'pw-download', label: 'Get it', dark: true },
+    { id: 'pw-download', label: 'Pricing & download', dark: true },
 ];
 
 /**
@@ -71,7 +71,7 @@ export default function PWRail() {
                                 width: on ? 20 : 10,
                                 height: 2,
                                 borderRadius: 2,
-                                background: on ? PW.accent : PW.hairlineStrong,
+                                background: on ? PW.ink : PW.hairlineStrong,
                             }}
                         />
                     </button>

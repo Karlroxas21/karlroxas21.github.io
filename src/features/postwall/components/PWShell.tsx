@@ -24,7 +24,7 @@ export default function PWShell({ children }: { children: ReactNode }) {
                 overflowX: 'clip',
             }}>
             <button type="button" className="pw-skip" onClick={() => skipTo('pw-download')}>
-                Skip the story — go to downloads
+                Skip to downloads
             </button>
             {children}
         </div>

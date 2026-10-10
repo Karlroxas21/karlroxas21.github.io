@@ -22,7 +22,7 @@ export default function PWPalette() {
                 <SectionHead
                     eyebrow="The palette"
                     title="Six colors. All easy on the eyes."
-                    kicker="Picked for long sessions and low glare. Muted enough that a wall of them stays calm — saturated enough that you can tell them apart at a glance."
+                    kicker="Picked for long sessions and low glare. Muted enough that a wall of them stays calm, saturated enough that you can tell them apart at a glance."
                 />
                 <div
                     className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4"

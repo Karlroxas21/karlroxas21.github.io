@@ -11,6 +11,7 @@ const LINKS: { label: string; target: string }[] = [
     { label: 'Platforms', target: 'pw-platforms' },
     { label: 'Editor', target: 'pw-editor' },
     { label: 'Features', target: 'pw-features' },
+    { label: 'Pricing', target: 'pw-pricing' },
     { label: 'Download', target: 'pw-download' },
 ];
 
@@ -33,7 +34,7 @@ export default function PWNav() {
         <nav
             className="pw-nav sticky top-0 z-50"
             style={{
-                background: scrolled ? 'rgba(250,248,243,0.78)' : 'rgba(250,248,243,0.4)',
+                background: scrolled ? 'rgba(250,249,245,0.78)' : 'rgba(250,249,245,0.4)',
                 backdropFilter: 'blur(22px) saturate(170%)',
                 WebkitBackdropFilter: 'blur(22px) saturate(170%)',
                 boxShadow: scrolled ? '0 1px 0 ' + PW.hairline : 'none',
@@ -47,7 +48,7 @@ export default function PWNav() {
                     right: 0,
                     bottom: -0.5,
                     height: 1.5,
-                    background: PW.accent,
+                    background: PW.ink,
                     transform: 'scaleX(0)',
                     transformOrigin: 'left',
                     opacity: 0.85,
@@ -60,21 +61,7 @@ export default function PWNav() {
                     className="pw-btn flex items-center gap-[9px] bg-transparent border-0 p-0 cursor-pointer"
                     style={{ color: PW.ink, fontFamily: 'inherit' }}
                     aria-label="Back to top">
-                    <div
-                        className="flex items-center justify-center"
-                        style={{
-                            width: 24,
-                            height: 24,
-                            borderRadius: 6,
-                            background: PW.notes.butter.bg,
-                            boxShadow: 'inset 0 0 0 0.5px ' + PW.notes.butter.edge,
-                            fontSize: 13,
-                            fontWeight: 700,
-                            color: PW.notes.butter.ink,
-                            transform: 'rotate(-4deg)',
-                        }}>
-                        P
-                    </div>
+                    <img src="/postwall/postwall-mark.svg" alt="" width={30} height={30} />
                     <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em' }}>PostWall</span>
                 </button>
 

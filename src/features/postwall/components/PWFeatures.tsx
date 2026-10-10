@@ -20,8 +20,8 @@ function FeatureCard({ icon, title, body, delay }: { icon: ReactNode; title: str
                         width: 36,
                         height: 36,
                         borderRadius: 9,
-                        background: PW.accentSoft,
-                        color: PW.accent,
+                        background: PW.selected,
+                        color: PW.ink,
                         marginBottom: 16,
                     }}>
                     {icon}
@@ -49,21 +49,12 @@ function ic(path: ReactNode) {
     );
 }
 
+/** Only what the shipped app does. Each line is checkable against postwall-ui. */
 const FEATURES: { icon: ReactNode; title: string; body: string }[] = [
     {
         icon: ic(<path d="M6 1.5h6M9 1.5v6M4.5 7.5h9l-1.5 4h-6z M9 11.5v5" />),
         title: 'Always on top',
-        body: 'Pin any note so it floats above your work. Or roll it up to a single line and dock it in a corner.',
-    },
-    {
-        icon: ic(
-            <>
-                <circle cx="9" cy="9" r="6.5" />
-                <path d="M9 5v4l2.5 2.5" />
-            </>
-        ),
-        title: 'Due dates & reminders',
-        body: "Mark a note with a date and it surfaces itself when you need it. Natural language: 'fri 4pm'.",
+        body: 'Pin any note and it floats above every other window. Unpin it and it behaves like a normal window again.',
     },
     {
         icon: ic(
@@ -73,27 +64,22 @@ const FEATURES: { icon: ReactNode; title: string; body: string }[] = [
             </>
         ),
         title: 'Search everything',
-        body: '⌘K opens a fuzzy search across every note and every tag. Start typing, the wall narrows as you go.',
+        body: 'Ctrl / ⌘ K searches every note’s title, text and tags. Start typing and the list narrows as you go.',
     },
     {
         icon: ic(<path d="M3 9l4 4 8-8" />),
         title: 'Tags, not folders',
-        body: 'Color-coded tags instead of a folder tree. A note carries as many as it needs, and none if it does not.',
+        body: 'Up to three tags on a note instead of a folder tree. Click one to filter the wall down to it.',
     },
     {
         icon: ic(
             <>
                 <rect x="1.5" y="1.5" width="15" height="15" rx="3" />
-                <path d="M5 9h8M9 5v8" />
+                <path d="M5 6.5h8M5 9.5h8M5 12.5h5" />
             </>
         ),
-        title: 'Global quick capture',
-        body: '⌘⇧N anywhere on your system. PostWall slides down from the menu bar, you type, it tucks itself back.',
-    },
-    {
-        icon: ic(<path d="M3 6l6 6 6-6" />),
-        title: 'Roll-up',
-        body: 'Collapse any note to a single-line title bar that lives on your desktop. Click to expand.',
+        title: 'Today, Pinned, Archived',
+        body: 'The wall sorts itself into what you touched today, what you pinned, and what you have finished with.',
     },
     {
         icon: ic(
@@ -103,7 +89,17 @@ const FEATURES: { icon: ReactNode; title: string; body: string }[] = [
             </>
         ),
         title: 'Your own cloud',
-        body: 'Keep the notes folder in iCloud, Dropbox or Syncthing. Hosted sync you can sign in to is in the works.',
+        body: 'Free sync through a folder iCloud, Dropbox or Syncthing already syncs. No account, nothing hosted by us.',
+    },
+    {
+        icon: ic(
+            <>
+                <circle cx="9" cy="9" r="6.5" />
+                <path d="M9 5v4l2.5 2.5" />
+            </>
+        ),
+        title: 'Version history (Pro)',
+        body: 'Pro keeps 30 days of every note’s earlier versions. Open an earlier one and restore it in a click.',
     },
 ];
 
@@ -113,7 +109,7 @@ export default function PWFeatures() {
             id="pw-features"
             className="py-[110px] md:py-[140px]"
             style={{
-                background: '#f3efe5',
+                background: PW.sidebar,
                 borderTop: '0.5px solid ' + PW.hairline,
                 borderBottom: '0.5px solid ' + PW.hairline,
                 scrollMarginTop: 64,
@@ -122,7 +118,7 @@ export default function PWFeatures() {
                 <SectionHead
                     eyebrow="Power, quietly"
                     title="Everything you need. Nothing you don't."
-                    kicker="The features that matter to a daily user, hidden behind one tasteful keystroke each."
+                    kicker="The features that matter to a daily user, and nothing that gets in the way."
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {FEATURES.map((f, i) => (
