@@ -8,7 +8,7 @@ export const PW = {
     sidebar: '#f5f4f0',
     ink: '#2c2b29',
     inkSoft: '#696863',
-    inkFaint: 'rgba(44,43,41,0.45)',
+    inkFaint: 'rgba(44,43,41,0.68)',
     hairline: '#f0efea',
     hairlineStrong: '#e5e4de',
     selected: 'rgba(44,43,41,0.08)',
