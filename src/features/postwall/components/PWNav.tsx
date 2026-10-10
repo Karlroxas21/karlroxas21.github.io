@@ -34,7 +34,7 @@ export default function PWNav() {
         <nav
             className="pw-nav sticky top-0 z-50"
             style={{
-                background: scrolled ? 'rgba(250,249,245,0.78)' : 'rgba(250,249,245,0.4)',
+                background: scrolled ? 'rgba(250,249,245,0.92)' : 'rgba(250,249,245,0.4)',
                 backdropFilter: 'blur(22px) saturate(170%)',
                 WebkitBackdropFilter: 'blur(22px) saturate(170%)',
                 boxShadow: scrolled ? '0 1px 0 ' + PW.hairline : 'none',
