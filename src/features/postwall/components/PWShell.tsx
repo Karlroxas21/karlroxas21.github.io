@@ -1,6 +1,7 @@
 import { useRef, type ReactNode } from 'react';
 
 import '../postwall.css';
+import { usePageBranding } from '../hooks/use-page-branding';
 import { useReveal } from '../hooks/use-reveal';
 import { skipTo } from '../utils/scroll-to';
 import { PW } from '../pwTokens';
@@ -12,6 +13,7 @@ import { PW } from '../pwTokens';
 export default function PWShell({ children }: { children: ReactNode }) {
     const root = useRef<HTMLDivElement>(null);
     useReveal(root);
+    usePageBranding();
     return (
         <div
             ref={root}
@@ -24,7 +26,7 @@ export default function PWShell({ children }: { children: ReactNode }) {
                 overflowX: 'clip',
             }}>
             <button type="button" className="pw-skip" onClick={() => skipTo('pw-download')}>
-                Skip the story — go to downloads
+                Skip to downloads
             </button>
             {children}
         </div>

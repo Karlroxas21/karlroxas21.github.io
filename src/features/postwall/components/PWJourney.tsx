@@ -20,9 +20,9 @@ const PANELS: Panel[] = [
     {
         time: '07:12',
         label: 'Kitchen table',
-        title: 'Before the laptop opens',
-        body: '⌘⇧N from the menu bar. Three lines, one tag, back to coffee. The note is on disk before the lid is fully up.',
-        color: 'butter',
+        title: 'Three lines before coffee',
+        body: 'Press N on the wall and a fresh note opens. Three lines, back to coffee. It saves as you type. There is no save button.',
+        color: 'yellow',
         rot: -2.2,
         items: [
             [false, 'Call the vet back'],
@@ -36,7 +36,7 @@ const PANELS: Panel[] = [
         label: 'Standup',
         title: 'Pinned above the call',
         body: 'One note floats over the meeting window. Yesterday, today, blockers. It never gets buried under a browser.',
-        color: 'sky',
+        color: 'blue',
         rot: 1.8,
         items: [
             [true, 'Y: shipped onboarding'],
@@ -48,9 +48,9 @@ const PANELS: Panel[] = [
     {
         time: '11:45',
         label: 'Deep work',
-        title: 'Everything rolled up',
-        body: 'Collapse the wall to title bars docked in the corner. Six notes, six lines, zero noise. Click one to expand it back.',
-        color: 'sage',
+        title: 'Tick it off',
+        body: 'Checklists tick and strike through as you go. When a note is done, archive it, and the wall keeps only what is still live.',
+        color: 'green',
         rot: -1.4,
         items: [
             [true, 'Draft the launch post'],
@@ -62,13 +62,13 @@ const PANELS: Panel[] = [
     {
         time: '16:20',
         label: 'Handoff',
-        title: 'One hash, sorted',
-        body: 'Tag today’s note #copy and it joins the rest. No folder shuffling, no deciding where a note belongs.',
-        color: 'blush',
+        title: 'One tag, sorted',
+        body: 'Give the note a copy tag from its + TAG button and it joins the rest. One click on the tag filters the wall to them.',
+        color: 'purple',
         rot: 2.4,
         items: [
             [true, 'Send draft to Sarah'],
-            [false, 'Tagged #copy'],
+            [false, 'Tagged: copy'],
             [false, 'Schedule announcement'],
         ],
         depth: 0.4,
@@ -77,8 +77,8 @@ const PANELS: Panel[] = [
         time: '22:05',
         label: 'Other desk, other OS',
         title: 'Same wall, waiting',
-        body: 'The Windows machine wakes up and the wall is already there — carried over by the folder you already sync.',
-        color: 'peach',
+        body: 'The Windows machine wakes up and the wall is already there, carried over by the folder you already sync.',
+        color: 'orange',
         rot: -2,
         items: [
             [true, 'Synced 14 notes'],
@@ -105,20 +105,20 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                 <span
                     style={{
                         fontFamily: PW.mono,
-                        fontSize: 13,
+                        fontSize: PW.text.small,
                         fontWeight: 500,
-                        color: PW.accent,
+                        color: PW.inkSoft,
                         letterSpacing: '0.02em',
                     }}>
                     {panel.time}
                 </span>
                 <span
                     className="uppercase"
-                    style={{ fontSize: 11, fontWeight: 700, color: PW.inkFaint, letterSpacing: '0.12em' }}>
+                    style={{ fontSize: PW.text.label, fontWeight: 700, color: PW.inkFaint, letterSpacing: '0.12em' }}>
                     {panel.label}
                 </span>
                 <span className="flex-1" style={{ height: 0.5, background: PW.hairlineStrong }} />
-                <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>
+                <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>
                     0{index + 1}/0{PANELS.length}
                 </span>
             </div>
@@ -135,17 +135,17 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                     transform: `rotate(${panel.rot}deg)`,
                 }}>
                 <div className="flex items-center mb-2.5">
-                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
+                    <div style={{ fontSize: PW.text.small, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
                         {panel.label}
                     </div>
-                    <span style={{ fontFamily: PW.mono, fontSize: 10, opacity: 0.55 }}>{panel.time}</span>
+                    <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, opacity: 0.75 }}>{panel.time}</span>
                 </div>
                 {panel.items.map(([done, text], i) => (
                     <div key={i} className="flex items-start" style={{ marginBottom: 3 }}>
                         <Check checked={done} ink={c.ink} edge={c.edge} />
                         <span
                             style={{
-                                fontSize: 12.5,
+                                fontSize: PW.text.meta,
                                 lineHeight: 1.45,
                                 textDecoration: done ? 'line-through' : 'none',
                                 opacity: done ? 0.55 : 1,
@@ -159,15 +159,17 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
             <h3
                 className="m-0 mb-2"
                 style={{
-                    fontFamily: PW.serif,
-                    fontWeight: 500,
-                    fontSize: 'clamp(22px, 2.4vw, 30px)',
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.02em',
+                    fontFamily: PW.font,
+                    fontWeight: 700,
+                    fontSize: 'clamp(21px, 2.3vw, 28px)',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em',
                 }}>
                 {panel.title}
             </h3>
-            <p className="m-0" style={{ fontSize: 14.5, lineHeight: 1.6, color: PW.inkSoft, textWrap: 'pretty' }}>
+            <p
+                className="m-0"
+                style={{ fontSize: PW.text.body, lineHeight: 1.6, color: PW.inkSoft, textWrap: 'pretty' }}>
                 {panel.body}
             </p>
         </article>
@@ -188,21 +190,21 @@ export default function PWJourney() {
         <section
             id="pw-day"
             style={{
-                background: '#f3efe5',
+                background: PW.sidebar,
                 borderTop: '0.5px solid ' + PW.hairline,
                 borderBottom: '0.5px solid ' + PW.hairline,
                 scrollMarginTop: 64,
             }}>
-            <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-[110px] md:pt-[140px]">
-                <SectionHead
-                    eyebrow="One day · five notes"
-                    title="A Tuesday, sideways."
-                    kicker="This is the whole product, in the order you actually meet it. Keep scrolling — the day moves across, not down."
-                />
-            </div>
-
             <div ref={wrap} className="pw-hwrap relative" style={{ height: '340vh' }}>
-                <div className="pw-hpin sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden">
+                {/* The intro pins with the track, so the two read as one block rather than an empty band. */}
+                <div className="pw-hpin sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden pt-16">
+                    <div className="max-w-[1180px] w-full mx-auto px-6 md:px-8">
+                        <SectionHead
+                            eyebrow="One day · five notes"
+                            title="A Tuesday, sideways."
+                            kicker="This is the whole product, in the order you actually meet it. Keep scrolling. The day moves across, not down."
+                        />
+                    </div>
                     <div
                         className="pw-htrack flex items-start gap-8 md:gap-14 px-6 md:px-8"
                         style={{
@@ -217,22 +219,22 @@ export default function PWJourney() {
 
                     {/* Track progress — the one bit of chrome that says how far the day has left to run. */}
                     <div
-                        className="pw-hbar mx-auto mt-12 flex items-center gap-3"
+                        className="pw-hbar mx-auto mt-8 md:mt-12 flex items-center gap-3"
                         style={{ width: 'min(90vw, 420px)' }}
                         aria-hidden>
-                        <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>07:12</span>
+                        <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>07:12</span>
                         <span className="relative flex-1" style={{ height: 2, background: PW.hairlineStrong }}>
                             <span
                                 style={{
                                     position: 'absolute',
                                     inset: 0,
-                                    background: PW.accent,
+                                    background: PW.ink,
                                     transform: 'scaleX(var(--p, 0))',
                                     transformOrigin: 'left',
                                 }}
                             />
                         </span>
-                        <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>22:05</span>
+                        <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>22:05</span>
                     </div>
                 </div>
             </div>

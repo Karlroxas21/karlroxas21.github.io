@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import {
+    PWBeforeAfter,
     PWCTA,
     PWEditor,
     PWFeatures,
@@ -12,8 +13,6 @@ import {
     PWRail,
     PWShell,
     PWStatement,
-    PWVoices,
-    PWWall,
 } from '../features/postwall';
 import { useAnalytics } from '../hooks/use-analytics';
 import { useEffect } from 'react';
@@ -23,8 +22,8 @@ const GA_ID = import.meta.env.VITE_G_ID as string | undefined;
 if (GA_ID) ReactGA.initialize(GA_ID);
 
 /**
- * Story beats, in order: hook → context → the day → proof → craft → climax → detail → close.
- * Three sections pin (Why, A day, Editor/Wall); the rest scroll normally so the rhythm breathes.
+ * Story beats, in order: hook → context → the day → proof → craft → detail → close.
+ * Three sections pin (Why, A day, Editor); the rest scroll normally so the rhythm breathes.
  */
 export default function PostWall() {
     const { trackPageview } = useAnalytics();
@@ -41,13 +40,12 @@ export default function PostWall() {
             <PWRail />
             <PWHero />
             <PWStatement />
+            <PWBeforeAfter />
             <PWJourney />
             <PWPlatforms />
             <PWEditor />
-            <PWWall />
             <PWFeatures />
             <PWPalette />
-            <PWVoices />
             <PWCTA />
             <PWFooter />
         </PWShell>

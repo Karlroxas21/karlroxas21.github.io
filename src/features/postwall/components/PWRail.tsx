@@ -7,12 +7,13 @@ import { PW } from '../pwTokens';
 const ACTS: { id: string; label: string; dark?: boolean }[] = [
     { id: 'pw-top', label: 'Top' },
     { id: 'pw-why', label: 'Why', dark: true },
+    { id: 'pw-wedge', label: 'On top' },
     { id: 'pw-day', label: 'A day' },
     { id: 'pw-platforms', label: 'Platforms' },
     { id: 'pw-editor', label: 'Editor' },
-    { id: 'pw-wall', label: 'The Wall' },
     { id: 'pw-features', label: 'Features' },
-    { id: 'pw-download', label: 'Get it', dark: true },
+    { id: 'pw-colors', label: 'Palette' },
+    { id: 'pw-download', label: 'Pricing & download', dark: true },
 ];
 
 /**
@@ -59,7 +60,7 @@ export default function PWRail() {
                         <span
                             className="pw-rail-label"
                             style={{
-                                fontSize: 11,
+                                fontSize: PW.text.label,
                                 fontWeight: 600,
                                 letterSpacing: '0.02em',
                                 color: on ? PW.ink : PW.inkSoft,
@@ -72,7 +73,7 @@ export default function PWRail() {
                                 width: on ? 20 : 10,
                                 height: 2,
                                 borderRadius: 2,
-                                background: on ? PW.accent : PW.hairlineStrong,
+                                background: on ? PW.ink : PW.hairlineStrong,
                             }}
                         />
                     </button>

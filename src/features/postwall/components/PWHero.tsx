@@ -1,14 +1,17 @@
 import { useRef, type CSSProperties, type ReactElement } from 'react';
 
-import { ArrowIcon, Check, PWButton, PinIcon } from './PWPrimitives';
+import { Check, PWButton, PinIcon } from './PWPrimitives';
 import { useDragSpring } from '../hooks/use-drag-spring';
 import { usePointerSpring } from '../hooks/use-pointer-spring';
 import { useScrollProgress } from '../hooks/use-scroll-progress';
+import { useLatestRelease, type LatestRelease } from '../hooks/use-latest-release';
 import { useOS } from '../hooks/use-os';
 import { useStageScale } from '../hooks/use-stage-scale';
-import { PW_DOWNLOADS, PW_RELEASES_URL, type PWDownload } from '../releases';
+import { PW_DOWNLOADS, type PWDownload } from '../releases';
 import { PW, PW_GRAIN, noteColor, type NoteColorKey } from '../pwTokens';
 import { type OSFamily } from '../utils/detect-os';
+import { formatSize } from '../utils/format-size';
+import { scrollToSection } from '../utils/scroll-to';
 
 const byOs = (os: PWDownload['os']) => PW_DOWNLOADS.find(d => d.os === os) as PWDownload;
 const MAC = byOs('mac');
@@ -35,26 +38,61 @@ const LinuxGlyph = () => (
     </svg>
 );
 
-type HeroDownload = { os: OSFamily; label: string; href: string; glyph: () => ReactElement; hint: string };
+type HeroDownload = {
+    os: OSFamily;
+    label: string;
+    glyph: () => ReactElement;
+    /** Absent for Linux: two packages ship and a browser cannot tell .deb from .rpm. */
+    download?: PWDownload;
+};
 
 /** Canonical order. Detection only promotes one entry to the front; it never removes any. */
 const HERO_DOWNLOADS: HeroDownload[] = [
-    { os: 'mac', label: 'Download for Mac', href: MAC.href, glyph: AppleGlyph, hint: `${MAC.detail}, ${MAC.size}` },
-    { os: 'win', label: 'Windows', href: WIN.href, glyph: WindowsGlyph, hint: `${WIN.detail}, ${WIN.size}` },
-    {
-        os: 'linux',
-        label: 'Linux',
-        // Two packages ship, and a browser cannot tell .deb from .rpm — hand off to the releases page.
-        href: PW_RELEASES_URL,
-        glyph: LinuxGlyph,
-        hint: 'choose .deb or .rpm on the releases page',
-    },
+    { os: 'mac', label: 'Mac', glyph: AppleGlyph, download: MAC },
+    { os: 'win', label: 'Windows', glyph: WindowsGlyph, download: WIN },
+    { os: 'linux', label: 'Linux', glyph: LinuxGlyph },
 ];
 
 /** Visitor's OS first, the rest untouched. An unknown OS keeps the Mac-first default. */
 function orderFor(os: OSFamily): HeroDownload[] {
     const match = HERO_DOWNLOADS.find(d => d.os === os);
     return match ? [match, ...HERO_DOWNLOADS.filter(d => d !== match)] : HERO_DOWNLOADS;
+}
+
+function HeroDownloadButton({
+    entry,
+    primary,
+    release,
+}: {
+    entry: HeroDownload;
+    primary: boolean;
+    release: LatestRelease;
+}) {
+    const Glyph = entry.glyph;
+    const text = primary ? `Download for ${entry.label}` : entry.label;
+    // Phones: the primary takes its own row, the other two split the next one.
+    const look = {
+        variant: primary ? 'ink' : 'paper',
+        size: primary ? 'lg' : 'md',
+        className: `justify-center ${primary ? 'w-full sm:w-auto' : 'flex-1 sm:flex-none'}`,
+    } as const;
+
+    if (!entry.download) {
+        return (
+            <PWButton {...look} onClick={() => scrollToSection('pw-download')} ariaLabel={`${text}, .deb or .rpm`}>
+                <Glyph />
+                {text}
+            </PWButton>
+        );
+    }
+    const { href, size } = release.asset(entry.download.id);
+    const hint = size ? `${entry.download.detail}, ${formatSize(size)}` : entry.download.detail;
+    return (
+        <PWButton {...look} href={href} newTab ariaLabel={`${text}, ${hint}`}>
+            <Glyph />
+            {text}
+        </PWButton>
+    );
 }
 
 interface FloaterLine {
@@ -127,7 +165,7 @@ function HeroFloater({ color, w, h, x, y, rot, depth, delay, title, lines, pinne
                         fontFamily: PW.font,
                     }}>
                     <div className="flex items-center mb-1.5">
-                        <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
+                        <div style={{ fontSize: PW.text.small, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
                             {title}
                         </div>
                         {pinned && <PinIcon />}
@@ -137,7 +175,7 @@ function HeroFloater({ color, w, h, x, y, rot, depth, delay, title, lines, pinne
                             {l.check !== undefined && <Check checked={l.check} ink={c.ink} edge={c.edge} />}
                             <span
                                 style={{
-                                    fontSize: 11,
+                                    fontSize: PW.text.label,
                                     opacity: l.check ? 0.55 : 1,
                                     textDecoration: l.check ? 'line-through' : 'none',
                                     lineHeight: 1.4,
@@ -153,7 +191,9 @@ function HeroFloater({ color, w, h, x, y, rot, depth, delay, title, lines, pinne
 }
 
 export default function PWHero() {
-    const downloads = orderFor(useOS());
+    const os = useOS();
+    const downloads = orderFor(os);
+    const release = useLatestRelease();
     const section = useRef<HTMLElement>(null);
     const stageWrap = useRef<HTMLDivElement>(null);
     useScrollProgress(section, { mode: 'exit', reduced: 0 });
@@ -166,7 +206,7 @@ export default function PWHero() {
             id="pw-top"
             className="relative overflow-hidden"
             style={{
-                background: 'linear-gradient(180deg, #faf8f3 0%, #f3efe5 100%)',
+                background: `linear-gradient(180deg, ${PW.paper} 0%, ${PW.sidebar} 100%)`,
                 minHeight: '100svh',
                 display: 'flex',
                 flexDirection: 'column',
@@ -179,13 +219,12 @@ export default function PWHero() {
                     position: 'absolute',
                     left: '50%',
                     top: '48%',
-                    fontFamily: PW.serif,
-                    fontStyle: 'italic',
-                    fontWeight: 400,
-                    fontSize: 'clamp(160px, 28vw, 380px)',
+                    fontFamily: PW.font,
+                    fontWeight: 800,
+                    fontSize: 'clamp(150px, 26vw, 360px)',
                     lineHeight: 1,
                     letterSpacing: '-0.04em',
-                    color: 'rgba(42,39,34,0.035)',
+                    color: 'rgba(44,43,41,0.035)',
                     whiteSpace: 'nowrap',
                     transform:
                         'translate3d(calc(-50% + var(--mx, 0) * -6px * var(--pw-depth, 1)), calc(-50% + (var(--p, 0) * 40px + var(--my, 0) * -4px) * var(--pw-depth, 1)), 0)',
@@ -203,44 +242,15 @@ export default function PWHero() {
                         opacity: 'calc(1 - var(--p, 0) * 1.4)',
                         willChange: 'transform, opacity',
                     }}>
-                    <div
-                        className="pw-drop inline-flex items-center gap-1.5 rounded-full mb-7 pw-glass"
-                        style={{
-                            ['--d' as string]: '0ms',
-                            padding: '5px 10px 5px 6px',
-                            background: 'rgba(255,255,255,0.7)',
-                            backdropFilter: 'blur(12px)',
-                            WebkitBackdropFilter: 'blur(12px)',
-                            boxShadow: 'inset 0 0 0 0.5px ' + PW.hairlineStrong,
-                            fontSize: 12,
-                            fontWeight: 500,
-                            color: PW.inkSoft,
-                        }}>
-                        <span
-                            className="rounded-full"
-                            style={{
-                                padding: '2px 7px',
-                                background: PW.accentSoft,
-                                color: PW.accent,
-                                fontSize: 10.5,
-                                fontWeight: 700,
-                                letterSpacing: '0.03em',
-                            }}>
-                            BETA
-                        </span>
-                        First public build — Mac, Windows &amp; Linux
-                        <ArrowIcon />
-                    </div>
-
                     <h1
                         className="pw-drop m-0 mb-6"
                         style={{
                             ['--d' as string]: '60ms',
-                            fontFamily: PW.serif,
-                            fontWeight: 500,
-                            fontSize: 'clamp(46px, 7.2vw, 92px)',
-                            lineHeight: 0.96,
-                            letterSpacing: '-0.03em',
+                            fontFamily: PW.font,
+                            fontWeight: 700,
+                            fontSize: 'clamp(44px, 6.8vw, 86px)',
+                            lineHeight: 0.98,
+                            letterSpacing: '-0.045em',
                             textWrap: 'balance',
                         }}>
                         Sticky notes that stay
@@ -248,7 +258,7 @@ export default function PWHero() {
                         <span
                             style={{
                                 background:
-                                    'linear-gradient(180deg, transparent 0%, transparent 30%, rgba(245,230,168,0.85) 30%, rgba(245,230,168,0.85) 92%, transparent 92%)',
+                                    'linear-gradient(180deg, transparent 0%, transparent 30%, rgba(253,241,184,0.95) 30%, rgba(253,241,184,0.95) 92%, transparent 92%)',
                                 padding: '0 0.08em',
                             }}>
                             on top
@@ -260,12 +270,12 @@ export default function PWHero() {
                         className="pw-drop m-0 mb-9 max-w-[540px]"
                         style={{
                             ['--d' as string]: '140ms',
-                            fontSize: 19,
+                            fontSize: PW.text.intro,
                             lineHeight: 1.5,
                             color: PW.inkSoft,
                             textWrap: 'pretty',
                         }}>
-                        Little windows that float above whatever you&rsquo;re doing, with a real editor inside —
+                        Little windows that float above whatever you&rsquo;re doing, with a real editor inside:
                         headings, lists, checkboxes. Mac, Windows and Linux. Keep them on one machine, or sync through a
                         folder you already own.
                     </p>
@@ -273,37 +283,35 @@ export default function PWHero() {
                     <div
                         className="pw-drop flex gap-3 items-center flex-wrap mb-6"
                         style={{ ['--d' as string]: '220ms' }}>
-                        {downloads.map((d, i) => {
-                            const Glyph = d.glyph;
-                            return (
-                                <PWButton
-                                    key={d.os}
-                                    variant={i === 0 ? 'ink' : 'paper'}
-                                    size={i === 0 ? 'lg' : 'md'}
-                                    href={d.href}
-                                    newTab
-                                    ariaLabel={`${d.label} — ${d.hint}`}>
-                                    <Glyph />
-                                    {i === 0 && d.os !== 'mac' ? `Download for ${d.label}` : d.label}
-                                </PWButton>
-                            );
-                        })}
-                        <span style={{ fontSize: 13, color: PW.inkSoft, marginLeft: 2 }}>
-                            Free — bring your own cloud.
+                        {downloads.map((d, i) => (
+                            <HeroDownloadButton key={d.os} entry={d} primary={i === 0} release={release} />
+                        ))}
+                        <span
+                            className="basis-full sm:basis-auto"
+                            style={{ fontSize: PW.text.small, color: PW.inkSoft, marginLeft: 2 }}>
+                            Free. Bring your own cloud.
                         </span>
                     </div>
 
+                    {os === 'other' && (
+                        <p
+                            className="pw-drop m-0 mb-5"
+                            style={{ ['--d' as string]: '260ms', fontSize: PW.text.ui, color: PW.inkSoft }}>
+                            PostWall is a desktop app for macOS, Windows and Linux.
+                        </p>
+                    )}
+
                     <div
-                        className="pw-drop flex items-center gap-4 flex-wrap"
-                        style={{ ['--d' as string]: '300ms', fontSize: 12.5, color: PW.inkFaint }}>
+                        className="pw-drop flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 flex-wrap"
+                        style={{ ['--d' as string]: '300ms', fontSize: PW.text.small, color: PW.inkFaint }}>
                         <span className="inline-flex items-center gap-[5px]">
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.ok }} />
-                            Saved to a folder you own
+                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.inkSoft }} />
+                            Works offline
                         </span>
-                        <span>·</span>
-                        <span>No account</span>
-                        <span>·</span>
-                        <span>Sync-it-for-you tier coming</span>
+                        <span className="hidden sm:inline">·</span>
+                        <span>No account for Free</span>
+                        <span className="hidden sm:inline">·</span>
+                        <span>Hosted sync with Pro</span>
                     </div>
                 </div>
 
@@ -318,7 +326,7 @@ export default function PWHero() {
                             transformOrigin: 'top left',
                         }}>
                         <HeroFloater
-                            color="butter"
+                            color="yellow"
                             w={240}
                             h={220}
                             x={150}
@@ -337,7 +345,7 @@ export default function PWHero() {
                             ]}
                         />
                         <HeroFloater
-                            color="sage"
+                            color="green"
                             w={200}
                             h={140}
                             x={330}
@@ -353,7 +361,7 @@ export default function PWHero() {
                             ]}
                         />
                         <HeroFloater
-                            color="blush"
+                            color="purple"
                             w={180}
                             h={124}
                             x={40}
@@ -363,13 +371,13 @@ export default function PWHero() {
                             delay={340}
                             title="Reading"
                             lines={[
-                                { text: '· Dieter Rams — Ten' },
+                                { text: '· Less but Better' },
                                 { text: '· Notes on Synthesis' },
                                 { text: '· The Design of Everyday Things' },
                             ]}
                         />
                         <HeroFloater
-                            color="sky"
+                            color="blue"
                             w={160}
                             h={100}
                             x={400}
@@ -381,7 +389,7 @@ export default function PWHero() {
                             lines={[{ text: 'Y: shipped onboarding' }, { text: 'T: editor polish' }]}
                         />
                         <HeroFloater
-                            color="peach"
+                            color="orange"
                             w={150}
                             h={92}
                             x={10}
@@ -402,7 +410,7 @@ export default function PWHero() {
                 className="pw-parallax hidden md:flex flex-col items-center gap-2 mx-auto mb-7"
                 style={{
                     color: PW.inkFaint,
-                    fontSize: 11,
+                    fontSize: PW.text.label,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     fontWeight: 600,

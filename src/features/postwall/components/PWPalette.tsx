@@ -17,12 +17,12 @@ export default function PWPalette() {
 
     const swatches = Object.entries(PW.notes) as [NoteColorKey, (typeof PW.notes)[NoteColorKey]][];
     return (
-        <section ref={section} className="py-[110px] md:py-[140px]">
+        <section ref={section} id="pw-colors" className="py-[110px] md:py-[140px]" style={{ scrollMarginTop: 64 }}>
             <div className="max-w-[1180px] mx-auto px-6 md:px-8">
                 <SectionHead
                     eyebrow="The palette"
                     title="Six colors. All easy on the eyes."
-                    kicker="Picked for long sessions and low glare. Muted enough that a wall of them stays calm — saturated enough that you can tell them apart at a glance."
+                    kicker="Picked for long sessions and low glare. Muted enough that a wall of them stays calm, saturated enough that you can tell them apart at a glance."
                 />
                 <div
                     className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4"
@@ -45,7 +45,13 @@ export default function PWPalette() {
                                 color: c.ink,
                                 zIndex: 6 - Math.abs(i - 2.5) * 2,
                             }}>
-                            <div style={{ fontSize: 11, fontFamily: PW.mono, opacity: 0.55, letterSpacing: '0.04em' }}>
+                            <div
+                                style={{
+                                    fontSize: PW.text.label,
+                                    fontFamily: PW.mono,
+                                    opacity: 0.75,
+                                    letterSpacing: '0.04em',
+                                }}>
                                 {name.toUpperCase()}
                             </div>
                             <div
@@ -56,8 +62,16 @@ export default function PWPalette() {
                                     right: 14,
                                     opacity: 'var(--f, 1)',
                                 }}>
-                                <div style={{ fontFamily: PW.mono, fontSize: 11, opacity: 0.75 }}>{c.bg}</div>
-                                <div style={{ fontFamily: PW.mono, fontSize: 11, opacity: 0.55, marginTop: 2 }}>
+                                <div style={{ fontFamily: PW.mono, fontSize: PW.text.label, opacity: 0.75 }}>
+                                    {c.bg}
+                                </div>
+                                <div
+                                    style={{
+                                        fontFamily: PW.mono,
+                                        fontSize: PW.text.label,
+                                        opacity: 0.75,
+                                        marginTop: 2,
+                                    }}>
                                     {c.ink}
                                 </div>
                             </div>

@@ -7,12 +7,12 @@ const SENTENCE = 'Think on paper. Live on screen. Your desk deserved better than
 
 /** Background notes: far notes move little, near notes cross the whole viewport. */
 const DRIFTERS: { color: NoteColorKey; x: string; y: string; w: number; h: number; rot: number; depth: number }[] = [
-    { color: 'butter', x: '4%', y: '18%', w: 150, h: 110, rot: -6, depth: 0.9 },
-    { color: 'sky', x: '84%', y: '12%', w: 130, h: 96, rot: 5, depth: 0.5 },
-    { color: 'sage', x: '76%', y: '68%', w: 170, h: 120, rot: -3, depth: 1 },
-    { color: 'blush', x: '10%', y: '72%', w: 120, h: 90, rot: 7, depth: 0.35 },
-    { color: 'peach', x: '50%', y: '84%', w: 110, h: 80, rot: -9, depth: 0.7 },
-    { color: 'sand', x: '62%', y: '4%', w: 100, h: 74, rot: 4, depth: 0.2 },
+    { color: 'yellow', x: '4%', y: '18%', w: 150, h: 110, rot: -6, depth: 0.9 },
+    { color: 'blue', x: '84%', y: '12%', w: 130, h: 96, rot: 5, depth: 0.5 },
+    { color: 'green', x: '76%', y: '68%', w: 170, h: 120, rot: -3, depth: 1 },
+    { color: 'purple', x: '10%', y: '72%', w: 120, h: 90, rot: 7, depth: 0.35 },
+    { color: 'orange', x: '50%', y: '84%', w: 110, h: 80, rot: -9, depth: 0.7 },
+    { color: 'grey', x: '62%', y: '4%', w: 100, h: 74, rot: 4, depth: 0.2 },
 ];
 
 /**
@@ -57,14 +57,14 @@ export default function PWStatement() {
 
                 <div
                     className="relative max-w-[1000px] px-6 md:px-8 text-center"
-                    style={{ zIndex: 2, textShadow: '0 2px 30px rgba(26,26,28,0.6)' }}>
+                    style={{ zIndex: 2, textShadow: '0 2px 30px rgba(44,43,41,0.6)' }}>
                     <div
                         className="uppercase mb-8"
                         style={{
-                            fontSize: 11,
+                            fontSize: PW.text.label,
                             fontWeight: 700,
                             letterSpacing: '0.12em',
-                            color: PW.notes.butter.bg,
+                            color: PW.notes.yellow.bg,
                             opacity: 'clamp(0, calc(var(--p, 0) * 6), 1)',
                         }}>
                         Why PostWall
@@ -72,25 +72,24 @@ export default function PWStatement() {
                     <p
                         className="m-0"
                         style={{
-                            fontFamily: PW.serif,
-                            fontWeight: 400,
-                            fontSize: 'clamp(34px, 5.6vw, 76px)',
+                            fontFamily: PW.font,
+                            fontWeight: 700,
+                            fontSize: 'clamp(32px, 5.2vw, 70px)',
                             lineHeight: 1.04,
-                            letterSpacing: '-0.03em',
+                            letterSpacing: '-0.04em',
                             textWrap: 'balance',
                         }}>
                         {words.map((w, i) => {
                             const start = (i / n) * 0.9;
                             const ramp = n * 0.9;
-                            const isAccent = i >= n - 3; // "a text file." lands in butter
+                            const isAccent = i >= n - 3; // "a text file." lands in the yellow note colour
                             return (
                                 <span
                                     key={i}
                                     style={{
                                         display: 'inline-block',
                                         marginRight: '0.26em',
-                                        color: isAccent ? PW.notes.butter.bg : PW.paper,
-                                        fontStyle: isAccent ? 'italic' : 'normal',
+                                        color: isAccent ? PW.notes.yellow.bg : PW.paper,
                                         opacity: `clamp(0.14, calc((var(--p, 0) - ${start.toFixed(3)}) * ${ramp.toFixed(2)} + 0.14), 1)`,
                                         transform: `translate3d(0, calc(clamp(0, 1 - (var(--p, 0) - ${start.toFixed(3)}) * ${ramp.toFixed(2)}, 1) * 0.18em), 0)`,
                                         willChange: 'opacity, transform',
