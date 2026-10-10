@@ -280,49 +280,64 @@ export default function PWCTA() {
                 )}
 
                 <Reveal delay={200}>
-                    <div
-                        id="pw-pricing"
-                        className="flex flex-col md:flex-row gap-5 items-stretch"
-                        style={{ marginTop: release.tag ? 28 : 64, scrollMarginTop: 96 }}>
-                        <TierCard
-                            name="Free"
-                            chip={<Chip lit>AVAILABLE NOW</Chip>}
-                            price={<PriceLine amount="$0" note="free forever, no account needed" />}
-                            summary="The whole app, yours to keep. Sync through a cloud folder you already have."
-                            points={FREE_FEATURES}>
-                            <FreeDownload os={os} release={release} />
-                        </TierCard>
-                        <TierCard
-                            name="Pro"
-                            chip={
-                                <Chip lit={!!PRO_CHECKOUT_URL}>
-                                    {PRO_CHECKOUT_URL ? 'AVAILABLE NOW' : 'COMING SOON'}
-                                </Chip>
-                            }
-                            price={
-                                founding ? (
-                                    <>
-                                        <PriceLine
-                                            amount={`$${FOUNDING_OFFER.priceUsd}/yr`}
-                                            struck={`$${PRO_PRICE_USD}/yr`}
-                                            note="billed yearly, USD"
-                                        />
-                                        <div style={{ marginTop: 10 }}>
-                                            <Chip lit>FOUNDING RATE · LOCKED FOR LIFE</Chip>
-                                        </div>
-                                        <div style={{ fontSize: 12.5, opacity: 0.55, marginTop: 8, lineHeight: 1.5 }}>
-                                            First {FOUNDING_OFFER.buyerCap} buyers or {FOUNDING_OFFER.durationDays} days
-                                            after launch, whichever comes first.
-                                        </div>
-                                    </>
-                                ) : (
-                                    <PriceLine amount={`$${PRO_PRICE_USD}/yr`} note="billed yearly, USD" />
-                                )
-                            }
-                            summary="We run the sync for you, and keep a month of every note's history."
-                            points={PRO_FEATURES}>
-                            <ProCheckout />
-                        </TierCard>
+                    <div id="pw-pricing" style={{ marginTop: release.tag ? 28 : 64, scrollMarginTop: 96 }}>
+                        <h2
+                            className="m-0 mb-5 uppercase"
+                            style={{
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: '0.12em',
+                                color: PW.notes.yellow.bg,
+                            }}>
+                            Pricing
+                        </h2>
+                        <div className="flex flex-col md:flex-row gap-5 items-stretch">
+                            <TierCard
+                                name="Free"
+                                chip={<Chip lit>AVAILABLE NOW</Chip>}
+                                price={<PriceLine amount="$0" note="free forever, no account needed" />}
+                                summary="The whole app, yours to keep. Sync through a cloud folder you already have."
+                                points={FREE_FEATURES}>
+                                <FreeDownload os={os} release={release} />
+                            </TierCard>
+                            <TierCard
+                                name="Pro"
+                                chip={
+                                    <Chip lit={!!PRO_CHECKOUT_URL}>
+                                        {PRO_CHECKOUT_URL ? 'AVAILABLE NOW' : 'COMING SOON'}
+                                    </Chip>
+                                }
+                                price={
+                                    founding ? (
+                                        <>
+                                            <PriceLine
+                                                amount={`$${FOUNDING_OFFER.priceUsd}/yr`}
+                                                struck={`$${PRO_PRICE_USD}/yr`}
+                                                note="billed yearly, USD"
+                                            />
+                                            <div style={{ marginTop: 10 }}>
+                                                <Chip lit>FOUNDING RATE · LOCKED FOR LIFE</Chip>
+                                            </div>
+                                            <div
+                                                style={{
+                                                    fontSize: 12.5,
+                                                    opacity: 0.55,
+                                                    marginTop: 8,
+                                                    lineHeight: 1.5,
+                                                }}>
+                                                First {FOUNDING_OFFER.buyerCap} buyers or {FOUNDING_OFFER.durationDays}{' '}
+                                                days after launch, whichever comes first.
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <PriceLine amount={`$${PRO_PRICE_USD}/yr`} note="billed yearly, USD" />
+                                    )
+                                }
+                                summary="We run the sync for you, and keep a month of every note's history."
+                                points={PRO_FEATURES}>
+                                <ProCheckout />
+                            </TierCard>
+                        </div>
                     </div>
                 </Reveal>
 
