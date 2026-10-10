@@ -25,7 +25,7 @@ export default function PWFooter() {
                 <div className="flex items-center gap-[9px]">
                     <img src="/postwall/postwall-mark.svg" alt="" width={26} height={26} />
                     <span style={{ fontWeight: 600, color: PW.paper }}>PostWall</span>
-                    <span style={{ opacity: 0.6 }}>© 2026</span>
+                    <span>© 2026</span>
                 </div>
                 <div className="flex-1" />
                 {links.map(l => (
@@ -42,7 +42,7 @@ export default function PWFooter() {
                     Made by Karl Roxas
                 </Link>
                 {release.tag && (
-                    <span style={{ opacity: 0.6, fontFamily: PW.mono, fontSize: 11 }}>
+                    <span style={{ fontFamily: PW.mono, fontSize: 11 }}>
                         {release.tag}
                         {release.isBeta ? ' beta' : ''}
                     </span>
