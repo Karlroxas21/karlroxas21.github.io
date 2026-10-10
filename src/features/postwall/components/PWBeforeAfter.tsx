@@ -91,7 +91,7 @@ function Scene({ pinned, label, caption }: { pinned: boolean; label: string; cap
                     }}
                 />
             </div>
-            <figcaption className="mt-4" style={{ fontSize: 14, lineHeight: 1.5, color: PW.inkSoft }}>
+            <figcaption className="mt-4" style={{ fontSize: PW.text.ui, lineHeight: 1.5, color: PW.inkSoft }}>
                 <span style={{ fontWeight: 700, color: PW.ink }}>{pinned ? 'After' : 'Before'}:</span> {caption}
             </figcaption>
         </figure>

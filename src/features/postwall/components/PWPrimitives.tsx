@@ -102,7 +102,7 @@ export function PWButton({
     ariaLabel?: string;
 }) {
     const pad = size === 'sm' ? '7px 14px' : size === 'lg' ? '15px 24px' : '12px 18px';
-    const font = size === 'sm' ? 13 : size === 'lg' ? 16 : 14.5;
+    const font = size === 'sm' ? PW.text.small : size === 'lg' ? PW.text.body : PW.text.ui;
     const s: CSSProperties = {
         display: 'inline-flex',
         alignItems: 'center',
@@ -175,7 +175,7 @@ export function SectionLabel({ children }: { children: ReactNode }) {
         <div
             className="inline-flex items-center gap-2 uppercase mb-[18px]"
             style={{
-                fontSize: 11,
+                fontSize: PW.text.label,
                 fontWeight: 700,
                 color: PW.inkSoft,
                 letterSpacing: 1.2,
@@ -225,7 +225,7 @@ export function SectionHead({
                     <p
                         className={`m-0 ${center ? 'mx-auto' : ''}`}
                         style={{
-                            fontSize: 17.5,
+                            fontSize: PW.text.lead,
                             lineHeight: 1.55,
                             color: onDark ? 'rgba(250,249,245,0.62)' : PW.inkSoft,
                             maxWidth: 580,

@@ -61,7 +61,7 @@ function PlatformCard({
                 <div
                     className="uppercase mb-1"
                     style={{
-                        fontSize: 12,
+                        fontSize: PW.text.meta,
                         fontWeight: 700,
                         color: PW.inkSoft,
                         letterSpacing: '0.06em',
@@ -70,10 +70,10 @@ function PlatformCard({
                 </div>
                 <div
                     className="mb-1"
-                    style={{ fontSize: 18, fontWeight: 600, color: PW.ink, letterSpacing: '-0.015em' }}>
+                    style={{ fontSize: PW.text.lead, fontWeight: 600, color: PW.ink, letterSpacing: '-0.015em' }}>
                     {label}
                 </div>
-                <div style={{ fontSize: 13.5, color: PW.inkSoft, lineHeight: 1.5 }}>{SUBTITLE[platform]}</div>
+                <div style={{ fontSize: PW.text.ui, color: PW.inkSoft, lineHeight: 1.5 }}>{SUBTITLE[platform]}</div>
             </div>
         </Reveal>
     );
@@ -93,8 +93,8 @@ function StripItem({ icon, title, body }: { icon: ReactNode; title: string; body
                 {icon}
             </div>
             <div>
-                <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{title}</div>
-                <div style={{ fontSize: 12.5, color: PW.inkSoft }}>{body}</div>
+                <div style={{ fontSize: PW.text.ui, fontWeight: 600, marginBottom: 2 }}>{title}</div>
+                <div style={{ fontSize: PW.text.small, color: PW.inkSoft }}>{body}</div>
             </div>
         </div>
     );

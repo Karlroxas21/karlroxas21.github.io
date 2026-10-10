@@ -62,10 +62,10 @@ export default function PWNav() {
                     style={{ color: PW.ink, fontFamily: 'inherit' }}
                     aria-label="Back to top">
                     <img src="/postwall/postwall-mark.svg" alt="" width={30} height={30} />
-                    <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em' }}>PostWall</span>
+                    <span style={{ fontSize: PW.text.body, fontWeight: 700, letterSpacing: '-0.02em' }}>PostWall</span>
                 </button>
 
-                <div className="hidden lg:flex gap-[22px]" style={{ fontSize: 13.5, fontWeight: 500 }}>
+                <div className="hidden lg:flex gap-[22px]" style={{ fontSize: PW.text.ui, fontWeight: 500 }}>
                     {LINKS.map(l => (
                         <button
                             key={l.target}

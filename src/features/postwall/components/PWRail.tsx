@@ -60,7 +60,7 @@ export default function PWRail() {
                         <span
                             className="pw-rail-label"
                             style={{
-                                fontSize: 11,
+                                fontSize: PW.text.label,
                                 fontWeight: 600,
                                 letterSpacing: '0.02em',
                                 color: on ? PW.ink : PW.inkSoft,

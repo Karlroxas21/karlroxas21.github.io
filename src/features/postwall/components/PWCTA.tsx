@@ -56,7 +56,7 @@ function Chip({ lit, children }: { lit: boolean; children: ReactNode }) {
         <span
             style={{
                 fontFamily: PW.mono,
-                fontSize: 10,
+                fontSize: PW.text.label,
                 letterSpacing: '0.06em',
                 padding: '2px 7px',
                 borderRadius: 999,
@@ -98,16 +98,20 @@ function TierCard({
                 boxShadow: 'inset 0 0.5px 0 rgba(255,255,255,0.24), inset 0 0 0 1px rgba(253,241,184,0.25)',
             }}>
             <div className="flex items-center gap-2 mb-3">
-                <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.02em' }}>{name}</span>
+                <span style={{ fontSize: PW.text.small, fontWeight: 600, letterSpacing: '0.02em' }}>{name}</span>
                 {chip}
             </div>
             <div style={{ marginBottom: 10 }}>{price}</div>
-            <div style={{ fontSize: 14, opacity: 0.66, lineHeight: 1.55, textWrap: 'pretty', marginBottom: 18 }}>
+            <div
+                style={{ fontSize: PW.text.ui, opacity: 0.66, lineHeight: 1.55, textWrap: 'pretty', marginBottom: 18 }}>
                 {summary}
             </div>
             <ul className="flex flex-col gap-[7px] m-0 p-0 list-none" style={{ marginBottom: 22 }}>
                 {points.map(point => (
-                    <li key={point} className="flex gap-2" style={{ fontSize: 13.5, opacity: 0.78, lineHeight: 1.5 }}>
+                    <li
+                        key={point}
+                        className="flex gap-2"
+                        style={{ fontSize: PW.text.ui, opacity: 0.78, lineHeight: 1.5 }}>
                         <TierCheck />
                         <span>{point}</span>
                     </li>
@@ -131,8 +135,8 @@ function PriceLine({ amount, note, struck }: { amount: string; note?: string; st
                 }}>
                 {amount}
             </span>
-            {struck && <s style={{ fontSize: 15, opacity: 0.6 }}>{struck}</s>}
-            {note && <span style={{ fontSize: 12.5, opacity: 0.6 }}>{note}</span>}
+            {struck && <s style={{ fontSize: PW.text.body, opacity: 0.6 }}>{struck}</s>}
+            {note && <span style={{ fontSize: PW.text.small, opacity: 0.6 }}>{note}</span>}
         </div>
     );
 }
@@ -177,7 +181,7 @@ function ProCheckout() {
             style={{
                 padding: '12px 18px',
                 borderRadius: 11,
-                fontSize: 14.5,
+                fontSize: PW.text.ui,
                 fontWeight: 600,
                 fontFamily: 'inherit',
                 border: 0,
@@ -248,7 +252,7 @@ export default function PWCTA() {
                     </div>
                 </Reveal>
                 <Reveal delay={80}>
-                    <div style={{ fontSize: 14, opacity: 0.55, marginTop: 18, letterSpacing: '0.03em' }}>
+                    <div style={{ fontSize: PW.text.ui, opacity: 0.55, marginTop: 18, letterSpacing: '0.03em' }}>
                         Dieter Rams
                     </div>
                 </Reveal>
@@ -261,7 +265,7 @@ export default function PWCTA() {
                                 className="inline-flex items-center gap-2"
                                 style={{
                                     fontFamily: PW.mono,
-                                    fontSize: 11.5,
+                                    fontSize: PW.text.meta,
                                     letterSpacing: '0.06em',
                                     padding: '5px 11px',
                                     borderRadius: 999,
@@ -274,7 +278,9 @@ export default function PWCTA() {
                                 {release.isBeta ? `PUBLIC BETA · ${release.tag}` : release.tag}
                             </span>
                             {release.isBeta && (
-                                <span style={{ fontSize: 13, opacity: 0.55 }}>Beta build. Expect rough edges.</span>
+                                <span style={{ fontSize: PW.text.small, opacity: 0.55 }}>
+                                    Beta build. Expect rough edges.
+                                </span>
                             )}
                         </div>
                     )}
@@ -285,7 +291,7 @@ export default function PWCTA() {
                         <h2
                             className="m-0 mb-5 uppercase"
                             style={{
-                                fontSize: 11,
+                                fontSize: PW.text.label,
                                 fontWeight: 700,
                                 letterSpacing: '0.12em',
                                 color: PW.notes.yellow.bg,
@@ -321,7 +327,7 @@ export default function PWCTA() {
                                             </div>
                                             <div
                                                 style={{
-                                                    fontSize: 12.5,
+                                                    fontSize: PW.text.small,
                                                     opacity: 0.6,
                                                     marginTop: 8,
                                                     lineHeight: 1.5,
@@ -347,7 +353,7 @@ export default function PWCTA() {
                         id="pw-all-downloads"
                         className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3"
                         style={{ marginTop: 36, scrollMarginTop: 96 }}>
-                        <span style={{ fontSize: 13, opacity: 0.5 }}>All downloads:</span>
+                        <span style={{ fontSize: PW.text.small, opacity: 0.5 }}>All downloads:</span>
                         {PW_DOWNLOADS.map(d => {
                             const { href, size } = release.asset(d.id);
                             const label = d.os === 'mac' ? 'macOS' : d.label;
@@ -368,7 +374,7 @@ export default function PWCTA() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-[6px] hover:opacity-90"
-                            style={{ fontSize: 13, opacity: 0.62, textDecoration: 'underline' }}>
+                            style={{ fontSize: PW.text.small, opacity: 0.62, textDecoration: 'underline' }}>
                             All builds &amp; checksums
                             <ArrowIcon size={10} />
                         </a>

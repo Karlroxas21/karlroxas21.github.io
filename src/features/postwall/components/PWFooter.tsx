@@ -20,7 +20,7 @@ export default function PWFooter() {
                 style={{
                     borderTop: '0.5px solid rgba(255,255,255,0.08)',
                     paddingTop: 28,
-                    fontSize: 12.5,
+                    fontSize: PW.text.small,
                 }}>
                 <div className="flex items-center gap-[9px]">
                     <img src="/postwall/postwall-mark.svg" alt="" width={26} height={26} />
@@ -42,7 +42,7 @@ export default function PWFooter() {
                     Made by Karl Roxas
                 </Link>
                 {release.tag && (
-                    <span style={{ fontFamily: PW.mono, fontSize: 11 }}>
+                    <span style={{ fontFamily: PW.mono, fontSize: PW.text.label }}>
                         {release.tag}
                         {release.isBeta ? ' beta' : ''}
                     </span>

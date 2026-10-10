@@ -165,7 +165,7 @@ function HeroFloater({ color, w, h, x, y, rot, depth, delay, title, lines, pinne
                         fontFamily: PW.font,
                     }}>
                     <div className="flex items-center mb-1.5">
-                        <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
+                        <div style={{ fontSize: PW.text.small, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
                             {title}
                         </div>
                         {pinned && <PinIcon />}
@@ -175,7 +175,7 @@ function HeroFloater({ color, w, h, x, y, rot, depth, delay, title, lines, pinne
                             {l.check !== undefined && <Check checked={l.check} ink={c.ink} edge={c.edge} />}
                             <span
                                 style={{
-                                    fontSize: 11,
+                                    fontSize: PW.text.label,
                                     opacity: l.check ? 0.55 : 1,
                                     textDecoration: l.check ? 'line-through' : 'none',
                                     lineHeight: 1.4,
@@ -270,7 +270,7 @@ export default function PWHero() {
                         className="pw-drop m-0 mb-9 max-w-[540px]"
                         style={{
                             ['--d' as string]: '140ms',
-                            fontSize: 19,
+                            fontSize: PW.text.intro,
                             lineHeight: 1.5,
                             color: PW.inkSoft,
                             textWrap: 'pretty',
@@ -288,7 +288,7 @@ export default function PWHero() {
                         ))}
                         <span
                             className="basis-full sm:basis-auto"
-                            style={{ fontSize: 13, color: PW.inkSoft, marginLeft: 2 }}>
+                            style={{ fontSize: PW.text.small, color: PW.inkSoft, marginLeft: 2 }}>
                             Free. Bring your own cloud.
                         </span>
                     </div>
@@ -296,14 +296,14 @@ export default function PWHero() {
                     {os === 'other' && (
                         <p
                             className="pw-drop m-0 mb-5"
-                            style={{ ['--d' as string]: '260ms', fontSize: 13.5, color: PW.inkSoft }}>
+                            style={{ ['--d' as string]: '260ms', fontSize: PW.text.ui, color: PW.inkSoft }}>
                             PostWall is a desktop app for macOS, Windows and Linux.
                         </p>
                     )}
 
                     <div
                         className="pw-drop flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 flex-wrap"
-                        style={{ ['--d' as string]: '300ms', fontSize: 12.5, color: PW.inkFaint }}>
+                        style={{ ['--d' as string]: '300ms', fontSize: PW.text.small, color: PW.inkFaint }}>
                         <span className="inline-flex items-center gap-[5px]">
                             <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.inkSoft }} />
                             Works offline
@@ -410,7 +410,7 @@ export default function PWHero() {
                 className="pw-parallax hidden md:flex flex-col items-center gap-2 mx-auto mb-7"
                 style={{
                     color: PW.inkFaint,
-                    fontSize: 11,
+                    fontSize: PW.text.label,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     fontWeight: 600,

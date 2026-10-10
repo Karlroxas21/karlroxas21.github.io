@@ -24,6 +24,9 @@ export const PW = {
         orange: { bg: '#F7D6BD', ink: '#4D311F', edge: '#E5C3AB' },
     },
 
+    /** Text scale (px). Display headings use their own clamps; everything else sits on a step here. */
+    text: { label: 11, meta: 12, small: 13, ui: 14, body: 16, lead: 18, intro: 20 },
+
     font: "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
     mono: 'ui-monospace, SFMono-Regular, Menlo, monospace',
 } as const;

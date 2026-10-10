@@ -61,7 +61,7 @@ export default function PWStatement() {
                     <div
                         className="uppercase mb-8"
                         style={{
-                            fontSize: 11,
+                            fontSize: PW.text.label,
                             fontWeight: 700,
                             letterSpacing: '0.12em',
                             color: PW.notes.yellow.bg,

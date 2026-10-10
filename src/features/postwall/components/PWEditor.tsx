@@ -61,12 +61,12 @@ function FeatureItem({ label, mk }: { label: string; mk?: string }) {
                     <path d="M2 5.8L4.6 8.2L9 3" />
                 </svg>
             </div>
-            <span style={{ fontSize: 14, color: PW.ink, fontWeight: 500, flex: 1 }}>{label}</span>
+            <span style={{ fontSize: PW.text.ui, color: PW.ink, fontWeight: 500, flex: 1 }}>{label}</span>
             {mk && (
                 <span
                     style={{
                         fontFamily: PW.mono,
-                        fontSize: 11.5,
+                        fontSize: PW.text.meta,
                         color: PW.inkFaint,
                         background: 'rgba(44,43,41,0.05)',
                         padding: '3px 7px',
@@ -218,7 +218,7 @@ export default function PWEditor() {
                                 <div
                                     className="uppercase mb-3.5"
                                     style={{
-                                        fontSize: 11,
+                                        fontSize: PW.text.label,
                                         fontWeight: 700,
                                         color: PW.inkSoft,
                                         letterSpacing: '0.12em',
@@ -236,7 +236,9 @@ export default function PWEditor() {
                                     }}>
                                     {ch.title}
                                 </h3>
-                                <p className="m-0 mb-5" style={{ fontSize: 15.5, lineHeight: 1.6, color: PW.inkSoft }}>
+                                <p
+                                    className="m-0 mb-5"
+                                    style={{ fontSize: PW.text.body, lineHeight: 1.6, color: PW.inkSoft }}>
                                     {ch.body}
                                 </p>
                                 <div>

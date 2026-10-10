@@ -105,7 +105,7 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                 <span
                     style={{
                         fontFamily: PW.mono,
-                        fontSize: 13,
+                        fontSize: PW.text.small,
                         fontWeight: 500,
                         color: PW.inkSoft,
                         letterSpacing: '0.02em',
@@ -114,11 +114,11 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                 </span>
                 <span
                     className="uppercase"
-                    style={{ fontSize: 11, fontWeight: 700, color: PW.inkFaint, letterSpacing: '0.12em' }}>
+                    style={{ fontSize: PW.text.label, fontWeight: 700, color: PW.inkFaint, letterSpacing: '0.12em' }}>
                     {panel.label}
                 </span>
                 <span className="flex-1" style={{ height: 0.5, background: PW.hairlineStrong }} />
-                <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>
+                <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>
                     0{index + 1}/0{PANELS.length}
                 </span>
             </div>
@@ -135,17 +135,17 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                     transform: `rotate(${panel.rot}deg)`,
                 }}>
                 <div className="flex items-center mb-2.5">
-                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
+                    <div style={{ fontSize: PW.text.small, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
                         {panel.label}
                     </div>
-                    <span style={{ fontFamily: PW.mono, fontSize: 10, opacity: 0.75 }}>{panel.time}</span>
+                    <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, opacity: 0.75 }}>{panel.time}</span>
                 </div>
                 {panel.items.map(([done, text], i) => (
                     <div key={i} className="flex items-start" style={{ marginBottom: 3 }}>
                         <Check checked={done} ink={c.ink} edge={c.edge} />
                         <span
                             style={{
-                                fontSize: 12.5,
+                                fontSize: PW.text.meta,
                                 lineHeight: 1.45,
                                 textDecoration: done ? 'line-through' : 'none',
                                 opacity: done ? 0.55 : 1,
@@ -167,7 +167,9 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                 }}>
                 {panel.title}
             </h3>
-            <p className="m-0" style={{ fontSize: 14.5, lineHeight: 1.6, color: PW.inkSoft, textWrap: 'pretty' }}>
+            <p
+                className="m-0"
+                style={{ fontSize: PW.text.body, lineHeight: 1.6, color: PW.inkSoft, textWrap: 'pretty' }}>
                 {panel.body}
             </p>
         </article>
@@ -217,10 +219,10 @@ export default function PWJourney() {
 
                     {/* Track progress — the one bit of chrome that says how far the day has left to run. */}
                     <div
-                        className="pw-hbar mx-auto mt-12 flex items-center gap-3"
+                        className="pw-hbar mx-auto mt-8 md:mt-12 flex items-center gap-3"
                         style={{ width: 'min(90vw, 420px)' }}
                         aria-hidden>
-                        <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>07:12</span>
+                        <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>07:12</span>
                         <span className="relative flex-1" style={{ height: 2, background: PW.hairlineStrong }}>
                             <span
                                 style={{
@@ -232,7 +234,7 @@ export default function PWJourney() {
                                 }}
                             />
                         </span>
-                        <span style={{ fontFamily: PW.mono, fontSize: 11, color: PW.inkFaint }}>22:05</span>
+                        <span style={{ fontFamily: PW.mono, fontSize: PW.text.label, color: PW.inkFaint }}>22:05</span>
                     </div>
                 </div>
             </div>

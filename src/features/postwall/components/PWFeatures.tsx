@@ -8,14 +8,18 @@ function FeatureRow({ index, title, body, delay }: { index: number; title: strin
             <div
                 className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 py-6"
                 style={{ borderTop: '0.5px solid ' + PW.hairlineStrong }}>
-                <span style={{ fontFamily: PW.mono, fontSize: 12, color: PW.inkFaint, paddingTop: 4 }}>
+                <span style={{ fontFamily: PW.mono, fontSize: PW.text.meta, color: PW.inkFaint, paddingTop: 4 }}>
                     {String(index + 1).padStart(2, '0')}
                 </span>
                 <div>
-                    <h3 className="m-0 mb-1.5" style={{ fontSize: 18, fontWeight: 600, letterSpacing: '-0.01em' }}>
+                    <h3
+                        className="m-0 mb-1.5"
+                        style={{ fontSize: PW.text.lead, fontWeight: 600, letterSpacing: '-0.01em' }}>
                         {title}
                     </h3>
-                    <p className="m-0" style={{ fontSize: 16, lineHeight: 1.6, color: PW.inkSoft, maxWidth: '46ch' }}>
+                    <p
+                        className="m-0"
+                        style={{ fontSize: PW.text.body, lineHeight: 1.6, color: PW.inkSoft, maxWidth: '46ch' }}>
                         {body}
                     </p>
                 </div>
