@@ -70,7 +70,12 @@ function HeroDownloadButton({
 }) {
     const Glyph = entry.glyph;
     const text = primary ? `Download for ${entry.label}` : entry.label;
-    const look = { variant: primary ? 'ink' : 'paper', size: primary ? 'lg' : 'md' } as const;
+    // Phones: the primary takes its own row, the other two split the next one.
+    const look = {
+        variant: primary ? 'ink' : 'paper',
+        size: primary ? 'lg' : 'md',
+        className: `justify-center ${primary ? 'w-full sm:w-auto' : 'flex-1 sm:flex-none'}`,
+    } as const;
 
     if (!entry.download) {
         return (
@@ -281,7 +286,9 @@ export default function PWHero() {
                         {downloads.map((d, i) => (
                             <HeroDownloadButton key={d.os} entry={d} primary={i === 0} release={release} />
                         ))}
-                        <span style={{ fontSize: 13, color: PW.inkSoft, marginLeft: 2 }}>
+                        <span
+                            className="basis-full sm:basis-auto"
+                            style={{ fontSize: 13, color: PW.inkSoft, marginLeft: 2 }}>
                             Free. Bring your own cloud.
                         </span>
                     </div>
@@ -295,15 +302,15 @@ export default function PWHero() {
                     )}
 
                     <div
-                        className="pw-drop flex items-center gap-4 flex-wrap"
+                        className="pw-drop flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 flex-wrap"
                         style={{ ['--d' as string]: '300ms', fontSize: 12.5, color: PW.inkFaint }}>
                         <span className="inline-flex items-center gap-[5px]">
                             <span style={{ width: 6, height: 6, borderRadius: '50%', background: PW.inkSoft }} />
                             Works offline
                         </span>
-                        <span>·</span>
+                        <span className="hidden sm:inline">·</span>
                         <span>No account for Free</span>
-                        <span>·</span>
+                        <span className="hidden sm:inline">·</span>
                         <span>Hosted sync with Pro</span>
                     </div>
                 </div>
