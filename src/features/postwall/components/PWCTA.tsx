@@ -31,7 +31,7 @@ const PRIMARY_FOR: Record<OSFamily, PWDownload | null> = {
     other: byId('mac-arm64'),
 };
 
-const ON_DARK_MUTED = 'rgba(250,249,245,0.6)';
+const ON_DARK_MUTED = 'rgba(250,249,245,0.7)';
 
 function TierCheck() {
     return (
@@ -131,8 +131,8 @@ function PriceLine({ amount, note, struck }: { amount: string; note?: string; st
                 }}>
                 {amount}
             </span>
-            {struck && <s style={{ fontSize: 15, opacity: 0.5 }}>{struck}</s>}
-            {note && <span style={{ fontSize: 12.5, opacity: 0.5 }}>{note}</span>}
+            {struck && <s style={{ fontSize: 15, opacity: 0.6 }}>{struck}</s>}
+            {note && <span style={{ fontSize: 12.5, opacity: 0.6 }}>{note}</span>}
         </div>
     );
 }
@@ -322,7 +322,7 @@ export default function PWCTA() {
                                             <div
                                                 style={{
                                                     fontSize: 12.5,
-                                                    opacity: 0.55,
+                                                    opacity: 0.6,
                                                     marginTop: 8,
                                                     lineHeight: 1.5,
                                                 }}>
