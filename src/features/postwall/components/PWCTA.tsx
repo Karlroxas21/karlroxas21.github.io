@@ -210,7 +210,7 @@ export default function PWCTA() {
                     <div
                         key={i}
                         aria-hidden
-                        className="pw-parallax"
+                        className="pw-parallax hidden md:block"
                         style={{
                             position: 'absolute',
                             left: b.x,
