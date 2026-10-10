@@ -282,15 +282,10 @@ body:has(.pw-page) {
 }
 
 /* ---------- Accessibility ---------- */
-@media (prefers-reduced-motion: reduce) {
-    .pw-reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-
-    /* The horizontal act stops being horizontal: drop the pin, let the panels wrap.
-       Every panel stays readable, nothing slides. */
+/* The horizontal act stops being horizontal under reduced motion, and on screens too short to hold
+   its intro and cards in one pinned view: drop the pin, let the panels wrap. Every panel stays
+   readable, nothing slides. */
+@media (prefers-reduced-motion: reduce), (max-height: 660px) {
     .pw-hwrap {
         height: auto !important;
     }
@@ -301,7 +296,7 @@ body:has(.pw-page) {
     }
     .pw-htrack {
         display: grid;
-        width: 100%;
+        width: 100% !important;
         max-width: 1180px;
         margin: 0 auto;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -316,6 +311,15 @@ body:has(.pw-page) {
     .pw-hbar {
         display: none;
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
     .pw-drop,
     .pw-cue::after,
     .pw-marquee-track {
