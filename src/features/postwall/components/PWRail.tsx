@@ -12,6 +12,7 @@ const ACTS: { id: string; label: string; dark?: boolean }[] = [
     { id: 'pw-platforms', label: 'Platforms' },
     { id: 'pw-editor', label: 'Editor' },
     { id: 'pw-features', label: 'Features' },
+    { id: 'pw-colors', label: 'Palette' },
     { id: 'pw-download', label: 'Pricing & download', dark: true },
 ];
 

@@ -17,7 +17,7 @@ export default function PWPalette() {
 
     const swatches = Object.entries(PW.notes) as [NoteColorKey, (typeof PW.notes)[NoteColorKey]][];
     return (
-        <section ref={section} className="py-[110px] md:py-[140px]">
+        <section ref={section} id="pw-colors" className="py-[110px] md:py-[140px]" style={{ scrollMarginTop: 64 }}>
             <div className="max-w-[1180px] mx-auto px-6 md:px-8">
                 <SectionHead
                     eyebrow="The palette"
