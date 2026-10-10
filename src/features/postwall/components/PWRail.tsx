@@ -7,6 +7,7 @@ import { PW } from '../pwTokens';
 const ACTS: { id: string; label: string; dark?: boolean }[] = [
     { id: 'pw-top', label: 'Top' },
     { id: 'pw-why', label: 'Why', dark: true },
+    { id: 'pw-wedge', label: 'On top' },
     { id: 'pw-day', label: 'A day' },
     { id: 'pw-platforms', label: 'Platforms' },
     { id: 'pw-editor', label: 'Editor' },

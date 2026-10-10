@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import {
+    PWBeforeAfter,
     PWCTA,
     PWEditor,
     PWFeatures,
@@ -39,6 +40,7 @@ export default function PostWall() {
             <PWRail />
             <PWHero />
             <PWStatement />
+            <PWBeforeAfter />
             <PWJourney />
             <PWPlatforms />
             <PWEditor />
