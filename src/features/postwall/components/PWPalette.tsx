@@ -45,7 +45,7 @@ export default function PWPalette() {
                                 color: c.ink,
                                 zIndex: 6 - Math.abs(i - 2.5) * 2,
                             }}>
-                            <div style={{ fontSize: 11, fontFamily: PW.mono, opacity: 0.55, letterSpacing: '0.04em' }}>
+                            <div style={{ fontSize: 11, fontFamily: PW.mono, opacity: 0.75, letterSpacing: '0.04em' }}>
                                 {name.toUpperCase()}
                             </div>
                             <div
@@ -57,7 +57,7 @@ export default function PWPalette() {
                                     opacity: 'var(--f, 1)',
                                 }}>
                                 <div style={{ fontFamily: PW.mono, fontSize: 11, opacity: 0.75 }}>{c.bg}</div>
-                                <div style={{ fontFamily: PW.mono, fontSize: 11, opacity: 0.55, marginTop: 2 }}>
+                                <div style={{ fontFamily: PW.mono, fontSize: 11, opacity: 0.75, marginTop: 2 }}>
                                     {c.ink}
                                 </div>
                             </div>

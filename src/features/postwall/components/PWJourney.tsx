@@ -138,7 +138,7 @@ function JourneyPanel({ panel, index }: { panel: Panel; index: number }) {
                     <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '-0.01em', flex: 1 }}>
                         {panel.label}
                     </div>
-                    <span style={{ fontFamily: PW.mono, fontSize: 10, opacity: 0.55 }}>{panel.time}</span>
+                    <span style={{ fontFamily: PW.mono, fontSize: 10, opacity: 0.75 }}>{panel.time}</span>
                 </div>
                 {panel.items.map(([done, text], i) => (
                     <div key={i} className="flex items-start" style={{ marginBottom: 3 }}>
