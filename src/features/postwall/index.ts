@@ -10,7 +10,6 @@ export { default as PWEditor } from './components/PWEditor';
 export { default as PWWall } from './components/PWWall';
 export { default as PWFeatures } from './components/PWFeatures';
 export { default as PWPalette } from './components/PWPalette';
-export { default as PWVoices } from './components/PWVoices';
 export { default as PWCTA } from './components/PWCTA';
 export { default as PWFooter } from './components/PWFooter';
 

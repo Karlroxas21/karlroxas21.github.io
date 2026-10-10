@@ -12,7 +12,6 @@ import {
     PWRail,
     PWShell,
     PWStatement,
-    PWVoices,
     PWWall,
 } from '../features/postwall';
 import { useAnalytics } from '../hooks/use-analytics';
@@ -47,7 +46,6 @@ export default function PostWall() {
             <PWWall />
             <PWFeatures />
             <PWPalette />
-            <PWVoices />
             <PWCTA />
             <PWFooter />
         </PWShell>
