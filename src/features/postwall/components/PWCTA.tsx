@@ -253,8 +253,9 @@ export default function PWCTA() {
                     </div>
                 </Reveal>
 
-                {release.tag && (
-                    <Reveal delay={140}>
+                {/* Mounted from the first render: the reveal observer only sees elements present then. */}
+                <Reveal delay={140}>
+                    {release.tag && (
                         <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: 64 }}>
                             <span
                                 className="inline-flex items-center gap-2"
@@ -276,8 +277,8 @@ export default function PWCTA() {
                                 <span style={{ fontSize: 13, opacity: 0.55 }}>Beta build. Expect rough edges.</span>
                             )}
                         </div>
-                    </Reveal>
-                )}
+                    )}
+                </Reveal>
 
                 <Reveal delay={200}>
                     <div id="pw-pricing" style={{ marginTop: release.tag ? 28 : 64, scrollMarginTop: 96 }}>
