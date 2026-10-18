@@ -324,10 +324,10 @@ export default function PWCTA() {
                                             <PriceLine
                                                 amount={`$${FOUNDING_OFFER.priceUsd}/yr`}
                                                 struck={`$${PRO_PRICE_USD}/yr`}
-                                                note="billed yearly, USD"
+                                                note={`first year, then $${PRO_PRICE_USD}/yr, USD`}
                                             />
                                             <div style={{ marginTop: 10 }}>
-                                                <Chip lit>FOUNDING RATE · LOCKED FOR LIFE</Chip>
+                                                <Chip lit>FOUNDING RATE · FIRST YEAR</Chip>
                                             </div>
                                             <div
                                                 style={{
