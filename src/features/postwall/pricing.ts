@@ -24,8 +24,28 @@ export const FOUNDING_OFFER: FoundingOffer = {
     endedManually: false,
 };
 
-/** Polar checkout URL. Null renders the Pro button disabled until the checkout exists. */
-export const PRO_CHECKOUT_URL: string | null = null;
+type PolarEnvironment = 'production' | 'sandbox';
+
+/**
+ * Polar checkout links (Polar dashboard → Products → Checkout Links), one per Polar environment. Null
+ * renders the Pro button disabled. Sandbox (sandbox.polar.sh) is a separate Polar account with its own
+ * products and takes only test cards, so a purchase there never charges anyone.
+ */
+const PRO_CHECKOUT_URLS: Record<PolarEnvironment, string | null> = {
+    production: null,
+    sandbox:
+        'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_ncWKFU3tgpqwPcAz2W3t2KL2mDjaD3i0aakbP2dIC8o/redirect',
+};
+
+/** `VITE_POLAR_ENV` picks the environment. Unset, the dev server uses sandbox and a build uses
+ * production, so a local run only takes a real payment when asked to. */
+function polarEnvironment(): PolarEnvironment {
+    const configured = import.meta.env.VITE_POLAR_ENV as string | undefined;
+    if (configured === 'sandbox' || configured === 'production') return configured;
+    return import.meta.env.DEV ? 'sandbox' : 'production';
+}
+
+export const PRO_CHECKOUT_URL = PRO_CHECKOUT_URLS[polarEnvironment()];
 
 export const FREE_FEATURES = [
     'The full app: every editor and wall feature',
