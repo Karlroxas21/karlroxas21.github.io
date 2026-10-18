@@ -10,9 +10,8 @@ export type FoundingOffer = {
     /** ISO date (YYYY-MM-DD) Pro goes on sale. Null while it is not on sale yet. */
     startsOn: string | null;
     durationDays: number;
-    /** Shown in the copy only — the page cannot count buyers, so the owner ends it by hand. */
-    buyerCap: number;
-    /** Flip to true if the buyer cap is reached before the end date. */
+    /** Flip to true if Polar's redemption cap is reached before the end date. The page cannot count
+     * buyers, so the owner ends it by hand. */
     endedManually: boolean;
     /** Polar discount code applied at checkout. Must exist with this code in both Polar environments. */
     discountCode: string;
@@ -22,7 +21,6 @@ export const FOUNDING_OFFER: FoundingOffer = {
     priceUsd: 14.99,
     startsOn: null,
     durationDays: 90,
-    buyerCap: 500,
     endedManually: false,
     discountCode: 'founding',
 };

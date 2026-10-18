@@ -329,16 +329,6 @@ export default function PWCTA() {
                                             <div style={{ marginTop: 10 }}>
                                                 <Chip lit>FOUNDING RATE · FIRST YEAR</Chip>
                                             </div>
-                                            <div
-                                                style={{
-                                                    fontSize: PW.text.small,
-                                                    opacity: 0.6,
-                                                    marginTop: 8,
-                                                    lineHeight: 1.5,
-                                                }}>
-                                                First {FOUNDING_OFFER.buyerCap} buyers or {FOUNDING_OFFER.durationDays}{' '}
-                                                days after launch, whichever comes first.
-                                            </div>
                                         </>
                                     ) : (
                                         <PriceLine amount={`$${PRO_PRICE_USD}/yr`} note="billed yearly, USD" />
