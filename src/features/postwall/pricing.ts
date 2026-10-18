@@ -14,6 +14,8 @@ export type FoundingOffer = {
     buyerCap: number;
     /** Flip to true if the buyer cap is reached before the end date. */
     endedManually: boolean;
+    /** Polar discount code applied at checkout. Must exist with this code in both Polar environments. */
+    discountCode: string;
 };
 
 export const FOUNDING_OFFER: FoundingOffer = {
@@ -22,6 +24,7 @@ export const FOUNDING_OFFER: FoundingOffer = {
     durationDays: 90,
     buyerCap: 500,
     endedManually: false,
+    discountCode: 'founding',
 };
 
 type PolarEnvironment = 'production' | 'sandbox';
