@@ -3,7 +3,7 @@
  * and no lifetime option. Every launch-day change is a one-line edit here.
  */
 
-export const PRO_PRICE_USD = 24;
+export const PRO_PRICE_USD = 23.99;
 
 export type FoundingOffer = {
     priceUsd: number;
@@ -17,7 +17,7 @@ export type FoundingOffer = {
 };
 
 export const FOUNDING_OFFER: FoundingOffer = {
-    priceUsd: 15,
+    priceUsd: 14.99,
     startsOn: null,
     durationDays: 90,
     buyerCap: 500,
