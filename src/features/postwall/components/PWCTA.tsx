@@ -164,10 +164,14 @@ function FreeDownload({ os, release }: { os: OSFamily; release: LatestRelease })
     );
 }
 
-function ProCheckout() {
+function ProCheckout({ founding }: { founding: boolean }) {
     if (PRO_CHECKOUT_URL) {
+        // Prefilled so checkout charges the founding price the card shows, without the buyer typing a code.
+        const href = new URL(PRO_CHECKOUT_URL);
+        if (founding) href.searchParams.set('discount_code', FOUNDING_OFFER.discountCode);
+
         return (
-            <PWButton variant="onDark" size="md" href={PRO_CHECKOUT_URL} newTab>
+            <PWButton variant="onDark" size="md" href={href.toString()} newTab>
                 Get Pro
                 <ArrowIcon size={11} />
             </PWButton>
@@ -320,20 +324,10 @@ export default function PWCTA() {
                                             <PriceLine
                                                 amount={`$${FOUNDING_OFFER.priceUsd}/yr`}
                                                 struck={`$${PRO_PRICE_USD}/yr`}
-                                                note="billed yearly, USD"
+                                                note={`first year, then $${PRO_PRICE_USD}/yr, USD`}
                                             />
                                             <div style={{ marginTop: 10 }}>
-                                                <Chip lit>FOUNDING RATE · LOCKED FOR LIFE</Chip>
-                                            </div>
-                                            <div
-                                                style={{
-                                                    fontSize: PW.text.small,
-                                                    opacity: 0.6,
-                                                    marginTop: 8,
-                                                    lineHeight: 1.5,
-                                                }}>
-                                                First {FOUNDING_OFFER.buyerCap} buyers or {FOUNDING_OFFER.durationDays}{' '}
-                                                days after launch, whichever comes first.
+                                                <Chip lit>FOUNDING RATE · FIRST YEAR</Chip>
                                             </div>
                                         </>
                                     ) : (
@@ -342,7 +336,7 @@ export default function PWCTA() {
                                 }
                                 summary="We run the sync for you, and keep a month of every note's history."
                                 points={PRO_FEATURES}>
-                                <ProCheckout />
+                                <ProCheckout founding={founding} />
                             </TierCard>
                         </div>
                     </div>
